@@ -11,7 +11,7 @@ spring:
   datasource:
     username: todolifeuser
     password: pwd
-    url: jdbc:postgresql://localhost:5432/paytondebug
+    url: jdbc:postgresql://localhost:5432/todolife
     initialization-mode: always
   jpa.hibernate.ddl-auto : create-drop
 
