@@ -201,7 +201,7 @@ buildNumber.properties
 ### React ###
 
 # dependencies
-/FindMyMates-Front/node_modules
+/Front/todolifefront/node_modules
 /.pnp
 .pnp.js
 
@@ -242,7 +242,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-/FindMyMates-Front/.vscode/
+/Front/todolifefront/.vscode/
 
 npm-debug.log*
 yarn-debug.log*
