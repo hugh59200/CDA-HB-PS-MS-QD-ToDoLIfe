@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.LivreDto;
-import com.cda.todolife.exception.LivreExistantException;
-import com.cda.todolife.exception.LivreIntrouvableException;
+import com.cda.todolife.exception.livre.LivreExistantException;
+import com.cda.todolife.exception.livre.LivreIntrouvableException;
 import com.cda.todolife.service.ILivreService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")

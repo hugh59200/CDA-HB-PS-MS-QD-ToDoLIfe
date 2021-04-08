@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dao.IFilmDao;
 import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.exception.FilmIntrouvableException;
-import com.cda.todolife.exception.FilmeExistantException;
+import com.cda.todolife.exception.film.FilmIntrouvableException;
+import com.cda.todolife.exception.film.FilmeExistantException;
 import com.cda.todolife.model.Film;
 import com.cda.todolife.service.IFilmService;
 

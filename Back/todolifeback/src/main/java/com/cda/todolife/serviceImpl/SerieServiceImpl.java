@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dao.ISerieDao;
 import com.cda.todolife.dto.SerieDto;
-import com.cda.todolife.exception.SerieExistanteException;
-import com.cda.todolife.exception.SerieIntrouvableException;
+import com.cda.todolife.exception.serie.SerieExistanteException;
+import com.cda.todolife.exception.serie.SerieIntrouvableException;
 import com.cda.todolife.model.Serie;
 import com.cda.todolife.service.ISerieService;
 

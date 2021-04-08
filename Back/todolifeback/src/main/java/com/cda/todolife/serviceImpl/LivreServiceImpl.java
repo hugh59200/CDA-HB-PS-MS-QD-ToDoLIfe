@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dao.ILivreDao;
 import com.cda.todolife.dto.LivreDto;
-import com.cda.todolife.exception.LivreExistantException;
-import com.cda.todolife.exception.LivreIntrouvableException;
+import com.cda.todolife.exception.livre.LivreExistantException;
+import com.cda.todolife.exception.livre.LivreIntrouvableException;
 import com.cda.todolife.model.Livre;
 import com.cda.todolife.service.ILivreService;
 
@@ -68,6 +68,7 @@ public class LivreServiceImpl implements ILivreService {
 		}
 	}
 
+//  supprimer un livre
 	@Override
 	public void deleteById(int id) throws LivreIntrouvableException {
 		this.livreDao.findById(id).orElseThrow(LivreIntrouvableException::new);

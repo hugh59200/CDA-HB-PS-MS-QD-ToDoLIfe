@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.exception.FilmIntrouvableException;
-import com.cda.todolife.exception.FilmeExistantException;
+import com.cda.todolife.exception.film.FilmIntrouvableException;
+import com.cda.todolife.exception.film.FilmeExistantException;
 import com.cda.todolife.service.IFilmService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")

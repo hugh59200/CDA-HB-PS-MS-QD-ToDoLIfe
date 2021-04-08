@@ -1,4 +1,4 @@
-package com.cda.todolife.exception;
+package com.cda.todolife.exception.film;
 
 public class FilmeExistantException extends Exception {
 

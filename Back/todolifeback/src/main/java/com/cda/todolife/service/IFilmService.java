@@ -3,8 +3,8 @@ package com.cda.todolife.service;
 import java.util.List;
 
 import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.exception.FilmIntrouvableException;
-import com.cda.todolife.exception.FilmeExistantException;
+import com.cda.todolife.exception.film.FilmIntrouvableException;
+import com.cda.todolife.exception.film.FilmeExistantException;
 
 public interface IFilmService {
 
