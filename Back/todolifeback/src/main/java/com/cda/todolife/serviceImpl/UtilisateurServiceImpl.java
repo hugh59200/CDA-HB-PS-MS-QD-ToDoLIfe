@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
@@ -15,6 +16,7 @@ import com.cda.todolife.model.Utilisateur;
 import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.service.IUtilisateurService;
 
+@Service
 public class UtilisateurServiceImpl implements IUtilisateurService {
 
 	@Autowired
