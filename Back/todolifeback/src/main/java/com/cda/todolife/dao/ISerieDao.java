@@ -15,5 +15,4 @@ public interface ISerieDao extends CrudRepository<Serie, Integer> {
 	Serie findBySaison(int saison);
 	
 	Serie findByEpisode(int episode);
-	
 }

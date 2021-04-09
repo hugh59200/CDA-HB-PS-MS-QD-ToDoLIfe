@@ -6,7 +6,8 @@ logging.level:
         SQL: trace
       springframework:
         web: info
-
+        
+        
 spring:
   datasource:
     username: todolifeuser
@@ -14,4 +15,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/todolife
     initialization-mode: always
   jpa.hibernate.ddl-auto : create-drop
+
+
 
