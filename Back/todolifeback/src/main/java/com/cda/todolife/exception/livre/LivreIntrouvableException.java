@@ -1,4 +1,4 @@
-package com.cda.todolife.exception;
+package com.cda.todolife.exception.livre;
 
 public class LivreIntrouvableException extends Exception {
 
