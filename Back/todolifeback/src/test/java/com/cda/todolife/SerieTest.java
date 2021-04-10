@@ -2,10 +2,10 @@ package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -18,96 +18,139 @@ import com.cda.todolife.exception.serie.SerieExistanteException;
 import com.cda.todolife.exception.serie.SerieIntrouvableException;
 import com.cda.todolife.service.ISerieService;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(OrderAnnotation.class)
 @SpringBootTest
 public class SerieTest {
 
 	@Autowired
 	ISerieService serieService;
 
+	@Autowired
+	ISerieDao serieDao;
+
+	private static int i = 1;
+
 	@BeforeEach
-	void vider(@Autowired ISerieDao serieDao) {
-		serieDao.deleteAll();
-//		System.out.println("reset de la table série");
+	public void count() {
+		System.out.println("========> Test n°" + i);
+		i++;
 	}
-	
 
-	
-	
-
-	// lister
 	@Order(1)
 	@Test
-	void verifierTableVide() {
-		assertEquals(0, this.serieService.findAll().size());
+	public void clear() {
+		this.serieDao.deleteAll();
+		assertNotNull(this.serieService.findAll());
+		assertEquals(this.serieService.findAll().size(), 0);
 	}
 
-	// ajouter
 	@Order(2)
 	@Test
-	void ajouterUneSerie() {
-		int taille = this.serieService.findAll().size();
+	public void create() {
 		try {
-			this.serieService.add(SerieDto.builder().name("Wanda Vision").saison(1).episode(9).build());
+			SerieDto serie = SerieDto.builder().name("WandaVisison").saison(1).episode(9).build();
+			assertNotNull(serie);
+			this.serieService.add(serie);
+			assertNotNull(this.serieService.findAll());
+			assertEquals(this.serieService.findAll().size(), 1);
 		} catch (SerieExistanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			assertEquals(taille + 1, this.serieService.findAll().size());
 		}
 	}
 
-	// modifier
 	@Order(3)
 	@Test
-	void modifierUneSerie() {
+	public void findById() {
 		try {
-			this.serieService.add(SerieDto.builder().name("Wanda Vision").saison(1).episode(9).build());
 			SerieDto serie = this.serieService.findById(1);
-
-			String nom = serie.getName();
+			assertNotNull(serie);
 			int id = serie.getIdSerie();
-			System.out.println("==============");
-			System.out.println(this.serieService.findAll());
-
-//			this.serieService.update(serie.builder().idSerie(id).name("Loki").saison(1).episode(6).build());
-//			System.out.println("=> nom modif : " + serie.getName());
-//			System.out.println("=============================");
-//			System.out.println(this.serieService.findAll());
-//
-//
-//			assertNotEquals(nom, serie.getName());
-
-		} catch (SerieExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			assertEquals(serie.getIdSerie(), id);
 		} catch (SerieIntrouvableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
+	@Order(4)
+	@Test
+	public void findByName() {
+		try {
+			SerieDto serie = this.serieService.findByName("WandaVisison");
+			assertNotNull(serie);
+			String name = serie.getName();
+			assertEquals(serie.getName(), name);
+		} catch (SerieIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Order(5)
+	@Test
+	public void findBySaison() {
+		try {
+			SerieDto serie = this.serieService.findBySaison(1);
+			assertNotNull(serie);
+			int saison = serie.getSaison();
+			assertEquals(serie.getSaison(), saison);
+		} catch (SerieIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Order(6)
+	@Test
+	public void findByEpisode() {
+		try {
+			SerieDto serie = this.serieService.findByEpisode(9);
+			assertNotNull(serie);
+			int episode = serie.getEpisode();
+			assertEquals(serie.getEpisode(), episode);
+		} catch (SerieIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Order(7)
+	@Test
+	public void update() {
+		try {
+			SerieDto serie = serieService.findById(1);
+			assertNotNull(serie);
+			String nom = serie.getName();
+			int episode = serie.getEpisode();
+			serie.setName("Loki");
+			serie.setEpisode(6);
+			serieService.update(serie);
+			assertNotNull(serie);
+			assertNotEquals(serie.getName(), nom);
+			assertNotEquals(serie.getEpisode(), episode);
+		} catch (SerieIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SerieExistanteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Order(8)
+	@Test
+	public void delete() {
+		try {
+			SerieDto serie = serieService.findById(1);
+			assertNotNull(serie);
+			int id = serie.getIdSerie();
+			this.serieService.deleteById(id);
+			assertEquals(this.serieService.findAll().size(), 0);
+			this.serieDao.deleteAll();
+		} catch (SerieIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
-
-//					System.out.println("=================");
-//					System.out.println("=> récupérer le l'id de la série");
-//					SerieDto serie = this.serieService.findById(this.serieService.findAll().size()+1);
-//					System.out.println(serie);
-
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println("=================");
-//					System.out.println(serie);
-//					String nameBefore = serie.getName();
-//					System.out.println(nameBefore);
-//					
-//					System.out.println("3 => ");
-//					// modifier la série trouvée
-//					this.serieService.update(serie.builder().name("Loki").saison(1).episode(6).build());
-//					System.out.println(serie.getName());
-//					assertNotEquals(nameBefore, serie.getName());

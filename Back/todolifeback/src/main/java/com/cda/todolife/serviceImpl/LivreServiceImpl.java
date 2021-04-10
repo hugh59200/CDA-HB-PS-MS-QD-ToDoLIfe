@@ -56,15 +56,21 @@ public class LivreServiceImpl implements ILivreService {
 		return this.modelMapper.map(this.livreDao.findByTitle(livre), LivreDto.class);
 	}
 
+// trouver par pageActuel
+	@Override
+	public LivreDto findByPageActuel(int page) throws LivreIntrouvableException {
+		return this.modelMapper.map(this.livreDao.findByPageActuel(page), LivreDto.class);
+	}
+
 // mettre à jour un livre	
 	@Override
 	public void update(LivreDto livre) throws LivreIntrouvableException, LivreExistantException {
-		Optional<Livre> serieOpt = this.livreDao.findById(livre.getIdLivre());
-		if (serieOpt.isPresent()) {
-			System.out.println(serieOpt);
+		try {
+			this.livreDao.findById(livre.getIdLivre()).orElseThrow(LivreIntrouvableException::new);
 			this.livreDao.save(this.modelMapper.map(livre, Livre.class));
-		} else {
-			throw new LivreIntrouvableException();
+		} catch (LivreIntrouvableException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -74,4 +80,5 @@ public class LivreServiceImpl implements ILivreService {
 		this.livreDao.findById(id).orElseThrow(LivreIntrouvableException::new);
 		this.livreDao.deleteById(id);
 	}
+
 }

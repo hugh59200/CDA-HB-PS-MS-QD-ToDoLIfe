@@ -30,13 +30,13 @@ public class SerieController {
 	private ISerieService serieService;
 
 	// listing
-	@GetMapping("/getSerie")
+	@GetMapping("/series")
 	public List<SerieDto> getAll() {
 		return this.serieService.findAll();
 	}
 
 	// create
-	@PostMapping("/getSerie")
+	@PostMapping("/series")
 	public ResponseEntity<SerieDto> create(@RequestBody SerieDto serieDto) throws SerieExistanteException {
 		try {
 			this.serieService.add(serieDto);
@@ -47,35 +47,35 @@ public class SerieController {
 	}
 
 	// details by Id
-	@GetMapping("/getSerie/{id}")
+	@GetMapping("/series/id/{id}")
 	public ResponseEntity<SerieDto> getById(@PathVariable int id) throws SerieIntrouvableException {
 		SerieDto serieDto = serieService.findById(id);
 		return ResponseEntity.ok(serieDto);
 	}
 
 	// details by Name
-	@GetMapping("/getSerie/name/{name}")
+	@GetMapping("/series/name/{name}")
 	public ResponseEntity<SerieDto> getByName(@PathVariable String name) throws SerieIntrouvableException {
 		SerieDto serieDto = serieService.findByName(name);
 		return ResponseEntity.ok(serieDto);
 	}
 
 	// details by saison
-	@GetMapping("/getSerie/saison/{saison}")
+	@GetMapping("/series/saison/{saison}")
 	public ResponseEntity<SerieDto> getBySaison(@PathVariable int saison) throws SerieIntrouvableException {
 		SerieDto serieDto = serieService.findBySaison(saison);
 		return ResponseEntity.ok(serieDto);
 	}
 
 	// details by episode
-	@GetMapping("/getSerie/episode/{episode}")
+	@GetMapping("/series/episode/{episode}")
 	public ResponseEntity<SerieDto> getByEpisode(@PathVariable int episode) throws SerieIntrouvableException {
 		SerieDto serieDto = serieService.findByEpisode(episode);
 		return ResponseEntity.ok(serieDto);
 	}
 
 	// update
-	@PutMapping("/getSerie")
+	@PutMapping("/series")
 	public ResponseEntity<SerieDto> update(@RequestBody SerieDto serieDto) throws SerieIntrouvableException {
 
 		try {
@@ -91,7 +91,7 @@ public class SerieController {
 	}
 
 	// delete
-	@DeleteMapping("/getSerie/{id}")
+	@DeleteMapping("/series/id/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws SerieIntrouvableException {
 		serieService.deleteById(id);
 		System.out.println("ok");

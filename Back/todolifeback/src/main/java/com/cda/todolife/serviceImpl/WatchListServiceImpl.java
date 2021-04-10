@@ -58,12 +58,12 @@ public class WatchListServiceImpl implements IWatchListService {
 //	mettre à jour une watchlist
 	@Override
 	public void update(WatchListDto watchList) throws WatchListIntrouvableException, WatchListExistanteException {
-		Optional<WatchList> serieOpt = this.watchListDao.findById(watchList.getIdWatchList());
-		if (serieOpt.isPresent()) {
-			System.out.println(serieOpt);
+		try {
+			this.watchListDao.findById(watchList.getIdWatchList()).orElseThrow(WatchListIntrouvableException :: new);
 			this.watchListDao.save(this.modelMapper.map(watchList, WatchList.class));
-		} else {
-			throw new WatchListIntrouvableException();
+		} catch (WatchListIntrouvableException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 

@@ -30,13 +30,13 @@ public class WatchListController {
 	private IWatchListService watchListService;
 
 	// listing
-	@GetMapping("/getWatchList")
+	@GetMapping("/watchlists")
 	public List<WatchListDto> getAll() {
 		return this.watchListService.findAll();
 	}
 
 	// create
-	@PostMapping("/getWatchList")
+	@PostMapping("/watchlists")
 	public ResponseEntity<WatchListDto> create(@RequestBody WatchListDto watchListDto)
 			throws WatchListIntrouvableException {
 		try {
@@ -49,21 +49,22 @@ public class WatchListController {
 	}
 
 	// details by Id
-	@GetMapping("/getWatchList/{id}")
+	@GetMapping("/watchlists/id/{id}")
 	public ResponseEntity<WatchListDto> getById(@PathVariable int id) throws WatchListIntrouvableException {
 		WatchListDto watchListDto = watchListService.findById(id);
+		System.out.println(watchListDto);
 		return ResponseEntity.ok(watchListDto);
 	}
 
 	// details by label
-	@GetMapping("/getWatchList/label/{label}")
+	@GetMapping("/watchlists/label/{label}")
 	public ResponseEntity<WatchListDto> getByLabel(@PathVariable String label) throws WatchListIntrouvableException {
 		WatchListDto watchListDto = watchListService.findByLabel(label);
 		return ResponseEntity.ok(watchListDto);
 	}
 
 	// update
-	@PutMapping("/getWatchList")
+	@PutMapping("/watchlists")
 	public ResponseEntity<WatchListDto> update(@RequestBody WatchListDto watchListDto)
 			throws WatchListIntrouvableException {
 		try {
@@ -79,7 +80,7 @@ public class WatchListController {
 	}
 
 	// delete
-	@DeleteMapping("/getWatchList/{id}")
+	@DeleteMapping("/watchlists/id/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws WatchListIntrouvableException {
 		watchListService.deleteById(id);
 		System.out.println("ok");

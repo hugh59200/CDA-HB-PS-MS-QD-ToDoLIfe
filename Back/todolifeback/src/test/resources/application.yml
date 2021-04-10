@@ -6,6 +6,7 @@ logging.level:
         SQL: trace
       springframework:
         web: info
+        
 
 spring:
   datasource:

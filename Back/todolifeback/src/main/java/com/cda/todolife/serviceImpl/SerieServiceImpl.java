@@ -70,12 +70,12 @@ public class SerieServiceImpl implements ISerieService {
 // mettre à jour une série
 	@Override
 	public void update(SerieDto serie) throws SerieIntrouvableException, SerieExistanteException {
-		Optional<Serie> serieOpt = this.serieDao.findById(serie.getIdSerie());
-		if (serieOpt.isPresent()) {
-			System.out.println(serieOpt);
+		try {
+			this.serieDao.findById(serie.getIdSerie()).orElseThrow(SerieIntrouvableException::new);
 			this.serieDao.save(this.modelMapper.map(serie, Serie.class));
-		} else {
-			throw new SerieIntrouvableException();
+		} catch (SerieIntrouvableException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 

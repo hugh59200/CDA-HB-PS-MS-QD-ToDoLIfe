@@ -30,13 +30,13 @@ public class FilmController {
 	private IFilmService filmService;
 
 	// listing
-	@GetMapping("/getFilm")
+	@GetMapping("/films")
 	public List<FilmDto> getAll() {
 		return this.filmService.findAll();
 	}
 
 	// create
-	@PostMapping("/getFilm")
+	@PostMapping("/films")
 	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto) throws FilmIntrouvableException {
 		try {
 			this.filmService.add(filmDto);
@@ -48,23 +48,22 @@ public class FilmController {
 	}
 
 	// details by Id
-	@GetMapping("/getFilm/{id}")
+	@GetMapping("/films/id/{id}")
 	public ResponseEntity<FilmDto> getById(@PathVariable int id) throws FilmIntrouvableException {
 		FilmDto filmDto = filmService.findById(id);
 		return ResponseEntity.ok(filmDto);
 	}
 
 	// details by Name
-	@GetMapping("/getFilm/name/{name}")
+	@GetMapping("/films/name/{name}")
 	public ResponseEntity<FilmDto> getByName(@PathVariable String name) throws FilmIntrouvableException {
 		FilmDto filmDto = filmService.findByName(name);
 		return ResponseEntity.ok(filmDto);
 	}
 
 	// update
-	@PutMapping("/getFilm")
+	@PutMapping("/films")
 	public ResponseEntity<FilmDto> update(@RequestBody FilmDto filmDto) throws FilmIntrouvableException {
-
 		try {
 			filmService.update(filmDto);
 		} catch (FilmIntrouvableException e) {
@@ -78,7 +77,7 @@ public class FilmController {
 	}
 
 	// delete
-	@DeleteMapping("/getFilm/{id}")
+	@DeleteMapping("/films/id/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws FilmIntrouvableException {
 		filmService.deleteById(id);
 		System.out.println("ok");
