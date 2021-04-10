@@ -34,7 +34,7 @@ public class FilmServiceImpl implements IFilmService {
 			this.filmDao.save(this.modelMapper.map(film, Film.class));
 		}
 	}
-	
+
 //	lister les film
 	@Override
 	public List<FilmDto> findAll() {
@@ -49,22 +49,22 @@ public class FilmServiceImpl implements IFilmService {
 		return this.modelMapper.map(this.filmDao.findById(id).get(), FilmDto.class);
 
 	}
-	
+
 //	trouver par nom
 	@Override
 	public FilmDto findByName(String name) throws FilmIntrouvableException {
 		return this.modelMapper.map(this.filmDao.findByName(name), FilmDto.class);
 	}
 
-	// mettre à jour un film	
+	// mettre à jour un film
 	@Override
 	public void update(FilmDto film) throws FilmIntrouvableException, FilmeExistantException {
-		Optional<Film> serieOpt = this.filmDao.findById(film.getIdFilm());
-		if (serieOpt.isPresent()) {
-			System.out.println(serieOpt);
+		try {
+			this.filmDao.findById(film.getIdFilm()).orElseThrow(FilmIntrouvableException::new);
 			this.filmDao.save(this.modelMapper.map(film, Film.class));
-		} else {
-			throw new FilmIntrouvableException();
+		} catch (FilmIntrouvableException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 

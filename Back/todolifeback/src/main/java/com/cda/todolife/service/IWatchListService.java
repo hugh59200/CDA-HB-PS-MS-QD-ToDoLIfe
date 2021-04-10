@@ -16,7 +16,7 @@ public interface IWatchListService {
 
 	void deleteById(int id) throws WatchListIntrouvableException;
 
-	void add(WatchListDto livre) throws WatchListExistanteException;
+	void add(WatchListDto watchList) throws WatchListExistanteException;
 
 	WatchListDto findByLabel(String label) throws WatchListIntrouvableException;
 

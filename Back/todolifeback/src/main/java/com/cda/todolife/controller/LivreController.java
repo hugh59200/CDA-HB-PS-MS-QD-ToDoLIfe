@@ -30,13 +30,13 @@ public class LivreController {
 	private ILivreService livreService;
 
 	// listing
-	@GetMapping("/getLivre")
+	@GetMapping("/livres")
 	public List<LivreDto> getAll() {
 		return this.livreService.findAll();
 	}
 
 	// create
-	@PostMapping("/getLivre")
+	@PostMapping("/livres")
 	public ResponseEntity<LivreDto> create(@RequestBody LivreDto livreDto) throws LivreIntrouvableException {
 		try {
 			this.livreService.add(livreDto);
@@ -48,21 +48,28 @@ public class LivreController {
 	}
 
 	// details by Id
-	@GetMapping("/getLivre/{id}")
+	@GetMapping("/livres/id/{id}")
 	public ResponseEntity<LivreDto> getById(@PathVariable int id) throws LivreIntrouvableException {
 		LivreDto livreDto = livreService.findById(id);
 		return ResponseEntity.ok(livreDto);
 	}
 
 	// details by title
-	@GetMapping("/getLivre/title/{title}")
+	@GetMapping("/livres/title/{title}")
 	public ResponseEntity<LivreDto> getByTitle(@PathVariable String title) throws LivreIntrouvableException {
 		LivreDto livreDto = livreService.findByTitle(title);
 		return ResponseEntity.ok(livreDto);
 	}
+	
+	// details by pageActuel
+		@GetMapping("/livres/page/{page}")
+		public ResponseEntity<LivreDto> getByPageActuel(@PathVariable int page) throws LivreIntrouvableException {
+			LivreDto livreDto = livreService.findByPageActuel(page);
+			return ResponseEntity.ok(livreDto);
+		}
 
 	// update
-	@PutMapping("/getLivre")
+	@PutMapping("/livres")
 	public ResponseEntity<LivreDto> update(@RequestBody LivreDto livreDto) throws LivreIntrouvableException {
 
 		try {
@@ -78,7 +85,7 @@ public class LivreController {
 	}
 
 	// delete
-	@DeleteMapping("/getLivre/{id}")
+	@DeleteMapping("/livres/id/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws LivreIntrouvableException {
 		livreService.deleteById(id);
 		System.out.println("ok");

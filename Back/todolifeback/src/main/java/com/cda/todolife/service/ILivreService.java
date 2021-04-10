@@ -18,6 +18,8 @@ public interface ILivreService {
 
 	void add(LivreDto livre) throws LivreExistantException;
 
+	LivreDto findByPageActuel(int page) throws LivreIntrouvableException;
+
 	LivreDto findByTitle(String livre) throws LivreIntrouvableException;
 
 }

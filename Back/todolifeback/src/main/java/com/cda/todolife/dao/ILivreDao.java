@@ -11,4 +11,6 @@ public interface ILivreDao extends CrudRepository<Livre, Integer> {
 	List<Livre> findAll();
 
 	Livre findByTitle(String title);
+	
+	Livre findByPageActuel(int page);
 }
