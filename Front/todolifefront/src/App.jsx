@@ -1,13 +1,14 @@
 import Routes from './shared/routes/Routes';
-
+import { BrowserRouter as Router} from 'react-router-dom';
+import NavBar from './shared/components/navBar/NavBar';
 
 function App() {
   return (
     <>
-
-
-      {/* <TodoListView/> */}
-      <Routes/>
+      <Router>
+        <NavBar />
+        <Routes />
+      </Router>
     </>
   );
 }
