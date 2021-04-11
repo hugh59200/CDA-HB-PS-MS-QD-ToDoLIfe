@@ -13,10 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.cda.todolife.dao.ISerieDao;
+import com.cda.todolife.dao.IWatchListDao;
 import com.cda.todolife.dto.SerieDto;
+import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.serie.SerieExistanteException;
 import com.cda.todolife.exception.serie.SerieIntrouvableException;
+import com.cda.todolife.exception.watchlist.WatchListExistanteException;
+import com.cda.todolife.model.WatchList;
 import com.cda.todolife.service.ISerieService;
+import com.cda.todolife.service.IWatchListService;
 
 @TestMethodOrder(OrderAnnotation.class)
 @SpringBootTest
@@ -27,6 +32,12 @@ public class SerieTest {
 
 	@Autowired
 	ISerieDao serieDao;
+
+	@Autowired
+	IWatchListService watchListService;
+
+	@Autowired
+	IWatchListDao watchListDao;
 
 	private static int i = 1;
 
@@ -42,18 +53,31 @@ public class SerieTest {
 		this.serieDao.deleteAll();
 		assertNotNull(this.serieService.findAll());
 		assertEquals(this.serieService.findAll().size(), 0);
+		this.watchListDao.deleteAll();
+		assertNotNull(this.watchListService.findAll());
+		assertEquals(this.watchListService.findAll().size(), 0);
 	}
 
 	@Order(2)
 	@Test
 	public void create() {
 		try {
-			SerieDto serie = SerieDto.builder().name("WandaVisison").saison(1).episode(9).build();
+			WatchListDto list = WatchListDto.builder().label("myList_a").build();
+			assertNotNull(list);
+			this.watchListService.add(list);
+			assertNotNull(this.watchListService.findAll());
+			assertEquals(this.watchListService.findAll().size(), 1);
+
+			WatchList listTest = WatchList.builder().idWatchList(1).label("myList_a").build();
+			SerieDto serie = SerieDto.builder().name("WandaVisison").saison(1).episode(9).watchList(listTest).build();
 			assertNotNull(serie);
 			this.serieService.add(serie);
 			assertNotNull(this.serieService.findAll());
 			assertEquals(this.serieService.findAll().size(), 1);
 		} catch (SerieExistanteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WatchListExistanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

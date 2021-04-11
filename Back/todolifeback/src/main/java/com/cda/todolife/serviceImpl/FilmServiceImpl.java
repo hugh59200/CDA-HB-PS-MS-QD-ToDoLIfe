@@ -40,6 +40,7 @@ public class FilmServiceImpl implements IFilmService {
 	public List<FilmDto> findAll() {
 		List<FilmDto> res = new ArrayList<>();
 		this.filmDao.findAll().forEach(pres -> res.add(this.modelMapper.map(pres, FilmDto.class)));
+		System.out.println(res);
 		return res;
 	}
 
