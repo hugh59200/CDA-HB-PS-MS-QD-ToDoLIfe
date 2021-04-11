@@ -13,10 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.cda.todolife.dao.IFilmDao;
+import com.cda.todolife.dao.IWatchListDao;
 import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.film.FilmIntrouvableException;
 import com.cda.todolife.exception.film.FilmeExistantException;
+import com.cda.todolife.exception.watchlist.WatchListExistanteException;
+import com.cda.todolife.model.WatchList;
 import com.cda.todolife.service.IFilmService;
+import com.cda.todolife.service.IWatchListService;
 
 @TestMethodOrder(OrderAnnotation.class)
 @SpringBootTest
@@ -27,6 +32,12 @@ public class FilmTest {
 
 	@Autowired
 	IFilmDao filmDao;
+
+	@Autowired
+	IWatchListService watchListService;
+
+	@Autowired
+	IWatchListDao watchListDao;
 
 	private static int i = 1;
 
@@ -42,18 +53,38 @@ public class FilmTest {
 		this.filmDao.deleteAll();
 		assertNotNull(this.filmService.findAll());
 		assertEquals(this.filmService.findAll().size(), 0);
+		this.watchListDao.deleteAll();
+		assertNotNull(this.watchListService.findAll());
+		assertEquals(this.watchListService.findAll().size(), 0);
 	}
 
 	@Order(2)
 	@Test
 	public void create() {
 		try {
-			FilmDto film = FilmDto.builder().name("Batman").build();
+			WatchListDto list = WatchListDto.builder().label("myList_a").build();
+			assertNotNull(list);
+			this.watchListService.add(list);
+			assertNotNull(this.watchListService.findAll());
+			assertEquals(this.watchListService.findAll().size(), 1);
+
+			WatchList listTest = WatchList.builder().idWatchList(1).label("myList_a").build();
+			FilmDto film = FilmDto.builder().name("Batman").watchList(listTest).build();
 			assertNotNull(film);
 			this.filmService.add(film);
+			try {
+				System.out.println(this.filmService.findById(1));
+				System.out.println(this.filmService.findAll());
+			} catch (FilmIntrouvableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			assertNotNull(this.filmService.findAll());
 			assertEquals(this.filmService.findAll().size(), 1);
 		} catch (FilmeExistantException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WatchListExistanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -92,6 +123,7 @@ public class FilmTest {
 	public void update() {
 		try {
 			FilmDto film = this.filmService.findById(1);
+			System.out.println(film);
 			assertNotNull(film);
 			String name = film.getName();
 			film.setName("Ironman");

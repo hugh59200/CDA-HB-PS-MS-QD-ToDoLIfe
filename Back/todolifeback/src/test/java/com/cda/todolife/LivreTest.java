@@ -13,10 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.cda.todolife.dao.ILivreDao;
+import com.cda.todolife.dao.IWatchListDao;
 import com.cda.todolife.dto.LivreDto;
+import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.livre.LivreExistantException;
 import com.cda.todolife.exception.livre.LivreIntrouvableException;
+import com.cda.todolife.exception.watchlist.WatchListExistanteException;
+import com.cda.todolife.model.WatchList;
 import com.cda.todolife.service.ILivreService;
+import com.cda.todolife.service.IWatchListService;
 
 @TestMethodOrder(OrderAnnotation.class)
 @SpringBootTest
@@ -27,6 +32,12 @@ public class LivreTest {
 
 	@Autowired
 	ILivreDao livreDao;
+
+	@Autowired
+	IWatchListService watchListService;
+
+	@Autowired
+	IWatchListDao watchListDao;
 
 	private static int i = 1;
 
@@ -42,18 +53,31 @@ public class LivreTest {
 		this.livreDao.deleteAll();
 		assertNotNull(this.livreService.findAll());
 		assertEquals(this.livreService.findAll().size(), 0);
+		this.watchListDao.deleteAll();
+		assertNotNull(this.watchListService.findAll());
+		assertEquals(this.watchListService.findAll().size(), 0);
 	}
 
 	@Order(2)
 	@Test
 	public void create() {
 		try {
-			LivreDto livre = LivreDto.builder().title("book_one").pageActuel(244).build();
+			WatchListDto list = WatchListDto.builder().label("myList_a").build();
+			assertNotNull(list);
+			this.watchListService.add(list);
+			assertNotNull(this.watchListService.findAll());
+			assertEquals(this.watchListService.findAll().size(), 1);
+
+			WatchList listTest = WatchList.builder().idWatchList(1).label("myList_a").build();
+			LivreDto livre = LivreDto.builder().title("book_one").pageActuel(244).watchList(listTest).build();
 			assertNotNull(livre);
 			this.livreService.add(livre);
 			assertNotNull(this.livreService.findAll());
 			assertEquals(this.livreService.findAll().size(), 1);
 		} catch (LivreExistantException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WatchListExistanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -122,22 +146,21 @@ public class LivreTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	@Order(7)
 	@Test
 	public void delete() {
-			try {
-				LivreDto livre = this.livreService.findById(1);
-				assertNotNull(livre);
-				int id = livre.getIdLivre();
-				this.livreService.deleteById(id);
-				assertEquals(this.livreService.findAll().size(), 0);
-				this.livreDao.deleteAll();
-			} catch (LivreIntrouvableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			LivreDto livre = this.livreService.findById(1);
+			assertNotNull(livre);
+			int id = livre.getIdLivre();
+			this.livreService.deleteById(id);
+			assertEquals(this.livreService.findAll().size(), 0);
+			this.livreDao.deleteAll();
+		} catch (LivreIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
