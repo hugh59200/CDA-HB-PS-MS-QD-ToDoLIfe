@@ -1,0 +1,41 @@
+.todo-row:nth-child(5n + 1) {
+    background: linear-gradient(90deg,
+        rgba(93, 12, 255, 1) 0%,
+        rgba(155, 0, 250, 1) 100%);
+  }
+  
+  .todo-row:nth-child(5n + 2) {
+    background: linear-gradient(90deg,
+        rgba(255, 12, 241, 1) 0%,
+        rgba(250, 0, 135, 1) 100%);
+  }
+  
+  .todo-row:nth-child(5n + 3) {
+    background: linear-gradient(90deg,
+        rgba(20, 159, 255, 1) 0%,
+        rgba(17, 122, 255, 1) 100%);
+  }
+  
+  .todo-row:nth-child(5n + 4) {
+    background: linear-gradient(90deg,
+        rgba(72, 190, 47, 1) 0%,
+        rgba(100, 235, 93, 1) 100%);
+  }
+  
+  .todo-row:nth-child(5n + 5) {
+    background: linear-gradient(90deg,
+        rgb(209, 195, 72) 0%,
+        rgb(211, 248, 0) 100%);
+  }
+  
+  .todo-row:nth-child(5n + 6) {
+    background: linear-gradient(90deg,
+        rgba(255, 118, 20, 1) 0%,
+        rgba(255, 84, 17, 1) 100%);
+  }
+
+  body {
+    background: linear-gradient(90deg,
+        rgb(43, 105, 238) 0%,
+        rgb(62, 190, 241) 100%);
+  }
