@@ -18,7 +18,7 @@
   
   .todo-row:nth-child(5n + 4) {
     background: linear-gradient(90deg,
-        rgba(72, 190, 47, 1) 0%,
+        rgba(72, 190, 47, 1) 0%,  
         rgba(100, 235, 93, 1) 100%);
   }
   
@@ -35,7 +35,5 @@
   }
 
   body {
-    background: linear-gradient(90deg,
-        rgb(43, 105, 238) 0%,
-        rgb(62, 190, 241) 100%);
+    background-color: #14A7FF  !important;
   }
