@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { URL_HOME, URL_TODO_LIST } from '../../constant/URL_CONST';
+import { URL_HOME, URL_TODO_LIST } from '../../shared/constant/URL_CONST';
 
 
 const NavBar = () => {
