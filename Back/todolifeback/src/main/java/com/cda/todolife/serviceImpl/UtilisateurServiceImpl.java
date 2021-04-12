@@ -74,10 +74,9 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			}
 			if (utilisateur2 != null && utilisateur2.getEmail() != utilisateur1.getEmail()) {
 				throw new ResourceAlreadyExist();
+			} else {
+				this.utilisateurRepository.save(this.modelMapper.map(userDto, Utilisateur.class));
 			}
-
-		} else {
-			this.utilisateurRepository.save(this.modelMapper.map(userDto, Utilisateur.class));
 		}
 	}
 

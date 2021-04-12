@@ -80,7 +80,7 @@ class UtilisateurTest {
 		UtilisateurDto userDto = this.utilisateurService.show(this.utilisateurService.list().get(0).getIdUtilisateur());
 		userDto.setUsername("dada");
 		this.utilisateurService.update(userDto);
-
+		userDto = this.utilisateurService.show(this.utilisateurService.list().get(0).getIdUtilisateur());
 		assertEquals("dada", userDto.getUsername());
 		System.err.println(userDto.getUsername());
 
