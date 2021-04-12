@@ -1,0 +1,7 @@
+{"properties": [
+  {
+    "name": "com.cda.todolife.cle",
+    "type": "java.lang.String",
+    "description": "la clé utilisée pour la signature des tokens"
+  }
+]}
