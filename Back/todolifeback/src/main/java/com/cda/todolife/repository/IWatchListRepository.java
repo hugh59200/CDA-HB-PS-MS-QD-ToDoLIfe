@@ -1,4 +1,4 @@
-package com.cda.todolife.dao;
+package com.cda.todolife.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cda.todolife.model.WatchList;
 
-public interface IWatchListDao extends CrudRepository<WatchList, Integer> {
+public interface IWatchListRepository extends CrudRepository<WatchList, Integer> {
 
 	List<WatchList> findAll();
 

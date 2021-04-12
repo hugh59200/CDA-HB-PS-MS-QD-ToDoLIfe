@@ -17,6 +17,7 @@ public class TodolifebackApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodolifebackApplication.class, args);
+
 	}
 
 	@Bean

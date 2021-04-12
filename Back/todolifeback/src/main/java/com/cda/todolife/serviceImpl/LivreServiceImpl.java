@@ -8,18 +8,18 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cda.todolife.dao.ILivreDao;
 import com.cda.todolife.dto.LivreDto;
-import com.cda.todolife.exception.livre.LivreExistantException;
-import com.cda.todolife.exception.livre.LivreIntrouvableException;
+import com.cda.todolife.exception.LivreExistantException;
+import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.model.Livre;
+import com.cda.todolife.repository.IlivreRepository;
 import com.cda.todolife.service.ILivreService;
 
 @Service
 public class LivreServiceImpl implements ILivreService {
 
 	@Autowired
-	private ILivreDao livreDao;
+	private IlivreRepository livreDao;
 
 	@Autowired
 	private ModelMapper modelMapper;

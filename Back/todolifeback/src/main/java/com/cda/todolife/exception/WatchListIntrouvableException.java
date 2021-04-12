@@ -1,4 +1,4 @@
-package com.cda.todolife.exception.watchlist;
+package com.cda.todolife.exception;
 
 public class WatchListIntrouvableException extends Exception {
 

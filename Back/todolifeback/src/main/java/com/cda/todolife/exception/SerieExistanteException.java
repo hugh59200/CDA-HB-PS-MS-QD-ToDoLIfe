@@ -1,4 +1,4 @@
-package com.cda.todolife.exception.serie;
+package com.cda.todolife.exception;
 
 public class SerieExistanteException extends Exception {
 

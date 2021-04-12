@@ -1,4 +1,4 @@
-package com.cda.todolife.exception.film;
+package com.cda.todolife.exception;
 
 public class FilmIntrouvableException extends Exception {
 

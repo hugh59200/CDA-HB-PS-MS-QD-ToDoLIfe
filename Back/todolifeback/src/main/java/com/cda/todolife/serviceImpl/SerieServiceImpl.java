@@ -8,18 +8,18 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cda.todolife.dao.ISerieDao;
 import com.cda.todolife.dto.SerieDto;
-import com.cda.todolife.exception.serie.SerieExistanteException;
-import com.cda.todolife.exception.serie.SerieIntrouvableException;
+import com.cda.todolife.exception.SerieExistanteException;
+import com.cda.todolife.exception.SerieIntrouvableException;
 import com.cda.todolife.model.Serie;
+import com.cda.todolife.repository.ISerieRepository;
 import com.cda.todolife.service.ISerieService;
 
 @Service
 public class SerieServiceImpl implements ISerieService {
 
 	@Autowired
-	private ISerieDao serieDao;
+	private ISerieRepository serieDao;
 
 	@Autowired
 	private ModelMapper modelMapper;

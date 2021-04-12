@@ -14,4 +14,5 @@ public class WatchListDto {
 
 	private int idWatchList;
 	private String label;
+	private UtilisateurDto utilisateur;
 }

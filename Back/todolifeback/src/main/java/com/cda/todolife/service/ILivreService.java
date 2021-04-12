@@ -3,8 +3,8 @@ package com.cda.todolife.service;
 import java.util.List;
 
 import com.cda.todolife.dto.LivreDto;
-import com.cda.todolife.exception.livre.LivreExistantException;
-import com.cda.todolife.exception.livre.LivreIntrouvableException;
+import com.cda.todolife.exception.LivreExistantException;
+import com.cda.todolife.exception.LivreIntrouvableException;
 
 public interface ILivreService {
 
