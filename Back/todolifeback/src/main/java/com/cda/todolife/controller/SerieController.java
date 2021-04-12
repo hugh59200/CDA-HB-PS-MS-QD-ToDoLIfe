@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.SerieDto;
-import com.cda.todolife.exception.serie.SerieExistanteException;
-import com.cda.todolife.exception.serie.SerieIntrouvableException;
+import com.cda.todolife.exception.SerieExistanteException;
+import com.cda.todolife.exception.SerieIntrouvableException;
 import com.cda.todolife.service.ISerieService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")

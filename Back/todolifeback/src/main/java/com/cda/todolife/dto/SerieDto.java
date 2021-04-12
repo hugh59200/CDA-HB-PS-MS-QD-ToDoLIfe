@@ -1,7 +1,5 @@
 package com.cda.todolife.dto;
 
-import com.cda.todolife.model.WatchList;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +15,5 @@ public class SerieDto {
 	private String name;
 	private int saison;
 	private int episode;
-	private WatchList watchList;
+	private WatchListDto watchList;
 }

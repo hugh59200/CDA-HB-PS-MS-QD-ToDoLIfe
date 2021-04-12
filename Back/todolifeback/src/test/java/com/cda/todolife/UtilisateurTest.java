@@ -3,8 +3,6 @@ package com.cda.todolife;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -18,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.exception.ResourceAlreadyExist;
 import com.cda.todolife.exception.ResourceNotFoundException;
-import com.cda.todolife.model.Utilisateur;
 import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.service.IUtilisateurService;
 
@@ -98,7 +95,6 @@ class UtilisateurTest {
 		assertEquals(0, this.utilisateurService.list().size());
 		System.err.println(utilisateurService.list());
 		System.err.println("fin test delete");
-
 	}
 
 }

@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.WatchListDto;
-import com.cda.todolife.exception.watchlist.WatchListExistanteException;
-import com.cda.todolife.exception.watchlist.WatchListIntrouvableException;
+import com.cda.todolife.exception.WatchListExistanteException;
+import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.service.IWatchListService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")

@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.exception.film.FilmIntrouvableException;
-import com.cda.todolife.exception.film.FilmeExistantException;
+import com.cda.todolife.exception.FilmExistantException;
+import com.cda.todolife.exception.FilmIntrouvableException;
 import com.cda.todolife.service.IFilmService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -45,7 +45,7 @@ public class FilmController {
 	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto) throws FilmIntrouvableException {
 		try {
 			this.filmService.add(filmDto);
-		} catch (FilmeExistantException e) {
+		} catch (FilmExistantException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -74,7 +74,7 @@ public class FilmController {
 		} catch (FilmIntrouvableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (FilmeExistantException e) {
+		} catch (FilmExistantException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -1,4 +1,4 @@
-package com.cda.todolife.dao;
+package com.cda.todolife.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cda.todolife.model.Serie;
 
-public interface ISerieDao extends CrudRepository<Serie, Integer> {
+public interface ISerieRepository extends CrudRepository<Serie, Integer> {
 
 	List<Serie> findAll();
 	

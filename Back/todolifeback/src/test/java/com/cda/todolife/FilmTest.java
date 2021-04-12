@@ -1,157 +1,140 @@
-package com.cda.todolife;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import com.cda.todolife.dao.IFilmDao;
-import com.cda.todolife.dao.IWatchListDao;
-import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.dto.WatchListDto;
-import com.cda.todolife.exception.film.FilmIntrouvableException;
-import com.cda.todolife.exception.film.FilmeExistantException;
-import com.cda.todolife.exception.watchlist.WatchListExistanteException;
-import com.cda.todolife.model.WatchList;
-import com.cda.todolife.service.IFilmService;
-import com.cda.todolife.service.IWatchListService;
-
-@TestMethodOrder(OrderAnnotation.class)
-@SpringBootTest
-public class FilmTest {
-
-	@Autowired
-	IFilmService filmService;
-
-	@Autowired
-	IFilmDao filmDao;
-
-	@Autowired
-	IWatchListService watchListService;
-
-	@Autowired
-	IWatchListDao watchListDao;
-
-	private static int i = 1;
-
-	@BeforeEach
-	public void count() {
-		System.out.println("========> Test n°" + i);
-		i++;
-	}
-
-	@Order(1)
-	@Test
-	public void clear() {
-		this.filmDao.deleteAll();
-		assertNotNull(this.filmService.findAll());
-		assertEquals(this.filmService.findAll().size(), 0);
-		this.watchListDao.deleteAll();
-		assertNotNull(this.watchListService.findAll());
-		assertEquals(this.watchListService.findAll().size(), 0);
-	}
-
-	@Order(2)
-	@Test
-	public void create() {
-		try {
-			WatchListDto list = WatchListDto.builder().label("myList_a").build();
-			assertNotNull(list);
-			this.watchListService.add(list);
-			assertNotNull(this.watchListService.findAll());
-			assertEquals(this.watchListService.findAll().size(), 1);
-
-			WatchList listTest = WatchList.builder().idWatchList(1).label("myList_a").build();
-			FilmDto film = FilmDto.builder().name("Batman").watchList(listTest).build();
-			assertNotNull(film);
-			this.filmService.add(film);
-			try {
-				System.out.println(this.filmService.findById(1));
-				System.out.println(this.filmService.findAll());
-			} catch (FilmIntrouvableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			assertNotNull(this.filmService.findAll());
-			assertEquals(this.filmService.findAll().size(), 1);
-		} catch (FilmeExistantException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WatchListExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Order(3)
-	@Test
-	public void findById() {
-		try {
-			FilmDto film = this.filmService.findById(1);
-			assertNotNull(film);
-			int id = film.getIdFilm();
-			assertEquals(film.getIdFilm(), id);
-		} catch (FilmIntrouvableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Order(4)
-	@Test
-	public void findByName() {
-		try {
-			FilmDto film = this.filmService.findByName("Batman");
-			assertNotNull(film);
-			String name = film.getName();
-			assertEquals(film.getName(), name);
-		} catch (FilmIntrouvableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Order(5)
-	@Test
-	public void update() {
-		try {
-			FilmDto film = this.filmService.findById(1);
-			System.out.println(film);
-			assertNotNull(film);
-			String name = film.getName();
-			film.setName("Ironman");
-			this.filmService.update(film);
-			assertNotNull(film);
-			assertNotEquals(film.getName(), name);
-		} catch (FilmIntrouvableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FilmeExistantException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Order(6)
-	@Test
-	public void delete() {
-		try {
-			FilmDto film = this.filmService.findById(1);
-			assertNotNull(film);
-			int id = film.getIdFilm();
-			this.filmService.deleteById(id);
-			assertEquals(this.filmService.findAll().size(), 0);
-			this.filmDao.deleteAll();
-		} catch (FilmIntrouvableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-}
+//package com.cda.todolife;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertNotEquals;
+//import static org.junit.jupiter.api.Assertions.assertNotNull;
+//
+//import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.MethodOrderer;
+//import org.junit.jupiter.api.Order;
+//import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.TestInstance;
+//import org.junit.jupiter.api.TestInstance.Lifecycle;
+//import org.junit.jupiter.api.TestMethodOrder;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import com.cda.todolife.dto.FilmDto;
+//import com.cda.todolife.dto.WatchListDto;
+//import com.cda.todolife.exception.FilmExistantException;
+//import com.cda.todolife.exception.FilmIntrouvableException;
+//import com.cda.todolife.exception.WatchListExistanteException;
+//import com.cda.todolife.exception.WatchListIntrouvableException;
+//import com.cda.todolife.repository.IFilmRepository;
+//import com.cda.todolife.repository.IWatchListRepository;
+//import com.cda.todolife.service.IFilmService;
+//import com.cda.todolife.service.IWatchListService;
+//
+//@TestInstance(Lifecycle.PER_CLASS)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@SpringBootTest
+//public class FilmTest {
+//
+//	private static int i;
+//
+//	@Autowired
+//	IWatchListService watchListService;
+//
+//	@Autowired
+//	IFilmService filmService;
+//
+//	@BeforeAll
+//	static void vider(@Autowired IWatchListRepository watchListDao, @Autowired IFilmRepository filmDao) {
+//		watchListDao.deleteAll();
+//		filmDao.deleteAll();
+//		System.out.println("ok");
+//	}
+//
+//	@BeforeEach
+//	public void count() {
+//		i++;
+//		System.err.println("Test n°" + i);
+//	}
+//
+//	@Order(1)
+//	@Test
+//	public void vide() {
+//		assertEquals(0, this.watchListService.findAll().size());
+//		assertEquals(0, this.filmService.findAll().size());
+//	}
+//
+//	@Order(2)
+//	@Test
+//	public void create() {
+//		try {
+//			int vSize = this.filmService.findAll().size();
+//			this.watchListService.add(WatchListDto.builder().label("myList_a").build());
+//			this.filmService.add(FilmDto.builder().name("Batman").watchList(watchListService.findById(1)).build());
+//			assertEquals(vSize + 1, this.filmService.findAll().size());
+//		} catch (WatchListExistanteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (FilmExistantException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (WatchListIntrouvableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+////	@Order(3)
+////	@Test
+////	public void doublons() throws WatchListExistanteException{
+////		int vSize = this.watchListService.findAll().size();
+////		assertThrows(WatchListExistanteException.class, () -> {
+////			this.watchListService.add(WatchListDto.builder().label("myList_a").build());
+////		});
+////		System.err.println(this.watchListService.findAll());
+////		assertEquals(vSize, this.watchListService.findAll().size());
+////		
+////	}
+////
+//	@Order(4)
+//	@Test
+//	public void findById() {
+//		try {
+//			assertNotNull(this.filmService.findById(1));
+//		} catch (FilmIntrouvableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Order(5)
+//	@Test
+//	public void findByName() {
+//		try {
+//			assertNotNull(this.filmService.findByName("Batman"));
+//		} catch (FilmIntrouvableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Order(6)
+//	@Test
+//	public void update() {
+//		try {
+//			FilmDto film = this.filmService.findById(1);
+//			String name = film.getName();
+//			film.setName("Thor");
+//			this.filmService.update(film);
+//			assertNotEquals(film.getName(), name);
+//		} catch (FilmIntrouvableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (FilmExistantException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	@Order(7)
+//	@Test
+//	static void reset(@Autowired IWatchListRepository watchListDao, @Autowired IFilmRepository filmDao) {
+//		watchListDao.deleteAll();
+//		filmDao.deleteAll();
+//	}
+//}
