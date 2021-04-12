@@ -32,13 +32,16 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		this.utilisateurRepository.findAll()
 				.forEach(utilisateur -> result.add(this.modelMapper.map(utilisateur, UtilisateurDtoList.class)));
 
-		return null;
+		return result;
 	}
 
 	@Override
 	public void create(UtilisateurDto userDto) throws ResourceAlreadyExist {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findByUsername(userDto.getUsername());
+		Optional<Utilisateur> clrOpt2 = this.utilisateurRepository.findByEmail(userDto.getEmail());
 		if (clrOpt.isPresent()) {
+			throw new ResourceAlreadyExist();
+		} else if (clrOpt2.isPresent()) {
 			throw new ResourceAlreadyExist();
 		} else {
 			this.utilisateurRepository.save(this.modelMapper.map(userDto, Utilisateur.class));
@@ -64,6 +67,12 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			Utilisateur utilisateur2 = this.utilisateurRepository.findByUsername(userDto.getUsername()).orElse(null);
 
 			if (utilisateur2 != null && utilisateur2.getIdUtilisateur() != utilisateur1.getIdUtilisateur()) {
+				throw new ResourceAlreadyExist();
+			}
+			if (utilisateur2 != null && utilisateur2.getUsername() != utilisateur1.getUsername()) {
+				throw new ResourceAlreadyExist();
+			}
+			if (utilisateur2 != null && utilisateur2.getEmail() != utilisateur1.getEmail()) {
 				throw new ResourceAlreadyExist();
 			}
 
