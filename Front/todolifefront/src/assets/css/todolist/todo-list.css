@@ -1,9 +1,12 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
+  }
+
+  body {
+    background-color: #14A7FF  !important;
   }
   
   .complete {
@@ -16,16 +19,18 @@
     text-align: center !important;
   }
   
-  .todo-button.edit {
-    background: linear-gradient(90deg,
-        rgba(20, 159, 255, 1) 0%,
-        rgba(17, 122, 255, 1) 100%);
-    /* padding: 16px 22px; */
+  .todo-button-update {
+    background-image: url( '../../img/update.png' );
+    background-repeat: no-repeat;
+    height:40px!important;
+    width: 30px!important;
+    border-radius: 50%!important;
+    margin-left: 20px;
+    background-size:contain;
+    
   }
   
-  .todo-input.edit {
-    border: 2px solid #149fff;
-  }
+ 
   
   .todo-container {
     display: flex;
@@ -38,16 +43,12 @@
   }
   
   .todo-button {
-    padding: 16px;
-    border: none;
-    border-radius: 90%;
-    cursor: pointer;
-    outline: none;
-    /* background: linear-gradient(90deg,
-        rgba(93, 12, 255, 1) 0%,
-        rgba(155, 0, 250, 1) 100%); */
-    color: #fff;
-    text-transform: capitalize;
+    background-image: url( '../../img/plus.png' );
+    background-repeat: no-repeat;
+    height:40px!important;
+    width: 35px!important;
+    border-radius: 50%!important;
+    margin-left: 20px;
   }
   
   .icons {
@@ -62,22 +63,19 @@
     color: #fff;
   }
   
-  .edit-icon {
-    color: #fff;
-  }
+ 
 
 
   .todo-app {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: start; */
-    width: 520px;
+    
+    width: 600px;
     min-height: 600px;
     background: #0090E8;
     text-align: center;
-    margin: 128px auto;
+    margin: auto;
     border-radius: 10px;
     padding-bottom: 32px;
+    margin-top: 50px;
 }
 
 .todolist-title {
@@ -93,11 +91,13 @@
 .todo-input {
     padding: 14px 32px 14px 16px;
     border-radius: 4px 0 0 4px;
-    border: 2px solid #5d0cff;
+    border: none;
     outline: none;
-    width: 320px;
-    background: transparent;
+    width: 80%;
+    background-color: #14A7FF;
     color: #fff;
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
 .todo-row {
@@ -115,6 +115,3 @@
   background-color: #14A7FF;
 } 
 
-body {
-  background-color: #14A7FF  !important;
-}
