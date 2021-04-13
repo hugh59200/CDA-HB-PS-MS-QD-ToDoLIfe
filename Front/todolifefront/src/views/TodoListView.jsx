@@ -17,10 +17,10 @@ class TodoListView extends Component {
                         {/* <div className="text-center text-white todolist-title md-6 ml-6">Todolists</div> */}
 
                         <div className='todo-app md-6 ml-6'>
-                            <MyTodoList />
+                            <TodoList />
                         </div>
                         <div className='todo-app md-6 ml-6'>
-                            <TodoList />
+                            <MyTodoList />
                         </div>
                     </div>
                 </div>
