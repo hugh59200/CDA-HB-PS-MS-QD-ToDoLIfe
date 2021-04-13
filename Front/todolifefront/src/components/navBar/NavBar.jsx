@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { URL_HOME, URL_TODO_LIST } from '../../shared/constant/URL_CONST';
+import { URL_CONNEXION, URL_HOME, URL_TODO_LIST } from '../../shared/constant/URL_CONST';
 
 
 const NavBar = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
                             <NavLink to={URL_TODO_LIST} className="nav-link text-white" activeClassName="font-weight-bold">TodoList</NavLink>
                         </li>
                         <li className="nav-item">
-                            {/* <NavLink to={URL_HOME} className="nav-link text-white" activeClassName="font-weight-bold">Dashboard</NavLink> */}
+                            <NavLink to={URL_CONNEXION} className="nav-link text-white" activeClassName="font-weight-bold">Connexion</NavLink>
                         </li>
                     </ul>
                 </div>

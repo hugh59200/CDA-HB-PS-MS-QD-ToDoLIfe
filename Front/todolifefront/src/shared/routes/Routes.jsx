@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import TodoListView from '../../views/TodoListView.jsx';
 import { Route, Switch } from 'react-router';
 import Home from '../../views/Home.jsx';
-import { URL_HOME, URL_TODO_LIST } from '../constant/URL_CONST.js';
+import {URL_TODO_LIST, URL_CONNEXION, URL_HOME } from '../constant/URL_CONST.js';
 import {createBrowserHistory} from 'history';
+import RegisterForm from '../../components/form/RegisterForm.jsx';
 
 const CustomHistory = createBrowserHistory()
 
@@ -13,6 +14,7 @@ class Routes extends Component {
             <>
                     <Switch history={CustomHistory}>
                         <Route exact path={URL_HOME} component={Home}></Route>
+                        <Route exact path={URL_CONNEXION} component={RegisterForm}></Route>
                         <Route path={URL_TODO_LIST} component={TodoListView}></Route>
                     </Switch>
             </>
