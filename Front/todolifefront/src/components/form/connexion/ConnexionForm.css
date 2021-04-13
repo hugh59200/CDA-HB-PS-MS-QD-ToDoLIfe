@@ -1,4 +1,4 @@
-  form {
+  .form-connexion {
     width: 50%;
     min-width: 300px;
     max-width: 600px;
@@ -16,7 +16,7 @@
     text-align: center;
   }
   
-  p {
+  .error {
     color: #bf1650;
   }
   
@@ -34,18 +34,7 @@
     background: transparent;
   }
   
-  label {
-    line-height: 2;
-    text-align: left;
-    display: block;
-    margin-bottom: 30px;
-    margin-top: 20px;
-    color: white;
-    font-size: 14px;
-    font-weight: 200;
-  }
-  
-  .btn-register {
+  .btn-connexion {
     font-size: 17px; 
     width : 160px;
     height: 40px;
@@ -68,7 +57,7 @@
     outline: none;
 }
 
-.btn-register:focus {
+.btn-connexion:focus {
     border: none;
     outline-offset: 0px;
     outline: none;
