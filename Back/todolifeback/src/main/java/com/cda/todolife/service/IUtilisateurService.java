@@ -2,6 +2,7 @@ package com.cda.todolife.service;
 
 import java.util.List;
 
+import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -18,5 +19,7 @@ public interface IUtilisateurService {
 	void update(UtilisateurDto userDto) throws ResourceAlreadyExist;
 
 	void delete(int id) throws ResourceNotFoundException;
+
+	CurrentUserDto findByUsername(String name) throws ResourceNotFoundException;
 
 }

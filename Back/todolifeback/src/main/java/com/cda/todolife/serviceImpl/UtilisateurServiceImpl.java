@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -85,6 +86,16 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findById(id);
 		if (clrOpt.isPresent()) {
 			this.utilisateurRepository.deleteById(id);
+		} else {
+			throw new ResourceNotFoundException();
+		}
+	}
+
+	@Override
+	public CurrentUserDto findByUsername(String username) throws ResourceNotFoundException {
+		Optional<Utilisateur> optUser = this.utilisateurRepository.findByUsername(username);
+		if (optUser.isPresent()) {
+			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
 		} else {
 			throw new ResourceNotFoundException();
 		}
