@@ -14,10 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClaims;
@@ -25,7 +23,7 @@ import io.jsonwebtoken.impl.DefaultClaims;
 @Service
 public class JwtTokenServiceImpl implements IJwtTokenService {
 
-	@Value("${com.cda.todolife.cle}")
+	@Value("${jwt.key}")
 	private String jwtCle;
 
 	@Override
@@ -40,12 +38,12 @@ public class JwtTokenServiceImpl implements IJwtTokenService {
 
 		return Jwts.builder().signWith(SignatureAlgorithm.HS512, jwtCle.getBytes()).setClaims(claims)
 				.setExpiration(Date.from(
-						LocalDateTime.now().plus(30, ChronoUnit.MINUTES).atZone(ZoneId.systemDefault()).toInstant()))
+						LocalDateTime.now().plus(1, ChronoUnit.MINUTES).atZone(ZoneId.systemDefault()).toInstant()))
 				.setIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())).compact();
 	}
 
 	@Override
-	public Authentication validateJwtToken(String bearerToken) throws JwtException {
+	public Authentication validateJwtToken(String bearerToken) {
 		Key vKey = new SecretKeySpec(jwtCle.getBytes(), SignatureAlgorithm.HS512.getJcaName());
 
 		Jws<Claims> claims = Jwts.parser().setSigningKey(vKey).parseClaimsJws(bearerToken);

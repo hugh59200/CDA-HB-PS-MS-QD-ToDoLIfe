@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserDetailsService userDetailsService;
 
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/utilisateurs").authenticated().antMatchers("/livres").authenticated().anyRequest()
+		http.authorizeRequests().antMatchers("/login").authenticated().antMatchers("/").authenticated().anyRequest()
 				.permitAll().and().csrf().disable().formLogin().disable()
 
 				.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
@@ -34,11 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService);
+		auth.userDetailsService(this.userDetailsService);
 	}
 
-	@Override
 	@Bean
+	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return authenticationManager();
 	}
