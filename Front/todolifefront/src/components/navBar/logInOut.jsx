@@ -22,7 +22,7 @@ const logInOut = () => {
     if (!user) {
         return (
             <div className="navbar-nav ml-auto">
-                <Link to="/login" className="nav-item nav-link">Login</Link> <span
+                <Link to="/login" className="nav-item nav-link">Se connecter</Link> <span
                     className="nav-item nav-link">|</span> <Link to="/SignUp" className="nav-item nav- 
 link">Sign Up</Link>
             </div>
@@ -31,7 +31,7 @@ link">Sign Up</Link>
     if (user) {
         return (
             <div className="navbar-nav ml-auto">
-                <Link to="/" className="nav-item nav-link" onClick={logout}>Logout</Link>
+                <Link to="/" className="nav-item nav-link" onClick={logout}>Se déconnecter</Link>
                 <Avatar img="/images/Eat-healthy.jpg" />
             </div>
         )
