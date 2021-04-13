@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -34,6 +35,8 @@ public class UtilisateurController {
 
 	@Autowired
 	private IUtilisateurService utilisateurService;
+	@Autowired
+	private PasswordEncoder encoder;
 
 	// get all
 	@GetMapping("/utilisateurs")
@@ -46,6 +49,8 @@ public class UtilisateurController {
 	public ResponseEntity<UtilisateurDto> create(@RequestBody UtilisateurDto utilisateurDto)
 			throws ResourceAlreadyExist {
 		try {
+			String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
+			utilisateurDto.setPassword(hashedPwd);
 			this.utilisateurService.create(utilisateurDto);
 		} catch (ResourceAlreadyExist e) {
 		}

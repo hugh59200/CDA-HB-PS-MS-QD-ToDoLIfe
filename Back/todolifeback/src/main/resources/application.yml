@@ -7,7 +7,8 @@ logging.level:
       springframework:
         web: info
         
-        
+jwt.key : cda-cle-secrete 
+
 spring:
   datasource:
     username: todolifeuser
