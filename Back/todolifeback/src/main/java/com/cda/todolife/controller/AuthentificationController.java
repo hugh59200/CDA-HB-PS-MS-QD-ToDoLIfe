@@ -48,6 +48,7 @@ public class AuthentificationController {
 	@PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> login(@RequestBody LoginEtMotdepasseDto loginAndPasswordDto)
 			throws ResourceNotFoundException {
+		System.out.println(loginAndPasswordDto);
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 				loginAndPasswordDto.getUsername(), loginAndPasswordDto.getPassword());
 		Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
@@ -59,6 +60,7 @@ public class AuthentificationController {
 			responseBody.put("user", currentUserDto);
 			return ResponseEntity.ok().body(responseBody);
 		}
+//		return ResponseEntity.ok(loginAndPasswordDto);
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(HttpStatus.UNAUTHORIZED.getReasonPhrase());
 	}
 

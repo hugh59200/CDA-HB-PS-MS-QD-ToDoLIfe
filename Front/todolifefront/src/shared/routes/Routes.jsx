@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router';
 import Home from '../../views/Home.jsx';
 import {URL_TODO_LIST, URL_CONNEXION, URL_HOME } from '../constant/URL_CONST.js';
 import {createBrowserHistory} from 'history';
-import RegisterForm from '../../components/form/RegisterForm.jsx';
+import ConnexionForm from '../../components/form/connexion/ConnexionForm.jsx';
 
 const CustomHistory = createBrowserHistory()
 
@@ -14,7 +14,7 @@ class Routes extends Component {
             <>
                     <Switch history={CustomHistory}>
                         <Route exact path={URL_HOME} component={Home}></Route>
-                        <Route exact path={URL_CONNEXION} component={RegisterForm}></Route>
+                        <Route exact path={URL_CONNEXION} component={ConnexionForm}></Route>
                         <Route path={URL_TODO_LIST} component={TodoListView}></Route>
                     </Switch>
             </>
