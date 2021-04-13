@@ -82,17 +82,17 @@ class UtilisateurTest {
 		System.err.println("fin test Update");
 	}
 
-	@Order(5)
-	@Test
-	void testDelete() throws ResourceNotFoundException {
-		System.err.println("debut test delete");
-
-		System.err.println(utilisateurService.list());
-
-		this.utilisateurService.delete(1);
-		assertEquals(0, this.utilisateurService.list().size());
-		System.err.println(utilisateurService.list());
-		System.err.println("fin test delete");
-	}
+//	@Order(5)
+//	@Test
+//	void testDelete() throws ResourceNotFoundException {
+//		System.err.println("debut test delete");
+//
+//		System.err.println(utilisateurService.list());
+//
+//		this.utilisateurService.delete(1);
+//		assertEquals(0, this.utilisateurService.list().size());
+//		System.err.println(utilisateurService.list());
+//		System.err.println("fin test delete");
+//	}
 
 }
