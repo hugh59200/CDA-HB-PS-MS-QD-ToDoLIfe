@@ -37,6 +37,8 @@ public class Utilisateur implements Serializable {
 
 	private String nom;
 	private String prenom;
+	
+	@Column(name = "date_naissance")
 	private Date dateNaissance;
 
 	private String email;
