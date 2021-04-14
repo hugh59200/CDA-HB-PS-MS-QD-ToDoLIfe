@@ -11,13 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class UtilisateurDto {
 
 	private int idUtilisateur;
 	private String nom;
 	private String prenom;
-	private Date dateNaissance;
+	private String dateNaissance;
 	private String email;
 	private String username;
 	private String password;

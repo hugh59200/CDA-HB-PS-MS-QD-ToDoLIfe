@@ -45,7 +45,7 @@ const SignupSchema = yup.object().shape({
     .required("champ obligatoire")
     .minUppercase(1, '1 majuscule minimum')
     .minNumbers(1, '1 chiffre minimum')
-    .min(6, '6 caractères minimum.'),
+    .min(6, '6 caractères minimum.')
 });
 
 function InscriptionForm() {

@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,22 +27,14 @@ import lombok.NoArgsConstructor;
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = "email"), @UniqueConstraint(columnNames = "username") })
 public class Utilisateur implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_utilisateur")
 	private int idUtilisateur;
-
 	private String nom;
 	private String prenom;
-	
-	@Column(name = "date_naissance")
-	private Date dateNaissance;
-
+	private String dateNaissance;
 	private String email;
 	private String username;
 	private String password;

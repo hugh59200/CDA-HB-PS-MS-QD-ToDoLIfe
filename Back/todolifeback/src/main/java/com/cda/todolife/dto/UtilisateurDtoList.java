@@ -17,7 +17,7 @@ public class UtilisateurDtoList {
 	private int idUtilisateur;
 	private String nom;
 	private String prenom;
-	private Date dateNaissance;
+	private String dateNaissance;
 	private String username;
 
 }
