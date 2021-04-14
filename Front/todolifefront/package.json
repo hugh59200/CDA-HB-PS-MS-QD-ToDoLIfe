@@ -25,7 +25,8 @@
     "reactstrap": "^8.9.0",
     "source-map-explorer": "^2.5.2",
     "web-vitals": "^1.1.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "yup-password": "^0.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

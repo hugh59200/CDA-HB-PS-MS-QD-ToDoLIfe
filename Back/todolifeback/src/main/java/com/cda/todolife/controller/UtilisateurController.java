@@ -49,6 +49,7 @@ public class UtilisateurController {
 	public ResponseEntity<UtilisateurDto> create(@RequestBody UtilisateurDto utilisateurDto)
 			throws ResourceAlreadyExist {
 		try {
+			System.out.println(utilisateurDto);
 			String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
 			utilisateurDto.setPassword(hashedPwd);
 			this.utilisateurService.create(utilisateurDto);

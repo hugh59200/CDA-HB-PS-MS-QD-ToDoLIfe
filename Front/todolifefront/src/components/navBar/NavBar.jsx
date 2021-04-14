@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { URL_CONNEXION, URL_HOME, URL_TODO_LIST } from '../../shared/constant/URL_CONST';
+import { URL_CONNEXION, URL_HOME, URL_INSCRIPTION, URL_TODO_LIST } from '../../shared/constant/URL_CONST';
 
 
 const NavBar = () => {
@@ -21,6 +21,9 @@ const NavBar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink to={URL_CONNEXION} className="nav-link text-white" activeClassName="font-weight-bold">Connexion</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={URL_INSCRIPTION} className="nav-link text-white" activeClassName="font-weight-bold">Inscription</NavLink>
                         </li>
                     </ul>
                 </div>
