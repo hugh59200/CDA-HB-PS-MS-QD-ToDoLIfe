@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TacheDto {
+public class ToDoListDto {
 
-	private int idTache;
+	private int idTodoList;
 	private String label;
-	private boolean donne;
-	private byte priorite;
-	private ToDoListDto list;
+	private UtilisateurDto utilisateur;
 }

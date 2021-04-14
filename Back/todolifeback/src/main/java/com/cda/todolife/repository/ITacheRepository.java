@@ -10,6 +10,6 @@ public interface ITacheRepository extends CrudRepository<Tache, Integer> {
 
 	List<Tache> findAll();
 
-	Tache findByLabel(String name);
+	Tache findByLabel(String label);
 
 }

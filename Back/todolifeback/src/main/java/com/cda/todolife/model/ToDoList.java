@@ -19,20 +19,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tache")
-public class Tache {
+@Table(name = "todolist")
+public class ToDoList {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_tache")
-	private int idTache;
+	@Column(name = "id_todolist")
+	private int idTodoList;
 
 	private String label;
-	private boolean donne;
-	private byte priorite;
 	
 	@ManyToOne
 //	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "id_todolist", nullable = false)
-	private ToDoList list;
+	@JoinColumn(name = "id_utilisateur", nullable = false)
+	private Utilisateur utilisateur;
+
 }
