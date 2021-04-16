@@ -13,7 +13,7 @@ public class JourDto {
 
 	private int idJour;
 	private String dateJour;
-	private String humeur;
+	private int humeur;
 	private String titre;
 	private String texte;
 	private JournalDto journalDto;

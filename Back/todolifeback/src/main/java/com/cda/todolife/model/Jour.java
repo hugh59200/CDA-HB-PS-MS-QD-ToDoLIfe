@@ -23,7 +23,7 @@ public class Jour {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idJour;
 	private String dateJour;
-	private String humeur;
+	private int humeur;
 	private String titre;
 	private String texte;
 

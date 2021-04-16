@@ -45,7 +45,7 @@ public class JourServiceImpl implements IJourService {
 
 // trouver par id
 	@Override
-	public JourDto findById(int id) throws JourExistantException {
+	public JourDto findById(int id) throws JourIntrouvableException {
 		return this.modelMapper.map(this.jourRepository.findById(id).get(), JourDto.class);
 
 	}

@@ -10,7 +10,7 @@ public interface IJourService {
 
 	List<JourDto> findAll();
 
-	JourDto findById(int id) throws JourExistantException;
+	JourDto findById(int id) throws JourIntrouvableException;
 
 	void update(JourDto list) throws JourIntrouvableException, JourExistantException;
 

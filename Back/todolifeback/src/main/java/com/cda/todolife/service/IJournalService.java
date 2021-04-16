@@ -10,7 +10,7 @@ public interface IJournalService {
 
 	List<JournalDto> findAll();
 
-	JournalDto findById(int id) throws JournalExistantException;
+	JournalDto findById(int id) throws JournalIntrouvableException;
 
 	void update(JournalDto list) throws JournalIntrouvableException, JournalExistantException;
 

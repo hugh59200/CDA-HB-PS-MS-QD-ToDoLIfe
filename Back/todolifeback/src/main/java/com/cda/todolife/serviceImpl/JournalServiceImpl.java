@@ -45,7 +45,7 @@ public class JournalServiceImpl implements IJournalService {
 
 // trouver par id
 	@Override
-	public JournalDto findById(int id) throws JournalExistantException {
+	public JournalDto findById(int id) throws JournalIntrouvableException {
 		return this.modelMapper.map(this.journalRepository.findById(id).get(), JournalDto.class);
 
 	}
