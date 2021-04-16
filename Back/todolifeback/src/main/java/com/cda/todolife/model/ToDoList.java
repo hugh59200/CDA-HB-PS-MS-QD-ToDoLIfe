@@ -5,22 +5,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Role {
+@Entity
+@Table(name = "todolist")
+public class ToDoList {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "role")
-	private int idRole;
-	@Column(unique = true)
-	private String Label;
+	@Column(name = "id_todolist")
+	private int idTodoList;
+
+	private String label;
+	
+	@ManyToOne
+//	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "id_utilisateur", nullable = false)
+	private Utilisateur utilisateur;
+
 }
