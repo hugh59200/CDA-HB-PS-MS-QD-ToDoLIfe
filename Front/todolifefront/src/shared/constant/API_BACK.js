@@ -1,0 +1,1 @@
+export const API_TODO_LIST = 'http://localhost:8080/api/todolists';

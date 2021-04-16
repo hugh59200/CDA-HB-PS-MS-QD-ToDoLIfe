@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@NamedQuery(name="isSelected", query="select s from todolist s where s.selected = :true")	
+
 @Table(name = "todolist")
 public class ToDoList {
 
@@ -29,5 +31,8 @@ public class ToDoList {
 	@ManyToOne
 	@JoinColumn(name = "id_utilisateur", nullable = false)
 	private Utilisateur utilisateur;
+	
+//	@Column(name = "selected")
+//	private boolean selected;
 
 }

@@ -1,7 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router";
 
 function TodoForm(props) {
-  const [input, setInput] = useState(props.edit ? props.edit.value : '');
+  const history = useHistory();
+  // console.log(history.location.curentList);
+  // console.log(history.location.curentList.label);
+  
+  let labelList = history.location.curentList;
+  console.log(labelList);
+  
+
+  const [input, setInput] = useState(props.edit ? props.edit.value : "");
+  
 
   const inputRef = useRef(null);
 
@@ -9,49 +19,51 @@ function TodoForm(props) {
     inputRef.current.focus();
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     props.onSubmit({
       id: Math.floor(Math.random() * 10000),
-      text: input
+      text: input,
     });
-    setInput('');
+    setInput("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className='todo-form'>
+    <form onSubmit={handleSubmit} className="todo-form">
       {props.edit ? (
         <>
           <input
-            placeholder='Update your item'
+            placeholder="Update your item"
             value={input}
             onChange={handleChange}
-            name='text'
+            name="text"
             ref={inputRef}
-            className='todo-input edit'
+            className="todo-input edit"
           />
-          <button onClick={handleSubmit} className='todo-button-update btn'>
-            
-          </button>
+          <button
+            onClick={handleSubmit}
+            className="todo-button-update btn"
+          ></button>
         </>
       ) : (
         <>
+          <h1 className="text-white">{
+            
+          }</h1>
           <input
-            placeholder='Ajouter une liste'
+            placeholder="Ajouter une tache"
             value={input}
             onChange={handleChange}
-            name='text'
-            className='todo-input'
+            name="text"
+            className="todo-input"
             ref={inputRef}
           />
-          <button onClick={handleSubmit} className='todo-button btn'>
-           
-          </button>
+          <button onClick={handleSubmit} className="todo-button btn"></button>
         </>
       )}
     </form>
