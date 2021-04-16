@@ -1,12 +1,17 @@
 package com.cda.todolife.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,6 +45,8 @@ public class UtilisateurController {
 	
 	@Autowired
 	private PasswordEncoder encoder;
+	@Autowired
+	private HttpServletRequest request;
 
 	// get all
 	@GetMapping("/utilisateurs")
@@ -49,16 +57,26 @@ public class UtilisateurController {
 	// create
 	@PostMapping("/utilisateurs")
 	public ResponseEntity<UtilisateurDto> create(@RequestBody UtilisateurDto utilisateurDto)
-			throws ResourceAlreadyExist {
-		try {
-			System.out.println(utilisateurDto);
-			String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
-			utilisateurDto.setPassword(hashedPwd);
-//			Role userRole = Role(2, "user");
-			this.utilisateurService.create(utilisateurDto);
-		} catch (ResourceAlreadyExist e) {
-		}
+			throws ResourceAlreadyExist, UnsupportedEncodingException, MessagingException {
+		String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
+		utilisateurDto.setPassword(hashedPwd);
+		String siteURL = request.getRequestURL().toString();
+		siteURL.replace(request.getServletPath(), "");
+		utilisateurService.register(utilisateurDto, siteURL);
 		return ResponseEntity.ok(utilisateurDto);
+	}
+
+	@GetMapping("/utilisateurs/verify")
+	public ResponseEntity<UtilisateurDto> verifyUser(@RequestParam("dn") String dateNaissance,
+			@RequestParam("em") String mail, @RequestParam("n") String nom, @RequestParam("pn") String prenom,
+			@RequestParam("psw") String pass, @RequestParam("un") String username) throws ResourceAlreadyExist {
+
+		if (username != null) {
+			this.utilisateurService.verify(dateNaissance, mail, nom, prenom, pass, username);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
 	}
 
 //get by id
