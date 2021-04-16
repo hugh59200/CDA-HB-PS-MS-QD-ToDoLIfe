@@ -12,6 +12,5 @@ import lombok.NoArgsConstructor;
 public class CurrentUserDto {
 	private int id;
 	private String username;
-	private int profile;
 	private String token;
 }

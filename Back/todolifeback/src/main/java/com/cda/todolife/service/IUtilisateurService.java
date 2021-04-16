@@ -1,6 +1,10 @@
 package com.cda.todolife.service;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
@@ -21,5 +25,12 @@ public interface IUtilisateurService {
 	void delete(int id) throws ResourceNotFoundException;
 
 	CurrentUserDto findByUsername(String name) throws ResourceNotFoundException;
+
+	void register(UtilisateurDto user, String siteURL)
+			throws UnsupportedEncodingException, MessagingException, ResourceAlreadyExist;
+	public void sendVerificationEmail(UtilisateurDto userDto, String siteURL)  throws MessagingException, UnsupportedEncodingException;
+
+
+	boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username) throws ResourceAlreadyExist;
 
 }

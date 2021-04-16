@@ -1,11 +1,19 @@
 package com.cda.todolife.serviceImpl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.CurrentUserDto;
@@ -21,10 +29,57 @@ import com.cda.todolife.service.IUtilisateurService;
 public class UtilisateurServiceImpl implements IUtilisateurService {
 
 	@Autowired
+	private JavaMailSender mailSender;
+
+	@Autowired
 	private IUtilisateurRepository utilisateurRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
+
+	@Override
+	public void register(UtilisateurDto user, String siteURL)
+			throws UnsupportedEncodingException, MessagingException, ResourceAlreadyExist {
+
+		sendVerificationEmail(user, siteURL);
+
+	}
+
+	@Override
+	public void sendVerificationEmail(UtilisateurDto userDto, String siteURL)
+			throws MessagingException, UnsupportedEncodingException {
+		String toAddress = userDto.getEmail();
+		String fromAddress = "todolifecda@gmail.com";
+		String senderName = "ToDoLife";
+		String subject = "Veuillez vérifier votre inscription";
+		String content = "Bonjour [[name]],<br>" + "Cliquez sur le lien ci-dessous pour vérifier votre compte :<br>"
+				+ "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFIER</a></h3>" + "Merci,<br>" + "ToDoLife.";
+
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+
+		helper.setFrom(fromAddress, senderName);
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+
+		String email = userDto.getEmail();
+		String emailEncode = Base64.getEncoder().encodeToString(email.getBytes());
+
+		String password = userDto.getPassword();
+		String passwordEncode = Base64.getEncoder().encodeToString(password.getBytes());
+
+		content = content.replace("[[name]]", userDto.getPrenom() + " " + userDto.getNom());
+		String verifyURL = siteURL + "/verify?dn=" + userDto.getDateNaissance() + "&em=" + emailEncode + "&n="
+				+ userDto.getNom() + "&pn=" + userDto.getPrenom() + "&psw=" + passwordEncode + "&un="
+				+ userDto.getUsername();
+
+		content = content.replace("[[URL]]", verifyURL);
+
+		helper.setText(content, true);
+
+		mailSender.send(message);
+
+	}
 
 	@Override
 	public List<UtilisateurDtoList> list() {
@@ -98,6 +153,33 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
 		} else {
 			throw new ResourceNotFoundException();
+		}
+	}
+
+	@Override
+	public boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username)
+			throws ResourceAlreadyExist {
+
+		byte[] decodedMailbytes = Base64.getDecoder().decode(mail);
+		String decodedMail = new String(decodedMailbytes);
+
+		byte[] decodedPassbytes = Base64.getDecoder().decode(pass);
+		String decodedPass = new String(decodedPassbytes);
+
+		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findByUsername(username);
+		Optional<Utilisateur> clrOpt2 = this.utilisateurRepository.findByEmail(mail);
+
+		if (clrOpt.isPresent()) {
+			throw new ResourceAlreadyExist();
+		} else if (clrOpt2.isPresent()) {
+			throw new ResourceAlreadyExist();
+		} else {
+
+			UtilisateurDto user = UtilisateurDto.builder().email(decodedMail).nom(nom).prenom(prenom)
+					.password(decodedPass).username(username).build();
+
+			this.utilisateurRepository.save(this.modelMapper.map(user, Utilisateur.class));
+			return true;
 		}
 	}
 
