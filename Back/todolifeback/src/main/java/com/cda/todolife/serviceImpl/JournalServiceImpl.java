@@ -8,70 +8,69 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cda.todolife.dto.ToDoListDto;
-import com.cda.todolife.exception.ToDoListExistanteException;
-import com.cda.todolife.exception.ToDoListIntrouvableException;
-import com.cda.todolife.model.ToDoList;
-import com.cda.todolife.repository.IToDoListRepository;
-import com.cda.todolife.service.IToDoListService;
+import com.cda.todolife.dto.JournalDto;
+import com.cda.todolife.exception.JournalExistantException;
+import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.model.Journal;
+import com.cda.todolife.repository.IJournalRepository;
+import com.cda.todolife.service.IJournalService;
 
 @Service
-public class JournalServiceImpl implements IToDoListService {
+public class JournalServiceImpl implements IJournalService {
 
 	@Autowired
-	private IToDoListRepository todolistDao;
+	private IJournalRepository journalRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
 //	ajouter
 	@Override
-	public void add(ToDoListDto list) throws ToDoListExistanteException {
-		Optional<ToDoList> probEntOpt = this.todolistDao.findById(list.getIdTodoList());
+	public void add(JournalDto list) throws JournalExistantException {
+		Optional<Journal> probEntOpt = this.journalRepository.findById(list.getIdJournal());
 		if (probEntOpt.isPresent()) {
-			throw new ToDoListExistanteException();
+			throw new JournalExistantException();
 		} else {
-			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
+			this.journalRepository.save(this.modelMapper.map(list, Journal.class));
 		}
 	}
 
 //	lister
 	@Override
-	public List<ToDoListDto> findAll() {
-		List<ToDoListDto> res = new ArrayList<>();
-		this.todolistDao.findAll().forEach(pres -> res.add(this.modelMapper.map(pres, ToDoListDto.class)));
+	public List<JournalDto> findAll() {
+		List<JournalDto> res = new ArrayList<>();
+		this.journalRepository.findAll().forEach(pres -> res.add(this.modelMapper.map(pres, JournalDto.class)));
 		return res;
 	}
 
 // trouver par id
 	@Override
-	public ToDoListDto findById(int id) throws ToDoListIntrouvableException {
-		return this.modelMapper.map(this.todolistDao.findById(id).get(), ToDoListDto.class);
+	public JournalDto findById(int id) throws JournalExistantException {
+		return this.modelMapper.map(this.journalRepository.findById(id).get(), JournalDto.class);
 
 	}
 
 //	trouver par label
 	@Override
-	public ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException {
-		return this.modelMapper.map(this.todolistDao.findByLabel(label), ToDoListDto.class);
+	public JournalDto findByLabel(String label) throws JournalIntrouvableException {
+		return this.modelMapper.map(this.journalRepository.findByLabel(label), JournalDto.class);
 	}
 
-	// mettre à jour 
+	// mettre à jour
 	@Override
-	public void update(ToDoListDto list) throws ToDoListIntrouvableException, ToDoListExistanteException {
+	public void update(JournalDto list) throws JournalIntrouvableException, JournalExistantException {
 		try {
-			this.todolistDao.findById(list.getIdTodoList()).orElseThrow(ToDoListIntrouvableException::new);
-			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
-		} catch (ToDoListIntrouvableException e) {
-			// TODO: handle exception
+			this.journalRepository.findById(list.getIdJournal()).orElseThrow(JournalIntrouvableException::new);
+			this.journalRepository.save(this.modelMapper.map(list, Journal.class));
+		} catch (JournalIntrouvableException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// supprimer 
+	// supprimer
 	@Override
-	public void deleteById(int id) throws ToDoListIntrouvableException {
-		this.todolistDao.findById(id).orElseThrow(ToDoListIntrouvableException::new);
-		this.todolistDao.deleteById(id);
+	public void deleteById(int id) throws JournalIntrouvableException {
+		this.journalRepository.findById(id).orElseThrow(JournalIntrouvableException::new);
+		this.journalRepository.deleteById(id);
 	}
 }
