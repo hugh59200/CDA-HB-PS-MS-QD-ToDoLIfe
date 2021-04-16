@@ -17,14 +17,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class WatchList {
+public class Jour {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idWatchList;
-	private String label;
+	private int idJour;
+	private String dateJour;
+	private String humeur;
+	private String titre;
+	private String texte;
 
 	@ManyToOne
-	@JoinColumn(name = "id_utilisateur", nullable = false)
-	private Utilisateur utilisateur;
+	@JoinColumn(name = "id_journal", nullable = false)
+	private Journal journal;
+
 }

@@ -26,6 +26,7 @@ import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
 import com.cda.todolife.exception.ResourceNotFoundException;
+import com.cda.todolife.model.Role;
 import com.cda.todolife.service.IUtilisateurService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -35,6 +36,7 @@ public class UtilisateurController {
 
 	@Autowired
 	private IUtilisateurService utilisateurService;
+	
 	@Autowired
 	private PasswordEncoder encoder;
 
@@ -52,6 +54,7 @@ public class UtilisateurController {
 			System.out.println(utilisateurDto);
 			String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
 			utilisateurDto.setPassword(hashedPwd);
+//			Role userRole = Role(2, "user");
 			this.utilisateurService.create(utilisateurDto);
 		} catch (ResourceAlreadyExist e) {
 		}
