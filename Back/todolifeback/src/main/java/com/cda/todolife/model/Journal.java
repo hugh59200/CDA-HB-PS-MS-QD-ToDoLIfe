@@ -25,6 +25,9 @@ public class Journal {
 	private String label;
 
 	@OneToOne
-	@JoinColumn(name = "id_utilisateur", nullable = false)
+	@JoinColumn(name = "id_utilisateur", nullable = false, unique = true)
 	private Utilisateur utilisateur;
+
+//	@OneToMany(mappedBy = "journal")
+//	private Set<Jour> jour;
 }

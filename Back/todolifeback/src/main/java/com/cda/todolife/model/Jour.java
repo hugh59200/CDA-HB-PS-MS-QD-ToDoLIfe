@@ -30,5 +30,4 @@ public class Jour {
 	@ManyToOne
 	@JoinColumn(name = "id_journal", nullable = false)
 	private Journal journal;
-
 }

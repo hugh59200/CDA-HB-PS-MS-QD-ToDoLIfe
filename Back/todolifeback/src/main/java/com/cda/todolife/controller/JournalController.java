@@ -37,6 +37,7 @@ public class JournalController {
 	// listing
 	@GetMapping("/journal")
 	public List<JournalDto> getAll() {
+		System.out.println(journalService.findAll());
 		return this.journalService.findAll();
 	}
 

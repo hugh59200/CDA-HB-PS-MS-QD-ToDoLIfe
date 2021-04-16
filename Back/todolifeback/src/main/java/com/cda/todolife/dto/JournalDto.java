@@ -14,4 +14,6 @@ public class JournalDto {
 	private int idJournal;
 	private String label;
 	private UtilisateurDto utilisateur;
+//	private JourDto jourDto;
+//	private Set<JourDto> jourDto;
 }

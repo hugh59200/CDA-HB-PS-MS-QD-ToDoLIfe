@@ -32,7 +32,6 @@ import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
 import com.cda.todolife.exception.ResourceNotFoundException;
-import com.cda.todolife.model.Role;
 import com.cda.todolife.service.IUtilisateurService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -42,7 +41,7 @@ public class UtilisateurController {
 
 	@Autowired
 	private IUtilisateurService utilisateurService;
-	
+
 	@Autowired
 	private PasswordEncoder encoder;
 	@Autowired
