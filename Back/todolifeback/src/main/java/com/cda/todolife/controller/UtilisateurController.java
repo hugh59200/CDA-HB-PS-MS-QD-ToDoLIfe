@@ -62,6 +62,10 @@ public class UtilisateurController {
 		String siteURL = request.getRequestURL().toString();
 		siteURL.replace(request.getServletPath(), "");
 		utilisateurService.register(utilisateurDto, siteURL);
+
+		// TODO : mettre en place une clée de controle de l'url pour verifier le non
+		// changement de l'url
+
 		return ResponseEntity.ok(utilisateurDto);
 	}
 
