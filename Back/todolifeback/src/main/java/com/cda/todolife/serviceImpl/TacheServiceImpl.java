@@ -74,4 +74,9 @@ public class TacheServiceImpl implements ITacheService {
 		this.tacheDao.findById(id).orElseThrow(TacheIntrouvableException::new);
 		this.tacheDao.deleteById(id);
 	}
+
+	@Override
+	public List<Tache> findTaskByIdList(int id){
+		return this.tacheDao.findTaskByIdList(id);
+	}
 }
