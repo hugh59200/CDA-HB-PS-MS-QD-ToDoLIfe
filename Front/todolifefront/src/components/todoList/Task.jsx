@@ -1,79 +1,60 @@
-// import React, { useState } from "react";
-// // import { useHistory } from 'react-router';
-// import Todo from "./Todo";
-// import TodoForm from "./TodoForm";
-
-// const Task = (props) => {
-//   const [todos, setTodos] = useState([]);
-
-//   const addTodo = (todo) => {
-//     if (!todo.text || /^\s*$/.test(todo.text)) {
-//       return;
-//     }
-
-//     const newTodos = [todo, ...todos];
-
-//     setTodos(newTodos);
-//     console.log(...todos);
-//   };
-
-//   const updateTodo = (todoId, newValue) => {
-//     if (!newValue.text || /^\s*$/.test(newValue.text)) {
-//       return;
-//     }
-
-//     setTodos((prev) =>
-//       prev.map((item) => (item.id === todoId ? newValue : item))
-//     );
-//   };
-
-//   const removeTodo = (id) => {
-//     const removedArr = [...todos].filter((todo) => todo.id !== id);
-
-//     setTodos(removedArr);
-//   };
-
-//   const completeTodo = (id) => {
-//     let updatedTodos = todos.map((todo) => {
-//       if (todo.id === id) {
-//         todo.isComplete = !todo.isComplete;
-//       }
-//       return todo;
-//     });
-//     setTodos(updatedTodos);
-//   };
-
-//   return (
-//     <>
-//       {/* <h1 className="todolist-title">{todolist.name}</h1> */}
-//       <TodoForm onSubmit={addTodo} />
-//       <Todo
-//         todos={todos}
-//         completeTodo={completeTodo}
-//         removeTodo={removeTodo}
-//         updateTodo={updateTodo}
-//       />
-//     </>
-//   );
-// };
-
-// export default Task;
 
 
-import React from 'react';
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
+import TacheService from "../../service/TacheService";
+// import { useHistory } from 'react-router';
 
 const Task = () => {
-  
-  
   const history = useHistory();
-    console.log(history.location.curentList)
-    
-    
+
+  // console.log(history.location.id);
+
+  const [listId, setListId] = useState();
+
+  const [label, setLabel] = useState();
+
+  const [tache, setTache] = useState();
+
+  const changeLabel = () => {
+    // console.log("click");
+    console.log(history.location.label);
+    // setLabel(history)
+  };
+
+  useEffect(() => {
+    TacheService.getListByIdToDoList(listId).then((res) => {
+      let dataRecup = res.data;
+
+      let postData = dataRecup.map((elem) => (
+        <tr key={elem.idTache}>
+          <td>{elem.label}</td>
+        </tr>
+      ));
+      setTache(postData);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // const history = useHistory();
+  //   console.log(history.location.curentList)
+
   return (
-    <div>
-      
-    </div>
+    <>
+      <div>
+        <h1 className="text-white text-center" onClick={changeLabel}>
+          Label :
+        </h1>
+        {label}
+      </div>
+      <table>
+        <thead>
+          <tr>{/* <th className="text-white "> label </th> */}</tr>
+        </thead>
+        <tbody>{tache}</tbody>
+      </table>
+    </>
   );
 };
 

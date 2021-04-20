@@ -1,21 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import TodolistService from "../../service/TodolistService";
 import { URL_TODO_LIST } from "../../shared/constant/URL_CONST";
 
-const MyTodoList = (props) => {
+const MyTodoList = () => {
   const history = useHistory();
-
-  const mounted = useRef(false);
 
   const [list, setList] = useState();
 
   useEffect(() => {
-    mounted.current = true;
     TodolistService.getList().then((res) => {
       let dataRecup = res.data;
-      // console.log(dataRecup);  
-
       let postData = dataRecup.map((elem) => (
         <tr
           onClick={() => changeCurrentList(elem)}
@@ -25,25 +20,25 @@ const MyTodoList = (props) => {
           <td className="text-white"> {elem.label} </td>
         </tr>
       ));
-
       setList(postData);
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
 
   const changeCurrentList = (elem) => {
-    // console.log(elem);
-
-
+    
     history.push({
       pathname: URL_TODO_LIST,
-      curentList: elem,
+      id: elem.idTodoList,
+      label: elem.label
     });
+    
+    // console.log(history.location.id);
   };
 
   return (
     <>
-      <h1 className="text-white text-center ">My tolist</h1>
+      <h1 className="text-white text-center ">My tolist :</h1>
       <br />
       <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
         <table>

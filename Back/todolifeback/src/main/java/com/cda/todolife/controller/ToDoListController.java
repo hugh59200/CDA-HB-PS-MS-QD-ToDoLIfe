@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.ToDoListDto;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 import com.cda.todolife.service.IToDoListService;
+import com.cda.todolife.service.IUtilisateurService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -33,6 +35,9 @@ public class ToDoListController {
 
 	@Autowired
 	private IToDoListService todolistService;
+	
+	@Autowired
+	private IUtilisateurService utilisateurService;
 
 	// listing
 	@GetMapping("/todolists")
@@ -41,13 +46,16 @@ public class ToDoListController {
 	}
 
 	// create
-	@PostMapping("/todolists")
-	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list) throws ToDoListExistanteException {
+	@PostMapping("/todolists/utilisateurs/{id")
+	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list, @PathVariable int id) throws ToDoListExistanteException {
 		try {
+			this.utilisateurService.findById(id);
 			this.todolistService.add(list);
 		} catch (ToDoListExistanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ResourceNotFoundException e) {
+			// TODO: handle exception
 		}
 		return ResponseEntity.ok(list);
 	}

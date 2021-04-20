@@ -1,38 +1,100 @@
-import React from "react";
-// import TodoList from "./../components/todoList/TodoList";
 // eslint-disable-next-line no-unused-vars
 import CSS from "../assets/css/todolist/todo-list.css";
-import MyTodoList from "../components/todoList/MyTodoList";
-// import { useHistory } from "react-router";
-import Task from "../components/todoList/Task";
-// import Footer from '../components/todoList/Footer';
 
-const TodoListView = (props) => {
-    
-    // const history = useHistory();
-    
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { URL_TODO_LIST } from "../shared/constant/URL_CONST";
+import TodolistService from "../service/TodolistService";
+import TacheService from "../service/TacheService";
+
+
+
+
+const TodoListView = () => {
+  const history = useHistory();
+  const [list, setList] = useState("");
+  const [label, setLabel] = useState("");
+  const [tache, setTache] = useState("");
+  // const [utilisateur, setUtilisateur] = useState("");
+
+  useEffect(() => {
+    getUser();
+    TodolistService.getList().then((res) => {
+      let dataRecup = res.data;
+      let postData = dataRecup.map((elem) => (
+        <tr
+          onClick={() => changeCurrentList(elem)}
+          // className=" table-bordered"
+          key={elem.idTodoList}
+        >
+          <td className="text-white"> {elem.label} </td>
+          <td>
+            <button className="todo-button-remove"></button>
+          </td>
+        </tr>
+      ));
+      setList(postData);
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const changeCurrentList = (elem) => {
+    history.push({
+      pathname: URL_TODO_LIST,
+      id: elem.idTodoList,
+      label: elem.label,
+    });
+
+    setLabel(history.location.label);
+
+    TacheService.getListByIdToDoList(history.location.id).then((res) => {
+      let dataRecup = res.data;
+      let postData = dataRecup.map((elem) => (
+        <tr
+          // className="table-bordered"
+          key={elem.idTache}
+        >
+          <td className="text-white">{elem.label}</td>
+        </tr>
+      ));
+      // console.log(postData);
+
+      setTache(postData);
+    });
+  };
+
+  const getUser = () => {
+    // UtilisateurService.getCurrentUser(1).then((res) => {
+    //   localStorage.setItem("utilisateur", JSON.stringify(res.data));
+    // });
+  };
+
+  const newList = () => {
+    history.push("new-todo-list");
+  };
+
   return (
     <>
-      <div className="container-fluid">
-        <div className="row compo-todo">
-          {/* <div className="text-center text-white todolist-title md-6 ml-6">Todolists</div> */}
-
-          <div className="todo-app md-6 ml-6">
-            <MyTodoList />
-          </div>
-          {/* <div className="todo-app md-6 ml-6">
-            <TodoList />
-          </div> */}
-          
-          <div div className="todo-app md-6 ml-6">
-                
-                <Task />    
-          
-          </div>
+      <div className="todo-app">
+        <h1 className="text-white text-center">My tolist :</h1>
+        <br />
+        <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
+          <table>
+            <tbody>{list}</tbody>
+            <button onClick={newList} className="todo-button-add"></button>
+          </table>
         </div>
       </div>
 
-      {/* <Footer/> */}
+      <div className="todo-app">
+        <h1 className="text-white text-center">{label} </h1>
+        <br />
+        <table className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
+          <tbody>{tache}</tbody>
+          {/* <button className="todo-button-add"></button> */}
+        </table>
+      </div>
     </>
   );
 };

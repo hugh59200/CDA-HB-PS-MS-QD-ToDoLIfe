@@ -3,7 +3,6 @@ package com.cda.todolife.serviceImpl;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -155,6 +154,16 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			throw new ResourceNotFoundException();
 		}
 	}
+	
+	@Override
+	public CurrentUserDto findById(int id) throws ResourceNotFoundException {
+		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
+		if (optUser.isPresent()) {
+			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
+		} else {
+			throw new ResourceNotFoundException();
+		}
+	}
 
 	@Override
 	public boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username)
@@ -182,5 +191,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			return true;
 		}
 	}
+	
+	
 
 }
