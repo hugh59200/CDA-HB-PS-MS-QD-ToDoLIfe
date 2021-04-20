@@ -25,7 +25,7 @@ const SignupSchema = yup.object().shape({
     .min(6, '6 caractères minimum.'),
 });
 
-function RegisterForm() {
+function ConnexionForm() {
 
   const history = useHistory();
 
@@ -79,4 +79,4 @@ function RegisterForm() {
   );
 }
 
-export default RegisterForm;
+export default ConnexionForm;

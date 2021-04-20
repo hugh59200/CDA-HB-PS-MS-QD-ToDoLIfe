@@ -14,5 +14,7 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integ
 	void save(UtilisateurDto utilisateurDto);
 
 	Optional<Utilisateur> findByEmail(String email);
+	
+	Optional<Utilisateur> findById(int id);
 
 }
