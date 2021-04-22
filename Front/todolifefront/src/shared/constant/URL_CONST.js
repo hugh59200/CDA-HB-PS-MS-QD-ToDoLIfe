@@ -13,5 +13,10 @@ export const URL_INSCRIPTION = '/inscription'
 /* add a toodolist */
 export const URL_NEW_TODO_LIST = '/new-todo-list'
 
+/* attentes */
+export const URL_ATTENTE = '/attentes'
+
+
+
 
 

@@ -154,7 +154,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			throw new ResourceNotFoundException();
 		}
 	}
-	
+
 	@Override
 	public CurrentUserDto findById(int id) throws ResourceNotFoundException {
 		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
@@ -183,6 +183,8 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		} else if (clrOpt2.isPresent()) {
 			throw new ResourceAlreadyExist();
 		} else {
+			
+			System.out.println(dateNaissance);
 
 			UtilisateurDto user = UtilisateurDto.builder().email(decodedMail).nom(nom).prenom(prenom)
 					.password(decodedPass).username(username).build();
@@ -191,7 +193,5 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			return true;
 		}
 	}
-	
-	
 
 }
