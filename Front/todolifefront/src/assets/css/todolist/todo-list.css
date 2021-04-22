@@ -42,13 +42,27 @@
     color: #e2e2e2;
   }
   
-  .todo-button {
+  .todo-button-add {
     background-image: url( '../../img/plus.png' );
     background-repeat: no-repeat;
+    background-color: transparent;
     height:40px!important;
     width: 35px!important;
     border-radius: 50%!important;
     margin-left: 20px;
+    border: none;
+  }
+  
+  .todo-button-remove{
+    background-image: url( '../../img/moins.png' );
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    height:25px!important;
+    width: 30px!important;
+    /* border-radius: 50%!important; */
+    /* margin-left: 20px; */
+    border: none;
   }
   
   .icons {

@@ -1,7 +1,6 @@
 package com.cda.todolife.service;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -25,6 +24,9 @@ public interface IUtilisateurService {
 	void delete(int id) throws ResourceNotFoundException;
 
 	CurrentUserDto findByUsername(String name) throws ResourceNotFoundException;
+	
+	CurrentUserDto findById(int id) throws ResourceNotFoundException;
+
 
 	void register(UtilisateurDto user, String siteURL)
 			throws UnsupportedEncodingException, MessagingException, ResourceAlreadyExist;
