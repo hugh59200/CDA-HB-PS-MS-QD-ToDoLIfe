@@ -167,7 +167,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		String decodedPass = new String(decodedPassbytes);
 
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findByUsername(username);
-		Optional<Utilisateur> clrOpt2 = this.utilisateurRepository.findByEmail(mail);
+		Optional<Utilisateur> clrOpt2 = this.utilisateurRepository.findByEmail(decodedMail);
 
 		if (clrOpt.isPresent()) {
 			throw new ResourceAlreadyExist();
