@@ -1,102 +1,60 @@
-import React, { Component } from 'react';
-import TodolistService from '../../service/TodolistService';
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router";
+import TodolistService from "../../service/TodolistService";
+import { URL_TODO_LIST } from "../../shared/constant/URL_CONST";
 
-class MyTodoList extends Component {
+const MyTodoList = (props) => {
+  const history = useHistory();
 
+  const mounted = useRef(false);
 
+  const [list, setList] = useState();
 
+  useEffect(() => {
+    mounted.current = true;
+    TodolistService.getList().then((res) => {
+      let dataRecup = res.data;
+      // console.log(dataRecup);  
 
+      let postData = dataRecup.map((elem) => (
+        <tr
+          onClick={() => changeCurrentList(elem)}
+          className=" table-bordered"
+          key={elem.idTodoList}
+        >
+          <td className="text-white"> {elem.label} </td>
+        </tr>
+      ));
 
-  receivedData = () => {
-
-    TodolistService.getList().forEach(element => {
-      console.log(element);
+      setList(postData);
     });
-    
-  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
-    // TodolistService.MY_LIST().then((res) => {
-    //     const data = res.data;
-    //     // console.log(data);
-    //     let postData = data.map(screen =>
-
-    //         <tr key={screen.id}>
-    //             {/* {this.getObject(screen)} */}
-    //             {/* <td> {screen.id}</td> */}
-    //             <td> {screen.title}</td>
-    //             <td> {screen.describe}</td>
-    //             <td> <img className="imgP" src={screen.pic} alt="" /></td>
-    //             <td> <button className="boutonHisto" onClick={() => this.click(screen)}>Resolu</button> </td>
-    //         </tr>
-    //     )
-    //     this.setState({
-    //         list: postData
-    //     })
-    // });
-}
+  const changeCurrentList = (elem) => {
+    // console.log(elem);
 
 
+    history.push({
+      pathname: URL_TODO_LIST,
+      curentList: elem,
+    });
+  };
 
-  render() {
-    return (
-      <>
-        {this.receivedData}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <h1 className="text-white text-center ">My tolist</h1>
+      <br />
+      <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
+        <table>
+          <thead>
+            <tr>{/* <th className="text-white "> label </th> */}</tr>
+          </thead>
+          <tbody>{list}</tbody>
+        </table>
+      </div>
+    </>
+  );
+};
 
 export default MyTodoList;
-
-
-// import React from 'react'
-
-// function MyTodoList() {
-//   return (
-//     <>
-//     <div className="text-center text-white todolist-title">mes TodoList</div>
-//     TodolistService.MY_LIST.map(() => (
-//     <div
-//       className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-//       key={index}
-//     >
-//       <div key={todo.id} onClick={() => completeTodo(todo.id)}>
-//         {todo.text}
-//       </div>
-//       <div className='icons'>
-//         <RiCloseCircleLine
-//           onClick={() => removeTodo(todo.id)}
-//           className='delete-icon'
-//         />
-//         <TiEdit
-//           onClick={() => setEdit({ id: todo.id, value: todo.text })}
-//           className='edit-icon'
-//         />
-//       </div>
-//     </div>
-//     </>
-//   )
-
-
-
-
-
-
-
-    
-// }
-
-// export default MyTodoList
-
-
-
-
-
-
-// {/* <table>
-  
-// </table>
-// MY_LIST.map(  () element => {
-//    */}
-// })
-

@@ -5,6 +5,7 @@ import java.util.List;
 import com.cda.todolife.dto.TacheDto;
 import com.cda.todolife.exception.TacheExistanteException;
 import com.cda.todolife.exception.TacheIntrouvableException;
+import com.cda.todolife.model.Tache;
 
 public interface ITacheService {
 
@@ -19,5 +20,6 @@ public interface ITacheService {
 	void add(TacheDto tache) throws TacheExistanteException;
 
 	TacheDto findByLabel(String label) throws TacheIntrouvableException;
-
+	
+	List<Tache> findTaskByIdList(int id) throws TacheIntrouvableException;
 }

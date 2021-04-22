@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.TacheDto;
 import com.cda.todolife.exception.TacheExistanteException;
 import com.cda.todolife.exception.TacheIntrouvableException;
+import com.cda.todolife.model.Tache;
 import com.cda.todolife.service.ITacheService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -65,6 +66,19 @@ public class TacheController {
 		TacheDto tache = tacheService.findByLabel(label);
 		return ResponseEntity.ok(tache);
 	}
+	
+	// details by id todolist
+		@GetMapping("/taches/todolist/{id}")
+		public ResponseEntity<List<Tache>>  findTaskByIdList(@PathVariable int id)  {
+			List<Tache> tache = null;
+			try {
+				tache = tacheService.findTaskByIdList(id);
+			} catch (TacheIntrouvableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return ResponseEntity.ok(tache);
+		}
 
 	// update
 	@PutMapping("/taches")
