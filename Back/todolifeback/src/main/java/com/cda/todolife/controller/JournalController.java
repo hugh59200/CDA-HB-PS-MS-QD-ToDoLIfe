@@ -35,14 +35,14 @@ public class JournalController {
 	private IJournalService journalService;
 
 	// listing
-	@GetMapping("/journal")
+	@GetMapping("/journaux")
 	public List<JournalDto> getAll() {
 		System.out.println(journalService.findAll());
 		return this.journalService.findAll();
 	}
 
 	// create
-	@PostMapping("/journal")
+	@PostMapping("/journaux")
 	public ResponseEntity<JournalDto> create(@RequestBody JournalDto list) throws JournalExistantException {
 		try {
 			this.journalService.add(list);
@@ -53,21 +53,21 @@ public class JournalController {
 	}
 
 	// details by Id
-	@GetMapping("/journal/{id}")
+	@GetMapping("/journaux/{id}")
 	public ResponseEntity<JournalDto> getById(@PathVariable int id) throws JournalIntrouvableException {
 		JournalDto list = journalService.findById(id);
 		return ResponseEntity.ok(list);
 	}
 
 	// details by Label
-	@GetMapping("/journal/{label}")
+	@GetMapping("/journaux/{label}")
 	public ResponseEntity<JournalDto> getByName(@PathVariable String label) throws JournalIntrouvableException {
 		JournalDto list = journalService.findByLabel(label);
 		return ResponseEntity.ok(list);
 	}
 
 	// update
-	@PutMapping("/journal")
+	@PutMapping("/journaux")
 	public ResponseEntity<JournalDto> update(@RequestBody JournalDto list) throws JournalIntrouvableException {
 		try {
 			journalService.update(list);
@@ -80,7 +80,7 @@ public class JournalController {
 	}
 
 	// delete
-	@DeleteMapping("/journal/{id}")
+	@DeleteMapping("/journaux/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws JournalIntrouvableException {
 		journalService.deleteById(id);
 		Map<String, Boolean> response = new HashMap<>();
