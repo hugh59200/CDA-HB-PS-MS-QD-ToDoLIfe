@@ -30,9 +30,11 @@ public interface IUtilisateurService {
 
 	void register(UtilisateurDto user, String siteURL)
 			throws UnsupportedEncodingException, MessagingException, ResourceAlreadyExist;
-	public void sendVerificationEmail(UtilisateurDto userDto, String siteURL)  throws MessagingException, UnsupportedEncodingException;
 
+	public void sendVerificationEmail(UtilisateurDto userDto, String siteURL)
+			throws MessagingException, UnsupportedEncodingException;
 
-	boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username) throws ResourceAlreadyExist;
+	boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username)
+			throws ResourceAlreadyExist;
 
 }
