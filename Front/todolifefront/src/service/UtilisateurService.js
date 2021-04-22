@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_USER } from "../shared/constant/API_BACK";
+import { API_USER } from "../constant/API_BACK";
 
 
 class UtilisateurService {

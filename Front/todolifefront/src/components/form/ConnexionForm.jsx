@@ -2,10 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { URL_HOME } from "../../shared/constant/URL_CONST.js";
+import { URL_HOME } from "../../constant/URL_CONST.js";
 import "./FormStyle.css";
 import axios from "axios";
-import { API_LOGIN } from "../../shared/constant/API_BACK.js";
+import { API_LOGIN } from "../../constant/API_BACK.js";
 
 const yup = require("yup");
 require("yup-password")(yup);

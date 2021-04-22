@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.service.IJournalService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -56,6 +57,14 @@ public class JournalController {
 	@GetMapping("/journaux/{id}")
 	public ResponseEntity<JournalDto> getById(@PathVariable int id) throws JournalIntrouvableException {
 		JournalDto list = journalService.findById(id);
+		return ResponseEntity.ok(list);
+	}
+
+	// journal by Id
+	@GetMapping("/utilisateurs/{id}/journaux")
+	public ResponseEntity<JournalDto> getByUserId(@PathVariable int id) throws JournalIntrouvableException, ResourceNotFoundException {
+		JournalDto list = journalService.findByUserId(id);
+//		System.out.println(list);
 		return ResponseEntity.ok(list);
 	}
 

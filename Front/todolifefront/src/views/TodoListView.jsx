@@ -2,7 +2,7 @@ import "../assets/css/todolist/todo-list.css";
 
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { URL_TODO_LIST } from "../shared/constant/URL_CONST";
+import { URL_TODO_LIST } from "../constant/URL_CONST";
 import TodolistService from "../service/TodolistService";
 import TacheService from "../service/TacheService";
 

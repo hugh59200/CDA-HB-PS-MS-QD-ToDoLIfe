@@ -5,7 +5,7 @@ export const URL_HOME = '/'
 export const URL_TODO_LIST = '/todo-list'
 
 /* TodoList */
-export const URL_JOURNAL = '/journal'
+export const URL_JOURNAL = '/journaux'
 
 /* Connexion-form */
 export const URL_CONNEXION = '/connexion'

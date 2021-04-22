@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_TACHE } from "../shared/constant/API_BACK";
+import { API_TACHE } from "../constant/API_BACK";
 
 class TacheService {
     // getList() {

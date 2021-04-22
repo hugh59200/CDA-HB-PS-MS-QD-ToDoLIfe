@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { URL_HOME } from './constant/URL_CONST';
+import { URL_HOME } from '../constant/URL_CONST';
 import { isAuthenticated } from '../service/authentificationService';
 
 
