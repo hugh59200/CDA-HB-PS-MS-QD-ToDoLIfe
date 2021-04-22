@@ -1,11 +1,15 @@
 import axios from "axios";
+import { API_USER } from "../shared/constant/API_BACK";
 
 
 class UtilisateurService {
     
-    getCurrentUser(id){
-        return axios.get('http://localhost:8080/api/utilisateurs/' + id);
+    
+    checkIfRegistered(username){
+        return axios.get(API_USER + '/username/' + username);
     }
+    
+
 
 }
 

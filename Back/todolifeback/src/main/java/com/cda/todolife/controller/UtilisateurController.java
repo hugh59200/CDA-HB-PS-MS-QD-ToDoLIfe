@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -74,7 +76,12 @@ public class UtilisateurController {
 
 		if (username != null) {
 			this.utilisateurService.verify(dateNaissance, mail, nom, prenom, pass, username);
-			return new ResponseEntity<>(HttpStatus.OK);
+
+			HttpHeaders headers = new HttpHeaders();
+
+			headers.add("location", "http://localhost:3000/");
+
+			return new ResponseEntity<>(headers, HttpStatus.OK);
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
@@ -86,6 +93,19 @@ public class UtilisateurController {
 
 		try {
 			return new ResponseEntity<>(this.utilisateurService.show(id), HttpStatus.OK);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
+	// details by userName
+	@GetMapping("/utilisateurs/username/{username}")
+	public ResponseEntity<CurrentUserDto> getByUserName(@PathVariable("username") String username)
+			throws ResourceNotFoundException {
+		
+		
+		try {
+			return new ResponseEntity<>(utilisateurService.findByUsername(username), HttpStatus.OK);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}

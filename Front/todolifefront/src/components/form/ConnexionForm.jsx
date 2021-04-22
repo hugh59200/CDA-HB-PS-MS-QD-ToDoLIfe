@@ -5,9 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { URL_HOME } from "../../shared/constant/URL_CONST.js";
 import "./FormStyle.css";
 import axios from "axios";
+import { API_LOGIN } from "../../shared/constant/API_BACK.js";
 
-const yup = require('yup')
-require('yup-password')(yup)
+const yup = require("yup");
+require("yup-password")(yup);
 
 const SignupSchema = yup.object().shape({
   username: yup
@@ -20,13 +21,12 @@ const SignupSchema = yup.object().shape({
   password: yup
     .string()
     .required("champ obligatoire")
-    .minUppercase(1, '1 majuscule minimum')
-    .minNumbers(1, '1 chiffre minimum')
-    .min(6, '6 caractères minimum.'),
+    .minUppercase(1, "1 majuscule minimum")
+    .minNumbers(1, "1 chiffre minimum")
+    .min(6, "6 caractères minimum."),
 });
 
 function ConnexionForm() {
-
   const history = useHistory();
 
   const {
@@ -38,19 +38,22 @@ function ConnexionForm() {
   });
 
   const handleFormSubmit = async (data) => {
-
     const config = {
       headers: {
         "Content-Type": "application/json",
-      }
-    }
+      },
+    };
 
     const body = JSON.stringify(data);
-    console.log(body);
-    axios.post(`http://localhost:8080/api/login`, body, config)
+    axios.post(API_LOGIN, body, config).then((res) => {
+
+      localStorage.setItem("id", res.data.user.id);
+      localStorage.setItem("username", res.data.user.username);
+      localStorage.setItem("token", res.data.user.token);
+    });
+    
     history.push(URL_HOME);
   };
-
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="form">
@@ -62,7 +65,7 @@ function ConnexionForm() {
           placeholder="nom d'utilisateur"
           className="form-input"
         />
-        {errors.username && <p className="error">{errors.username.message}</p >}
+        {errors.username && <p className="error">{errors.username.message}</p>}
       </div>
 
       <div>

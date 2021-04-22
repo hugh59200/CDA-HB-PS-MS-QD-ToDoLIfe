@@ -1,10 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { URL_HOME } from "../../shared/constant/URL_CONST.js";
+import { URL_ATTENTE, URL_HOME } from "../../shared/constant/URL_CONST.js";
 import "./FormStyle.css";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { toast, ToastContainer, Zoom } from "react-toastify";
+import { API_USER } from "../../shared/constant/API_BACK.js";
+
+
 
 const yup = require('yup')
 require('yup-password')
@@ -49,6 +53,7 @@ const SignupSchema = yup.object().shape({
 });
 
 function InscriptionForm() {
+  
 
   const history = useHistory();
 
@@ -61,16 +66,26 @@ function InscriptionForm() {
   });
 
   const handleFormSubmit = async (data) => {
-
     const config = {
       headers: {
         "Content-Type": "application/json",
       }
     }
     const body = JSON.stringify(data);
-    console.log(body);
-    axios.post(`http://localhost:8080/api/utilisateurs`, body, config)
-    history.push(URL_HOME);
+    // console.log(body);
+    axios.post(API_USER, body, config).then((res) => {
+      let code = res.status
+      // console.log(res.data.nom)
+      localStorage.setItem("username", res.data.username)
+      if (code === 200 ){
+        toast.warning("check your mail to confirm your account")
+        history.push(URL_ATTENTE);
+        
+      } else {
+        history.push(URL_HOME);
+      }
+    })
+    
   };
 
   return (
@@ -152,6 +167,7 @@ function InscriptionForm() {
       </div>
 
       <input type="submit" value="valider" className="btn-form" />
+      
     </form>
   );
 }

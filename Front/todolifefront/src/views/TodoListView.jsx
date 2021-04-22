@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import CSS from "../assets/css/todolist/todo-list.css";
+import "../assets/css/todolist/todo-list.css";
 
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";

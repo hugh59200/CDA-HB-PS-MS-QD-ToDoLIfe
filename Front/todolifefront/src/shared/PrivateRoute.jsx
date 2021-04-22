@@ -4,7 +4,6 @@ import { URL_HOME } from './constant/URL_CONST';
 import { isAuthenticated } from '../service/authentificationService';
 
 
-
 export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
