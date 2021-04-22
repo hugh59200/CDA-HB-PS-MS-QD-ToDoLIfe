@@ -8,5 +8,7 @@ class TodolistService {
     
     
     create (list){
-        return axios.post(API_TODO_LIST, list)
+        return axios.post(API_TODO_LIST, list);
     }
+}
+export default TodolistService;
