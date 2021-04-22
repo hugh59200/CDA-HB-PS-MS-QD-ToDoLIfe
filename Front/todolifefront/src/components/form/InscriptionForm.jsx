@@ -1,12 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { URL_ATTENTE, URL_HOME } from "../../shared/constant/URL_CONST.js";
+import { URL_ATTENTE, URL_HOME } from "../../constant/URL_CONST.js";
 import "./FormStyle.css";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { toast, ToastContainer, Zoom } from "react-toastify";
-import { API_USER } from "../../shared/constant/API_BACK.js";
+import { API_USER } from "../../constant/API_BACK.js";
 
 
 

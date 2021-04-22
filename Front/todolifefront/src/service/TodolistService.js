@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_TODO_LIST } from "../shared/constant/API_BACK";
+import { API_TODO_LIST } from "../constant/API_BACK";
 
 class TodolistService {
     getList() {

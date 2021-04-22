@@ -14,12 +14,14 @@ import {
   URL_CONNEXION,
   URL_HOME,
   URL_INSCRIPTION,
+  URL_JOURNAL,
   URL_TODO_LIST,
-} from "../shared/constant/URL_CONST";
+} from "../constant/URL_CONST";
 
-import { PrivateRoute } from "./../shared/PrivateRoute";
+import { PrivateRoute } from "./PrivateRoute";
 import TodoListView from "../views/TodoListView";
 import { ToastContainer, Zoom } from "react-toastify";
+import MonJournal from "../components/journal/MonJournal";
 // import Error404 from "../views/Error404";
 
 const CustomHistory = createBrowserHistory();
@@ -34,6 +36,7 @@ class Routes extends Component {
           <Route path={URL_INSCRIPTION} component={InscriptionForm} />
           <Route path={URL_ATTENTE} component={AttenteValidation} />
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
+          <Route path={URL_JOURNAL} component={MonJournal}></Route>
           {/* <Route component={Error404} /> */}
           <ToastContainer
             draggable={false}

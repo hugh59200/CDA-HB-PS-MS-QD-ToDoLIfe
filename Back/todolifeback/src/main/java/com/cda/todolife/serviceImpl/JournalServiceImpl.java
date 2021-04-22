@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.model.Journal;
+import com.cda.todolife.repository.IJourRepository;
 import com.cda.todolife.repository.IJournalRepository;
 import com.cda.todolife.service.IJournalService;
 
@@ -20,6 +22,9 @@ public class JournalServiceImpl implements IJournalService {
 
 	@Autowired
 	private IJournalRepository journalRepository;
+
+	@Autowired
+	private IJourRepository jourRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -73,4 +78,31 @@ public class JournalServiceImpl implements IJournalService {
 		this.journalRepository.findById(id).orElseThrow(JournalIntrouvableException::new);
 		this.journalRepository.deleteById(id);
 	}
+
+	@Override
+	public JournalDto findByUserId(int id) throws ResourceNotFoundException {
+		
+		return null;
+	}
+
+//	@Override
+//	public JournalDto findByUserId(int id) throws ResourceNotFoundException {
+//		
+//		Optional<Journal> probEntOpt = this.journalRepository.findByUtilisateurIdUtilisateur(id);
+//		if (probEntOpt.isPresent()) {
+//			List<Optional<Jour>> jourOptional = new ArrayList<Optional<Jour>>();
+//			this.jourRepository.findAllByJournalIdJournal(probEntOpt.get().getIdJournal()).forEach(Jour -> jourOptional.add(Optional.empty()));
+//			if (!jourOptional.isEmpty()) {
+//				return this.modelMapper.map(this.journalRepository.findByUtilisateurIdUtilisateur(id).get(),
+//						JournalDto.class);
+//			} else {
+//				throw new ResourceNotFoundException();
+////		} else {
+////			throw new ResourceNotFoundException();
+////		}
+//			}
+//			}
+//		return null;
+//			};
+
 }

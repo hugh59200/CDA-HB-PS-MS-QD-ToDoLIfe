@@ -102,8 +102,7 @@ public class UtilisateurController {
 	@GetMapping("/utilisateurs/username/{username}")
 	public ResponseEntity<CurrentUserDto> getByUserName(@PathVariable("username") String username)
 			throws ResourceNotFoundException {
-		
-		
+
 		try {
 			return new ResponseEntity<>(utilisateurService.findByUsername(username), HttpStatus.OK);
 		} catch (Exception e) {
