@@ -28,7 +28,7 @@ const NavBar = () => {
                         <li className="nav-item">
                             <NavLink to={URL_INSCRIPTION} className="nav-link text-white" activeClassName="font-weight-bold">Inscription</NavLink>
                         </li>
-                        <logInOut className="" />
+                        {/* <logInOut className="" /> */}
                     </ul>
                 </div>
             </header>
