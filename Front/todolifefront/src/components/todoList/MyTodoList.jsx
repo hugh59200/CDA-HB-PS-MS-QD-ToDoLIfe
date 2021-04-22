@@ -22,9 +22,11 @@ const MyTodoList = () => {
       ));
       setList(postData);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   const changeCurrentList = (elem) => {
+
     history.push({
       pathname: URL_TODO_LIST,
       id: elem.idTodoList,
