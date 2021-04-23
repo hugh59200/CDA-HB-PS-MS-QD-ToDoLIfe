@@ -46,7 +46,6 @@ const NavBar = () => {
     } else {
       setBtnLog(
         <>
-          <li>
             <li className="nav-item">
               <NavLink
                 to={URL_DECONNEXION}
@@ -57,8 +56,7 @@ const NavBar = () => {
                 logout
               </NavLink>
             </li>
-          </li>
-        </>
+          </>
       );
     }
   };
