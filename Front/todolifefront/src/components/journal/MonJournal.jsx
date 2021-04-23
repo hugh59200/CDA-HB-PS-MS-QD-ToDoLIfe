@@ -2,24 +2,40 @@ import React from "react";
 // import { API_JOURNAL_BY_USERID } from "../../constant/API_BACK";
 import { useFetch } from "./JournalData";
 import "./MonjournalStyle.css";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 const MonJournal = () => {
 
   // const userId = localStorage.getItem("id");
-
-  const URL = "http://localhost:8080/api/utilisateurs/{id}/journaux?idUtilisateur=3";
-  // const URL = API_JOURNAL_BY_USERID + userId + "/journaux";
+  // const URL = "http://localhost:8080/api/utilisateurs/" + userId + "/journaux";
+  const URL = "http://localhost:8080/api/utilisateurs/" + "2" + "/journaux";
   const [data, loading] = useFetch(URL);
-  // console.log(data[].titre);
+
+  const mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']
+  const year = ["2021"]
 
   return (
     <div>
       <h2>Mon journal</h2>
       <div className="monJournal">
+
         <div className="entete">
-          <p>Date</p>
-          <p>Evénement</p>
+
+          <select className="form-select" aria-label="Default select example">
+            <option defaultValue={mois} >Mois</option>
+            {mois.map((mois, i) =>
+              <option key={i} value={mois} onClick={() => console.log("ok")} >{mois}</option>
+            )}
+          </select>
+
+          <select className="form-select" aria-label="Default select example">
+          <option defaultValue={year} >Année</option>
+          {year.map((year, i) =>
+              <option key={i} value={year} onClick={() => console.log("ok")} >{year}</option>
+            )}
+          </select>
+
         </div>
         <div className="journalItem">
 
@@ -27,16 +43,16 @@ const MonJournal = () => {
             "Loading..."
           ) : (
             <div>
-              {data.map((data, key) =>
-                <div className="jours">
-                  <span className = "index">{(data.id) = key + 1} </span>
-                  <span className = "date">{data.dateJour}</span>
-                  <span className = "evenement">{data.titre}</span>
+              {data.map((data) =>
+                <div className="jours" onClick={() => console.log("ok")} key={data.idJour}>
+                  {/* <span className = "date">{data.dateJour}</span> */}
+                  <span className="evenement">{data.titre}</span>
+                  <span><FontAwesomeIcon icon={faPencilAlt} size="lg" className="delete" /></span>
+
                 </div>
               )}
             </div>
           )}
-          {/* idJournal, label, utilisateur     {idUtilisateur, nom, prenom, dateNaissance, email, username, password}*/}
 
         </div>
         <div className="addItem">
