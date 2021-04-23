@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { URL_CONNEXION, URL_HOME, URL_INSCRIPTION, URL_TODO_LIST, URL_DECONNEXION } from '../../constant/URL_CONST';
+import { URL_CONNEXION, URL_HOME, URL_INSCRIPTION, URL_TODO_LIST, URL_DECONNEXION, URL_JOURNAL } from '../../constant/URL_CONST';
 
-import { NavbarBrand } from "react-bootstrap";
+import {NavbarBrand } from "react-bootstrap";
 
 import { deconnected } from "../../service/authentificationService";
 
@@ -76,8 +76,8 @@ const NavBar = () => {
 
   return (
     <>
+    
       <header className="navbar navbar-expand-lg navbar-light bg-dark">
-        {/* <a className="navbar-brand text-white" href="/">ToDoLife</a> */}
         <NavbarBrand className="navbar-brand text-white"> ToDoLife</NavbarBrand>
         <button className="navbar-toggler">
           <span className="navbar-toggler-icon"></span>
@@ -93,7 +93,6 @@ const NavBar = () => {
                 Home
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink
                 to={URL_TODO_LIST}
@@ -103,12 +102,26 @@ const NavBar = () => {
                 TodoList
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                to={URL_JOURNAL}
+                className="nav-link text-white"
+                activeClassName="font-weight-bold"
+              >
+                Journal
+              </NavLink>
+            </li>
             {btnLog}
           </ul>
         </div>
       </header>
+      
+      
+      
+      
     </>
   );
 };
 
 export default NavBar;
+
