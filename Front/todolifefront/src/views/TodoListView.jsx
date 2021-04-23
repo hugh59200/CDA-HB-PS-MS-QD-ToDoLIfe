@@ -2,12 +2,9 @@ import "../assets/css/todolist/todo-list.css";
 
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { URL_TODO_LIST } from "../constant/URL_CONST";
-import TodolistService from "../service/TodolistService";
+import { URL_TODO_LIST, URL_NEW_TODO_LIST } from "../constant/URL_CONST";
+import TodoListService from "../service/TodoListService";
 import TacheService from "../service/TacheService";
-
-
-
 
 const TodoListView = () => {
   const history = useHistory();
@@ -17,8 +14,9 @@ const TodoListView = () => {
   // const [utilisateur, setUtilisateur] = useState("");
 
   useEffect(() => {
-    getUser();
-    TodolistService.getList().then((res) => {
+    // getUser();
+
+    TodoListService.getList().then((res) => {
       let dataRecup = res.data;
       let postData = dataRecup.map((elem) => (
         <tr
@@ -63,14 +61,14 @@ const TodoListView = () => {
     });
   };
 
-  const getUser = () => {
-    // UtilisateurService.getCurrentUser(1).then((res) => {
-    //   localStorage.setItem("utilisateur", JSON.stringify(res.data));
-    // });
-  };
+  // const getUser = () => {
+  //   // UtilisateurService.getCurrentUser(1).then((res) => {
+  //   //   localStorage.setItem("utilisateur", JSON.stringify(res.data));
+  //   // });
+  // };
 
   const newList = () => {
-    history.push("new-todo-list");
+    history.push(URL_NEW_TODO_LIST);
   };
 
   return (

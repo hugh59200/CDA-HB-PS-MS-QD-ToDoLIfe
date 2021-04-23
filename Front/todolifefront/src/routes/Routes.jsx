@@ -5,7 +5,7 @@ import { Route } from "react-router";
 import Home from "../views/Home";
 import ConnexionForm from "../components/form/ConnexionForm";
 import InscriptionForm from "../components/form/InscriptionForm";
-import AttenteValidation from "../components/AttenteValidation";
+import AttenteValidation from "../components/pageArrive/AttenteValidation";
 
 import { createBrowserHistory } from "history";
 
@@ -16,28 +16,52 @@ import {
   URL_INSCRIPTION,
   URL_JOURNAL,
   URL_TODO_LIST,
+  URL_DECONNEXION
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
 import TodoListView from "../views/TodoListView";
 import { ToastContainer, Zoom } from "react-toastify";
 import MonJournal from "../components/journal/MonJournal";
+
+import Auth from "../service/Auth";
 // import Error404 from "../views/Error404";
 
 const CustomHistory = createBrowserHistory();
 
 class Routes extends Component {
+  state = {
+    connected: false,
+  };
+
   render() {
     return (
       <>
         <Switch history={CustomHistory}>
+          {/* Home */}
           <Route exact path={URL_HOME} component={Home} />
-          <Route path={URL_CONNEXION} component={ConnexionForm} />
+
+          {/* Form Inscription */}
           <Route path={URL_INSCRIPTION} component={InscriptionForm} />
+
+          {/* page d'attente de validation */}
           <Route path={URL_ATTENTE} component={AttenteValidation} />
+
+          {/* Form Connection */}
+          <Route path={URL_CONNEXION} component={ConnexionForm} />
+          
+          {/* page Deconnection */}
+          <Route path={URL_DECONNEXION} component={Auth} />
+
+
+
+          {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
           <Route path={URL_JOURNAL} component={MonJournal}></Route>
+
           {/* <Route component={Error404} /> */}
+
+          {/* composants toaster */}
           <ToastContainer
             draggable={false}
             transition={Zoom}

@@ -6,6 +6,15 @@ import { URL_HOME } from "../../constant/URL_CONST.js";
 import "./FormStyle.css";
 import axios from "axios";
 import { API_LOGIN } from "../../constant/API_BACK.js";
+import "./FormStyle.css";
+import { toast } from "react-toastify";
+// import { connect } from "react-redux";
+import {
+  authenticated,
+} from "../../service/authentificationService.js";
+// import Cookies from "universal-cookie";
+
+// const cookies = new Cookies();
 
 const yup = require("yup");
 require("yup-password")(yup);
@@ -46,13 +55,27 @@ function ConnexionForm() {
 
     const body = JSON.stringify(data);
     axios.post(API_LOGIN, body, config).then((res) => {
+      let code = res.status;
 
-      localStorage.setItem("id", res.data.user.id);
-      localStorage.setItem("username", res.data.user.username);
-      localStorage.setItem("token", res.data.user.token);
+      if (code === 200) {
+        authenticated();
+        // isAuthenticated();
+
+        // console.log(isAuthenticated());
+
+        localStorage.setItem("id", res.data.user.id);
+        localStorage.setItem("username", res.data.user.username);
+        localStorage.setItem("token", res.data.user.token);
+        // localStorage.setItem("user", JSON.stringify(res.data.user) )
+
+        // console.log(res.data.user)
+        // cookies.set("token", res.data.user.token)
+
+        toast.success("login successful");
+        history.push(URL_HOME);
+        history.go(0)
+      }
     });
-    
-    history.push(URL_HOME);
   };
 
   return (
@@ -83,3 +106,14 @@ function ConnexionForm() {
 }
 
 export default ConnexionForm;
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setLogin: user => dispatch({ type: "SET_LOGIN", payload: user})
+//   };
+// };
+
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(ConnexionForm);

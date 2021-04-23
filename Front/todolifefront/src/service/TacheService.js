@@ -12,4 +12,4 @@ class TacheService {
 
 }
 
-export default new TacheService()
+export default new TacheService();

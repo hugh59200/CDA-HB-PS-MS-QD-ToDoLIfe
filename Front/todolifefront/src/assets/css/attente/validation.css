@@ -49,7 +49,36 @@ body {
     padding: 20px;
 }
 
-.box:before {
+/* .div-btn-done{
+    display: flex;
+    align-items: center !important;
+    align-self: center !important;
+    place-items: inherit !important;
+    justify-self: center !important;
+} */
+
+.btn-done {
+    /* display: flex; */
+    /* position: absolute; */
+    /* top: 0%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    align-items: center !important;
+    align-self: center !important;
+    place-items: inherit !important;
+    background: #111845a6;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgb(23, 32, 90);
+    border: 2px solid #2a3cad;
+    color: white;
+    border-radius: 10%;
+    height: 10% !important;
+    width: auto !important;
+    
+}
+
+.box:before{
     content: '';
     position: absolute;
     top: 0;
@@ -61,7 +90,7 @@ body {
     pointer-events: none;
 }
 
-.box:hover:before {
+.box:hover:before{
     left: -50%;
     transform: skewX(-5deg);
 }

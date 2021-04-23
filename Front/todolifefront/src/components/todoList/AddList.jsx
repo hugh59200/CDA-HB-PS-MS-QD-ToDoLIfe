@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import * as yup from "yup";
 import TodolistService from "../../service/TodolistService";
 
-import { URL_TODO_LIST } from "../../shared/constant/URL_CONST";
+import { URL_TODO_LIST } from "../constant/URL_CONST";
 
 const validationSchema = yup.object().shape({
   label: yup.string().required("required"),
@@ -13,7 +13,7 @@ const validationSchema = yup.object().shape({
 // let USER_ID = JSON.parse(localStorage.getItem("utilisateur").id);
 // const USER = localStorage.getItem('utilisateur');
 
-let result = [];
+// let result = [];
 
 class AddList extends Component {
   state = {

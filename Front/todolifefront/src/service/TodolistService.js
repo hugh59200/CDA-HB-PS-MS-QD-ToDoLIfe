@@ -1,14 +1,18 @@
 import axios from "axios";
-import { API_TODO_LIST } from "../constant/API_BACK";
+import {
+    API_TODO_LIST
+} from "../constant/API_BACK";
 
-class TodolistService {
+class TodoListService {
     getList() {
         return axios.get(API_TODO_LIST);
     }
-    
-    
-    create (list){
-        return axios.post(API_TODO_LIST, list);
+
+    getListByIdToDoList(id) {
+        return axios.get(API_TODO_LIST + '/todolist/' + id);
     }
+
+
 }
-export default TodolistService;
+
+export default new TodoListService();

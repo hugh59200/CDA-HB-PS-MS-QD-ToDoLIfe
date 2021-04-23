@@ -1,11 +1,11 @@
 import { Redirect, useHistory } from "react-router";
-import { confirmed, isConfirmed } from "../service/authentificationService";
-import { URL_ATTENTE, URL_CONNEXION } from "../constant/URL_CONST";
+import { isConfirmed } from "../service/authentificationService";
+import { URL_CONNEXION } from "../constant/URL_CONST";
 
 import "../assets/css/attente/validation.css";
 // const TEST = toast.warning("check your mail to verify your account");
 
-import React, { useState } from "react";
+import React from "react";
 import UtilisateurService from "../service/UtilisateurService";
 import { toast } from "react-toastify";
 

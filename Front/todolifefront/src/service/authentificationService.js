@@ -1,5 +1,11 @@
 /* authentification */
 
+// import { useHistory } from "react-router";
+
+// import Cookies from "universal-cookie";
+
+// const cookies = new Cookies();
+
 export let isLoggued = false;
 
 export function authenticated(){
@@ -8,10 +14,15 @@ export function authenticated(){
 
 export function deconnected(){  
     isLoggued = false;
+    localStorage.removeItem('id')
+    localStorage.removeItem('username')
+    localStorage.removeItem('token')
+    // localStorage.removeItem('user')
+    // cookies.remove('token')
 }
 
 export function isAuthenticated(){
-    if(localStorage.getItem('id') != null){
+    if(localStorage.getItem('username') != null){
         authenticated()
     } else {
         deconnected()
@@ -34,3 +45,4 @@ export function unConfirmed(){
 export function isConfirmed(){
     return isConfirm;
 }
+
