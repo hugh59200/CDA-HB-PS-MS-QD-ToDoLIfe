@@ -67,7 +67,7 @@ public class JournalController {
 	
 	// lister jour by userId
 	@GetMapping("/utilisateurs/{id}/journaux")
-	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur){
+	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(@PathVariable(value="id") int idUtilisateur){
 		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
 		return ResponseEntity.ok(listJours);
 	}
