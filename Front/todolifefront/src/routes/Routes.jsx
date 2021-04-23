@@ -57,7 +57,9 @@ class Routes extends Component {
 
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
-          <Route path={URL_JOURNAL} component={MonJournal}></Route>
+          
+          {/* view journal*/}
+          <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
 
           {/* <Route component={Error404} /> */}
 

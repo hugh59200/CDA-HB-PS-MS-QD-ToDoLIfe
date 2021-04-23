@@ -3,8 +3,9 @@ import "../assets/css/todolist/todo-list.css";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { URL_TODO_LIST, URL_NEW_TODO_LIST } from "../constant/URL_CONST";
-import TodoListService from "../service/TodoListService";
 import TacheService from "../service/TacheService";
+import TodolistService from "../service/TodolistService"
+
 
 const TodoListView = () => {
   const history = useHistory();
@@ -16,7 +17,7 @@ const TodoListView = () => {
   useEffect(() => {
     // getUser();
 
-    TodoListService.getList().then((res) => {
+    TodolistService.getList().then((res) => {
       let dataRecup = res.data;
       let postData = dataRecup.map((elem) => (
         <tr

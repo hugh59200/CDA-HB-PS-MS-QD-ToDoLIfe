@@ -3,7 +3,7 @@ import {
     API_TODO_LIST
 } from "../constant/API_BACK";
 
-class TodoListService {
+class TodolistService {
     getList() {
         return axios.get(API_TODO_LIST);
     }
@@ -11,8 +11,6 @@ class TodoListService {
     getListByIdToDoList(id) {
         return axios.get(API_TODO_LIST + '/todolist/' + id);
     }
-
-
 }
 
-export default new TodoListService();
+export default new TodolistService();
