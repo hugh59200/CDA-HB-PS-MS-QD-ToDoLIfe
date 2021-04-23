@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
-import com.cda.todolife.exception.ResourceNotFoundException;
+import com.cda.todolife.service.IJourService;
 import com.cda.todolife.service.IJournalService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -34,6 +35,9 @@ public class JournalController {
 
 	@Autowired
 	private IJournalService journalService;
+	
+	@Autowired
+	private IJourService jourService;
 
 	// listing
 	@GetMapping("/journaux")
@@ -59,14 +63,15 @@ public class JournalController {
 		JournalDto list = journalService.findById(id);
 		return ResponseEntity.ok(list);
 	}
-
-	// journal by Id
+	
+	
+	// lister jour by userId
 	@GetMapping("/utilisateurs/{id}/journaux")
-	public ResponseEntity<JournalDto> getByUserId(@PathVariable int id) throws JournalIntrouvableException, ResourceNotFoundException {
-		JournalDto list = journalService.findByUserId(id);
-//		System.out.println(list);
-		return ResponseEntity.ok(list);
+	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(@PathVariable(value="id") int idUtilisateur){
+		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
+		return ResponseEntity.ok(listJours);
 	}
+
 
 	// details by Label
 	@GetMapping("/journaux/{label}")

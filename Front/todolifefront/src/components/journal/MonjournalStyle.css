@@ -1,6 +1,6 @@
 .monJournal{
-  background-color: rgb(71, 104, 104);
-  height: 1000px;
+  background-color: #0090E8;
+  height: 800px;
   width: 600px;
   margin: 0 auto;
   margin-top: 100px;
@@ -8,22 +8,64 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  border-radius: 10px;
 }
 
-.monJournal> h2 {
-  height: 80px;
-  background-color: rgb(88, 70, 151);
+div > h2 {
+  height: 30px;
   padding: 20px;
+  margin-top: 40px;
 }
 
 .journalItem {
   height: 800px;
-  background-color: brown;
 }
 
 .addItem {
   height: 100px;
-  background-color: rgb(1, 107, 110);
   align-self: center;
   padding: 20px;
+}
+
+.jours {
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: rgb(72, 173, 255);
+  border-radius: 10px;
+  font-weight: bold;
+  display: flex;
+}
+.journalItem > div :hover{
+  background-color: #0376bd;
+  cursor: pointer;
+}
+
+.index{
+  width: 5%;
+}
+
+select{
+  width: 200px;
+  background-color:  rgb(72, 173, 255);
+  color: white;
+  font-size: large;
+}
+
+.evenement{
+ width: 95%;
+}
+
+.entete{
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  font-size: x-large;
+  margin: 10px;
+}
+
+.delete :hover{
+  color: rgb(141, 18, 18)
 }
