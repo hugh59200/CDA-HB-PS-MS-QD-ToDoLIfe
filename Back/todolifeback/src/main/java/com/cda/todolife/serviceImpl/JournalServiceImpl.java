@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
-import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.model.Journal;
-import com.cda.todolife.repository.IJourRepository;
 import com.cda.todolife.repository.IJournalRepository;
 import com.cda.todolife.service.IJournalService;
 
@@ -23,8 +21,8 @@ public class JournalServiceImpl implements IJournalService {
 	@Autowired
 	private IJournalRepository journalRepository;
 
-	@Autowired
-	private IJourRepository jourRepository;
+//	@Autowired
+//	private IJourRepository jourRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -79,30 +77,14 @@ public class JournalServiceImpl implements IJournalService {
 		this.journalRepository.deleteById(id);
 	}
 
-	@Override
-	public JournalDto findByUserId(int id) throws ResourceNotFoundException {
-		
-		return null;
-	}
-
+	// lister jours via userId
 //	@Override
-//	public JournalDto findByUserId(int id) throws ResourceNotFoundException {
-//		
-//		Optional<Journal> probEntOpt = this.journalRepository.findByUtilisateurIdUtilisateur(id);
-//		if (probEntOpt.isPresent()) {
-//			List<Optional<Jour>> jourOptional = new ArrayList<Optional<Jour>>();
-//			this.jourRepository.findAllByJournalIdJournal(probEntOpt.get().getIdJournal()).forEach(Jour -> jourOptional.add(Optional.empty()));
-//			if (!jourOptional.isEmpty()) {
-//				return this.modelMapper.map(this.journalRepository.findByUtilisateurIdUtilisateur(id).get(),
-//						JournalDto.class);
-//			} else {
-//				throw new ResourceNotFoundException();
-////		} else {
-////			throw new ResourceNotFoundException();
-////		}
-//			}
-//			}
-//		return null;
-//			};
+//	public List<JourDto> findAllByJournalIdJournal(int id) throws ResourceNotFoundException {
+//		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(id);
+//		int idJournal = journal.getIdJournal();
+//		System.out.println(this.jourRepository.findAllByJournalIdJournal(idJournal));
+
+//	List<JourDto> res = new ArrayList<>();this.jourRepository.findAll().forEach(pres->res.add(this.modelMapper.map(pres,JourDto.class)));return res;
+//}
 
 }
