@@ -20,6 +20,7 @@ public class JourServiceImpl implements IJourService {
 
 	@Autowired
 	private IJourRepository jourRepository;
+	
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -73,4 +74,16 @@ public class JourServiceImpl implements IJourService {
 		this.jourRepository.findById(id).orElseThrow(JourIntrouvableException::new);
 		this.jourRepository.deleteById(id);
 	}
+
+//	lister jour par idUtilisateur
+	@Override
+	public List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur) {
+		List<JourDto> listJours = new ArrayList<>();
+		this.jourRepository.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
+		return listJours;
+	}
+
+	
+	
+	
 }

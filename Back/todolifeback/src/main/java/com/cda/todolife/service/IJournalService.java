@@ -5,7 +5,6 @@ import java.util.List;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
-import com.cda.todolife.exception.ResourceNotFoundException;
 
 public interface IJournalService {
 
@@ -20,7 +19,5 @@ public interface IJournalService {
 	void add(JournalDto list) throws JournalExistantException;
 
 	JournalDto findByLabel(String label) throws JournalIntrouvableException;
-
-	JournalDto findByUserId(int id) throws ResourceNotFoundException;
 
 }
