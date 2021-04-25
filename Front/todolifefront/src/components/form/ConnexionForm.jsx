@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,9 +8,9 @@ import axios from "axios";
 import { API_LOGIN } from "../../constant/API_BACK.js";
 import "./FormStyle.css";
 import { toast } from "react-toastify";
-import {
-  authenticated,
-} from "../../service/authentificationService.js";
+import { authenticated } from "../../service/authentificationService.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const yup = require("yup");
 require("yup-password")(yup);
@@ -32,7 +32,36 @@ const SignupSchema = yup.object().shape({
 });
 
 function ConnexionForm() {
+  
   const history = useHistory();
+
+  const [iconePwd, setIconePwd] = useState("");
+
+  const showOrHidePassword = () => {
+    // console.log(document.querySelector(".show-pwd").type)
+    // console.log(document.querySelector(".show-pwd").type);
+    if (document.querySelector(".show-pwd").type === "password") {
+      document.querySelector(".show-pwd").type = "text";
+    } else {
+      document.querySelector(".show-pwd").type = "password";
+    }
+    setIcone();
+  };
+
+  const setIcone = () => {
+    if (document.querySelector(".show-pwd").type === "password") {
+      setIconePwd(
+        <FontAwesomeIcon onClick={() => showOrHidePassword()} icon={faEye} />
+      );
+    } else {
+      setIconePwd(
+        <FontAwesomeIcon
+          onClick={() => showOrHidePassword()}
+          icon={faEyeSlash}
+        />
+      );
+    }
+  };
 
   const {
     register,
@@ -60,10 +89,15 @@ function ConnexionForm() {
         localStorage.setItem("token", res.data.user.token);
         toast.success("login successful");
         history.push(URL_HOME);
-        history.go(0)
+        history.go(0);
       }
     });
   };
+
+  useEffect(() => {
+    setIcone();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="form">
@@ -83,8 +117,11 @@ function ConnexionForm() {
           type="password"
           {...register("password")}
           placeholder="mot de passe"
-          className="form-input"
+          className="form-input show-pwd"
         />
+
+        {iconePwd}
+
         {errors.password && <p className="error">{errors.password.message}</p>}
       </div>
 
