@@ -45,8 +45,8 @@ public class ToDoListController {
 		return this.todolistService.findAll();
 	}
 
-	// create
-	@PostMapping("/todolists/utilisateurs/{id")
+ 	// create
+	@PostMapping("/todolists/utilisateurs/{id}")
 	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list, @PathVariable int id) throws ToDoListExistanteException {
 		try {
 			this.utilisateurService.findById(id);
