@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory } from "react-router";
+import React, { useState } from "react";
+// import { useHistory } from "react-router";
 import { useFetch } from "./JournalData";
 import "./MonjournalStyle.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,24 +7,12 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 const MonJournal = () => {
 
-  const history = useHistory();
-  
-  // const userId = localStorage.getItem("id");
-  // const URL = "http://localhost:8080/api/utilisateurs/" + userId + "/journaux";
-  
-  const URL = "http://localhost:8080/api/utilisateurs/" + "2" + "/journaux";
-  const [data, loading] = useFetch(URL);
-
-  const actualMonth = new Date().getMonth();
-  const actualYear = new Date().getFullYear();
   const allmonth = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']
-  const year = [actualYear]
-
-
-  function handleClickMonth() {
-    history.push(URL + "?" + actualMonth + "&" + year);
-  }
-
+  const allyear = ['2020', '2021']
+  const [month, setmonth] = useState(new Date().getMonth());
+  const [year, setyear] = useState(new Date().getFullYear());
+  const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux/?mois=" + month + "&année=" + year;
+  const [data, loading] = useFetch(urlStart);
   
   return (
     <div>
@@ -32,20 +20,24 @@ const MonJournal = () => {
       <div className="monJournal">
         <div className="entete">
 
-          <select className="form-select" aria-label="Default select example">
-            <option defaultValue={allmonth[actualMonth]} >mois</option>
+          <select
+            className="form-select"
+            onChange={e => setmonth(e.target.value)}>
 
+            <option defaultValue={month} >mois</option>
             {allmonth.map((mois, i) =>
-              <option key={i} value={mois} onClick={() => handleClickMonth()}>{mois}</option>
+              <option key={i} value={i + 1}>{mois}</option>
             )}
           </select>
 
 
-          <select className="form-select" aria-label="Default select example">
+          <select 
+          className="form-select" 
+          onChange={e => setyear(e.target.value)}>
+            
             <option defaultValue={year} >Année</option>
-
-            {year.map((year, i) =>
-              <option key={i} value={year} onClick={() => console.log("ok")} >{year}</option>
+            {allyear.map((year, i) =>
+              <option key={i} value={year}>{year}</option>
             )}
           </select>
 
@@ -57,11 +49,12 @@ const MonJournal = () => {
           ) : (
             <div>
               {data.map((data) =>
-                <div className="jours" onClick={() => console.log("ok")} key={data.idJour}>
-                  {/* <span className = "date">{data.dateJour}</span> */}
+                <div
+                  className="jours"
+                  onClick={() => console.log("ok")}
+                  key={data.idJour}>
                   <span className="evenement">{data.titre}</span>
                   <span><FontAwesomeIcon icon={faPencilAlt} size="lg" className="delete" /></span>
-
                 </div>
               )}
             </div>
