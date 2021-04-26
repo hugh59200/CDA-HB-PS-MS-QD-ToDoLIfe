@@ -21,4 +21,9 @@ public interface IJourService {
 	JourDto findByTitre(String titre) throws JourIntrouvableException;
 
 	List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
+	
+//	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
+	
+//	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(int idUtilisateur, String startDate, String endDate);
+
 }

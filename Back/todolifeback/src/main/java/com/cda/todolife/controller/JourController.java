@@ -65,6 +65,46 @@ public class JourController {
 		return ResponseEntity.ok(list);
 	}
 
+//	// lister jour by userId selon date
+//	@GetMapping("/utilisateurs/{id}/journaux/")
+//	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
+//			
+//			@PathVariable(value="id") int idUtilisateur,
+//			@RequestParam(value="mois") int mois,
+//			@RequestParam(value="annee") int annee){
+//			
+////		String date = "2021-02-22";
+//		String date = annee + "-" + mois;
+//		String startDate = date.substring(0, 7) + "-00";
+//		String endDate = date.substring(0, 7) + "-30";
+//		System.out.println(startDate);
+//		System.out.println(endDate);
+//		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(idUtilisateur, startDate, endDate);
+//		return ResponseEntity.ok(listJours);
+//	}
+
+//	// lister jour by userId selon date
+//	@GetMapping("/utilisateurs/{id}/journaux/")
+//	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
+//			
+//			@PathVariable(value="id") int idUtilisateur,
+//			@RequestParam(value="mois") int mois,
+//			@RequestParam(value="annee") int annee){
+//			
+//		
+//		String date = "2021-02-22";
+//		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, date);
+//		return ResponseEntity.ok(listJours);
+//	}
+
+	// lister jour by userId
+	@GetMapping("/utilisateurs/{id}/journaux")
+	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
+			@PathVariable(value = "id") int idUtilisateur) {
+		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
+		return ResponseEntity.ok(listJours);
+	}
+
 	// update
 	@PutMapping("/jour")
 	public ResponseEntity<JourDto> update(@RequestBody JourDto list) throws JourIntrouvableException {

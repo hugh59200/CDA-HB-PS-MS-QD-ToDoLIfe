@@ -74,7 +74,7 @@ public class JourServiceImpl implements IJourService {
 		this.jourRepository.findById(id).orElseThrow(JourIntrouvableException::new);
 		this.jourRepository.deleteById(id);
 	}
-
+	
 //	lister jour par idUtilisateur
 	@Override
 	public List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur) {
@@ -82,6 +82,24 @@ public class JourServiceImpl implements IJourService {
 		this.jourRepository.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
 		return listJours;
 	}
+
+	
+////	lister jour par idUtilisateur et date
+//	@Override
+//	public List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
+//		List<JourDto> listJours = new ArrayList<>();
+//		this.jourRepository.findAllByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, dateJour).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
+//		return listJours;
+//	}
+
+////	lister jour par idUtilisateur et entre 2 date
+//	@Override
+//	public List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
+//			int idUtilisateur, String startDate, String endDate) {
+//		List<JourDto> listJours = new ArrayList<>();
+//		this.jourRepository.findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(idUtilisateur, startDate, endDate).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
+//		return listJours;
+//	}
 
 	
 	

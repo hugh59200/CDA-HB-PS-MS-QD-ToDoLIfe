@@ -9,10 +9,14 @@ const MonJournal = () => {
 
   const allmonth = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']
   const allyear = ['2020', '2021']
-  const [month, setmonth] = useState(new Date().getMonth());
-  const [year, setyear] = useState(new Date().getFullYear());
-  const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux/?mois=" + month + "&année=" + year;
+  const [mois, setmois] = useState(new Date().getMonth());
+  const [annee, setannee] = useState(new Date().getFullYear());
+  // const testDate = "2021-03-22";
+  const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux";
+  // const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux/?mois=" + mois + "&annee=" + annee;
   const [data, loading] = useFetch(urlStart);
+  console.log(mois);
+  console.log(annee);
   
   return (
     <div>
@@ -22,9 +26,9 @@ const MonJournal = () => {
 
           <select
             className="form-select"
-            onChange={e => setmonth(e.target.value)}>
+            onChange={e => setmois(e.target.value)}>
 
-            <option defaultValue={month} >mois</option>
+            <option defaultValue={mois} >mois</option>
             {allmonth.map((mois, i) =>
               <option key={i} value={i + 1}>{mois}</option>
             )}
@@ -33,11 +37,11 @@ const MonJournal = () => {
 
           <select 
           className="form-select" 
-          onChange={e => setyear(e.target.value)}>
+          onChange={e => setannee(e.target.value)}>
             
-            <option defaultValue={year} >Année</option>
-            {allyear.map((year, i) =>
-              <option key={i} value={year}>{year}</option>
+            <option defaultValue={annee} >Année</option>
+            {allyear.map((annee, i) =>
+              <option key={i} value={annee}>{annee}</option>
             )}
           </select>
 
