@@ -1,6 +1,7 @@
 package com.cda.todolife.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +76,7 @@ public class UtilisateurController {
 	@GetMapping("/utilisateurs/verify")
 	public ResponseEntity<UtilisateurDto> verifyUser(@RequestParam("dn") String dateNaissance,
 			@RequestParam("em") String mail, @RequestParam("n") String nom, @RequestParam("pn") String prenom,
-			@RequestParam("psw") String pass, @RequestParam("un") String username) throws ResourceAlreadyExist {
+			@RequestParam("psw") String pass, @RequestParam("un") String username) throws ResourceAlreadyExist, ParseException {
 
 		if (username != null) {
 			this.utilisateurService.verify(dateNaissance, mail, nom, prenom, pass, username);

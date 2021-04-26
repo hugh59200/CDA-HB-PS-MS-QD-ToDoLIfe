@@ -1,6 +1,8 @@
 package com.cda.todolife.serviceImpl;
 
 import java.io.UnsupportedEncodingException;
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -66,7 +68,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 
 		String password = userDto.getPassword();
 		String passwordEncode = Base64.getEncoder().encodeToString(password.getBytes());
-		
+
 //		System.out.println(userDto.getDateNaissanceStr());
 
 		content = content.replace("[[name]]", userDto.getPrenom() + " " + userDto.getNom());
@@ -185,68 +187,17 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		} else if (clrOpt2.isPresent()) {
 			throw new ResourceAlreadyExist();
 		} else {
-			
+
 			System.out.println(dateNaissance);
-			
-//			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
-//			DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyy", Locale.ENGLISH);
-//			LocalDate date = LocalDate.parse(dateNaissance, inputFormatter);
-//			String formattedDate = outputFormatter.format(date);
-//			System.out.println(formattedDate); 
-			
-//			String date =  extractDate(dateNaissance);
-			
-//			System.out.println(date);
-			
-			
-			
-			
-//			LocalDateTime dateTime = LocalDateTime.parse(dateNaissance);
-//			
-////			System.out.println(dateTime);
-			
-//			System.out.println((Date) dateNaissance);
-			
-			
-//			Calendar cal = Calendar.getInstance();
-//			SimpleDateFormat dateOnly = new SimpleDateFormat("MM/dd/yyyy");
-//			System.out.println(dateOnly.format(cal.getTime()));
+
+			Date date = Date.valueOf(dateNaissance);
 
 			UtilisateurDto user = UtilisateurDto.builder().email(decodedMail).nom(nom).prenom(prenom)
-					.password(decodedPass).username(username).build();
+					.password(decodedPass).username(username).dateNaissance(date).build();
 
 			this.utilisateurRepository.save(this.modelMapper.map(user, Utilisateur.class));
 			return true;
 		}
 	}
-	
-	
-	
-//	private static String extractDate(String dateNaissance) {
-//		
-//		System.out.println(dateNaissance);
-//		
-//		int dayInitial = Integer.parseInt(dateNaissance.substring(8, 10));
-//		String dateInitial = dateNaissance.substring(0, 8);
-//		dayInitial++;
-//		
-//		String newDay;
-//		if (dayInitial < 10) {
-//			 newDay = "0"+dayInitial;
-//		} else {
-//			newDay = ""+dayInitial;
-//		}
-//		
-//		
-//		String res = dateInitial+newDay;
-//		
-//		System.out.println(res);
-//		return res;
-//	}
-//	
-//	
-//	public static void main(String[] args) {
-//		extractDate("2021-04-04T22:00:00.000Z");
-//	}
 
 }

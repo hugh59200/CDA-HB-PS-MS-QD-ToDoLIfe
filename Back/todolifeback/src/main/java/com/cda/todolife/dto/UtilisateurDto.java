@@ -1,5 +1,8 @@
 package com.cda.todolife.dto;
 
+
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +17,7 @@ public class UtilisateurDto {
 	private int idUtilisateur;
 	private String nom;
 	private String prenom;
-	private String dateNaissance;
+	private Date dateNaissance;
 	private String email;
 	private String username;
 	private String password;
