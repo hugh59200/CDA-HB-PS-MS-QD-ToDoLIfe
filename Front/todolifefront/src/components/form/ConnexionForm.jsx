@@ -83,10 +83,10 @@ function ConnexionForm() {
       let code = res.status;
 
       if (code === 200) {
-        authenticated();
-        localStorage.setItem("id", res.data.user.id);
-        localStorage.setItem("username", res.data.user.username);
-        localStorage.setItem("token", res.data.user.token);
+        let id = res.data.user.id;
+        let username = res.data.user.username;
+        let token = res.data.user.token;
+        authenticated(id, username, token);
         toast.success("login successful");
         history.push(URL_HOME);
         history.go(0);
@@ -112,7 +112,7 @@ function ConnexionForm() {
         {errors.username && <p className="error">{errors.username.message}</p>}
       </div>
 
-      <div>
+      <div className="pwd-div">
         <input
           type="password"
           {...register("password")}

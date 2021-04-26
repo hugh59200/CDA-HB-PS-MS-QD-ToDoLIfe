@@ -1,6 +1,7 @@
 package com.cda.todolife.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Utilisateur implements Serializable {
 	private int idUtilisateur;
 	private String nom;
 	private String prenom;
-	private String dateNaissance;
+	private Date dateNaissance;
 	private String email;
 	private String username;
 	private String password;

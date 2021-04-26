@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 // import { render } from 'react-dom';
 import Typed from 'react-typed';
 
-class TypedWaiting extends Component {
+class TypedText extends Component {
     render() {
         return (
                 <Typed
-                    strings={["Waiting"]}
+                    strings={["bienvenue sur todolife"]}
                     typeSpeed={80}
                     backSpeed={80}
                     backDelay= {4000}
                     startDelay= {1000}
-                    loop >
+                    // loop 
+                    >
                 </Typed>
         );
     }
 }
-export default TypedWaiting;
+export default TypedText;

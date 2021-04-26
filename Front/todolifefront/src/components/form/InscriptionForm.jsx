@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { URL_ATTENTE, URL_HOME } from "../../constant/URL_CONST.js";
@@ -8,6 +8,11 @@ import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { API_USER } from "../../constant/API_BACK.js";
 import "./FormStyle.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  unConfirmed,
+} from "../../service/authentificationService.js";
 
 const yup = require("yup");
 require("yup-password");
@@ -50,6 +55,34 @@ const SignupSchema = yup.object().shape({
 function InscriptionForm() {
   const history = useHistory();
 
+  const [iconePwd, setIconePwd] = useState("");
+
+  const showOrHidePassword = () => {
+    // console.log(document.querySelector(".show-pwd").type)
+    // console.log(document.querySelector(".show-pwd").type);
+    if (document.querySelector(".show-pwd").type === "password") {
+      document.querySelector(".show-pwd").type = "text";
+    } else {
+      document.querySelector(".show-pwd").type = "password";
+    }
+    setIcone();
+  };
+
+  const setIcone = () => {
+    if (document.querySelector(".show-pwd").type === "password") {
+      setIconePwd(
+        <FontAwesomeIcon onClick={() => showOrHidePassword()} icon={faEye} />
+      );
+    } else {
+      setIconePwd(
+        <FontAwesomeIcon
+          onClick={() => showOrHidePassword()}
+          icon={faEyeSlash}
+        />
+      );
+    }
+  };
+
   const {
     register,
     handleSubmit,
@@ -65,12 +98,13 @@ function InscriptionForm() {
       },
     };
     const body = JSON.stringify(data);
-    // console.log(body);
     axios.post(API_USER, body, config).then((res) => {
       let code = res.status;
-      // console.log(res.data.nom)
-      localStorage.setItem("username", res.data.username);
+
+      console.log(res.data);
       if (code === 200) {
+        localStorage.setItem("username", res.data.username);
+        unConfirmed();
         toast.warning("check your mail to confirm your account");
         history.push(URL_ATTENTE);
       } else {
@@ -78,6 +112,11 @@ function InscriptionForm() {
       }
     });
   };
+
+  useEffect(() => {
+    setIcone();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="form">
@@ -121,11 +160,13 @@ function InscriptionForm() {
           <div>
             <input
               {...register("dateNaissance")}
-              type="text"
+              type="date"
               placeholder="date de naissance"
-              onMouseEnter={(e) => (e.target.type = "date")}
-              onMouseLeave={(e) => (e.target.type = "text")}
-              className="form-input"
+              // onMouseEnter={(e) => (e.target.type = "date")}
+              // onMouseLeave={(e) => (e.target.type = "text")}
+              // date-format="yyyy-MM-dd"
+              pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"
+              className="form-input date-input"
             />
             {errors.dateNaissance && (
               <p className="error">{errors.dateNaissance.message}</p>
@@ -147,15 +188,17 @@ function InscriptionForm() {
             )}
           </div>
 
-          <div>
+          <div className="pwd-div">
             <input
               {...register("password")}
               placeholder="mot de passe"
-              className="form-input"
-              // type="password"
+              className="form-input show-pwd"
+              type="password"
               onMouseEnter={(e) => (e.target.placeholder = "")}
               onMouseLeave={(e) => (e.target.placeholder = "mot de passe")}
             />
+
+            {iconePwd}
             {errors.password && (
               <p className="error">{errors.password.message}</p>
             )}
