@@ -75,3 +75,10 @@ h2{
   flex-direction: column;
   justify-content: space-evenly;
 }
+
+.pwd-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+

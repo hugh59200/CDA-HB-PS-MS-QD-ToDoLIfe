@@ -59,6 +59,9 @@ public class UtilisateurController {
 			throws ResourceAlreadyExist, UnsupportedEncodingException, MessagingException {
 		String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
 		utilisateurDto.setPassword(hashedPwd);
+		
+		
+		System.out.println(utilisateurDto.getDateNaissance());
 		String siteURL = request.getRequestURL().toString();
 		siteURL.replace(request.getServletPath(), "");
 		utilisateurService.register(utilisateurDto, siteURL);

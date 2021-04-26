@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { URL_CONNEXION, URL_HOME, URL_INSCRIPTION, URL_TODO_LIST, URL_DECONNEXION, URL_JOURNAL, URL_WATCHLIST } from '../../constant/URL_CONST';
 
-import {NavbarBrand } from "react-bootstrap";
+import { NavbarBrand } from "react-bootstrap";
 
 import { deconnected } from "../../service/authentificationService";
 
@@ -46,17 +46,36 @@ const NavBar = () => {
     } else {
       setBtnLog(
         <>
-            <li className="nav-item">
-              <NavLink
-                to={URL_DECONNEXION}
-                onClick={logout}
-                className="nav-link text-white"
-                activeClassName="font-weight-bold"
-              >
-                logout
-              </NavLink>
-            </li>
-          </>
+          <li className="nav-item">
+            <NavLink
+              to={URL_TODO_LIST}
+              className="nav-link text-white"
+              activeClassName="font-weight-bold"
+            >
+              TodoList
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to={URL_JOURNAL}
+              className="nav-link text-white"
+              activeClassName="font-weight-bold"
+            >
+              Journal
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              to={URL_DECONNEXION}
+              onClick={logout}
+              className="nav-link text-white"
+              activeClassName="font-weight-bold"
+            >
+              logout
+            </NavLink>
+          </li>
+        </>
       );
     }
   };
@@ -69,12 +88,11 @@ const NavBar = () => {
 
   useEffect(() => {
     changeNavBar();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-    
       <header className="navbar navbar-expand-lg navbar-light bg-dark">
         <NavbarBrand className="navbar-brand text-white"> ToDoLife</NavbarBrand>
         <button className="navbar-toggler">
@@ -122,13 +140,8 @@ const NavBar = () => {
           </ul>
         </div>
       </header>
-      
-      
-      
-      
     </>
   );
 };
 
 export default NavBar;
-
