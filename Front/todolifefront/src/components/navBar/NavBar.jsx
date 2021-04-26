@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { URL_CONNEXION, URL_HOME, URL_INSCRIPTION, URL_TODO_LIST, URL_DECONNEXION, URL_JOURNAL } from '../../constant/URL_CONST';
+import { URL_CONNEXION, URL_HOME, URL_INSCRIPTION, URL_TODO_LIST, URL_DECONNEXION, URL_JOURNAL, URL_WATCHLIST } from '../../constant/URL_CONST';
 
 import {NavbarBrand } from "react-bootstrap";
 
@@ -107,6 +107,15 @@ const NavBar = () => {
                 activeClassName="font-weight-bold"
               >
                 Journal
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to={URL_WATCHLIST}
+                className="nav-link text-white"
+                activeClassName="font-weight-bold"
+              >
+                Watchlist
               </NavLink>
             </li>
             {btnLog}

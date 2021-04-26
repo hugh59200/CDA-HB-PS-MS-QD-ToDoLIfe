@@ -16,13 +16,15 @@ import {
   URL_INSCRIPTION,
   URL_JOURNAL,
   URL_TODO_LIST,
-  URL_DECONNEXION
+  URL_DECONNEXION,
+  URL_WATCHLIST,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
 import TodoListView from "../views/TodoListView";
 import { ToastContainer, Zoom } from "react-toastify";
 import MonJournal from "../components/journal/MonJournal";
+import MaWatchlist from "../components/watchlist/MaWatchlist";
 
 import Auth from "../service/Auth";
 // import Error404 from "../views/Error404";
@@ -49,18 +51,18 @@ class Routes extends Component {
 
           {/* Form Connection */}
           <Route path={URL_CONNEXION} component={ConnexionForm} />
-          
+
           {/* page Deconnection */}
           <Route path={URL_DECONNEXION} component={Auth} />
 
-
-
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
-          
+
           {/* view journal*/}
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
 
+          {/* view watchlist*/}
+          <PrivateRoute path={URL_WATCHLIST} component={MaWatchlist} />
           {/* <Route component={Error404} /> */}
 
           {/* composants toaster */}

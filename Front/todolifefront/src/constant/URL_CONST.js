@@ -19,6 +19,9 @@ export const URL_TODO_LIST = '/todo-list'
 /* add a toodolist */
 export const URL_NEW_TODO_LIST = '/new-todo-list'
 
+/* Watchlist */
+export const URL_WATCHLIST = '/watchlist'
+
 /* attentes */
 export const URL_ATTENTE = '/attentes'
 
