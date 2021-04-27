@@ -28,7 +28,7 @@ const MonJournal = () => {
 
   return (
     <div>
-      <h2 className="titre">Mon journal</h2>
+      <h2 className="titreJournal">Mon journal</h2>
       <div className="monJournal">
         <div className="entete">
           <select className="form-select" onChange={(e) => { fetchUrl(e.target.value, annee) }}>
