@@ -11,13 +11,11 @@ const MonJournal = () => {
   const allyear = ['2020', '2021']
   const [mois, setmois] = useState(new Date().getMonth());
   const [annee, setannee] = useState(new Date().getFullYear());
-  // const testDate = "2021-03-22";
-  const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux";
-  // const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux/?mois=" + mois + "&annee=" + annee;
+  const urlStart = "http://localhost:8080/api/utilisateurs/" + localStorage.getItem("id") + "/journaux/?mois="+ mois + "&annee=" + annee;
   const [data, loading] = useFetch(urlStart);
-  console.log(mois);
-  console.log(annee);
   
+  console.log(mois);
+
   return (
     <div>
       <h2>Mon journal</h2>

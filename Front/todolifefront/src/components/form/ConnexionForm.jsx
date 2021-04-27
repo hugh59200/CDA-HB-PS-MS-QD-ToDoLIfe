@@ -32,7 +32,7 @@ const SignupSchema = yup.object().shape({
 });
 
 function ConnexionForm() {
-  
+
   const history = useHistory();
 
   const [iconePwd, setIconePwd] = useState("");
@@ -86,7 +86,11 @@ function ConnexionForm() {
         let id = res.data.user.id;
         let username = res.data.user.username;
         let token = res.data.user.token;
+        // localStorage.
         authenticated(id, username, token);
+        localStorage.setItem("id", id);
+        localStorage.setItem("username", username);
+        localStorage.setItem("token", token);
         toast.success("login successful");
         history.push(URL_HOME);
         history.go(0);

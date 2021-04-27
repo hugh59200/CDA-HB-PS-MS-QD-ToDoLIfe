@@ -1,5 +1,6 @@
 package com.cda.todolife.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,44 +67,28 @@ public class JourController {
 		return ResponseEntity.ok(list);
 	}
 
-//	// lister jour by userId selon date
-//	@GetMapping("/utilisateurs/{id}/journaux/")
-//	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
-//			
-//			@PathVariable(value="id") int idUtilisateur,
-//			@RequestParam(value="mois") int mois,
-//			@RequestParam(value="annee") int annee){
-//			
-////		String date = "2021-02-22";
-//		String date = annee + "-" + mois;
-//		String startDate = date.substring(0, 7) + "-00";
-//		String endDate = date.substring(0, 7) + "-30";
-//		System.out.println(startDate);
-//		System.out.println(endDate);
-//		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(idUtilisateur, startDate, endDate);
-//		return ResponseEntity.ok(listJours);
-//	}
-
-//	// lister jour by userId selon date
-//	@GetMapping("/utilisateurs/{id}/journaux/")
-//	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
-//			
-//			@PathVariable(value="id") int idUtilisateur,
-//			@RequestParam(value="mois") int mois,
-//			@RequestParam(value="annee") int annee){
-//			
-//		
-//		String date = "2021-02-22";
-//		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, date);
-//		return ResponseEntity.ok(listJours);
-//	}
-
-	// lister jour by userId
+	// lister jour by userId selon date
 	@GetMapping("/utilisateurs/{id}/journaux")
 	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
-			@PathVariable(value = "id") int idUtilisateur) {
-		List<JourDto> listJours = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
-		return ResponseEntity.ok(listJours);
+			@PathVariable(value = "id") int idUtilisateur, @RequestParam(value = "mois") int mois,
+			@RequestParam(value = "annee") int annee) {
+
+		System.out.println(mois);
+		
+		String dateNoDay = annee + "-" + mois;
+		if (mois < 10) {
+			 dateNoDay = annee + "-0" + mois;
+		}
+
+		List<JourDto> listAll = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
+		List<JourDto> listMounth = new ArrayList<>();
+
+		for (int i = 0; i < listAll.size(); i++) {
+			if (listAll.get(i).getDateJour().contains(dateNoDay)) {
+				listMounth.add(listAll.get(i));
+			}
+		}
+		return ResponseEntity.ok(listMounth);
 	}
 
 	// update
