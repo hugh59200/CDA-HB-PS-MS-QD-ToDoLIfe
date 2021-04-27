@@ -21,4 +21,7 @@ function useFetch(url) {
   return [data, loading];
 }
 
-export { useFetch };
+function refreshPage(){ 
+  window.location.reload(); 
+}
+export { useFetch, refreshPage };
