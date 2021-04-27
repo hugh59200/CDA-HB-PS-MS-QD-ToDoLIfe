@@ -1,5 +1,6 @@
 import React from "react";
-import TypedText from "../components/typed/TypedText";
+// import TypedText from "../../components/typed/TypedText";
+import './Home.css'
 
 const Home = () => {
   // const [message, setMessage] = useState("")
@@ -11,10 +12,12 @@ const Home = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center align-self-center align-items-center">
-        <h1 className=" text-uppercase text-white text-center ">
-          <TypedText />
-        </h1>
+      <div>
+        <h1 className="titre">
+           {/* <TypedText/> */}
+           {/* soit typed soit text me one sans typed, a voir ensemble */}
+           Bienvenue <br/> sur ToDoLife.
+           </h1>
       </div>
     </>
   );
