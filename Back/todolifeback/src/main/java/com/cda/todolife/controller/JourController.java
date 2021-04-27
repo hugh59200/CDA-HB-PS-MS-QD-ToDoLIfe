@@ -41,7 +41,7 @@ public class JourController {
 	// create by Id
 	@PostMapping("/jour")
 	public ResponseEntity<JourDto> getByIdUser(
-			@RequestBody JourDto jourDto, 
+			@RequestBody JourDto jourDto,
 			@RequestParam(value = "id") int id )
 			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
 		this.jourService.add(id, jourDto);
