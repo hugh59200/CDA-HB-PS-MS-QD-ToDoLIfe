@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Switch from "react-bootstrap/esm/Switch";
 import { Route } from "react-router";
 
-import Home from "../views/Home";
+import Home from "../views/home/Home";
 import ConnexionForm from "../components/form/ConnexionForm";
 import InscriptionForm from "../components/form/InscriptionForm";
 import AttenteValidation from "../components/pageArrive/AttenteValidation";

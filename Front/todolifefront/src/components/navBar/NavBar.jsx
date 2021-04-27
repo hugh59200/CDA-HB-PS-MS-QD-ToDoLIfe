@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import {
-  URL_CONNEXION,
-  URL_HOME,
-  URL_INSCRIPTION,
-  URL_TODO_LIST,
-  URL_DECONNEXION,
-  URL_JOURNAL,
-  URL_WATCHLIST,
-} from "../../constant/URL_CONST";
-
 import { NavbarBrand } from "react-bootstrap";
-
 import { deconnected } from "../../service/authentificationService";
+import "./NavBar.css"
+import {URL_CONNEXION,URL_HOME,URL_INSCRIPTION,URL_TODO_LIST,URL_DECONNEXION,URL_JOURNAL,URL_WATCHLIST} from "../../constant/URL_CONST";
+
 
 const NavBar = () => {
+
   const history = useHistory();
-
   const [btnLog, setBtnLog] = useState("");
-
   const changeNavBar = () => {
+
     if (localStorage.getItem("token") == null) {
+
       setBtnLog(
         <>
           <li className="nav-item">
@@ -41,17 +34,11 @@ const NavBar = () => {
               register
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-            <NavLink
-              className="nav-link text-white"
-              activeClassName="font-weight-bold"
-            >
-              forget password
-            </NavLink>
-          </li> */}
         </>
       );
+
     } else {
+      
       setBtnLog(
         <>
           <li className="nav-item">
@@ -112,14 +99,14 @@ const NavBar = () => {
 
   return (
     <>
-      <header className="navbar navbar-expand-lg navbar-light bg-dark">
-        <NavbarBrand className="navbar-brand text-white"> ToDoLife</NavbarBrand>
+      <header className="navbar navbar-expand-lg">
+        <NavbarBrand className="navbarTitle"> To Do Life</NavbarBrand>
         <button className="navbar-toggler">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item ">
+            <li className="nav-item">
               <NavLink
                 to={URL_HOME}
                 className="nav-link text-white"
