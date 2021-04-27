@@ -46,7 +46,7 @@ const NavBar = () => {
       );
 
     } else {
-      
+
       setBtnLog(
         <>
           <li className="nav-item">
@@ -58,7 +58,7 @@ const NavBar = () => {
               TodoList
             </NavLink>
           </li>
-          
+
           <li className="nav-item">
             <NavLink
               to={URL_JOURNAL}
@@ -69,7 +69,7 @@ const NavBar = () => {
               Journal
             </NavLink>
           </li>
-          
+
           <li className="nav-item">
             <NavLink
               to={URL_WATCHLIST}
@@ -101,7 +101,7 @@ const NavBar = () => {
     // history.push(URL_HOME);
     history.go(0);
   };
-  
+
   const removeTodoList = () =>{
     localStorage.removeItem('id_todolist')
     localStorage.removeItem('label_todolist')
