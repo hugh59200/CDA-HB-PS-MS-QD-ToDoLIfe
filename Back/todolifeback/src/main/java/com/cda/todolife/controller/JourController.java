@@ -74,6 +74,7 @@ public class JourController {
 			@RequestParam(value = "annee") int annee) {
 
 		System.out.println(mois);
+		System.out.println(annee);
 		
 		String dateNoDay = annee + "-" + mois;
 		if (mois < 10) {

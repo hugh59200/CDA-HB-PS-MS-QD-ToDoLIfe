@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Switch from "react-bootstrap/esm/Switch";
 import { Route } from "react-router";
 
-import Home from "../views/Home";
+import Home from "../views/home/Home";
 import ConnexionForm from "../components/form/ConnexionForm";
 import InscriptionForm from "../components/form/InscriptionForm";
 import AttenteValidation from "../components/pageArrive/AttenteValidation";
@@ -30,9 +30,19 @@ import MonJournal from "../components/journal/MonJournal";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
 
 import Auth from "../service/Auth";
-import Livres from "../components/watchlist/series/Livres";
-import Series from "../components/watchlist/livres/Series";
+
+import Livres from "../components/watchlist/livres/Livres";
+import NewLivre from "../components/watchlist/livres/NewLivre"
+import { URL_NEW_LIVRE } from './../constant/URL_CONST';
+
+import Series from "../components/watchlist/series/Series";
+import NewSerie from "../components/watchlist/series/NewSerie"
+import { URL_NEW_SERIE } from './../constant/URL_CONST';
+
 import Films from "../components/watchlist/film/Films";
+import NewFilm from './../components/watchlist/film/NewFilm';
+import { URL_NEW_FILM } from './../constant/URL_CONST';
+
 // import Error404 from "../views/Error404";
 
 const CustomHistory = createBrowserHistory();
@@ -70,8 +80,11 @@ class Routes extends Component {
           {/* view watchlist*/}
           <PrivateRoute path={URL_WATCHLIST} component={MaWatchlist} />
           <PrivateRoute path={URL_LIVRES} component={Livres} />
+          <PrivateRoute path={URL_NEW_LIVRE} component={NewLivre} />
           <PrivateRoute path={URL_SERIES} component={Series} />
+          <PrivateRoute path={URL_NEW_SERIE} component={NewSerie} />
           <PrivateRoute path={URL_FILMS} component={Films} />
+          <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           {/* <Route component={Error404} /> */}
 
           {/* composants toaster */}

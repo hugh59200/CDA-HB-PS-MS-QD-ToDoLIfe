@@ -1,24 +1,31 @@
-.monJournal{
+.monJournal {
   background-color: #0090E8;
   height: 800px;
   width: 600px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border-radius: 10px;
+  border-top-style: double ;
 }
 
-div > h2 {
-  height: 30px;
+.titreJournal {
+  background-color: #197ebd;
+  font-size: 50px;
+  width: 600px;
+  height: 100px;
   padding: 20px;
-  margin-top: 40px;
+  margin: 0 auto;
+  margin-top: 100px;
+  letter-spacing: 2px;
+  border-top-left-radius: 80px 80px;
 }
 
 .journalItem {
   height: 800px;
+  margin-top: 50px;
 }
 
 .addItem {
@@ -38,34 +45,58 @@ div > h2 {
   font-weight: bold;
   display: flex;
 }
-.journalItem > div :hover{
+
+.journalItem>div :hover {
   background-color: #0376bd;
   cursor: pointer;
 }
 
-.index{
+.journalItem>p {
+  width: 400px;
+  height: 80px;
+  margin: auto;
+  font-weight: bolder;
+  background-color: #55b8ff;
+  text-align: center;
+  margin-top: 200px;
+  padding-top: 25px;
+  color: white;
+  letter-spacing: 3px;
+  border-radius: 10px;
+}
+
+.index {
   width: 5%;
 }
 
-select{
-  width: 200px;
-  background-color:  rgb(72, 173, 255);
-  color: white;
-  font-size: large;
+select {
+  width: 150px;
+  background-color: #55b8ff;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  border-radius: 10px;
+  text-align-last: center;
+  cursor: pointer;
+  border: 0px;
+  outline: 0px;
 }
 
-.evenement{
- width: 95%;
+.evenement {
+  width: 95%;
 }
 
-.entete{
+.entete {
+  background-color: #55b8ff;
+  width: 550px;
+  height: 50px;
   display: flex;
   justify-content: space-around;
   color: white;
   font-size: x-large;
-  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.delete :hover{
+.delete :hover {
   color: rgb(141, 18, 18)
 }

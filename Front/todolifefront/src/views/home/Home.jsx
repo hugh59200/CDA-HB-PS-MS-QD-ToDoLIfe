@@ -1,5 +1,7 @@
 import React from "react";
-import TypedText from "../components/typed/TypedText";
+// import TypedText from "../../components/typed/TypedText";
+import './Home.css'
+import TypedText from './../../components/typed/TypedText';
 
 const Home = () => {
   // const [message, setMessage] = useState("")

@@ -3,9 +3,9 @@ import React from 'react';
 const Auth = () => {
     return (
         <>
-            <h1>
+            {/* <h1>
             see you soon
-            </h1>
+            </h1> */}
         </>
     );
 };
