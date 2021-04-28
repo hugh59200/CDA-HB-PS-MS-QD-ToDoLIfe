@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: space-around;
   border-top-style: double ;
+  border-top-color: white;
 }
 
 .jourdetails{
@@ -20,7 +21,6 @@
 
 .enteteJour{
   height: 30%;
-  /* background-color: rgb(212, 255, 144); */
 }
 
 

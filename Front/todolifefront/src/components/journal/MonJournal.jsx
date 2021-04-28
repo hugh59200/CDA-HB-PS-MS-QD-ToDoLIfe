@@ -25,6 +25,8 @@ const MonJournal = () => {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [showList, setshowList] = useState(true);
+	const [jourData, setjourData] = useState('');
+	const [showJourDetail, setshowJourDetail] = useState(false);
 
 	async function fetchUrl(mois, annee) {
 		setmois(mois);
@@ -47,38 +49,7 @@ const MonJournal = () => {
 		}
 	}
 
-	function JournalDetail(jourData) {
-		console.log(jourData);
-		return (
-			<>
-				<div className="jourdetails">
-          <div className="enteteJour">
-            <div>Humeur :</div>
-            <div>Titre :</div>
-          </div>
-          <div className="textJour">
-            <p></p>
-          </div>
-        </div>
-			</>
-		);
-	}
-
-	function boutonRevenir() {
-		return (
-			<div className="revenir">
-				<button
-					className="btn-form"
-					onClick={() => {
-						setshowList(true);
-					}}
-				>
-					revenir
-				</button>
-			</div>
-		);
-	}
-
+  
 	function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
 		return (
 			<div className="entete">
@@ -88,7 +59,7 @@ const MonJournal = () => {
 						fetchUrl(e.target.value, annee);
 						setshowList(true);
 					}}
-				>
+          >
 					<option defaultValue={mois}>mois</option>
 					{allmonth.map((mois, i) => (
 						<option key={i} value={i + 1}>
@@ -105,7 +76,7 @@ const MonJournal = () => {
 				>
 					<option defaultValue={annee}>année</option>
 					{allyear.map((annee, i) => (
-						<option key={i} value={annee}>
+            <option key={i} value={annee}>
 							{annee}
 						</option>
 					))}
@@ -113,58 +84,82 @@ const MonJournal = () => {
 			</div>
 		);
 	}
-
-	function Listejour() {
-		return (
-			<div className="journalItem">
-				{loading ? (
-					<p className="loading">Vous n'avez rien à cette date...</p>
-				) : (
-					<div>
-						{data.map(data => (
-							<div
-								className="jours"
-								onClick={() => {
-									JournalDetail(data);
-									setshowList(false);
-								}}
-								key={data.idJour}
-							>
-								<span className="evenement">{data.titre}</span>
-								<span>
-									<FontAwesomeIcon
-										icon={faPencilAlt}
-										size="lg"
-										className="delete"
-									/>
-								</span>
+  
+	function affichage() {
+    if (showList) {
+      return (
+				<>
+					<div className="journalItem">
+						{loading ? (
+							<p className="loading">Vous n'avez rien à cette date...</p>
+              ) : (
+                <div>
+								{data.map(data => (
+                  <div
+                  className="jours"
+                  onClick={() => {
+                    setjourData(data);
+                    setshowList(false);
+                    setshowJourDetail(true);
+										}}
+										key={data.idJour}
+									>
+										<span className="evenement">{data.titre}</span>
+										<span>
+											<FontAwesomeIcon
+												icon={faPencilAlt}
+												size="lg"
+												className="delete"
+                        />
+										</span>
+									</div>
+								))}
 							</div>
-						))}
+						)}
 					</div>
-				)}
-			</div>
-		);
+					<div className="addItem">
+						<input type="submit" value="ajouter" className="btn-form" />
+					</div>
+				</>
+			);
+      
+		} else if (showJourDetail) {
+      
+      return (
+        <>
+					<div className="jourdetails">
+						<div className="enteteJour">
+							<div>Humeur : {jourData.humeur}</div>
+							<div>Titre : {jourData.titre}</div>
+						</div>
+						<div className="textJour">
+							<p></p>
+						</div>
+					</div>
+					<div className="revenir">
+						<button
+							className="btn-form"
+							onClick={() => {
+                setshowList(true);
+								setshowJourDetail(false);
+							}}
+              >
+							revenir
+						</button>
+					</div>
+				</>
+			);
+		}
 	}
-
+  
 	return (
-		<div>
+    <div>
 			<h2 className="titreJournal">Mon journal</h2>
 			<div className="monJournal">
 				{ChoixDate(fetchUrl, annee, mois, allmonth, allyear)}
-
-				{showList
-					? [Listejour(), boutonAdd()]
-					: [JournalDetail(data.titre), boutonRevenir()]}
+				{affichage(showList)}
 			</div>
 		</div>
 	);
 };
 export default MonJournal;
-
-function boutonAdd() {
-	return (
-		<div className="addItem">
-			<input type="submit" value="ajouter" className="btn-form" />
-		</div>
-	);
-}
