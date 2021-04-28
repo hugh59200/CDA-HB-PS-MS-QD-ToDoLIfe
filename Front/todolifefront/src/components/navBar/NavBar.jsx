@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { NavbarBrand } from "react-bootstrap";
 import { deconnected } from "../../service/authentificationService";
-import "./NavBar.css"
+import "../../assets/css/navbar/NavBar.css"
 import {URL_CONNEXION,URL_HOME,URL_INSCRIPTION,URL_TODO_LIST,URL_DECONNEXION,URL_JOURNAL,URL_WATCHLIST} from "../../constant/URL_CONST";
 
 
@@ -100,7 +100,7 @@ const NavBar = () => {
   return (
     <>
       <header className="navbar navbar-expand-lg">
-        <NavbarBrand className="navbarTitle"> To Do Life</NavbarBrand>
+        <NavbarBrand className="navbarTitle"> ToDoLife</NavbarBrand>
         <button className="navbar-toggler">
           <span className="navbar-toggler-icon"></span>
         </button>

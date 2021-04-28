@@ -1,22 +1,16 @@
 import React from "react";
-// import TypedText from "../../components/typed/TypedText";
+import TypedText from "../../components/typed/TypedText";
 import './Home.css'
 
 const Home = () => {
-  // const [message, setMessage] = useState("")
-
-  // if (localStorage.getItem('username') != null){
-  //   setMessage (
-  //     "Welcome " + localStorage.getItem('username') + "!")
-  // }
 
   return (
     <>
       <div>
         <h1 className="titre">
-           {/* <TypedText/> */}
-           {/* soit typed soit text me one sans typed, a voir ensemble */}
-           Bienvenue <br/> sur ToDoLife.
+           <TypedText/>
+           {/* soit typed soit text me one sans typed, a voir ensemble
+           Bienvenue <br/> sur ToDoLife. */}
            </h1>
       </div>
     </>

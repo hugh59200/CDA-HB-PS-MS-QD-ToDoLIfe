@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MonjournalStyle.css";
+import "../../assets/css/journal/MonjournalStyle.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import { API_JOURNAL_BY_USERID } from "../../constant/API_BACK";

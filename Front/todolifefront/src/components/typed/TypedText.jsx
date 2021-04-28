@@ -4,7 +4,7 @@ class TypedText extends Component {
     render() {
         return (
             /* soit typed soit text me one sans typed, a voir ensemble */
-            <Typed strings={["Bienvenue  <br/>  sur  <br/>  ToDoLife ."]}
+            <Typed strings={["Bienvenue  <br/>  sur  ToDoLife."]}
                 typeSpeed={40}
                 backSpeed={80}
                 backDelay={4000}
