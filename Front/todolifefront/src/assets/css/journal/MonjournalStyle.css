@@ -11,8 +11,33 @@
   border-top-style: double ;
 }
 
+.jourdetails{
+  background-color: rgb(72, 173, 255);
+  height: 500px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.enteteJour{
+  height: 30%;
+  /* background-color: rgb(212, 255, 144); */
+}
+
+
+.enteteJour > div {
+  height: 50%;
+  background-color: #0090E8;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.textJour{
+  height: 70%;
+}
+
 .titreJournal {
-  background-color: #197ebd;
+  background-color: #0090E8;
   font-size: 50px;
   width: 600px;
   height: 100px;
@@ -28,10 +53,11 @@
   margin-top: 50px;
 }
 
-.addItem {
-  height: 100px;
+.addItem, .revenir {
+  height: 30px;
   align-self: center;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .jours {

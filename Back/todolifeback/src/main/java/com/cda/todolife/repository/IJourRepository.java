@@ -14,6 +14,4 @@ public interface IJourRepository extends CrudRepository<Jour, Integer> {
 
 	List<Jour> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
 
-//	List<Jour> findAllByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
-
 }
