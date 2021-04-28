@@ -1,0 +1,53 @@
+.btn-test{
+    background-color: #0090E8;
+    text-align: center;
+    color: white;
+    border-radius: 0 !important;
+}
+
+.btn-retour{
+
+    margin-top: 10px;
+    background-color: #14A7FF;
+    text-align: center;
+    color: white;
+    border-radius: 0 !important;
+    
+}
+.marge-mobile{
+    margin-left: -15px;
+}
+
+.timer-actuel{
+    font-size: 20px;
+}
+
+.text-white{
+    color: white;
+}
+
+.marge-film{
+    margin-left:2%;
+    margin-right: 2%;
+}
+
+.marge-serie{
+    margin-left:8%;
+    margin-right: 8%;
+}
+
+.bloc-film{
+    width: 600px;
+    min-height: 600px;
+    background: #0090E8;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+    margin-top: 50px;
+}
+
+.btn-enregistrer{
+    background-color: #14A7FF;
+    border: none;
+}
