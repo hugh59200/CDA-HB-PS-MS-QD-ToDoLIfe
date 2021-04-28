@@ -27,7 +27,7 @@ const MaWatchlist=()=> {
             setIsWatchList(false);
             console.log(error);
           }
-       
+
 
         });
         console.log(axios.get(API_WATCHLIST + "/utilisateurs/" + idUtilisateur));
