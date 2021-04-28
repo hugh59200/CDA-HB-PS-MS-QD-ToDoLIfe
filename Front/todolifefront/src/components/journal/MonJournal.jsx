@@ -3,6 +3,7 @@ import "../../assets/css/journal/MonjournalStyle.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import { API_JOURNAL_BY_USERID } from "../../constant/API_BACK";
+// import { useHistory } from "react-router-dom";
 
 const MonJournal = () => {
   const allmonth = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']
@@ -11,9 +12,11 @@ const MonJournal = () => {
   const [annee, setannee] = useState(new Date().getFullYear());
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showList, setshowList] = useState(true)
+  // const history = useHistory();
 
   async function fetchUrl(mois, annee) {
-    setmois(mois); 
+    setmois(mois);
     setannee(annee);
     const response = await fetch(API_JOURNAL_BY_USERID + localStorage.getItem("id") + "/journaux/?mois=" + mois + "&annee=" + annee);
     const json = await response.json();
@@ -21,37 +24,46 @@ const MonJournal = () => {
     if (json.length === 0) {
       setLoading(true);
     } else {
-      setData(json); 
+      setData(json);
       setLoading(false);
     }
   }
 
+  function JournalDetail(showList, titreJour) {
+    setshowList(false)
+    return <div>
+         ok
+    </div>;
+  }
+
+  
+  function Listejour() {
+    return <div className="journalItem">
+           {loading ? 
+           ( <p className="loading">Vous n'avez rien à cette date...</p> )
+             : 
+             (<div>{data.map((data) => 
+            <div
+            className="jours"
+            onClick={() => { setshowList(false) }}
+            key={data.idJour}>
+            <span className="evenement">{data.titre}</span>
+            <span><FontAwesomeIcon icon={faPencilAlt} size="lg" className="delete" /></span>
+          </div>)}
+          </div>
+          )}
+    </div>;
+  }
+
+  
   return (
     <div>
       <h2 className="titreJournal">Mon journal</h2>
       <div className="monJournal">
-        <div className="entete">
-          <select className="form-select" onChange={(e) => { fetchUrl(e.target.value, annee) }}>
-            <option defaultValue={mois} >mois</option>
-            {allmonth.map((mois, i) => <option key={i} value={i + 1}>{mois}</option>)} </select>
 
-          <select className="form-select" onChange={(e) => { fetchUrl(mois, e.target.value) }}>
-            <option defaultValue={annee} >année</option>
-            {allyear.map((annee, i) => <option key={i} value={annee}>{annee}</option>)}</select>
-        </div>
+        {ChoixDate(fetchUrl, annee, mois, allmonth, allyear)}
 
-        <div className="journalItem">
-          {loading ? (
-            <p className="loading">Vous n'avez rien à cette date...</p> 
-            ) : (<div>{data.map((data) => <div
-            className="jours"
-            onClick={() => console.log("ok")}
-            key={data.idJour}>
-            <span className="evenement">{data.titre}</span>
-            <span><FontAwesomeIcon icon={faPencilAlt} size="lg" className="delete" /></span>
-          </div>)}</div>
-          )}
-        </div>
+        {showList ? Listejour() :  JournalDetail(true, data.titre) }
 
         <div className="addItem">
           <input type="submit" value="ajouter" className="btn-form" />
@@ -60,4 +72,21 @@ const MonJournal = () => {
     </div>
   );
 };
+
 export default MonJournal;
+
+
+function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
+
+  return <div className="entete">
+
+    <select className="form-select" onChange={(e) => { fetchUrl(e.target.value, annee); } }>
+      <option defaultValue={mois}>mois</option>
+      {allmonth.map((mois, i) => <option key={i} value={i + 1}>{mois}</option>)} </select>
+
+    <select className="form-select" onChange={(e) => { fetchUrl(mois, e.target.value); } }>
+      <option defaultValue={annee}>année</option>
+      {allyear.map((annee, i) => <option key={i} value={annee}>{annee}</option>)}</select>
+
+  </div>;
+}
