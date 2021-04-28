@@ -21,8 +21,9 @@ export const URL_NEW_TODO_LIST = '/new-todo-list'
 
 /* Watchlist */
 export const URL_WATCHLIST = '/watchlist'
+export const URL_FILMS = '/films'
+export const URL_SERIES = '/series'
+export const URL_LIVRES = '/livres'
 
 /* attentes */
 export const URL_ATTENTE = '/attentes'
-
-

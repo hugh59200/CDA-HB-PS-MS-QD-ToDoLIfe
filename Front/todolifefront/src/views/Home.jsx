@@ -11,10 +11,12 @@ const Home = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center align-self-center align-items-center">
-        <h1 className=" text-uppercase text-white text-center ">
-          <TypedText />
-        </h1>
+      <div className="container d-flex h-100">
+        <div className="row homeMgTopTxt text-center">
+          <h1 className=" text-uppercase text-white text-center ">
+            <TypedText />
+          </h1>
+        </div>
       </div>
     </>
   );
