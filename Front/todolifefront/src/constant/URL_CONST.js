@@ -36,6 +36,9 @@ export const URL_UPDATE_TODO = '/update-todo'
 
 /* Watchlist */
 export const URL_WATCHLIST = '/watchlist'
+export const URL_FILMS = '/films'
+export const URL_SERIES = '/series'
+export const URL_LIVRES = '/livres'
 
 /* attentes */
-export const URL_ATTENTE = '/attentes' 
+export const URL_ATTENTE = '/attentes'

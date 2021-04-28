@@ -73,13 +73,13 @@ class Routes extends Component {
 
           {/* update todolist */}
           <PrivateRoute path={URL_UPDATE_TODO_LIST} component={UpdateList} />
-          
+
           {/* add todo on todolist */}
           <PrivateRoute path={URL_INSIDE_TODOLIST} component={TodoInside} />
-          
+
           {/* add a todo */}
           <PrivateRoute path={URL_NEW_TODO} component={AddTodo} />
-          
+
           {/* update a todo */}
           <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
 
@@ -88,6 +88,9 @@ class Routes extends Component {
 
           {/* view watchlist*/}
           <PrivateRoute path={URL_WATCHLIST} component={MaWatchlist} />
+          <PrivateRoute path={URL_LIVRES} component={Livres} />
+          <PrivateRoute path={URL_SERIES} component={Series} />
+          <PrivateRoute path={URL_FILMS} component={Films} />
           {/* <Route component={Error404} /> */}
 
           {/* composants toaster */}
