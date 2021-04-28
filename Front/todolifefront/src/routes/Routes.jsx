@@ -89,8 +89,11 @@ class Routes extends Component {
           {/* view watchlist*/}
           <PrivateRoute path={URL_WATCHLIST} component={MaWatchlist} />
           <PrivateRoute path={URL_LIVRES} component={Livres} />
+          <PrivateRoute path={URL_NEW_LIVRE} component={NewLivre} />
           <PrivateRoute path={URL_SERIES} component={Series} />
+          <PrivateRoute path={URL_NEW_SERIE} component={NewSerie} />
           <PrivateRoute path={URL_FILMS} component={Films} />
+          <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           {/* <Route component={Error404} /> */}
 
           {/* composants toaster */}
