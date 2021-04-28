@@ -6,7 +6,7 @@ export function authenticated(id, username, token) {
 }
 
 export function deconnected() {
-    isLoggued = false;
+    isLogged = false;
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('token')
@@ -20,7 +20,7 @@ export function isAuthenticated() {
     } else {
         deconnected()
     }
-    return isLoggued;
+    return isLogged;
 }
 
 /* confirmation */
@@ -35,7 +35,7 @@ export function confirmed() {
 export function unConfirmed() {
     isConfirm = false;
     localStorage.setItem("confirmation", isConfirm);
-}   
+}
 
 export function isConfirmed() {
     if (localStorage.getItem('confirmation') === true) {

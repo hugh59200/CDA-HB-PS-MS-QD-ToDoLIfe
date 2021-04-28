@@ -23,6 +23,7 @@ public class Film {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idFilm;
 	private String name;
+	private float moment;
 
 	@ManyToOne
 	@JoinColumn(name = "id_watch_list", nullable = false)
