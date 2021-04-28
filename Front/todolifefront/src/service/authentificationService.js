@@ -6,17 +6,17 @@
 
 // const cookies = new Cookies();
 
-export let isLoggued = false;
+export let isLogged = false;
 
 export function authenticated(id, username, token) {
-    isLoggued = true;
+    isLogged = true;
     // localStorage.setItem("id", id);
     // localStorage.setItem("username", username);
     // localStorage.setItem("token", token);
 }
 
 export function deconnected() {
-    isLoggued = false;
+    isLogged = false;
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('token')
@@ -30,7 +30,7 @@ export function isAuthenticated() {
     } else {
         deconnected()
     }
-    return isLoggued;
+    return isLogged;
 }
 
 /* confirmation */
