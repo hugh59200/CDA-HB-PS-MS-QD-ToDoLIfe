@@ -49,7 +49,6 @@ const MonJournal = () => {
 		}
 	}
 
-  
 	function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
 		return (
 			<div className="entete">
@@ -59,7 +58,7 @@ const MonJournal = () => {
 						fetchUrl(e.target.value, annee);
 						setshowList(true);
 					}}
-          >
+				>
 					<option defaultValue={mois}>mois</option>
 					{allmonth.map((mois, i) => (
 						<option key={i} value={i + 1}>
@@ -76,7 +75,7 @@ const MonJournal = () => {
 				>
 					<option defaultValue={annee}>année</option>
 					{allyear.map((annee, i) => (
-            <option key={i} value={annee}>
+						<option key={i} value={annee}>
 							{annee}
 						</option>
 					))}
@@ -84,23 +83,23 @@ const MonJournal = () => {
 			</div>
 		);
 	}
-  
+
 	function affichage() {
-    if (showList) {
-      return (
+		if (showList) {
+			return (
 				<>
 					<div className="journalItem">
 						{loading ? (
 							<p className="loading">Vous n'avez rien à cette date...</p>
-              ) : (
-                <div>
+						) : (
+							<div>
 								{data.map(data => (
-                  <div
-                  className="jours"
-                  onClick={() => {
-                    setjourData(data);
-                    setshowList(false);
-                    setshowJourDetail(true);
+									<div
+										className="jours"
+										onClick={() => {
+											setjourData(data);
+											setshowList(false);
+											setshowJourDetail(true);
 										}}
 										key={data.idJour}
 									>
@@ -110,7 +109,7 @@ const MonJournal = () => {
 												icon={faPencilAlt}
 												size="lg"
 												className="delete"
-                        />
+											/>
 										</span>
 									</div>
 								))}
@@ -122,28 +121,33 @@ const MonJournal = () => {
 					</div>
 				</>
 			);
-      
 		} else if (showJourDetail) {
-      
-      return (
-        <>
+			return (
+				<>
 					<div className="jourdetails">
 						<div className="enteteJour">
-							<div>Humeur : {jourData.humeur}</div>
-							<div>Titre : {jourData.titre}</div>
+							<div>
+								<div>Humeur </div>
+								<span className="jourData">{jourData.humeur}</span>
+							</div>
+							<div>
+								<div> Titre </div>
+								<span className="jourData">{jourData.titre}</span>
+							</div>
 						</div>
 						<div className="textJour">
-							<p></p>
+							<div> Texte </div>
+							<p className="jourDataTexte">{jourData.texte}</p>
 						</div>
 					</div>
 					<div className="revenir">
 						<button
 							className="btn-form"
 							onClick={() => {
-                setshowList(true);
+								setshowList(true);
 								setshowJourDetail(false);
 							}}
-              >
+						>
 							revenir
 						</button>
 					</div>
@@ -151,13 +155,13 @@ const MonJournal = () => {
 			);
 		}
 	}
-  
+
 	return (
-    <div>
+		<div>
 			<h2 className="titreJournal">Mon journal</h2>
 			<div className="monJournal">
 				{ChoixDate(fetchUrl, annee, mois, allmonth, allyear)}
-				{affichage(showList)}
+				{affichage()}
 			</div>
 		</div>
 	);
