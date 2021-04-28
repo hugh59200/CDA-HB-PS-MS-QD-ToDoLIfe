@@ -22,6 +22,4 @@ public interface IJourService {
 
 	List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
 	
-//	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
-	
 }
