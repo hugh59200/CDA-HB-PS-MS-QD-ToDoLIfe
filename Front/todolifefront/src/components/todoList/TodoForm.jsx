@@ -1,73 +1,73 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router";
+// import React, { useState, useEffect, useRef } from "react";
+// import { useHistory } from "react-router";
 
-function TodoForm(props) {
-  const history = useHistory();
-  // console.log(history.location.curentList);
-  // console.log(history.location.curentList.label);
+// function TodoForm(props) {
+//   const history = useHistory();
+//   // console.log(history.location.curentList);
+//   // console.log(history.location.curentList.label);
   
-  let labelList = history.location.curentList;
-  console.log(labelList);
-  
-
-  const [input, setInput] = useState(props.edit ? props.edit.value : "");
+//   let labelList = history.location.curentList;
+//   console.log(labelList);
   
 
-  const inputRef = useRef(null);
+//   const [input, setInput] = useState(props.edit ? props.edit.value : "");
+  
 
-  useEffect(() => {
-    inputRef.current.focus();
-  });
+//   const inputRef = useRef(null);
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
+//   useEffect(() => {
+//     inputRef.current.focus();
+//   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+//   const handleChange = (e) => {
+//     setInput(e.target.value);
+//   };
 
-    props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: input,
-    });
-    setInput("");
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
 
-  return (
-    <form onSubmit={handleSubmit} className="todo-form">
-      {props.edit ? (
-        <>
-          <input
-            placeholder="Update your item"
-            value={input}
-            onChange={handleChange}
-            name="text"
-            ref={inputRef}
-            className="todo-input edit"
-          />
-          <button
-            onClick={handleSubmit}
-            className="todo-button-update btn"
-          ></button>
-        </>
-      ) : (
-        <>
-          <h1 className="text-white">{
+//     props.onSubmit({
+//       id: Math.floor(Math.random() * 10000),
+//       text: input,
+//     });
+//     setInput("");
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit} className="todo-form">
+//       {props.edit ? (
+//         <>
+//           <input
+//             placeholder="Update your item"
+//             value={input}
+//             onChange={handleChange}
+//             name="text"
+//             ref={inputRef}
+//             className="todo-input edit"
+//           />
+//           <button
+//             onClick={handleSubmit}
+//             className="todo-button-update btn"
+//           ></button>
+//         </>
+//       ) : (
+//         <>
+//           <h1 className="text-white">{
             
-          }</h1>
-          <input
-            placeholder="Ajouter une tache"
-            value={input}
-            onChange={handleChange}
-            name="text"
-            className="todo-input"
-            ref={inputRef}
-          />
-          <button onClick={handleSubmit} className="todo-button btn"></button>
-        </>
-      )}
-    </form>
-  );
-}
+//           }</h1>
+//           <input
+//             placeholder="Ajouter une tache"
+//             value={input}
+//             onChange={handleChange}
+//             name="text"
+//             className="todo-input"
+//             ref={inputRef}
+//           />
+//           <button onClick={handleSubmit} className="todo-button btn"></button>
+//         </>
+//       )}
+//     </form>
+//   );
+// }
 
-export default TodoForm;
+// export default TodoForm;

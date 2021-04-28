@@ -2,17 +2,19 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.ToDoListDto;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 import com.cda.todolife.model.ToDoList;
+import com.cda.todolife.model.Utilisateur;
 import com.cda.todolife.repository.IToDoListRepository;
+import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.service.IToDoListService;
 
 @Service
@@ -20,19 +22,22 @@ public class ToDoListServiceImpl implements IToDoListService {
 
 	@Autowired
 	private IToDoListRepository todolistDao;
+	
+	@Autowired
+	private IUtilisateurRepository utilisateurRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
 //	ajouter une todolist
 	@Override
-	public void add(ToDoListDto list) throws ToDoListExistanteException {
-		Optional<ToDoList> probEntOpt = this.todolistDao.findById(list.getIdTodoList());
-		if (probEntOpt.isPresent()) {
-			throw new ToDoListExistanteException();
-		} else {
-			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
-		}
+	public void add(String label, int id) throws ToDoListExistanteException {
+		
+		Utilisateur utilisateur = utilisateurRepository.findById(id).get();
+		
+		ToDoList list = ToDoList.builder().label(label).utilisateur(utilisateur).build();
+		
+		this.todolistDao.save(list);
 	}
 
 //	lister les todolist
@@ -73,6 +78,14 @@ public class ToDoListServiceImpl implements IToDoListService {
 	public void deleteById(int id) throws ToDoListIntrouvableException {
 		this.todolistDao.findById(id).orElseThrow(ToDoListIntrouvableException::new);
 		this.todolistDao.deleteById(id);
+	}
+
+	@Override
+	public List<ToDoListDto> findListByUserId(int id) throws ToDoListIntrouvableException, ResourceNotFoundException {
+
+		List<ToDoListDto> res = new ArrayList<>();
+		this.todolistDao.findListByUserId(id).forEach(pres -> res.add(this.modelMapper.map(pres, ToDoListDto.class)));
+		return res;
 	}
 
 

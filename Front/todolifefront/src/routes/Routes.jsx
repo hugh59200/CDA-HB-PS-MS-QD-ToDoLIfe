@@ -16,8 +16,11 @@ import {
   URL_INSCRIPTION,
   URL_JOURNAL,
   URL_TODO_LIST,
-  URL_DECONNEXION,
   URL_WATCHLIST,
+  PAGE_CONNEXION,
+  PAGE_DECONNEXION,
+  URL_NEW_TODO_LIST,
+  URL_UPDATE_TODO_LIST,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -27,6 +30,8 @@ import MonJournal from "../components/journal/MonJournal";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
 
 import Auth from "../service/Auth";
+import AddList from "../components/todoList/AddList";
+import UpdateList from "../components/todoList/UpdateList";
 // import Error404 from "../views/Error404";
 
 const CustomHistory = createBrowserHistory();
@@ -52,11 +57,19 @@ class Routes extends Component {
           {/* Form Connection */}
           <Route path={URL_CONNEXION} component={ConnexionForm} />
 
-          {/* page Deconnection */}
-          <Route path={URL_DECONNEXION} component={Auth} />
+          {/* page connection */}
+          <Route path={PAGE_CONNEXION} component={Auth} />
+          {/* page connection */}
+          <Route path={PAGE_DECONNEXION} component={Auth} />
 
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
+
+          {/* add todolist */}
+          <PrivateRoute path={URL_NEW_TODO_LIST} component={AddList} />
+
+          {/* update todolist */}
+          <PrivateRoute path={URL_UPDATE_TODO_LIST} component={UpdateList} />
 
           {/* view journal*/}
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />

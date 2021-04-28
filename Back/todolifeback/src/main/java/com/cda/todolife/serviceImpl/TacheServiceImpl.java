@@ -75,8 +75,10 @@ public class TacheServiceImpl implements ITacheService {
 		this.tacheDao.deleteById(id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tache> findTaskByIdList(int id){
-		return this.tacheDao.findTaskByIdList(id);
+	public List<TacheDto> findTaskByIdList(int id){
+//		return this.tacheDao.findTaskByIdList(id);
+		return (List<TacheDto>) this.modelMapper.map(this.tacheDao.findTaskByIdList(id), TacheDto.class);
 	}
 }
