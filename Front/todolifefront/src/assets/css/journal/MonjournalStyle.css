@@ -21,19 +21,49 @@
 
 .enteteJour{
   height: 30%;
+  background-color: antiquewhite;
 }
 
 
 .enteteJour > div {
   height: 50%;
   background-color: #0090E8;
+  display: flex;
   padding: 20px;
   color: white;
   font-size: 20px;
 }
 
+.enteteJour > div > div {
+  /* background-color: bisque; */
+  width: 40%;
+  justify-content: center;
+}
+
+.enteteJour > div > span {
+  /* background-color: rgb(255, 184, 96); */
+  width: 70%;
+  justify-content: center;
+  text-align: center;
+}
+
 .textJour{
   height: 70%;
+  color: white;
+}
+
+.textJour > div {
+  font-size: 20px;
+  height: 20%;
+  /* background-color: blueviolet; */
+  text-align: center;
+  padding: 20px;
+}
+
+.textJour > p {
+  height: 80%;
+  /* background-color: brown; */
+  padding: 30px;
 }
 
 .titreJournal {
