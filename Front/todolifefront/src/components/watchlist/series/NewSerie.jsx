@@ -11,7 +11,7 @@ function NewSerie() {
 
     <div className="container-fluid marge-mobile">
       <div className="row justify-content-center">
-    
+
       </div>
 
       <div className="row justify-content-center ">
@@ -41,7 +41,7 @@ function NewSerie() {
 
   <div className="form-group row justify-content-center">
     <textarea type="textarea"  className="form-control col-10 text-zone" name="textarea" rows="3" />
-    
+
       </div>
       <button type="submit" className="btn btn-primary btn-enregistrer">Enregistrer</button>
         </form>
