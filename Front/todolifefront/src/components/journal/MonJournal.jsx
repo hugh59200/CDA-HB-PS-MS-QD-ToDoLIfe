@@ -3,6 +3,10 @@ import '../../assets/css/journal/MonjournalStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
+import mood1 from '../../assets/img/mood1.png';
+import mood2 from '../../assets/img/mood2.png';
+import mood3 from '../../assets/img/mood3.png';
+import mood4 from '../../assets/img/mood4.png';
 
 const MonJournal = () => {
 	const allmonth = [
@@ -84,6 +88,21 @@ const MonJournal = () => {
 		);
 	}
 
+	function mood(moodLevel) {
+		switch (moodLevel) {
+			case 1:
+        return <img src={mood1} alt="Logo" className="mood" />
+			case 2:
+        return <img src={mood2} alt="Logo" className="mood" />
+			case 3:
+        return	<img src={mood3} alt="Logo" className="mood" />
+			case 4:
+        return	<img src={mood4} alt="Logo" className="mood" />
+			default:
+				break;
+		}
+	}
+
 	function affichage() {
 		if (showList) {
 			return (
@@ -126,17 +145,15 @@ const MonJournal = () => {
 				<>
 					<div className="jourdetails">
 						<div className="enteteJour">
-							<div>
-								<div>Humeur </div>
-								<span className="jourData">{jourData.humeur}</span>
+							<div className="jourData">
+								{mood(jourData.humeur)}
+
+								{/* {console.log(jourData.humeur)} */}
+								{/* <img src={mood1} alt="Logo" className="mood" /> */}
 							</div>
-							<div>
-								<div> Titre </div>
-								<span className="jourData">{jourData.titre}</span>
-							</div>
+							<div className="titreJour">{jourData.titre}</div>
 						</div>
 						<div className="textJour">
-							<div> Texte </div>
 							<p className="jourDataTexte">{jourData.texte}</p>
 						</div>
 					</div>
