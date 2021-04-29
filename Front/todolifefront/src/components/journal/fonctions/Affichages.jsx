@@ -1,6 +1,15 @@
 import React from 'react';
-import { bouttonRevenir } from '../bouttons/bouttons';
-import { mood } from '../humeur/mood';
+import { bouttonRevenir } from './bouttons';
+import { mood } from './mood';
+
+export function ajouterJour(setshowList, setshowJourDetail) {
+	return (
+		<>
+			<div className="jourdetails">ok</div>
+			{bouttonRevenir(setshowList, setshowJourDetail)}
+		</>
+	);
+}
 
 export function detailJour(jourData, setshowList, setshowJourDetail) {
 	return (

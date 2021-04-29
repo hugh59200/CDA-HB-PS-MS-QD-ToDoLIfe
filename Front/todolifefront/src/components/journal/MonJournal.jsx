@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
-import { bouttonAjouter } from './fonctions/bouttons/bouttons';
-import { fetching } from './fonctions/fetching';
-import { monJournal } from './fonctions/monJournal';
-import { anneeMois, selects } from './fonctions/choix date/selectDate';
-import { detailJour } from './fonctions/affichages/detailJour';
-import { ajouterJour } from './fonctions/affichages/ajouterJour';
+import { bouttonAjouter } from './fonctions/bouttons';
+import { fectchFonction } from './fonctions/fectchFonction';
+import { anneeMois, selects } from './fonctions/selectDate';
+import { detailJour, ajouterJour } from './fonctions/Affichages';
 
 const MonJournal = () => {
 	const { allmonth, allyear } = anneeMois();
@@ -19,15 +17,11 @@ const MonJournal = () => {
 	const [ajoutJour, setajoutJour] = useState(false);
 
 	async function fetchUrl(mois, annee) {
-		setmois(mois);
-		setannee(annee);
-		await fetching(mois, annee, setLoading, setData);
+		await fectchFonction(setmois, mois, setannee, annee, setLoading, setData);
 	}
 
 	function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
-		return (
-			<>{selects(fetchUrl, annee, setshowList, mois, allmonth, allyear)}</>
-		);
+		return selects(fetchUrl, annee, setshowList, mois, allmonth, allyear);
 	}
 
 	function affichage() {
@@ -61,18 +55,17 @@ const MonJournal = () => {
 		}
 		if (showJourDetail)
 			return detailJour(jourData, setshowList, setshowJourDetail);
-		if (ajoutJour) 
-		return ajouterJour(setshowList, setshowJourDetail);
+		if (ajoutJour) return ajouterJour(setshowList, setshowJourDetail);
 	}
 
-	return monJournal(
-		ChoixDate,
-		fetchUrl,
-		annee,
-		mois,
-		allmonth,
-		allyear,
-		affichage,
+	return (
+		<div>
+			<h2 className="titreJournal">Mon journal</h2>
+			<div className="monJournal">
+				{ChoixDate(fetchUrl, annee, mois, allmonth, allyear)}
+				{affichage()}
+			</div>
+		</div>
 	);
 };
 export default MonJournal;

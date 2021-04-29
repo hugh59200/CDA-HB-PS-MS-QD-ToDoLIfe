@@ -2,10 +2,12 @@ import React from 'react';
 
 export function selects(fetchUrl, annee, setshowList, mois, allmonth, allyear) {
 	return (
-		<div className="entete">
-			{selectAnnee(fetchUrl, annee, setshowList, mois, allmonth)}
-			{selectMois(fetchUrl, mois, setshowList, annee, allyear)}
-		</div>
+		<>
+			<div className="entete">
+				{selectAnnee(fetchUrl, annee, setshowList, mois, allmonth)}
+				{selectMois(fetchUrl, mois, setshowList, annee, allyear)}
+			</div>
+		</>
 	);
 }
 
