@@ -84,18 +84,31 @@ public class ToDoListController {
 		return ResponseEntity.ok(list);
 	}
 
+//	// create
+//	@PostMapping("/todolists/{id}/{label}")
+//	public void create(@PathVariable String label, @PathVariable int id) throws ToDoListIntrouvableException {
+//
+//		try {
+//			this.todolistService.add(label, id);
+//		} catch (ToDoListExistanteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
+	
 	// create
-	@PostMapping("/todolists/{id}/{label}")
-	public void create(@PathVariable String label, @PathVariable int id) throws ToDoListIntrouvableException {
+		@PostMapping("/todolists")
+		public void create(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
 
-		try {
-			this.todolistService.add(label, id);
-		} catch (ToDoListExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				this.todolistService.add(list);
+			} catch (ToDoListExistanteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
-
-	}
 
 //	// TODO passer les paths variable en request body
 //	// create

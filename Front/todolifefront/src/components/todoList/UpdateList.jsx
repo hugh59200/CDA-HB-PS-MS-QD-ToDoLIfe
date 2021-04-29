@@ -44,7 +44,7 @@ const UpdateList = (props) => {
   }, []);
 
   const submit = (list) => {
-    console.log("list", list);
+    // console.log("list", list);
 
     TodolistService.update(list).then((res) => {
         console.log(res)

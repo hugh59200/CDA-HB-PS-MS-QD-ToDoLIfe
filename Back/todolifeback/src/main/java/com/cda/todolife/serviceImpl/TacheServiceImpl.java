@@ -2,7 +2,6 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +22,6 @@ public class TacheServiceImpl implements ITacheService {
 
 	@Autowired
 	private ModelMapper modelMapper;
-
-//	ajouter une tache
-	@Override
-	public void add(TacheDto tache) throws TacheExistanteException {
-		Optional<Tache> probEntOpt = this.tacheDao.findById(tache.getIdTache());
-		if (probEntOpt.isPresent()) {
-			throw new TacheExistanteException();
-		} else {
-			this.tacheDao.save(this.modelMapper.map(tache, Tache.class));
-		}
-	}
 
 //	lister les taches
 	@Override
@@ -77,8 +65,15 @@ public class TacheServiceImpl implements ITacheService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TacheDto> findTaskByIdList(int id){
+	public List<TacheDto> findTaskByIdList(int id) {
 //		return this.tacheDao.findTaskByIdList(id);
 		return (List<TacheDto>) this.modelMapper.map(this.tacheDao.findTaskByIdList(id), TacheDto.class);
+	}
+
+//	ajouter une tache
+	@Override
+	public void add(String label, boolean donne, byte priorite) throws TacheExistanteException {
+		Tache tache = Tache.builder().label(label).donne(donne).priorite(priorite).build();
+		this.tacheDao.save(tache);
 	}
 }

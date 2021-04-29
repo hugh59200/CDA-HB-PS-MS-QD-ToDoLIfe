@@ -2,6 +2,7 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,7 @@ import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 import com.cda.todolife.model.ToDoList;
-import com.cda.todolife.model.Utilisateur;
 import com.cda.todolife.repository.IToDoListRepository;
-import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.service.IToDoListService;
 
 @Service
@@ -23,18 +22,25 @@ public class ToDoListServiceImpl implements IToDoListService {
 	@Autowired
 	private IToDoListRepository todolistDao;
 
-	@Autowired
-	private IUtilisateurRepository utilisateurRepository;
+//	@Autowired
+//	private IUtilisateurRepository utilisateurRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
 //	ajouter une todolist
 	@Override
-	public void add(String label, int id) throws ToDoListExistanteException {
-		Utilisateur utilisateur = utilisateurRepository.findById(id).get();
-		ToDoList list = ToDoList.builder().label(label).utilisateur(utilisateur).build();
-		this.todolistDao.save(list);
+	public void add(ToDoListDto list) throws ToDoListExistanteException {
+//		Utilisateur utilisateur = utilisateurRepository.findById(id).get();
+//		ToDoList list = ToDoList.builder().label(label).utilisateur(utilisateur).build();
+		
+		Optional<ToDoList> listOpt = this.todolistDao.findById(list.getIdTodoList());
+		if (listOpt.isPresent()) {
+			throw new ToDoListExistanteException();
+		} else {
+			
+			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
+		}
 	}
 
 //	lister les todolist

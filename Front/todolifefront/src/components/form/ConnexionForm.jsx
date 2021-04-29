@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { PAGE_CONNEXION } from "../../constant/URL_CONST.js";
+import { URL_HOME } from "../../constant/URL_CONST.js";
 import "../../assets/css/form/FormStyle.css";
 import axios from "axios";
 import { API_LOGIN } from "../../constant/API_BACK.js";
@@ -88,7 +88,7 @@ function ConnexionForm() {
         localStorage.setItem("username", username);
         localStorage.setItem("token", token);
         toast.success("login successful");
-        history.push(PAGE_CONNEXION);
+        history.push(URL_HOME);
         history.go(0);
       }
     });

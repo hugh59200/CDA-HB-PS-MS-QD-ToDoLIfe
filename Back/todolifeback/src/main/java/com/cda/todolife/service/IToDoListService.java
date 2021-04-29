@@ -17,7 +17,7 @@ public interface IToDoListService {
 
 	void deleteById(int id) throws ToDoListIntrouvableException;
 
-	void add(String label, int id) throws ToDoListExistanteException;
+	void add(ToDoListDto list) throws ToDoListExistanteException;
 
 	ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException;
 	

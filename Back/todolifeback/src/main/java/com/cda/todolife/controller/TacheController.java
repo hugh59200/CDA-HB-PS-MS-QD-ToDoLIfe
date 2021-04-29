@@ -43,12 +43,6 @@ public class TacheController {
 	// create
 	@PostMapping("/taches")
 	public ResponseEntity<TacheDto> create(@RequestBody TacheDto tache) throws TacheExistanteException {
-		try {
-			this.tacheService.add(tache);
-		} catch (TacheExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return ResponseEntity.ok(tache);
 	}
 
