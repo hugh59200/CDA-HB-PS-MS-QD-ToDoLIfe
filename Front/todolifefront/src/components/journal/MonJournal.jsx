@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
-import { bouttonRevenir, bouttonAjouter } from './fonctions/bouttons/bouttons';
-import { jourDetails } from './fonctions/affichages/Details';
+import { bouttonAjouter } from './fonctions/bouttons/bouttons';
 import { fetching } from './fonctions/fetching';
 import { monJournal } from './fonctions/monJournal';
 import { anneeMois, selects } from './fonctions/choix date/selectDate';
+import { detailJour } from './fonctions/affichages/detailJour';
+import { ajouterJour } from './fonctions/affichages/ajouterJour';
 
 const MonJournal = () => {
 	const { allmonth, allyear } = anneeMois();
@@ -57,21 +58,11 @@ const MonJournal = () => {
 					{bouttonAjouter(setajoutJour, setshowList)}
 				</>
 			);
-		} else if (showJourDetail) {
-			return (
-				<>
-					{jourDetails(jourData)}
-					{bouttonRevenir(setshowList, setshowJourDetail)}
-				</>
-			);
-		} else if (ajoutJour) {
-			return (
-				<>
-					<div className="jourdetails">ok</div>
-					{bouttonRevenir(setshowList, setshowJourDetail)}
-				</>
-			);
 		}
+		if (showJourDetail)
+			return detailJour(jourData, setshowList, setshowJourDetail);
+		if (ajoutJour) 
+		return ajouterJour(setshowList, setshowJourDetail);
 	}
 
 	return monJournal(
