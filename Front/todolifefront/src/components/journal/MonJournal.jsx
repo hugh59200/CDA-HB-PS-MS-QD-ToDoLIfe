@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
-import { anneeMois } from './fonctions/anneeMois';
-import { bouttonRevenir, bouttonAjouter } from './fonctions/bouttons';
-import { jourDetails } from './fonctions/jourDetails';
+import { bouttonRevenir, bouttonAjouter } from './fonctions/bouttons/bouttons';
+import { jourDetails } from './fonctions/affichages/Details';
 import { fetching } from './fonctions/fetching';
 import { monJournal } from './fonctions/monJournal';
-import { selects } from './fonctions/selects';
+import { anneeMois, selects } from './fonctions/choix date/selectDate';
 
 const MonJournal = () => {
 	const { allmonth, allyear } = anneeMois();

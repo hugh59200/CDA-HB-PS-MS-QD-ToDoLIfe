@@ -1,5 +1,4 @@
-import React from 'react';
-import { mood } from './mood';
+import { mood } from "../humeur/mood";
 
 export function jourDetails(jourData) {
 	return <div className="jourdetails">
