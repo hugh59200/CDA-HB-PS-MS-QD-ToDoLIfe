@@ -4,6 +4,7 @@ import { bouttonAjouter } from './fonctions/Bouttons';
 import { fetchFonction } from './fonctions/FetchFonction';
 import { anneeMois, selects } from './fonctions/SelectDate';
 import { detailJour, ajouterJour } from './fonctions/Affichages';
+import { formatDate } from './fonctions/formatDate';
 
 const MonJournal = () => {
 	const { allmonth, allyear } = anneeMois();
@@ -43,7 +44,8 @@ const MonJournal = () => {
 										}}
 										key={data.idJour}
 									>
-										<span className="evenement">{data.titre}</span>
+										<div className="date">{formatDate(data.dateJour)}</div>
+										<div className="evenement">{data.titre}</div>
 									</div>
 								))}
 							</div>
@@ -69,3 +71,5 @@ const MonJournal = () => {
 	);
 };
 export default MonJournal;
+
+

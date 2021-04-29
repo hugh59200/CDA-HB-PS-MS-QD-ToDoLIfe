@@ -1,6 +1,6 @@
 .monJournal {
   background-color: #0090E8;
-  height: 850px;
+  height: 900px;
   width: 600px;
   margin: 0 auto;
   margin-top: 0;
@@ -129,6 +129,7 @@
 }
 
 .textJour>p {
+  border-top-left-radius: 20px;
   font-size: 20px;
   height: 20%;
   padding: 20px;
@@ -154,7 +155,7 @@
 }
 
 .journalItem {
-  height: 800px;
+  height: 600px;
   margin-top: 50px;
 }
 
@@ -166,15 +167,30 @@
 }
 
 .jours {
-  height: 50px;
-  margin: 10px;
+  height: 60px;
+  margin: 15px;
   padding: 10px;
   color: white;
   text-align: center;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.date {
+  width: 40%;
+  padding-top: 10px;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.evenement {
+  font-weight: bold;
   background-color: rgb(72, 173, 255);
   border-radius: 10px;
-  font-weight: bold;
-  display: flex;
+  width: 60%;
+  padding-top: 8px;
+  font-size: 20px;
 }
 
 .journalItem>div :hover {
@@ -217,9 +233,6 @@ select {
   outline: 0px;
 }
 
-.evenement {
-  width: 95%;
-}
 
 .entete {
   background-color: #55b8ff;
