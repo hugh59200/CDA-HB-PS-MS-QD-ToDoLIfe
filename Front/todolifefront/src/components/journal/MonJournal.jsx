@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
 import mood1 from '../../assets/img/mood1.png';
 import mood2 from '../../assets/img/mood2.png';
@@ -31,6 +29,7 @@ const MonJournal = () => {
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
 	const [showJourDetail, setshowJourDetail] = useState(false);
+	// const [ajoutJour, setajoutJour] = useState(false);
 
 	async function fetchUrl(mois, annee) {
 		setmois(mois);
@@ -123,20 +122,21 @@ const MonJournal = () => {
 										key={data.idJour}
 									>
 										<span className="evenement">{data.titre}</span>
-										<span>
-											<FontAwesomeIcon
-												icon={faPencilAlt}
-												size="lg"
-												className="delete"
-											/>
-										</span>
 									</div>
 								))}
 							</div>
 						)}
 					</div>
-					<div className="addItem">
-						<input type="submit" value="ajouter" className="btn-form" />
+					<div className="boutton">
+						<button
+							className="btn-form"
+							onClick={() => {
+								// setshowList(false);
+								// setajoutJour(false);
+							}}
+						>
+							ajouter
+						</button>
 					</div>
 				</>
 			);
@@ -147,9 +147,6 @@ const MonJournal = () => {
 						<div className="enteteJour">
 							<div className="jourData">
 								{mood(jourData.humeur)}
-
-								{/* {console.log(jourData.humeur)} */}
-								{/* <img src={mood1} alt="Logo" className="mood" /> */}
 							</div>
 							<div className="titreJour">{jourData.titre}</div>
 						</div>
@@ -157,7 +154,7 @@ const MonJournal = () => {
 							<p className="jourDataTexte">{jourData.texte}</p>
 						</div>
 					</div>
-					<div className="revenir">
+					<div className="boutton">
 						<button
 							className="btn-form"
 							onClick={() => {
