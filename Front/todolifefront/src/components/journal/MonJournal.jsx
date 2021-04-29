@@ -29,7 +29,7 @@ const MonJournal = () => {
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
 	const [showJourDetail, setshowJourDetail] = useState(false);
-	// const [ajoutJour, setajoutJour] = useState(false);
+	const [ajoutJour, setajoutJour] = useState(false);
 
 	async function fetchUrl(mois, annee) {
 		setmois(mois);
@@ -90,13 +90,13 @@ const MonJournal = () => {
 	function mood(moodLevel) {
 		switch (moodLevel) {
 			case 1:
-        return <img src={mood1} alt="Logo" className="mood" />
+				return <img src={mood1} alt="Logo" className="mood" />;
 			case 2:
-        return <img src={mood2} alt="Logo" className="mood" />
+				return <img src={mood2} alt="Logo" className="mood" />;
 			case 3:
-        return	<img src={mood3} alt="Logo" className="mood" />
+				return <img src={mood3} alt="Logo" className="mood" />;
 			case 4:
-        return	<img src={mood4} alt="Logo" className="mood" />
+				return <img src={mood4} alt="Logo" className="mood" />;
 			default:
 				break;
 		}
@@ -131,8 +131,8 @@ const MonJournal = () => {
 						<button
 							className="btn-form"
 							onClick={() => {
-								// setshowList(false);
-								// setajoutJour(false);
+								setajoutJour(true);
+								setshowList(false);
 							}}
 						>
 							ajouter
@@ -145,15 +145,30 @@ const MonJournal = () => {
 				<>
 					<div className="jourdetails">
 						<div className="enteteJour">
-							<div className="jourData">
-								{mood(jourData.humeur)}
-							</div>
+							<div className="jourData">{mood(jourData.humeur)}</div>
 							<div className="titreJour">{jourData.titre}</div>
 						</div>
 						<div className="textJour">
 							<p className="jourDataTexte">{jourData.texte}</p>
 						</div>
 					</div>
+					<div className="boutton">
+						<button
+							className="btn-form"
+							onClick={() => {
+								setshowList(true);
+								setshowJourDetail(false);
+							}}
+						>
+							revenir
+						</button>
+					</div>
+				</>
+			);
+		} else if (ajoutJour) {
+			return (
+				<>
+					<div className="jourdetails">ok</div>
 					<div className="boutton">
 						<button
 							className="btn-form"
