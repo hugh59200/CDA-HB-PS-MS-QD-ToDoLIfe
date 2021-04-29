@@ -1,4 +1,4 @@
-import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
+import { API_JOURNAL_BY_USERID } from '../../../constant/API_BACK';
 
 export async function fetching(mois, annee, setLoading, setData) {
 	const response = await fetch(

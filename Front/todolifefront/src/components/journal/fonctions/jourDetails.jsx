@@ -1,5 +1,5 @@
 import React from 'react';
-import { mood } from './fonctions/mood';
+import { mood } from './mood';
 
 export function jourDetails(jourData) {
 	return <div className="jourdetails">

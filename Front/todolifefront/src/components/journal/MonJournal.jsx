@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
 import { anneeMois } from './fonctions/anneeMois';
-import { bouttonRevenir } from './bouttonRevenir';
-import { bouttonAjouter } from './bouttonAjouter';
-import { jourDetails } from './jourDetails';
-import { fetching } from './fetching';
-import { monJournal } from './monJournal.1';
+import { bouttonRevenir } from './bouttons/bouttonRevenir';
+import { bouttonAjouter } from './bouttons/bouttonAjouter';
+import { jourDetails } from './fonctions/jourDetails';
+import { fetching } from './fonctions/fetching';
+import { monJournal } from './fonctions/monJournal';
 
 const MonJournal = () => {
 	const { allmonth, allyear } = anneeMois();
@@ -59,8 +59,6 @@ const MonJournal = () => {
 		);
 	}
 
-
-
 	function affichage() {
 		if (showList) {
 			return (
@@ -106,8 +104,14 @@ const MonJournal = () => {
 		}
 	}
 
-	return (
-		monJournal(ChoixDate, fetchUrl, annee, mois, allmonth, allyear, affichage)
+	return monJournal(
+		ChoixDate,
+		fetchUrl,
+		annee,
+		mois,
+		allmonth,
+		allyear,
+		affichage,
 	);
 };
 export default MonJournal;
