@@ -21,30 +21,30 @@ function NewFilm() {
           </div>
 
         <form>
-        <div class="form-group row justify-content-center">
+        <div className="form-group row justify-content-center">
     <input type="text" className="col-10 form-control" placeholder="Nom du film" id="nom"/>
   </div>
 
-  <label for="Timer actuel : " className="text-white timer-actuel">Timer actuel : </label>
+  <label className="text-white timer-actuel">Timer actuel : </label>
   <div className="justify-content-center row">
 <div className="col-3 text-center marge-film text-white">Heures</div>
 <div className="col-3 text-center marge-film text-white">Minutes</div>
 <div className="col-3 text-center marge-film text-white">Secondes</div>
 
   </div>
-  <div class="form-group row justify-content-center">
-    <input type="number"  className=" marge-film form-control col-3" name="hour" placeholder="Heure"  min="0" max="5" value="0"/>
-    <input type="number" className="marge-film form-control col-3"  name="minute" placeholder="Minute"  min="0" max="59"value="0"/>
-    <input type="number" className=" marge-film form-control col-3"  name="seconde" placeholder="Seconde"  min="0" max="59"value="0"/>
+  <div className="form-group row justify-content-center">
+    <input type="number"  className=" marge-film form-control col-3" name="hour" min="0" max="5" defaultValue="0"/>
+    <input type="number" className="marge-film form-control col-3"  name="minute" placeholder="Minute"  min="0" max="59"defaultValue="0"/>
+    <input type="number" className=" marge-film form-control col-3"  name="seconde" placeholder="Seconde"  min="0" max="59"defaultValue="0"/>
       </div>
 
       <label className="text-white timer-actuel">Mon avis : </label>
 
-  <div class="form-group row justify-content-center">
+  <div className="form-group row justify-content-center">
     <textarea type="textarea"  className="form-control col-10 text-zone" name="textarea" rows="3" />
     
       </div>
-      <button type="submit" class="btn btn-primary btn-enregistrer">Enregistrer</button>
+      <button type="submit" className="btn btn-primary btn-enregistrer">Enregistrer</button>
         </form>
 
         </div>

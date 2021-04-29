@@ -1,0 +1,30 @@
+header{
+  height: 80px;
+  color:  white;
+  letter-spacing: 1px;
+  font-size: 20px;
+  width: auto;
+  /* border-bottom: 1px solid rgb(255, 255, 255); */
+  background:#14A7FF
+    /* gradient can be an image */
+    /* linear-gradient(to left,
+      #14A7FF 0%,
+      #97d8fd 12%,
+      #4dbeff 47%,
+      #14A7FF 900%) */
+      /* #14A7FF 0%,
+      #97d8fd 12%,
+      #4dbeff 47%,
+      #14A7FF 900%) */
+}
+
+.navbarTitle{
+  font-size: 35px;
+  letter-spacing: 4px;
+  font-family: 'Original Surfer';
+  margin-left: 10px;
+}
+
+.nav-link{
+margin-left: 30px;
+}

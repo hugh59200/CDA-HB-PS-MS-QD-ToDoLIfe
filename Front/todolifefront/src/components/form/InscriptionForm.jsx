@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { URL_ATTENTE, URL_HOME } from "../../constant/URL_CONST.js";
-import "./FormStyle.css";
+import "../../assets/css/form/FormStyle.css";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
 import { API_USER } from "../../constant/API_BACK.js";
-import "./FormStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import {

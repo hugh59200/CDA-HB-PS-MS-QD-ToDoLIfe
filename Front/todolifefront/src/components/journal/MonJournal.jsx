@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MonjournalStyle.css";
+import "../../assets/css/journal/MonjournalStyle.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import { API_JOURNAL_BY_USERID } from "../../constant/API_BACK";
@@ -13,7 +13,7 @@ const MonJournal = () => {
   const [loading, setLoading] = useState(true);
 
   async function fetchUrl(mois, annee) {
-    setmois(mois); 
+    setmois(mois);
     setannee(annee);
     const response = await fetch(API_JOURNAL_BY_USERID + localStorage.getItem("id") + "/journaux/?mois=" + mois + "&annee=" + annee);
     const json = await response.json();
@@ -21,7 +21,7 @@ const MonJournal = () => {
     if (json.length === 0) {
       setLoading(true);
     } else {
-      setData(json); 
+      setData(json);
       setLoading(false);
     }
   }
@@ -42,7 +42,7 @@ const MonJournal = () => {
 
         <div className="journalItem">
           {loading ? (
-            <p className="loading">Vous n'avez rien à cette date...</p> 
+            <p className="loading">Vous n'avez rien à cette date...</p>
             ) : (<div>{data.map((data) => <div
             className="jours"
             onClick={() => console.log("ok")}

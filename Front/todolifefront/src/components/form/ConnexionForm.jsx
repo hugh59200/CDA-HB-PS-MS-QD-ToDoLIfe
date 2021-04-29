@@ -3,10 +3,9 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { URL_HOME } from "../../constant/URL_CONST.js";
-import "./FormStyle.css";
+import "../../assets/css/form/FormStyle.css";
 import axios from "axios";
 import { API_LOGIN } from "../../constant/API_BACK.js";
-import "./FormStyle.css";
 import { toast } from "react-toastify";
 import { authenticated } from "../../service/authentificationService.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,8 +37,6 @@ function ConnexionForm() {
   const [iconePwd, setIconePwd] = useState("");
 
   const showOrHidePassword = () => {
-    // console.log(document.querySelector(".show-pwd").type)
-    // console.log(document.querySelector(".show-pwd").type);
     if (document.querySelector(".show-pwd").type === "password") {
       document.querySelector(".show-pwd").type = "text";
     } else {
