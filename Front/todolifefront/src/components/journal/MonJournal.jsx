@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
 import { anneeMois } from './fonctions/anneeMois';
-import { bouttonRevenir } from './bouttons/bouttonRevenir';
-import { bouttonAjouter } from './bouttons/bouttonAjouter';
+import { bouttonRevenir, bouttonAjouter } from './fonctions/bouttons';
 import { jourDetails } from './fonctions/jourDetails';
 import { fetching } from './fonctions/fetching';
 import { monJournal } from './fonctions/monJournal';
+import { selects } from './fonctions/selects';
 
 const MonJournal = () => {
 	const { allmonth, allyear } = anneeMois();
@@ -26,36 +26,7 @@ const MonJournal = () => {
 
 	function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
 		return (
-			<div className="entete">
-				<select
-					className="form-select"
-					onChange={e => {
-						fetchUrl(e.target.value, annee);
-						setshowList(true);
-					}}
-				>
-					<option defaultValue={mois}>mois</option>
-					{allmonth.map((mois, i) => (
-						<option key={i} value={i + 1}>
-							{mois}
-						</option>
-					))}{' '}
-				</select>
-				<select
-					className="form-select"
-					onChange={e => {
-						fetchUrl(mois, e.target.value);
-						setshowList(true);
-					}}
-				>
-					<option defaultValue={annee}>année</option>
-					{allyear.map((annee, i) => (
-						<option key={i} value={annee}>
-							{annee}
-						</option>
-					))}
-				</select>
-			</div>
+			<>{selects(fetchUrl, annee, setshowList, mois, allmonth, allyear)}</>
 		);
 	}
 
