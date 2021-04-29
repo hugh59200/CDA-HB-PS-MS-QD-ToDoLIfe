@@ -1,0 +1,15 @@
+import React from 'react';
+
+export function bouttonRevenir(setshowList, setshowJourDetail) {
+	return <div className="boutton">
+		<button
+			className="btn-form"
+			onClick={() => {
+				setshowList(true);
+				setshowJourDetail(false);
+			}}
+		>
+			revenir
+		</button>
+	</div>;
+}

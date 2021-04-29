@@ -1,27 +1,14 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
-import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
-import mood1 from '../../assets/img/mood1.png';
-import mood2 from '../../assets/img/mood2.png';
-import mood3 from '../../assets/img/mood3.png';
-import mood4 from '../../assets/img/mood4.png';
+import { anneeMois } from './fonctions/anneeMois';
+import { bouttonRevenir } from './bouttonRevenir';
+import { bouttonAjouter } from './bouttonAjouter';
+import { jourDetails } from './jourDetails';
+import { fetching } from './fetching';
+import { monJournal } from './monJournal.1';
 
 const MonJournal = () => {
-	const allmonth = [
-		'Janvier',
-		'Février',
-		'Mars',
-		'Avril',
-		'Mai',
-		'Juin',
-		'Juillet',
-		'Aout',
-		'Septembre',
-		'Octobre',
-		'Novembre',
-		'Decembre',
-	];
-	const allyear = ['2020', '2021'];
+	const { allmonth, allyear } = anneeMois();
 	const [mois, setmois] = useState(new Date().getMonth());
 	const [annee, setannee] = useState(new Date().getFullYear());
 	const [data, setData] = useState([]);
@@ -34,22 +21,7 @@ const MonJournal = () => {
 	async function fetchUrl(mois, annee) {
 		setmois(mois);
 		setannee(annee);
-		const response = await fetch(
-			API_JOURNAL_BY_USERID +
-				localStorage.getItem('id') +
-				'/journaux/?mois=' +
-				mois +
-				'&annee=' +
-				annee,
-		);
-		const json = await response.json();
-
-		if (json.length === 0) {
-			setLoading(true);
-		} else {
-			setData(json);
-			setLoading(false);
-		}
+		await fetching(mois, annee, setLoading, setData);
 	}
 
 	function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
@@ -87,20 +59,7 @@ const MonJournal = () => {
 		);
 	}
 
-	function mood(moodLevel) {
-		switch (moodLevel) {
-			case 1:
-				return <img src={mood1} alt="Logo" className="mood" />;
-			case 2:
-				return <img src={mood2} alt="Logo" className="mood" />;
-			case 3:
-				return <img src={mood3} alt="Logo" className="mood" />;
-			case 4:
-				return <img src={mood4} alt="Logo" className="mood" />;
-			default:
-				break;
-		}
-	}
+
 
 	function affichage() {
 		if (showList) {
@@ -127,72 +86,28 @@ const MonJournal = () => {
 							</div>
 						)}
 					</div>
-					<div className="boutton">
-						<button
-							className="btn-form"
-							onClick={() => {
-								setajoutJour(true);
-								setshowList(false);
-							}}
-						>
-							ajouter
-						</button>
-					</div>
+					{bouttonAjouter(setajoutJour, setshowList)}
 				</>
 			);
 		} else if (showJourDetail) {
 			return (
 				<>
-					<div className="jourdetails">
-						<div className="enteteJour">
-							<div className="jourData">{mood(jourData.humeur)}</div>
-							<div className="titreJour">{jourData.titre}</div>
-						</div>
-						<div className="textJour">
-							<p className="jourDataTexte">{jourData.texte}</p>
-						</div>
-					</div>
-					<div className="boutton">
-						<button
-							className="btn-form"
-							onClick={() => {
-								setshowList(true);
-								setshowJourDetail(false);
-							}}
-						>
-							revenir
-						</button>
-					</div>
+					{jourDetails(jourData)}
+					{bouttonRevenir(setshowList, setshowJourDetail)}
 				</>
 			);
 		} else if (ajoutJour) {
 			return (
 				<>
 					<div className="jourdetails">ok</div>
-					<div className="boutton">
-						<button
-							className="btn-form"
-							onClick={() => {
-								setshowList(true);
-								setshowJourDetail(false);
-							}}
-						>
-							revenir
-						</button>
-					</div>
+					{bouttonRevenir(setshowList, setshowJourDetail)}
 				</>
 			);
 		}
 	}
 
 	return (
-		<div>
-			<h2 className="titreJournal">Mon journal</h2>
-			<div className="monJournal">
-				{ChoixDate(fetchUrl, annee, mois, allmonth, allyear)}
-				{affichage()}
-			</div>
-		</div>
+		monJournal(ChoixDate, fetchUrl, annee, mois, allmonth, allyear, affichage)
 	);
 };
 export default MonJournal;

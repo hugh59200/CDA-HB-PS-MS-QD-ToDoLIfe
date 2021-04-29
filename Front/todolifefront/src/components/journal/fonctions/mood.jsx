@@ -1,10 +1,9 @@
-import React from 'react';
-import mood1 from '../../assets/img/mood1.png';
-import mood2 from '../../assets/img/mood2.png';
-import mood3 from '../../assets/img/mood3.png';
-import mood4 from '../../assets/img/mood4.png';
+import mood1 from '../../../assets/img/mood1.png';
+import mood2 from '../../../assets/img/mood2.png';
+import mood3 from '../../../assets/img/mood3.png';
+import mood4 from '../../../assets/img/mood4.png';
 
-function mood(moodLevel) {
+export function mood(moodLevel) {
   switch (moodLevel) {
     case 1:
       return <img src={mood1} alt="Logo" className="mood" />;
@@ -18,4 +17,3 @@ function mood(moodLevel) {
       break;
   }
 }
-export default mood;
