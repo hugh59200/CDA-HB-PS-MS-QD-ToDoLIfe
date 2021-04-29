@@ -39,11 +39,11 @@ public class ToDoListController {
 	@Autowired
 	private IUtilisateurService utilisateurService;
 
-//	// listing
-//	@GetMapping("/todolists")
-//	public List<ToDoListDto> getAll() {
-//		return this.todolistService.findAll();
-//	}
+	// listing
+	@GetMapping("/todolists")
+	public List<ToDoListDto> getAll() {
+		return this.todolistService.findAll();
+	}
 
 	// show by User id
 	@GetMapping("/todolists/utilisateurs/{id}")
@@ -86,8 +86,7 @@ public class ToDoListController {
 
 	// create
 	@PostMapping("/todolists/{id}/{label}")
-	public  void create( @PathVariable String label, @PathVariable int id)
-			throws ToDoListIntrouvableException {
+	public void create(@PathVariable String label, @PathVariable int id) throws ToDoListIntrouvableException {
 
 		try {
 			this.todolistService.add(label, id);
@@ -95,10 +94,9 @@ public class ToDoListController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
-	
+
 //	// TODO passer les paths variable en request body
 //	// create
 //		@PostMapping("/todolists")
@@ -122,9 +120,13 @@ public class ToDoListController {
 
 	// update
 	@PutMapping("/todolists")
+//	@PutMapping("/todolists")
 	public ResponseEntity<ToDoListDto> update(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
+		System.out.println(list);
+
 		try {
-			todolistService.update(list);
+			this.todolistService.update(list);
+			return ResponseEntity.ok(list);
 		} catch (ToDoListIntrouvableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -132,7 +134,7 @@ public class ToDoListController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(list);
+		return null;
 	}
 
 	// delete

@@ -21,17 +21,16 @@ const TodoListView = () => {
 
   const getListByUser = () => {
     TodolistService.getListByUser(localStorage.getItem("id")).then((res) => {
-
       let dataRecup = res.data;
 
       let postData = dataRecup.map((elem) => (
         <>
           <tr key={elem.idTodoList}>
             <td onClick={() => clickList(elem.idTodoList)}> {elem.label}</td>
-            {console.log(elem.idTodoList)}
+            {/* {console.log(elem.idTodoList)} */}
             <td>
               <button
-                onClick={() => updateList(elem.idTodoList,elem.label,)}
+                onClick={() => updateList(elem.idTodoList, elem.label)}
                 className="todo-button-update"
               ></button>
             </td>
@@ -50,7 +49,7 @@ const TodoListView = () => {
   };
 
   const removeList = (id) => {
-    console.log("remove list n°" + id);
+    // console.log("remove list n°" + id);
     TodolistService.removeById(id).then((res) => {
       console.log(res);
     });
@@ -58,26 +57,28 @@ const TodoListView = () => {
   };
 
   const updateList = (id, label) => {
-    console.log("update list n°" + id);
+    // console.log("update list n°" + id);
+    
     history.push({
-      pathname: URL_UPDATE_TODO_LIST,
-      labelList : label,
-      idList : id
-    }
-      
-    )
+      pathname : URL_UPDATE_TODO_LIST,
+      labelList: label,
+      idList: id,
+    });
+    
+    // console.log(history.location.pathname);
+    // console.log('id : ',history.location.idList);
+    // console.log('label : ',history.location.labelList);
+
   };
 
   const clickList = (id) => {
     console.log("click list n°" + id);
   };
-  
+
   const clickAdd = () => {
-    console.log("click add");
+    // console.log("click add");
     history.push(URL_NEW_TODO_LIST);
   };
-  
-  
 
   // const changeCurrentList = (elem) => {
   //   history.push({
@@ -122,9 +123,7 @@ const TodoListView = () => {
         <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
           <table>
             <tbody>{list}</tbody>
-            <button 
-            onClick={clickAdd} 
-            className="todo-button-add"></button>
+            <button onClick={clickAdd} className="todo-button-add"></button>
           </table>
         </div>
       </div>

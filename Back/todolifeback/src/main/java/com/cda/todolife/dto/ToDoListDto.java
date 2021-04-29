@@ -13,6 +13,6 @@ public class ToDoListDto {
 
 	private int idTodoList;
 	private String label;
-	private UtilisateurDtoList utilisateur;
+	private UtilisateurDto utilisateur;
 
 }

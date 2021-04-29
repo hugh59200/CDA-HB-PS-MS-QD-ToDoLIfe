@@ -11,6 +11,8 @@ class UtilisateurService {
     getById(id) {
         return axios.get(API_USER + '/' + id);
     }
+    
+    
 }
 
 export default new UtilisateurService();

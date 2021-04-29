@@ -22,7 +22,7 @@ public class ToDoListServiceImpl implements IToDoListService {
 
 	@Autowired
 	private IToDoListRepository todolistDao;
-	
+
 	@Autowired
 	private IUtilisateurRepository utilisateurRepository;
 
@@ -32,11 +32,8 @@ public class ToDoListServiceImpl implements IToDoListService {
 //	ajouter une todolist
 	@Override
 	public void add(String label, int id) throws ToDoListExistanteException {
-		
 		Utilisateur utilisateur = utilisateurRepository.findById(id).get();
-		
 		ToDoList list = ToDoList.builder().label(label).utilisateur(utilisateur).build();
-		
 		this.todolistDao.save(list);
 	}
 
@@ -61,18 +58,6 @@ public class ToDoListServiceImpl implements IToDoListService {
 		return this.modelMapper.map(this.todolistDao.findByLabel(label), ToDoListDto.class);
 	}
 
-	// mettre à jour un film
-	@Override
-	public void update(ToDoListDto list) throws ToDoListIntrouvableException, ToDoListExistanteException {
-		try {
-			this.todolistDao.findById(list.getIdTodoList()).orElseThrow(ToDoListIntrouvableException::new);
-			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
-		} catch (ToDoListIntrouvableException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
-
 	// supprimer un film
 	@Override
 	public void deleteById(int id) throws ToDoListIntrouvableException {
@@ -82,11 +67,21 @@ public class ToDoListServiceImpl implements IToDoListService {
 
 	@Override
 	public List<ToDoListDto> findListByUserId(int id) throws ToDoListIntrouvableException, ResourceNotFoundException {
-
 		List<ToDoListDto> res = new ArrayList<>();
 		this.todolistDao.findListByUserId(id).forEach(pres -> res.add(this.modelMapper.map(pres, ToDoListDto.class)));
 		return res;
 	}
 
+	@Override
+	public void update(ToDoListDto list) throws ToDoListIntrouvableException, ToDoListExistanteException {
+		
+		System.out.println(list.getUtilisateur());
+		try {
+			this.todolistDao.findById(list.getIdTodoList()).orElseThrow(ToDoListIntrouvableException::new);
+			todolistDao.save(this.modelMapper.map(list, ToDoList.class));
+		} catch (ToDoListIntrouvableException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
