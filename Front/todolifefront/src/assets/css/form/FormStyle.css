@@ -57,10 +57,8 @@ h2{
   outline: none;
 }
 
-.btn-form:focus {
-  border: none;
-  outline-offset: 0px;
-  outline: none;
+.btn-form:hover {
+  background-color: #2fb3ff;
 }
 
 .section-champs{

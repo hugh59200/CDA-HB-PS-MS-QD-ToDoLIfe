@@ -140,6 +140,7 @@
   height: 100%;
   background-color: rgb(72, 173, 255);
   padding: 30px;
+ 
 }
 
 .titreJournal {
@@ -178,23 +179,25 @@
 }
 
 .date {
-  width: 40%;
+  width: 35%;
   padding-top: 10px;
   font-size: 17px;
   font-style: italic;
+  padding-top: 15px;
 }
 
 .evenement {
   font-weight: bold;
   background-color: rgb(72, 173, 255);
   border-radius: 10px;
-  width: 60%;
-  padding-top: 8px;
+  width: 65%;
+  height: 60px;
+  padding-top: 15px;
   font-size: 20px;
 }
 
-.journalItem>div :hover {
-  background-color: #0376bd;
+.evenement:hover {
+  background-color: #55b8ff;
   cursor: pointer;
 }
 
