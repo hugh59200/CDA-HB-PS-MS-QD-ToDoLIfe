@@ -14,5 +14,5 @@ public class ToDoListDto {
 	private int idTodoList;
 	private String label;
 	private UtilisateurDto utilisateur;
-//	private boolean selected;
+
 }

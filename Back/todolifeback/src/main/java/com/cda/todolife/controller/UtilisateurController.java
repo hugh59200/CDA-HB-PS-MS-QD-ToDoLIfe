@@ -60,8 +60,7 @@ public class UtilisateurController {
 			throws ResourceAlreadyExist, UnsupportedEncodingException, MessagingException {
 		String hashedPwd = this.encoder.encode((utilisateurDto.getPassword()));
 		utilisateurDto.setPassword(hashedPwd);
-		
-		
+
 		System.out.println(utilisateurDto.getDateNaissance());
 		String siteURL = request.getRequestURL().toString();
 		siteURL.replace(request.getServletPath(), "");
@@ -76,7 +75,8 @@ public class UtilisateurController {
 	@GetMapping("/utilisateurs/verify")
 	public ResponseEntity<UtilisateurDto> verifyUser(@RequestParam("dn") String dateNaissance,
 			@RequestParam("em") String mail, @RequestParam("n") String nom, @RequestParam("pn") String prenom,
-			@RequestParam("psw") String pass, @RequestParam("un") String username) throws ResourceAlreadyExist, ParseException {
+			@RequestParam("psw") String pass, @RequestParam("un") String username)
+			throws ResourceAlreadyExist, ParseException {
 
 		if (username != null) {
 			this.utilisateurService.verify(dateNaissance, mail, nom, prenom, pass, username);
@@ -93,7 +93,7 @@ public class UtilisateurController {
 
 //get by id
 	@GetMapping("/utilisateurs/{id}")
-	public ResponseEntity<UtilisateurDto> getById(@PathVariable int id) throws ResourceNotFoundException {
+	public ResponseEntity<UtilisateurDtoList> getById(@PathVariable int id) throws ResourceNotFoundException {
 
 		try {
 			return new ResponseEntity<>(this.utilisateurService.show(id), HttpStatus.OK);
@@ -123,7 +123,6 @@ public class UtilisateurController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-
 	}
 
 	// delete

@@ -1,4 +1,4 @@
-const ENV_DEV = 'http://localhost:8080/api/';
+export const ENV_DEV = 'http://localhost:8080/api/';
 
 export const API_TODO_LIST = ENV_DEV + 'todolists';
 

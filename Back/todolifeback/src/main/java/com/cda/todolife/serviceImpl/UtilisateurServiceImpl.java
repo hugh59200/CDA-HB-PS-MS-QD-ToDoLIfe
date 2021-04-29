@@ -2,7 +2,6 @@ package com.cda.todolife.serviceImpl;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -109,15 +108,27 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 	}
 
 	@Override
-	public UtilisateurDto show(int id) throws ResourceNotFoundException {
+	public UtilisateurDtoList show(int id) throws ResourceNotFoundException {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findById(id);
 		if (clrOpt.isPresent()) {
-			return this.modelMapper.map(clrOpt.get(), UtilisateurDto.class);
+			return this.modelMapper.map(clrOpt.get(), UtilisateurDtoList.class);
 		} else {
 			throw new ResourceNotFoundException();
 		}
 	}
 
+//	@Override
+//	public CurrentUserDto findById(int id) throws ResourceNotFoundException {
+//		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
+//		if (optUser.isPresent()) {
+//			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
+//		} else {
+//			throw new ResourceNotFoundException();
+//		}
+//	}
+	
+	
+	
 	@Override
 	public void update(UtilisateurDto userDto) throws ResourceAlreadyExist {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findById(userDto.getIdUtilisateur());
@@ -139,6 +150,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		}
 	}
 
+	
 	@Override
 	public void delete(int id) throws ResourceNotFoundException {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findById(id);
@@ -148,6 +160,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			throw new ResourceNotFoundException();
 		}
 	}
+	
 
 	@Override
 	public CurrentUserDto findByUsername(String username) throws ResourceNotFoundException {
@@ -159,15 +172,6 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		}
 	}
 
-	@Override
-	public CurrentUserDto findById(int id) throws ResourceNotFoundException {
-		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
-		if (optUser.isPresent()) {
-			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
-		} else {
-			throw new ResourceNotFoundException();
-		}
-	}
 
 	@Override
 	public boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username)

@@ -22,12 +22,13 @@
   .todo-button-update {
     background-image: url( '../../img/update.png' );
     background-repeat: no-repeat;
-    height:40px!important;
+    background-color: transparent;
+    background-size: contain;
+    height:25px!important;
     width: 30px!important;
-    border-radius: 50%!important;
-    margin-left: 20px;
-    background-size:contain;
-    
+    /* border-radius: 50%!important; */
+    /* margin-left: 20px; */
+    border: none;
   }
   
  
