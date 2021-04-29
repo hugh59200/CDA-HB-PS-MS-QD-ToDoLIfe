@@ -83,7 +83,6 @@ function ConnexionForm() {
         let id = res.data.user.id;
         let username = res.data.user.username;
         let token = res.data.user.token;
-        // localStorage.
         authenticated(id, username, token);
         localStorage.setItem("id", id);
         localStorage.setItem("username", username);

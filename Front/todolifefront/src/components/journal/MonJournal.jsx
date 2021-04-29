@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../../assets/css/journal/MonjournalStyle.css';
-import { bouttonAjouter } from './fonctions/bouttons';
-import { fectchFonction } from './fonctions/fectchFonction';
-import { anneeMois, selects } from './fonctions/selectDate';
+import { bouttonAjouter } from './fonctions/Bouttons';
+import { fetchFonction } from './fonctions/FetchFonction';
+import { anneeMois, selects } from './fonctions/SelectDate';
 import { detailJour, ajouterJour } from './fonctions/Affichages';
 
 const MonJournal = () => {
@@ -17,7 +17,7 @@ const MonJournal = () => {
 	const [ajoutJour, setajoutJour] = useState(false);
 
 	async function fetchUrl(mois, annee) {
-		await fectchFonction(setmois, mois, setannee, annee, setLoading, setData);
+		await fetchFonction(setmois, mois, setannee, annee, setLoading, setData);
 	}
 
 	function ChoixDate(fetchUrl, annee, mois, allmonth, allyear) {
