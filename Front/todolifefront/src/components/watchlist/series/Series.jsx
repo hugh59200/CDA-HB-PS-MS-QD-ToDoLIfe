@@ -18,7 +18,7 @@ const history=useHistory();
       <div className="row justify-content-center ">
         <div className="col-12 col-md-6 col-lg-6 bloc-film">
           <div>
-            <button class="todo-button-add" onClick={()=>{history.push(URL_NEW_SERIE)}}  >   </button>
+            <button className="todo-button-add" onClick={()=>{history.push(URL_NEW_SERIE)}}  >   </button>
             
           </div>
         </div>
