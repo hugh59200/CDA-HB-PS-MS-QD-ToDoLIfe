@@ -49,8 +49,8 @@
     background-color: transparent;
     height:40px!important;
     width: 35px!important;
-    border-radius: 50%!important;
-    margin-left: 20px;
+    /* border-radius: 50%!important;
+    margin-left: 20px; */
     border: none;
   }
   
@@ -78,11 +78,7 @@
     color: #fff;
   }
   
- 
-
-
   .todo-app {
-    
     width: 600px;
     min-height: 600px;
     background: #0090E8;
@@ -130,3 +126,14 @@
   background-color: #14A7FF;
 } 
 
+.todo-button-back {
+    background-repeat: no-repeat;
+    background-color: #1900ff4f;
+    height: 50px !important;
+    width: 70px !important;
+    /* border-radius: 50%!important; */
+    margin: 20px;
+    border: 1;
+    border: 5px solid #1C6EA4;
+border-radius: 12px;
+}

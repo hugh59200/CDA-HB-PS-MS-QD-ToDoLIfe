@@ -61,10 +61,6 @@ const UpdateList = (props) => {
     });
   };
 
-  useEffect(() => {
-    // console.log(initialValues)
-  }, []);
-
   return (
     <>
       <h1>update list</h1>

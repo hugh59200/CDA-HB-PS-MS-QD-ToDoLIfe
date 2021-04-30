@@ -92,7 +92,7 @@ public class TacheController {
 	@DeleteMapping("/taches/id/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws TacheIntrouvableException {
 		tacheService.deleteById(id);
-		System.out.println("ok");
+//		System.out.println("ok");
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);

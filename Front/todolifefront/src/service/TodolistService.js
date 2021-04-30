@@ -12,7 +12,6 @@ class TodolistService {
     //     return axios.get(API_TODO_LIST + '/todolist/' + id);
     // }
 
-
     getListByUser(id) {
         return axios.get(API_TODO_LIST + '/utilisateurs/' + id);
     }

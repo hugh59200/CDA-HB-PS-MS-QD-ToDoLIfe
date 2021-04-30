@@ -3,19 +3,18 @@ import "../assets/css/todolist/todo-list.css";
 import React, { useEffect, useState } from "react";
 import TodolistService from "../service/TodolistService";
 import { useHistory } from "react-router";
-import { URL_INSIDE_TODOLIST, URL_NEW_TODO_LIST, URL_UPDATE_TODO_LIST } from "../constant/URL_CONST";
+import {
+  URL_INSIDE_TODOLIST,
+  URL_NEW_TODO_LIST,
+  URL_UPDATE_TODO_LIST,
+} from "../constant/URL_CONST";
 
 const TodoListView = () => {
   const history = useHistory();
   const [list, setList] = useState("");
-  // const [tache, setTache] = useState("");
-  // const [utilisateur, setUtilisateur] = useState("");
 
   useEffect(() => {
-    // getUser();
-
     getListByUser();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -26,7 +25,9 @@ const TodoListView = () => {
       let postData = dataRecup.map((elem) => (
         <>
           <tr key={elem.idTodoList}>
-            <td onClick={() => clickList(elem.idTodoList, elem.label)}> {elem.label}</td>
+            <td onClick={() => clickList(elem.idTodoList, elem.label)}>
+              {elem.label}
+            </td>
             {/* {console.log(elem.idTodoList)} */}
             <td>
               <button
@@ -58,27 +59,23 @@ const TodoListView = () => {
 
   const updateList = (id, label) => {
     // console.log("update list n°" + id);
-    
     history.push({
-      pathname : URL_UPDATE_TODO_LIST,
+      pathname: URL_UPDATE_TODO_LIST,
       labelList: label,
       idList: id,
     });
-    
-    // console.log(history.location.pathname);
-    // console.log('id : ',history.location.idList);
-    // console.log('label : ',history.location.labelList);
-
   };
 
   const clickList = (id, label) => {
-    console.log("click list n°" + id);
+    // console.log("click list n°" + id);
+    // console.log("id",id);
+    // console.log("label",label)
+
     history.push({
-      pathname : URL_INSIDE_TODOLIST,
+      pathname: URL_INSIDE_TODOLIST,
       labelList: label,
       idList: id,
     });
-    
   };
 
   const clickAdd = () => {
@@ -86,45 +83,10 @@ const TodoListView = () => {
     history.push(URL_NEW_TODO_LIST);
   };
 
-  // const changeCurrentList = (elem) => {
-  //   history.push({
-  //     pathname: URL_TODO_LIST,
-  //     id: elem.idTodoList,
-  //     label: elem.label,
-  //   });
-
-  //   setLabel(history.location.label);
-
-  //   // TacheService.getListByIdToDoList(history.location.id).then((res) => {
-  //   //   let dataRecup = res.data;
-  //   //   let postData = dataRecup.map((elem) => (
-  //   //     <tr
-  //   //       // className="table-bordered"
-  //   //       key={elem.idTache}
-  //   //     >
-  //   //       <td className="text-white">{elem.label}</td>
-  //   //     </tr>
-  //   //   ));
-  //   //   // console.log(postData);
-
-  //   //   setTache(postData);
-  //   // });
-  // };
-
-  // const getUser = () => {
-  //   // UtilisateurService.getCurrentUser(1).then((res) => {
-  //   //   localStorage.setItem("utilisateur", JSON.stringify(res.data));
-  //   // });
-  // };
-
-  // const newList = () => {
-  //   history.push(URL_NEW_TODO_LIST);
-  // };
-
   return (
     <>
       <div className="todo-app">
-        <h1 className="text-white text-center">My tolist :</h1>
+        <h1 className="text-white text-center">My todolist :</h1>
         <br />
         <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
           <table>
@@ -133,18 +95,8 @@ const TodoListView = () => {
           </table>
         </div>
       </div>
-
-      {/* <div className="todo-app">
-        <h1 className="text-white text-center">{label} </h1>
-        <br />
-        <table className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
-          <tbody>{tache}</tbody>
-        </table>
-      </div> */}
     </>
   );
 };
 
 export default TodoListView;
-
-// {/* <button className="todo-button-add"></button> */}

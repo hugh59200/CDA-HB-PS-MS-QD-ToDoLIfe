@@ -97,7 +97,7 @@ const NavBar = () => {
 
   const logout = () => {
     deconnected();
-    history.push(PAGE_DECONNEXION);
+    history.push(URL_HOME);
     history.go(0);
   };
 

@@ -9,7 +9,10 @@ class TacheService {
     getListByIdToDoList(id){
         return axios.get(API_TACHE + '/todolist/' + id);
     }
-
+    
+    removeById(id){
+        return axios.delete(API_TACHE + '/id/' + id);
+    }
 }
 
 export default new TacheService();
