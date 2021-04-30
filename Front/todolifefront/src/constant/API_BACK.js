@@ -6,11 +6,11 @@ export const API_JOURNAL = ENV_DEV + 'journaux';
 
 export const API_JOURNAL_BY_USERID = ENV_DEV + 'utilisateurs/';
 
-export const API_TACHE =  ENV_DEV + 'taches';
+export const API_TACHE = ENV_DEV + 'taches';
 
-export const API_USER =  ENV_DEV + 'utilisateurs';
+export const API_USER = ENV_DEV + 'utilisateurs';
 
-export const API_LOGIN =  ENV_DEV + 'login';
+export const API_LOGIN = ENV_DEV + 'login';
 
 export const API_WATCHLIST = ENV_DEV + 'watchlists';
 

@@ -35,7 +35,7 @@ public class ToDoListController {
 
 	@Autowired
 	private IToDoListService todolistService;
-	
+
 	@Autowired
 	private IUtilisateurService utilisateurService;
 
@@ -45,9 +45,10 @@ public class ToDoListController {
 		return this.todolistService.findAll();
 	}
 
- 	// create
+	// create
 	@PostMapping("/todolists/utilisateurs/{id}")
-	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list, @PathVariable int id) throws ToDoListExistanteException {
+	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list, @PathVariable int id)
+			throws ToDoListExistanteException {
 		try {
 			this.utilisateurService.findById(id);
 			this.todolistService.add(list);
