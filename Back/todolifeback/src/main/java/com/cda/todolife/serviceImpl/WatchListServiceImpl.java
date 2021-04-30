@@ -8,10 +8,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cda.todolife.dto.UtilisateurDto;
+import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.WatchListExistanteException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
+import com.cda.todolife.model.Utilisateur;
 import com.cda.todolife.model.WatchList;
+import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.repository.IWatchListRepository;
 import com.cda.todolife.service.IWatchListService;
 
@@ -19,19 +23,26 @@ import com.cda.todolife.service.IWatchListService;
 public class WatchListServiceImpl implements IWatchListService {
 
 	@Autowired
-	private IWatchListRepository watchListDao;
+	private IWatchListRepository watchListService;
+	@Autowired
+	private IUtilisateurRepository utilisateurService;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
 //	ajouter une watchList
 	@Override
-	public void add(WatchListDto watchListDto) throws WatchListExistanteException {
-		Optional<WatchList> probEntOpt = this.watchListDao.findById(watchListDto.getIdWatchList());
+	public void add(WatchListDto watchListDto, int id) throws WatchListExistanteException {
+
+		Optional<WatchList> probEntOpt = this.watchListService
+				.findByUtilisateurIdUtilisateur(watchListDto.getIdWatchList());
 		if (probEntOpt.isPresent()) {
 			throw new WatchListExistanteException();
 		} else {
-			this.watchListDao.save(this.modelMapper.map(watchListDto, WatchList.class));
+			Optional<Utilisateur> userDto = this.utilisateurService.findById(id);
+			watchListDto.setUtilisateur(this.modelMapper.map(userDto.get(), UtilisateurDto.class));
+			
+			this.watchListService.save(this.modelMapper.map(watchListDto, WatchList.class));
 		}
 	}
 
@@ -39,28 +50,29 @@ public class WatchListServiceImpl implements IWatchListService {
 	@Override
 	public List<WatchListDto> findAll() {
 		List<WatchListDto> res = new ArrayList<>();
-		this.watchListDao.findAll().forEach(pres -> res.add(this.modelMapper.map(pres, WatchListDto.class)));
+		this.watchListService.findAll().forEach(pres -> res.add(this.modelMapper.map(pres, WatchListDto.class)));
 		return res;
 	}
 
 // trouver par id
 	@Override
 	public WatchListDto findById(int id) throws WatchListIntrouvableException {
-		return this.modelMapper.map(this.watchListDao.findById(id).get(), WatchListDto.class);
+
+		return this.modelMapper.map(this.watchListService.findById(id).get(), WatchListDto.class);
 	}
 
 //	trouver par label
 	@Override
 	public WatchListDto findByLabel(String label) throws WatchListIntrouvableException {
-		return this.modelMapper.map(this.watchListDao.findByLabel(label), WatchListDto.class);
+		return this.modelMapper.map(this.watchListService.findByLabel(label), WatchListDto.class);
 	}
 
 //	mettre à jour une watchlist
 	@Override
 	public void update(WatchListDto watchList) throws WatchListIntrouvableException, WatchListExistanteException {
 		try {
-			this.watchListDao.findById(watchList.getIdWatchList()).orElseThrow(WatchListIntrouvableException :: new);
-			this.watchListDao.save(this.modelMapper.map(watchList, WatchList.class));
+			this.watchListService.findById(watchList.getIdWatchList()).orElseThrow(WatchListIntrouvableException::new);
+			this.watchListService.save(this.modelMapper.map(watchList, WatchList.class));
 		} catch (WatchListIntrouvableException e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -70,16 +82,16 @@ public class WatchListServiceImpl implements IWatchListService {
 //	supprimer une watchlist
 	@Override
 	public void deleteById(int id) throws WatchListIntrouvableException {
-		this.watchListDao.findById(id).orElseThrow(WatchListIntrouvableException::new);
-		this.watchListDao.deleteById(id);
+		this.watchListService.findById(id).orElseThrow(WatchListIntrouvableException::new);
+		this.watchListService.deleteById(id);
 	}
 
 	@Override
 	public Boolean findByIdUtilisateur(int id) {
-		Optional<WatchList> watchListOptional=this.watchListDao.findByUtilisateurIdUtilisateur(id);
-		if(watchListOptional.isPresent()) {
+		Optional<WatchList> watchListOptional = this.watchListService.findByUtilisateurIdUtilisateur(id);
+		if (watchListOptional.isPresent()) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
