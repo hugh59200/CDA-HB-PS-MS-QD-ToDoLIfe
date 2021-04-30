@@ -1,0 +1,54 @@
+.bloc-zone{
+    background: #0090E8;
+    height: 60vh;
+    position: relative;
+}
+
+.image{
+position:absolute;
+bottom : 0;
+right: 0;
+margin-right: 3vh;
+margin-bottom: 1vh;
+}
+
+.titre-fst{
+    font-size: 60px;
+    margin: auto;
+}
+
+@media (max-width: 576px) { 
+
+.bloc-zone{
+    height: 25vh;
+    margin-top:1vh;
+    margin-bottom: 2vh;
+    margin-left: 1vh !important;
+    margin-right: 1vh !important;
+
+}
+
+.titre-fst{
+    font-size: 40px;
+    padding-right: 25vh;
+    padding-bottom: 10vh;
+}
+
+
+
+.textwatch{
+    display: none;
+}
+
+.espacetop{
+    margin-top: -3vh;
+    margin-right: 4vh!important;
+}
+
+.custom-switch{
+    padding-left: 0!important;
+}
+
+
+
+}
