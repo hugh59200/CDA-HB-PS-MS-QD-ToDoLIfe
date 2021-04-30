@@ -67,7 +67,7 @@ public class ToDoListController {
 		ToDoListDto list = todolistService.findById(id);
 		return ResponseEntity.ok(list);
 	}
-	
+
 	// create
 		@PostMapping("/todolists")
 		public void create(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
