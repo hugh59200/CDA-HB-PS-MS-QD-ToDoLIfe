@@ -73,4 +73,14 @@ public class WatchListServiceImpl implements IWatchListService {
 		this.watchListDao.findById(id).orElseThrow(WatchListIntrouvableException::new);
 		this.watchListDao.deleteById(id);
 	}
+
+	@Override
+	public Boolean findByIdUtilisateur(int id) {
+		Optional<WatchList> watchListOptional=this.watchListDao.findByUtilisateurIdUtilisateur(id);
+		if(watchListOptional.isPresent()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

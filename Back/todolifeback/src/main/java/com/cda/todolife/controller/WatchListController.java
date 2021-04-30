@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.WatchListExistanteException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
+import com.cda.todolife.model.WatchList;
 import com.cda.todolife.service.IWatchListService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -54,15 +55,20 @@ public class WatchListController {
 	}
 
 	// details by Id
-	@GetMapping("/watchlists/id/{id}")
-	public ResponseEntity<WatchListDto> getById(@PathVariable int id) throws WatchListIntrouvableException {
-		WatchListDto watchListDto = watchListService.findById(id);
-		System.out.println(watchListDto);
-		return ResponseEntity.ok(watchListDto);
+	@GetMapping("/watchlists/utilisateurs/{id}")
+	public ResponseEntity<Boolean> getByIdUtilisateur(@PathVariable int id) throws WatchListIntrouvableException {
+		
+		try {
+			return new ResponseEntity<>(watchListService.findByIdUtilisateur(id),HttpStatus.OK);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		
+	
 	}
 
 	// details by label
-	@GetMapping("/watchlists/label/{label}")
+	@GetMapping("/watchlists/{label}")
 	public ResponseEntity<WatchListDto> getByLabel(@PathVariable String label) throws WatchListIntrouvableException {
 		WatchListDto watchListDto = watchListService.findByLabel(label);
 		return ResponseEntity.ok(watchListDto);
@@ -85,7 +91,7 @@ public class WatchListController {
 	}
 
 	// delete
-	@DeleteMapping("/watchlists/id/{id}")
+	@DeleteMapping("/watchlists/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws WatchListIntrouvableException {
 		watchListService.deleteById(id);
 		System.out.println("ok");
