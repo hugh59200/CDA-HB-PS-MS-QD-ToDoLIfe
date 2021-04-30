@@ -1,5 +1,4 @@
-import React from "react";
-import { URL_FILMS, URL_LIVRES, URL_SERIES } from "../../constant/URL_CONST";
+import React, { useState, useEffect } from 'react';import { URL_FILMS, URL_LIVRES, URL_SERIES } from "../../constant/URL_CONST";
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { API_WATCHLIST } from './../../constant/API_BACK';

@@ -34,6 +34,8 @@ public class WatchListController {
 
 	@Autowired
 	private IWatchListService watchListService;
+	
+	
 
 	// listing
 	@GetMapping("/watchlists")
@@ -42,11 +44,12 @@ public class WatchListController {
 	}
 
 	// create
-	@PostMapping("/watchlists")
-	public ResponseEntity<WatchListDto> create(@RequestBody WatchListDto watchListDto)
+	@PostMapping("/watchlists/utilisateurs/{id}")
+	public ResponseEntity<WatchListDto> create(@RequestBody WatchListDto watchListDto, @PathVariable int id)
 			throws WatchListIntrouvableException {
 		try {
-			this.watchListService.add(watchListDto);
+
+			this.watchListService.add(watchListDto, id);
 		} catch (WatchListExistanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
