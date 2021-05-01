@@ -43,12 +43,8 @@ public class TacheController {
 	// create
 	@PostMapping("/taches")
 	public ResponseEntity<TacheDto> create(@RequestBody TacheDto tache) throws TacheExistanteException {
-		try {
-			this.tacheService.add(tache);
-		} catch (TacheExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.err.println(tache);
+		this.tacheService.add(tache);
 		return ResponseEntity.ok(tache);
 	}
 
@@ -67,7 +63,7 @@ public class TacheController {
 	}
 	
 	// details by id todolist
-		@GetMapping("/taches/todolist/{id}")
+		@GetMapping("/taches/todolists/{id}")
 		public ResponseEntity<List<TacheDto>>  findTaskByIdList(@PathVariable int id)  {
 			List<TacheDto> tache = null;
 			try {
@@ -98,7 +94,7 @@ public class TacheController {
 	@DeleteMapping("/taches/id/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws TacheIntrouvableException {
 		tacheService.deleteById(id);
-		System.out.println("ok");
+//		System.out.println("ok");
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);

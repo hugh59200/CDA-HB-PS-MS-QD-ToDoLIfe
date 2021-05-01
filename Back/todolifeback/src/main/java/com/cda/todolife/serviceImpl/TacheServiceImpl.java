@@ -24,17 +24,6 @@ public class TacheServiceImpl implements ITacheService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-//	ajouter une tache
-	@Override
-	public void add(TacheDto tache) throws TacheExistanteException {
-		Optional<Tache> probEntOpt = this.tacheDao.findById(tache.getIdTache());
-		if (probEntOpt.isPresent()) {
-			throw new TacheExistanteException();
-		} else {
-			this.tacheDao.save(this.modelMapper.map(tache, Tache.class));
-		}
-	}
-
 //	lister les taches
 	@Override
 	public List<TacheDto> findAll() {
@@ -75,10 +64,23 @@ public class TacheServiceImpl implements ITacheService {
 		this.tacheDao.deleteById(id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<TacheDto> findTaskByIdList(int id){
+	public List<TacheDto> findTaskByIdList(int id) {
 //		return this.tacheDao.findTaskByIdList(id);
-		return (List<TacheDto>) this.modelMapper.map(this.tacheDao.findTaskByIdList(id), TacheDto.class);
+
+		List<TacheDto> res = new ArrayList<>();
+		this.tacheDao.findTaskByIdList(id).forEach(pres -> res.add(this.modelMapper.map(pres, TacheDto.class)));
+		return res;
+	}
+
+//	ajouter une tache
+	@Override
+	public void add(TacheDto tache) throws TacheExistanteException {
+		Optional<Tache> probEntOpt = this.tacheDao.findById(tache.getIdTache());
+		if (probEntOpt.isPresent()) {
+			throw new TacheExistanteException();
+		} else {
+			this.tacheDao.save(this.modelMapper.map(tache, Tache.class));
+		}
 	}
 }

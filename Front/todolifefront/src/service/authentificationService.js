@@ -20,6 +20,8 @@ export function deconnected() {
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('token')
+    localStorage.removeItem('id_todolist')
+    localStorage.removeItem('label_todolist')
     // localStorage.removeItem('user')
     // cookies.remove('token')
 }

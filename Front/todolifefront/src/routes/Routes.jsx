@@ -17,9 +17,10 @@ import {
   URL_JOURNAL,
   URL_TODO_LIST,
   URL_WATCHLIST,
-  PAGE_CONNEXION,
-  PAGE_DECONNEXION,
   URL_NEW_TODO_LIST,
+  URL_INSIDE_TODOLIST,
+  URL_NEW_TODO,
+  URL_UPDATE_TODO,
   URL_UPDATE_TODO_LIST,
 } from "../constant/URL_CONST";
 
@@ -29,8 +30,10 @@ import { ToastContainer, Zoom } from "react-toastify";
 import MonJournal from "../components/journal/MonJournal";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
 
-import Auth from "../service/Auth";
 import AddList from "../components/todoList/AddList";
+import TodoInside from "../components/todoList/TodoInside";
+import AddTodo from "../components/todoList/AddTodo";
+import UpdateTodo from "../components/todoList/UpdateTodo";
 import UpdateList from "../components/todoList/UpdateList";
 // import Error404 from "../views/Error404";
 
@@ -58,9 +61,9 @@ class Routes extends Component {
           <Route path={URL_CONNEXION} component={ConnexionForm} />
 
           {/* page connection */}
-          <Route path={PAGE_CONNEXION} component={Auth} />
+          {/* <Route path={PAGE_CONNEXION} component={Auth} /> */}
           {/* page connection */}
-          <Route path={PAGE_DECONNEXION} component={Auth} />
+          {/* <Route path={PAGE_DECONNEXION} component={Auth} /> */}
 
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
@@ -70,6 +73,15 @@ class Routes extends Component {
 
           {/* update todolist */}
           <PrivateRoute path={URL_UPDATE_TODO_LIST} component={UpdateList} />
+          
+          {/* add todo on todolist */}
+          <PrivateRoute path={URL_INSIDE_TODOLIST} component={TodoInside} />
+          
+          {/* add a todo */}
+          <PrivateRoute path={URL_NEW_TODO} component={AddTodo} />
+          
+          {/* update a todo */}
+          <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
 
           {/* view journal*/}
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
