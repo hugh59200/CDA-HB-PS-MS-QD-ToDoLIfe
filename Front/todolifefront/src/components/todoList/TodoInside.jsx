@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { URL_INSIDE_TODOLIST, URL_TODO_LIST } from "../../constant/URL_CONST";
+import {
+  // URL_INSIDE_TODOLIST,
+  URL_NEW_TODO,
+  URL_TODO_LIST,
+} from "../../constant/URL_CONST";
 import TacheService from "../../service/TacheService";
-import Cookies from "universal-cookie";
+// import Cookies from "universal-cookie";
 
 const TodoInside = () => {
   // const cookies = new Cookies();
-
   const history = useHistory();
 
   const [list, setList] = useState("");
 
-  const [idTache, setIdTache] = useState("");
+  // const [idTache, setIdTache] = useState("");
 
-  const [labelTache, setLabelTache] = useState("");
+  // const [labelTache, setLabelTache] = useState("");
 
   const getTodo = () => {
-    TacheService.getListByIdToDoList(localStorage.getItem("id_task")).then(
+    // console.log(localStorage.getItem("id_todolist"));
+    TacheService.getListByIdToDoList(localStorage.getItem("id_todolist")).then(
       (res) => {
         let dataRecup = res.data;
 
-        console.log(dataRecup);
+        // console.log(dataRecup);
 
         let postData = dataRecup.map((elem) => (
           <>
+          {console.log(elem)}
             <tr key={elem.idTache}>
-              <td
-              // onClick={() => clickList(elem.idTodoList, elem.label)}
-              >
+              <td onClick={() => clickList(elem.idTache, elem.label)}>
                 {elem.label}
               </td>
               {/* {console.log(elem.idTodoList)} */}
@@ -48,16 +51,22 @@ const TodoInside = () => {
         ));
 
         setList(postData);
+        
+        // console.log(postData)
       }
     );
   };
 
   const putIdLabelList = () => {
-    let idTask = history.location.idList;
-    let labelTask = history.location.labelList;
+    
 
-    localStorage.setItem("id_task", idTask);
-    localStorage.setItem("label_task", labelTask);
+    // console.log(history)
+
+    let idTodoList = history.location.idList;
+    let labelTodoList = history.location.labelList;
+
+    localStorage.setItem("id_todolist", idTodoList);
+    localStorage.setItem("label_todolist", labelTodoList);
 
     // setIdTache(localStorage.getItem('id_task'));
     // setLabelTache(localStorage.getItem('label_task'));
@@ -77,9 +86,31 @@ const TodoInside = () => {
     });
   };
 
+  const clickList = (id, label) => {
+    // console.log("click list n°" + id);
+    // console.log("id",id);
+    // console.log("label",label)
+
+    console.log("id", id);
+    console.log("label", label);
+
+    // history.push({
+    //   pathname: URL_INSIDE_TODOLIST,
+    //   labelList: label,
+    //   idList: id,
+    // });
+  };
+
+  const clickAdd = () => {
+    // console.log("click add");
+    history.push(URL_NEW_TODO);
+  };
+
   useEffect(() => {
     putIdLabelList();
     getTodo();
+
+    // console.log(history.location)
     // console.log(history.location)
     // console.log(history.location.idList)
     // console.log(history.location.labelList)
@@ -106,6 +137,7 @@ const TodoInside = () => {
     // </>
 
     <>
+    
       <div className="todo-app">
         <button
           className="todo-button-back float-left"
@@ -116,18 +148,13 @@ const TodoInside = () => {
           retour
         </button>
         <h1 className="text-white text-center">
-          {localStorage.getItem("label_task")}
+          {localStorage.getItem("label_todolist")}
         </h1>
         <br />
         <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
           <table>
             <tbody>{list}</tbody>
-            <button
-              onClick={function () {
-                console.log("click");
-              }}
-              className="todo-button-add"
-            ></button>
+            <button onClick={clickAdd} className="todo-button-add"></button>
           </table>
         </div>
       </div>

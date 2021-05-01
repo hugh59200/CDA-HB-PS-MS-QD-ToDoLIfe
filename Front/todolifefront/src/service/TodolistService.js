@@ -29,6 +29,11 @@ class TodolistService {
         // console.log(Data)
         return axios.put(API_TODO_LIST, Data);
     }
+    
+    getListById(id){
+        // console.log("id",id)
+        return axios.get(API_TODO_LIST + '/id/' + id);
+    }
 }
 
 export default new TodolistService();

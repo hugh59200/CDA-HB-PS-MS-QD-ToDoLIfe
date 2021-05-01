@@ -16,7 +16,7 @@ public interface ITacheService {
 
 	void deleteById(int id) throws TacheIntrouvableException;
 
-	void add(String label, boolean donne, byte priorite) throws TacheExistanteException;
+	void add(TacheDto tache) throws TacheExistanteException;
 
 	TacheDto findByLabel(String label) throws TacheIntrouvableException;
 	

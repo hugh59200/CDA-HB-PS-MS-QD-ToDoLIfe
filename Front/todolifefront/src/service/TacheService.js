@@ -7,11 +7,17 @@ class TacheService {
     // }
     
     getListByIdToDoList(id){
-        return axios.get(API_TACHE + '/todolist/' + id);
+        return axios.get(API_TACHE + '/todolists/' + id);
     }
     
     removeById(id){
         return axios.delete(API_TACHE + '/id/' + id);
+    }
+    
+    create (Data){
+        console.log(Data)
+        // console.log(API_TACHE)
+        return axios.post(API_TACHE, Data);
     }
 }
 

@@ -20,7 +20,7 @@ const AddList = () => {
   };
 
   const getUser = () => {
-    UtilisateurService.getById(localStorage.getItem("id")).then((res) => {
+    UtilisateurService.getById(localStorage.getItem("id")).then(res => {
       setUser(res.data);
     });
   };
@@ -61,7 +61,7 @@ const AddList = () => {
       >
         {() => (
           <Form>
-            <label className="text-white" htmlFor="label">
+            <label className="text-white" htmlFor="labelList">
               <h1>Label : </h1>
             </label>
             <Field type="text" name="labelList" placeholder="label" />

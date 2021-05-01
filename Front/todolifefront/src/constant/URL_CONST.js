@@ -28,6 +28,9 @@ export const URL_UPDATE_TODO_LIST = '/update-todo-list'
 /* add a todo into a list */
 export const URL_INSIDE_TODOLIST = '/inside-todo-list'
 
+/* add a todo into a list */
+export const URL_NEW_TODO = '/new-todo'
+
 /* Watchlist */
 export const URL_WATCHLIST = '/watchlist'
 

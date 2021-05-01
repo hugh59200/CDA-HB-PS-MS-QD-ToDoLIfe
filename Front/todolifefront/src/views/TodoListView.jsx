@@ -15,34 +15,32 @@ const TodoListView = () => {
 
   useEffect(() => {
     getListByUser();
+    // console.log("list",list);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getListByUser = () => {
     TodolistService.getListByUser(localStorage.getItem("id")).then((res) => {
       let dataRecup = res.data;
-
       let postData = dataRecup.map((elem) => (
-        <>
-          <tr key={elem.idTodoList}>
-            <td onClick={() => clickList(elem.idTodoList, elem.label)}>
-              {elem.label}
-            </td>
-            {/* {console.log(elem.idTodoList)} */}
-            <td>
-              <button
-                onClick={() => updateList(elem.idTodoList, elem.label)}
-                className="todo-button-update"
-              ></button>
-            </td>
-            <td>
-              <button
-                onClick={() => removeList(elem.idTodoList)}
-                className="todo-button-remove"
-              ></button>
-            </td>
-          </tr>
-        </>
+        <tr key={elem.idTodoList}>
+          <td className="text-white" onClick={() => clickList(elem.idTodoList, elem.label)}>
+            {elem.label}
+          </td>
+          {/* {console.log(elem.idTodoList)} */}
+          <td>
+            <button
+              onClick={() => updateList(elem.idTodoList, elem.label)}
+              className="todo-button-update"
+            ></button>
+          </td>
+          <td>
+            <button
+              onClick={() => removeList(elem.idTodoList)}
+              className="todo-button-remove"
+            ></button>
+          </td>
+        </tr>
       ));
 
       setList(postData);
@@ -84,18 +82,21 @@ const TodoListView = () => {
   };
 
   return (
-    <>
-      <div className="todo-app">
-        <h1 className="text-white text-center">My todolist :</h1>
-        <br />
-        <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
-          <table>
-            <tbody>{list}</tbody>
-            <button onClick={clickAdd} className="todo-button-add"></button>
-          </table>
-        </div>
+    <div className="todo-app">
+      <h1 className="text-white text-center">Mes todolist :</h1>
+      <br />
+      <div className=" h-auto w-auto table text-center d-flex justify-content-center">
+        <table>
+          <tbody>{list}</tbody>
+          <tfoot>
+
+
+                <button onClick={clickAdd} className="todo-button-add"></button>
+
+          </tfoot>
+        </table>
       </div>
-    </>
+    </div>
   );
 };
 

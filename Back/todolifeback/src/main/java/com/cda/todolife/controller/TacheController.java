@@ -43,6 +43,8 @@ public class TacheController {
 	// create
 	@PostMapping("/taches")
 	public ResponseEntity<TacheDto> create(@RequestBody TacheDto tache) throws TacheExistanteException {
+		System.err.println(tache);
+		this.tacheService.add(tache);
 		return ResponseEntity.ok(tache);
 	}
 
@@ -61,7 +63,7 @@ public class TacheController {
 	}
 	
 	// details by id todolist
-		@GetMapping("/taches/todolist/{id}")
+		@GetMapping("/taches/todolists/{id}")
 		public ResponseEntity<List<TacheDto>>  findTaskByIdList(@PathVariable int id)  {
 			List<TacheDto> tache = null;
 			try {
