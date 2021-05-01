@@ -19,8 +19,20 @@ const TodoInside = () => {
         let postData = dataRecup.map((elem) => (
           <>
             <tr key={elem.idTache}>
-              <td
-              // onClick={() => clickList(elem.idTache, elem.label)}
+              
+                <td
+              onClick={function(e){
+                
+                let text =  e.target.innerHTML;
+                // console.log(text)
+                
+                // let text = "<del>"+e.target+"</del>";
+                // console.log(text)
+                
+                e.target.innerHTML=
+                  "<del>"+text+"</del>"
+                
+              }}
               >
                 {elem.label}
               </td>
@@ -61,9 +73,6 @@ const TodoInside = () => {
       }
     });
   };
-
-  const clickList = (id, label) => {};
-
   const clickAdd = () => {
     // console.log("click add");
     history.push(URL_NEW_TODO);
