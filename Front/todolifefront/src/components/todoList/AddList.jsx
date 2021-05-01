@@ -8,15 +8,15 @@ import UtilisateurService from "../../service/UtilisateurService";
 
 const validationSchema = yup.object().shape({
   labelList: yup.string().required("required"),
-  // utilisateur: yup.string().required("required")
 });
 
 const AddList = () => {
+  
   const history = useHistory();
   const [user, setUser] = useState("");
 
   const initialValues = {
-    labelList: "",
+    labelList: ""
   };
 
   const getUser = () => {
@@ -26,7 +26,6 @@ const AddList = () => {
   };
 
   const makeList = (values) => {
-    // console.log(values)
 
     let test = {
       label: values.labelList,
@@ -41,8 +40,6 @@ const AddList = () => {
   }, []);
 
   const submit = (list) => {
-    // console.log("list", list);
-
     TodolistService.create(list).then((res) => {
       let code = res.status;
 
@@ -67,13 +64,6 @@ const AddList = () => {
             <Field type="text" name="labelList" placeholder="label" />
             <ErrorMessage name="labelList" component="small" />
             <br />
-            {/* <Field
-                className="invisible"
-                type="text"
-                name="utilisateur"
-                value={localStorage.getItem('id')}
-              /> */}
-            {/* <ErrorMessage name="utilisateur" component="small" /> */}
             <button type="submit"> Submit</button>
           </Form>
         )}

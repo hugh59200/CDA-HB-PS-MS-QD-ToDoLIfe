@@ -1,23 +1,23 @@
 import axios from "axios";
-import { API_TACHE } from "../constant/API_BACK";
+import {
+    API_TACHE
+} from "../constant/API_BACK";
 
 class TacheService {
-    // getList() {
-    //     return axios.get(API_TACHE);
-    // }
-    
-    getListByIdToDoList(id){
+    getListByIdToDoList(id) {
         return axios.get(API_TACHE + '/todolists/' + id);
     }
-    
-    removeById(id){
+
+    removeById(id) {
         return axios.delete(API_TACHE + '/id/' + id);
     }
-    
-    create (Data){
-        console.log(Data)
-        // console.log(API_TACHE)
+
+    create(Data) {
         return axios.post(API_TACHE, Data);
+    }
+
+    update(Data) {
+        return axios.put(API_TACHE, Data)
     }
 }
 

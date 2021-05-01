@@ -15,7 +15,6 @@ const TodoListView = () => {
 
   useEffect(() => {
     getListByUser();
-    // console.log("list",list);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -24,10 +23,12 @@ const TodoListView = () => {
       let dataRecup = res.data;
       let postData = dataRecup.map((elem) => (
         <tr key={elem.idTodoList}>
-          <td className="text-white" onClick={() => clickList(elem.idTodoList, elem.label)}>
+          <td
+            className="text-white"
+            onClick={() => clickTodo(elem.idTodoList, elem.label)}
+          >
             {elem.label}
           </td>
-          {/* {console.log(elem.idTodoList)} */}
           <td>
             <button
               onClick={() => updateList(elem.idTodoList, elem.label)}
@@ -48,7 +49,6 @@ const TodoListView = () => {
   };
 
   const removeList = (id) => {
-    // console.log("remove list n°" + id);
     TodolistService.removeById(id).then((res) => {
       console.log(res);
     });
@@ -56,7 +56,6 @@ const TodoListView = () => {
   };
 
   const updateList = (id, label) => {
-    // console.log("update list n°" + id);
     history.push({
       pathname: URL_UPDATE_TODO_LIST,
       labelList: label,
@@ -64,11 +63,7 @@ const TodoListView = () => {
     });
   };
 
-  const clickList = (id, label) => {
-    // console.log("click list n°" + id);
-    // console.log("id",id);
-    // console.log("label",label)
-
+  const clickTodo = (id, label) => {
     history.push({
       pathname: URL_INSIDE_TODOLIST,
       labelList: label,
@@ -77,7 +72,6 @@ const TodoListView = () => {
   };
 
   const clickAdd = () => {
-    // console.log("click add");
     history.push(URL_NEW_TODO_LIST);
   };
 
@@ -89,10 +83,7 @@ const TodoListView = () => {
         <table>
           <tbody>{list}</tbody>
           <tfoot>
-
-
-                <button onClick={clickAdd} className="todo-button-add"></button>
-
+            <button onClick={clickAdd} className="todo-button-add"></button>
           </tfoot>
         </table>
       </div>

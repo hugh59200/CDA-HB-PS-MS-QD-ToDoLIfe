@@ -11,63 +11,70 @@ const validationSchema = yup.object().shape({
   // utilisateur: yup.string().required("required")
 });
 
-const AddTodo = () => {
+const UpdateTodo = (props) => {
   const history = useHistory();
+  //   const [list, setList] = useState("");
   const [list, setList] = useState("");
 
   const initialValues = {
-    label: "",
+    idTache: props.history.location.idTodo,
+    label: props.history.location.labelTodo,
   };
 
   const getList = () => {
+    // console.log("ok")
     TodolistService.getListById(localStorage.getItem("id_todolist")).then(
       (res) => {
         // console.log("res", res.data);
         setList(res.data);
       }
     );
-
-    // console.log("list", list);
-    // console.log("list",list);
   };
 
   const makeTask = (values) => {
     // console.log(values)
 
-    let todo = {
+    let test = {
+      idTache: values.idTache,
       label: values.label,
       list: list,
     };
 
-    // console.log("todo",todo);
+    // console.log(test)
 
-    submit(todo);
+    submit(test);
   };
 
   useEffect(() => {
+    // console.log(initialValues)
+
     getList();
-    // console.log("list", list);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const submit = (todo) => {
     // console.log("todo", todo);
-    
-    
 
-    TacheService.create(todo).then((res) => {
+    TacheService.update(todo).then((res) => {
+      // console.log(res)
+
       let code = res.status;
 
-      // console.log(res);
+      // console.log(code);
+      console.log(res.data);
 
       if (code === 200) {
-        // console.log(res.data);
+        // console.log("ok");
+
         let idTodoList = localStorage.getItem("id_todolist");
-        let labelTodoList = localStorage.getItem("label_todolist");
+        let labelList = localStorage.getItem("label_todolist");
+
+        //     let idTodoList = history.location.idList;
+        // let labelTodoList = history.location.labelList;
         history.push({
           pathname: URL_INSIDE_TODOLIST,
           idList: idTodoList,
-          labelList: labelTodoList,
+          labelList: labelList,
         });
       }
     });
@@ -75,6 +82,8 @@ const AddTodo = () => {
 
   return (
     <>
+      <h1>update todo</h1>
+
       <Formik
         initialValues={initialValues}
         onSubmit={makeTask}
@@ -82,12 +91,21 @@ const AddTodo = () => {
       >
         {() => (
           <Form>
-            <label className="text-white" htmlFor="label">
-              <h1> add todo : </h1>
-            </label>
-            <Field type="text" name="label" placeholder="label" />
-            <ErrorMessage name="label" component="small" />
+            <div>
+              <label className="text-white" htmlFor="label">
+                <h1>Label : </h1>
+              </label>
+              <Field type="text" name="label" placeholder="label" />
+              <ErrorMessage name="label" component="small" />
+            </div>
             <br />
+            {/* <Field
+                className="invisible"
+                type="text"
+                name="utilisateur"
+                value={localStorage.getItem('id')}
+              /> */}
+            {/* <ErrorMessage name="utilisateur" component="small" /> */}
             <button type="submit"> Submit</button>
           </Form>
         )}
@@ -96,4 +114,4 @@ const AddTodo = () => {
   );
 };
 
-export default AddTodo;
+export default UpdateTodo;
