@@ -251,3 +251,6 @@ yarn-error.log*
 
 
 /Front/todolifefront/st.bat
+up.bat
+/front/.vscode
+/front/.history
