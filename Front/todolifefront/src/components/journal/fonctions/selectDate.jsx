@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
-
-import { API_JOURNAL_BY_USERID } from '../../../constant/API_BACK';
+import React from 'react';
 
 export function Selects(props) {
-	const [mois, setmois] = useState(new Date().getMonth());
-	const [annee, setannee] = useState(new Date().getFullYear());
 	return (
 		<>
 			<div className="entete">
 				<SelectMois
-					FetchUrl={FetchUrl}
-					annee={annee}
+					FetchUrl={props.FetchUrl}
+					annee={props.annee}
 					setshowList={props.setshowList}
 				/>
 				<SelectAnnee
@@ -21,27 +17,6 @@ export function Selects(props) {
 			</div>
 		</>
 	);
-
-	async function FetchUrl() {
-		setmois(mois);
-		setannee(annee);
-		const response = await fetch(
-			API_JOURNAL_BY_USERID +
-				localStorage.getItem('id') +
-				'/journaux/?mois=' +
-				mois +
-				'&annee=' +
-				annee,
-		);
-		const json = await response.json();
-
-		if (json.length === 0) {
-			props.setLoading(true);
-		} else {
-			props.setData(json);
-			props.setLoading(false);
-		}
-	}
 }
 
 export function SelectMois(props) {
