@@ -11,6 +11,7 @@ export function AjouterJour(props) {
 	const [titre, settitre] = useState('');
 	const [moodInt, setmoodInt] = useState('');
 	const [resume, setresume] = useState('');
+
 	return (
 		<>
 			<div className="creationJour">
@@ -40,7 +41,7 @@ function ChoixTitre(props) {
 				type="text"
 				className="inputTitre"
 				placeholder="mon titre ici"
-				onClick={e => props.settitre(e.target.value)}
+				onChange={e => props.settitre(e.target.value)}
 			></input>
 		</div>
 	);
@@ -74,7 +75,7 @@ function ChoixResume(props) {
 				cols="30"
 				rows="10"
 				placeholder="Alors cette journée ?"
-				onClick={e => props.setresume(e.target.value)}
+				onChange={e => props.setresume(e.target.value)}
 			></textarea>
 		</div>
 	);
