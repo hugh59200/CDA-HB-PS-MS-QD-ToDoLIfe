@@ -13,20 +13,20 @@ export function AjouterJour(props) {
 	return (
 		<>
 			<div className="creationJour">
-				<ChoixTitre settitre={settitre}/>
-				<ChoixMood setmoodInt={setmoodInt}/>
-				<ChoixResume setresume={setresume}/>
+				<ChoixTitre settitre={settitre} />
+				<ChoixMood setmoodInt={setmoodInt} />
+				<ChoixResume setresume={setresume} />
 			</div>
 			<BouttonValider
-			setajoutJour={props.setajoutJour}
-			setshowList={props.setshowList}
-			titre={titre}
-			moodInt={moodInt}
-			resume={resume}
+				setajoutJour={props.setajoutJour}
+				setshowList={props.setshowList}
+				titre={titre}
+				moodInt={moodInt}
+				resume={resume}
 			/>
 			<BouttonRevenir
-			setshowList={props.setshowList}
-			setshowJourDetail={props.setshowJourDetail}
+				setshowList={props.setshowList}
+				setshowJourDetail={props.setshowJourDetail}
 			/>
 		</>
 	);
@@ -45,7 +45,7 @@ function ChoixTitre(props) {
 	);
 }
 
- function ChoixMood(props) {
+function ChoixMood(props) {
 	const mood = [mood1, mood2, mood3, mood4];
 	return (
 		<div className="choixMood">
