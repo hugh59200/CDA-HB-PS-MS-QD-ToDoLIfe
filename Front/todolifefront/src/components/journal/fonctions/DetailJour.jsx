@@ -1,5 +1,5 @@
 import { BouttonRevenir } from './Bouttons';
-import  Mood  from './Mood';
+import Mood from './Mood';
 import React from 'react';
 
 export default function DetailJour(jourData, setshowList, setshowJourDetail) {
@@ -7,7 +7,9 @@ export default function DetailJour(jourData, setshowList, setshowJourDetail) {
 		<>
 			<div className="jourdetails">
 				<div className="enteteJour">
-					<div className="jourData">{Mood(jourData.humeur)}</div>
+					<div className="jourData">
+						<Mood moodLevel={jourData.humeur} />
+					</div>
 					<div className="titreJour">{jourData.titre}</div>
 				</div>
 				<div className="textJour">
