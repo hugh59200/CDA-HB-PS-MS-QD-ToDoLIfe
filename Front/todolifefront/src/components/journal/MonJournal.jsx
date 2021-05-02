@@ -2,10 +2,9 @@ import '../../assets/css/journal/MonjournalStyle.css';
 
 import React, { useState } from 'react';
 
+import { AffichageListe } from './fonctions/listeJour/AffichageListe';
 import { AjouterJour } from './fonctions/affichages/AjouterJour';
-import { BouttonAjouter } from './fonctions/Bouttons';
 import DetailJour from './fonctions/affichages/DetailJour';
-import { EmptyOrList } from './EmptyOrList';
 import FetchFonction from './fonctions/FetchFonction';
 import { Selects } from './fonctions/SelectDate';
 
@@ -24,23 +23,17 @@ const MonJournal = () => {
 	}
 
 	function Affichage() {
-		if (showList) {
+		if (showList)
 			return (
-				<>
-					<EmptyOrList
-						loading={loading}
-						data={data}
-						setjourData={setjourData}
-						setshowList={setshowList}
-						setshowJourDetail={setshowJourDetail}
-					/>
-					<BouttonAjouter
-						setajoutJour={setajoutJour}
-						setshowList={setshowList}
-					/>
-				</>
+				<AffichageListe
+					loading={loading}
+					data={data}
+					setjourData={setjourData}
+					setshowList={setshowList}
+					setshowJourDetail={setshowJourDetail}
+					setajoutJour={setajoutJour}
+				/>
 			);
-		}
 		if (showJourDetail)
 			return (
 				<DetailJour
