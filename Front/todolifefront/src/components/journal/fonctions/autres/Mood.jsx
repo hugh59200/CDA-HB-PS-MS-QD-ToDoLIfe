@@ -17,3 +17,5 @@ export function Mood(props) {
       break;
   }
 }
+
+export default Mood;
