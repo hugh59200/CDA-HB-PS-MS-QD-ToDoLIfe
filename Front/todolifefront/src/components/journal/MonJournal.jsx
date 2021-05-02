@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 
 import DetailJour from './fonctions/DetailJour';
 import Empty from './fonctions/Empty';
-import { FetchFonction } from './fonctions/FetchFonction';
+import { FetchFunction } from './fonctions/FetchFunction';
 import { FormatDate } from './fonctions/FormatDate';
 import { Selects } from './fonctions/SelectDate';
+
+// import { FetchFonction } from './fonctions/FetchFonction';
+
+
 
 // import { BouttonAjouter } from './fonctions/Bouttons';
 // import { AjouterJour } from "./fonctions/AjouterJour";
@@ -22,7 +26,7 @@ const MonJournal = () => {
 	// const [ajoutJour, setajoutJour] = useState(false);
 
 	async function FetchUrl(mois, annee) {
-		await FetchFonction(setmois, mois, setannee, annee, setLoading, setData);
+		await FetchFunction(mois, annee, setLoading, setData);
 	}
 
 	function Affichage() {
@@ -31,7 +35,7 @@ const MonJournal = () => {
 				<>
 					<div className="journalItem">
 						{loading ? (
-							<Empty/>
+							<Empty />
 						) : (
 							<div>
 								{data.map(data => (
@@ -56,7 +60,14 @@ const MonJournal = () => {
 			);
 		}
 		if (showJourDetail)
-			return DetailJour(jourData, setshowList, setshowJourDetail);
+			return (
+				<DetailJour
+					jourData={jourData}
+					setshowList={setshowList}
+					setshowJourDetail={setshowJourDetail}
+				/>
+			);
+		// return DetailJour(jourData, setshowList, setshowJourDetail);
 		// if (ajoutJour) return <AjouterJour/>
 		//  AjouterJour(setshowList, setshowJourDetail);
 	}
@@ -65,10 +76,17 @@ const MonJournal = () => {
 		<div>
 			<h2 className="titreJournal">Mon journal</h2>
 			<div className="monJournal">
-				{Selects(FetchUrl, annee, setshowList, mois)}
-				<Affichage/>
+				<Selects
+					FetchUrl={FetchUrl}
+					annee={annee}
+					setshowList={setshowList}
+					mois={mois}
+				/>
+				<Affichage />
 			</div>
 		</div>
 	);
 };
 export default MonJournal;
+
+

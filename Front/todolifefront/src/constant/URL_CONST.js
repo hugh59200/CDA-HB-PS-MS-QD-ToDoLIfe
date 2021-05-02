@@ -38,6 +38,4 @@ export const URL_UPDATE_TODO = '/update-todo'
 export const URL_WATCHLIST = '/watchlist'
 
 /* attentes */
-export const URL_ATTENTE = '/attentes'
-
-
+export const URL_ATTENTE = '/attentes' 

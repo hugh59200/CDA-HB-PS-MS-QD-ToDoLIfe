@@ -16,14 +16,14 @@ export function BouttonAjouter(setajoutJour, setshowList) {
 	);
 }
 
-export function BouttonRevenir(setshowList, setshowJourDetail) {
+export function BouttonRevenir(props) {
 	return (
 		<div className="boutton">
 			<button
 				className="btn-form"
 				onClick={() => {
-					setshowList(true);
-					setshowJourDetail(false);
+					props.setshowList(true);
+					props.setshowJourDetail(false);
 				}}
 			>
 				revenir

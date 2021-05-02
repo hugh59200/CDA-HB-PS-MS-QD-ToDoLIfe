@@ -1,17 +1,25 @@
 import React from 'react';
 
-export function Selects(FetchUrl, annee, setshowList, mois) {
+export function Selects(props) {
 	return (
 		<>
 			<div className="entete">
-				{SelectMois(FetchUrl, annee, setshowList)}
-				{SelectAnnee(FetchUrl, mois, setshowList)}
+				<SelectMois
+					FetchUrl={props.FetchUrl}
+					annee={props.annee}
+					setshowList={props.setshowList}
+				/>
+				<SelectAnnee
+					FetchUrl={props.FetchUrl}
+					mois={props.mois}
+					setshowList={props.setshowList}
+				/>
 			</div>
 		</>
 	);
 }
 
-export function SelectMois(FetchUrl, annee, setshowList) {
+export function SelectMois(props) {
 	const allmonth = [
 		'Janvier',
 		'Février',
@@ -33,8 +41,8 @@ export function SelectMois(FetchUrl, annee, setshowList) {
 		<select
 			className="form-select"
 			onChange={e => {
-				FetchUrl(e.target.value, annee);
-				setshowList(true);
+				props.FetchUrl(e.target.value, props.annee);
+				props.setshowList(true);
 			}}
 		>
 			<option defaultValue={moisActuel}>{moisActuel}</option>
@@ -47,17 +55,18 @@ export function SelectMois(FetchUrl, annee, setshowList) {
 	);
 }
 
-export function SelectAnnee(FetchUrl, mois, setshowList) {
+export function SelectAnnee(props) {
 	const allyear = ['2020', '2021'];
+	const actualYear = new Date().getFullYear();
 	return (
 		<select
 			className="form-select"
 			onChange={e => {
-				FetchUrl(mois, e.target.value);
-				setshowList(true);
+				props.FetchUrl(props.mois, e.target.value);
+				props.setshowList(true);
 			}}
 		>
-			<option defaultValue={mois}>{new Date().getFullYear()}</option>
+			<option defaultValue={props.mois}>{actualYear}</option>
 			{allyear.map((a, i) => (
 				<option key={i} value={a}>
 					{a}

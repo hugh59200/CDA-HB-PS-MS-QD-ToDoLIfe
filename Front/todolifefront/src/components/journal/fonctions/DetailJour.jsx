@@ -2,21 +2,24 @@ import { BouttonRevenir } from './Bouttons';
 import Mood from './Mood';
 import React from 'react';
 
-export default function DetailJour(jourData, setshowList, setshowJourDetail) {
+export default function DetailJour(props) {
 	return (
 		<>
 			<div className="jourdetails">
 				<div className="enteteJour">
 					<div className="jourData">
-						<Mood moodLevel={jourData.humeur} />
+						<Mood moodLevel={props.jourData.humeur} />
 					</div>
-					<div className="titreJour">{jourData.titre}</div>
+					<div className="titreJour">{props.jourData.titre}</div>
 				</div>
 				<div className="textJour">
-					<p className="jourDataTexte">{jourData.texte}</p>
+					<p className="jourDataTexte">{props.jourData.texte}</p>
 				</div>
 			</div>
-			{BouttonRevenir(setshowList, setshowJourDetail)}
+			<BouttonRevenir
+				setshowList={props.setshowList}
+				setshowJourDetail={props.setshowJourDetail}
+			/>
 		</>
 	);
 }
