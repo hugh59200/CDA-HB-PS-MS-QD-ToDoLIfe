@@ -1,88 +1,90 @@
-// import React, { useState } from 'react';
-// import '../../assets/css/journal/MonjournalStyle.css';
-// import { fetchFonction } from './fonctions/FetchFonction';
-// import { selects } from './fonctions/SelectDate';
-// import { detailJour } from './fonctions/Affichages';
-// import { ajouterJour } from "./fonctions/AjouterJour";
-// import { formatDate } from './fonctions/FormatDate';
-// import { bouttonAjouter } from './fonctions/bouttons';
+import '../../assets/css/journal/MonjournalStyle.css';
 
-// const MonJournal = () => {
-// 	const [mois, setmois] = useState(new Date().getMonth());
-// 	const [annee, setannee] = useState(new Date().getFullYear());
-// 	const [data, setData] = useState([]);
-// 	const [loading, setLoading] = useState(true);
-// 	const [showList, setshowList] = useState(true);
-// 	const [jourData, setjourData] = useState('');
-// 	const [showJourDetail, setshowJourDetail] = useState(false);
-// 	const [ajoutJour, setajoutJour] = useState(false);
-// 	const [moodInt, setmoodInt] = useState('');
-// 	const [titre, settitre] = useState('');
-// 	const [resume, setresume] = useState('');
+import React, { useState } from 'react';
+
+import { ajouterJour } from "./fonctions/AjouterJour";
+import { bouttonAjouter } from './fonctions/Bouttons';
+import { detailJour } from './fonctions/Affichages';
+import { fetchFonction } from './fonctions/FetchFonction';
+import { formatDate } from './fonctions/FormatDate';
+import { selects } from './fonctions/SelectDate';
+
+const MonJournal = () => {
+	const [mois, setmois] = useState(new Date().getMonth());
+	const [annee, setannee] = useState(new Date().getFullYear());
+	const [data, setData] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [showList, setshowList] = useState(true);
+	const [jourData, setjourData] = useState('');
+	const [showJourDetail, setshowJourDetail] = useState(false);
+	const [ajoutJour, setajoutJour] = useState(false);
+	const [moodInt, setmoodInt] = useState('');
+	const [titre, settitre] = useState('');
+	const [resume, setresume] = useState('');
 
 
 
-// 	async function fetchUrl(mois, annee) {
-// 		await fetchFonction(setmois, mois, setannee, annee, setLoading, setData);
-// 	}
+	async function fetchUrl(mois, annee) {
+		await fetchFonction(setmois, mois, setannee, annee, setLoading, setData);
+	}
 
-// 	function affichage() {
-// 		if (showList) {
-// 			return (
-// 				<>
-// 					<div className="journalItem">
-// 						{loading ? (
-// 							<p className="loading">Vous n'avez rien à cette date...</p>
-// 						) : (
-// 							<div>
-// 								{data.map(data => (
-// 									<div
-// 										className="jours"
-// 										onClick={() => {
-// 											setjourData(data);
-// 											setshowList(false);
-// 											setshowJourDetail(true);
-// 										}}
-// 										key={data.idJour}
-// 									>
-// 										<div className="date">{formatDate(data.dateJour)}</div>
-// 										<div className="evenement">{data.titre}</div>
-// 									</div>
-// 								))}
-// 							</div>
-// 						)}
-// 					</div>
-// 					{bouttonAjouter(setajoutJour, setshowList)}
-// 				</>
-// 			);
-// 		}
-// 		if (showJourDetail)
-// 			return detailJour(jourData, setshowList, setshowJourDetail);
-// 		if (ajoutJour) return ajouterJour(setshowList, setshowJourDetail, setmoodInt, settitre, setresume);
-// 	}
+	function affichage() {
+		if (showList) {
+			return (
+				<>
+					<div className="journalItem">
+						{loading ? (
+							<p className="loading">Vous n'avez rien à cette date...</p>
+						) : (
+							<div>
+								{data.map(data => (
+									<div
+										className="jours"
+										onClick={() => {
+											setjourData(data);
+											setshowList(false);
+											setshowJourDetail(true);
+										}}
+										key={data.idJour}
+									>
+										<div className="date">{formatDate(data.dateJour)}</div>
+										<div className="evenement">{data.titre}</div>
+									</div>
+								))}
+							</div>
+						)}
+					</div>
+					{bouttonAjouter(setajoutJour, setshowList)}
+				</>
+			);
+		}
+		if (showJourDetail)
+			return detailJour(jourData, setshowList, setshowJourDetail);
+		if (ajoutJour) return ajouterJour(setshowList, setshowJourDetail, setmoodInt, settitre, setresume);
+	}
 
-// 	return (
-// 		<div>
-// 			<h2 className="titreJournal">Mon journal</h2>
-// 			<div className="monJournal">
-// 				{selects(fetchUrl, annee, setshowList, mois)}
-// 				{affichage()}
-// 			</div>
-// 		</div>
-// 	);
-// };
-// export default MonJournal;
+	return (
+		<div>
+			<h2 className="titreJournal">Mon journal</h2>
+			<div className="monJournal">
+				{selects(fetchUrl, annee, setshowList, mois)}
+				{affichage()}
+			</div>
+		</div>
+	);
+};
+export default MonJournal;
 
 
 // pour avoir un main stable 
-import React from 'react';
+// import React from 'react';
 
-const MonJournal = () => {
-	return (
-		<>
-		<h1>journal</h1>
-		</>
-	);
-};
+// const MonJournal = () => {
+// 	return (
+// 		<>
+// 		<h1>journal</h1>
+// 		</>
+// 	);
+// };
 
-export default MonJournal;
+// export default MonJournal;
