@@ -1,8 +1,6 @@
 package com.cda.todolife.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,25 +41,41 @@ public class JourController {
 			@RequestParam(value = "humeur") int humeur, @RequestParam(value = "texte") String texte,
 			@RequestParam(value = "id") int id) throws JourExistantException, JournalIntrouvableException {
 
-		JourDto jour = new JourDto();
-		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
-		Date now = new Date();
-		jour.setDateJour(sdfDate.format(now));
-		jour.setTitre(titre);
-		jour.setHumeur(humeur);
-		jour.setTexte(texte);
-
 		JournalDto journal = this.journalService.findById(id);
 		List<JourDto> list = journal.getJours();
 		list.add(jour);
 		journal.setJours(list);
-		System.out.println(titre);
-		System.out.println(humeur);
+		System.out.println(jour);
 		System.out.println(id);
 
 		this.jourService.add(jour);
 		return ResponseEntity.ok(jour);
 	}
+//	// create
+//	@PostMapping("/jour")
+//	public ResponseEntity<JourDto> create(@RequestParam(value = "titre") String titre,
+//			@RequestParam(value = "humeur") int humeur, @RequestParam(value = "texte") String texte,
+//			@RequestParam(value = "id") int id) throws JourExistantException, JournalIntrouvableException {
+//		
+//		JourDto jour = new JourDto();
+//		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+//		Date now = new Date();
+//		jour.setDateJour(sdfDate.format(now));
+//		jour.setTitre(titre);
+//		jour.setHumeur(humeur);
+//		jour.setTexte(texte);
+//		
+//		JournalDto journal = this.journalService.findById(id);
+//		List<JourDto> list = journal.getJours();
+//		list.add(jour);
+//		journal.setJours(list);
+//		System.out.println(titre);
+//		System.out.println(humeur);
+//		System.out.println(id);
+//		
+//		this.jourService.add(jour);
+//		return ResponseEntity.ok(jour);
+//	}
 
 	// details by Id
 	@GetMapping("/jour/{id}")
