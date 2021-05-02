@@ -1,7 +1,7 @@
-import mood1 from '../../../assets/img/mood1.png';
-import mood2 from '../../../assets/img/mood2.png';
-import mood3 from '../../../assets/img/mood3.png';
-import mood4 from '../../../assets/img/mood4.png';
+import mood1 from '../../../../assets/img/mood1.png';
+import mood2 from '../../../../assets/img/mood2.png';
+import mood3 from '../../../../assets/img/mood3.png';
+import mood4 from '../../../../assets/img/mood4.png';
 
 export function Mood(props) {
   switch (props.moodLevel) {
