@@ -3,6 +3,7 @@ import '../../assets/css/journal/MonjournalStyle.css';
 import React, { useState } from 'react';
 
 import DetailJour from './fonctions/DetailJour';
+import Empty from './fonctions/Empty';
 import { FetchFonction } from './fonctions/FetchFonction';
 import { FormatDate } from './fonctions/FormatDate';
 import { Selects } from './fonctions/SelectDate';
@@ -30,7 +31,7 @@ const MonJournal = () => {
 				<>
 					<div className="journalItem">
 						{loading ? (
-							<p className="loading">Vous n'avez rien à cette date...</p>
+							<Empty/>
 						) : (
 							<div>
 								{data.map(data => (
@@ -61,12 +62,11 @@ const MonJournal = () => {
 	}
 
 	return (
-		// console.log(object)
 		<div>
 			<h2 className="titreJournal">Mon journal</h2>
 			<div className="monJournal">
 				{Selects(FetchUrl, annee, setshowList, mois)}
-				{Affichage()}
+				<Affichage/>
 			</div>
 		</div>
 	);
