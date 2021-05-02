@@ -1,16 +1,16 @@
-import { FormatDate } from './FormatDate';
+import { FormatDate } from '../autres/FormatDate';
 import React from 'react';
 
-export function ListerJour(data, setjourData, setshowList, setshowJourDetail) {
+export function ListerJour(props) {
 	return <div>
-		{data.map(data => {
+		{props.data.map(data => {
 			return (
 				<div
 					className="jours"
 					onClick={() => {
-						setjourData(data);
-						setshowList(false);
-						setshowJourDetail(true);
+						props.setjourData(data);
+						props.propssetshowList(false);
+						props.setshowJourDetail(true);
 					}}
 					key={data.idJour}
 				>
