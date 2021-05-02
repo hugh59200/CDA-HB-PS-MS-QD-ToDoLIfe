@@ -1,5 +1,5 @@
 import { BouttonRevenir } from '../Bouttons';
-import {Mood} from '../Mood';
+import { Mood } from '../autres/Mood';
 import React from 'react';
 
 export function DetailJour(props) {
