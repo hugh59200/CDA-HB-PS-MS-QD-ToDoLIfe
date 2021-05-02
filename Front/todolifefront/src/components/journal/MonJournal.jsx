@@ -58,5 +58,3 @@ const MonJournal = () => {
 	}
 };
 export default MonJournal;
-
-
