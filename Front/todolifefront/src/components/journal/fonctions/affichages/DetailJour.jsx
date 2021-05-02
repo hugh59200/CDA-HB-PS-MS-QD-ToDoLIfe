@@ -2,7 +2,7 @@ import { BouttonRevenir } from '../Bouttons';
 import {Mood} from '../Mood';
 import React from 'react';
 
-export default function DetailJour(props) {
+export function DetailJour(props) {
 	return (
 		<>
 			<div className="jourdetails">
