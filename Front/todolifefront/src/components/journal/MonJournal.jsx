@@ -2,9 +2,9 @@ import '../../assets/css/journal/MonjournalStyle.css';
 
 import React, { useState } from 'react';
 
-import { ajouterJour } from "./fonctions/AjouterJour";
+import { AjouterJour } from "./fonctions/AjouterJour";
+import DetailJour from './fonctions/DetailJour';
 import { bouttonAjouter } from './fonctions/Bouttons';
-import { detailJour } from './fonctions/Affichages';
 import { fetchFonction } from './fonctions/FetchFonction';
 import { formatDate } from './fonctions/FormatDate';
 import { selects } from './fonctions/SelectDate';
@@ -18,11 +18,6 @@ const MonJournal = () => {
 	const [jourData, setjourData] = useState('');
 	const [showJourDetail, setshowJourDetail] = useState(false);
 	const [ajoutJour, setajoutJour] = useState(false);
-	const [moodInt, setmoodInt] = useState('');
-	const [titre, settitre] = useState('');
-	const [resume, setresume] = useState('');
-
-
 
 	async function fetchUrl(mois, annee) {
 		await fetchFonction(setmois, mois, setannee, annee, setLoading, setData);
@@ -58,12 +53,13 @@ const MonJournal = () => {
 				</>
 			);
 		}
-		if (showJourDetail)
-			return detailJour(jourData, setshowList, setshowJourDetail);
-		if (ajoutJour) return ajouterJour(setshowList, setshowJourDetail, setmoodInt, settitre, setresume);
+		if (showJourDetail) return DetailJour(jourData, setshowList, setshowJourDetail);
+		if (ajoutJour) return <AjouterJour/>
+		//  AjouterJour(setshowList, setshowJourDetail);
 	}
 
 	return (
+		// console.log(object)
 		<div>
 			<h2 className="titreJournal">Mon journal</h2>
 			<div className="monJournal">
@@ -74,17 +70,3 @@ const MonJournal = () => {
 	);
 };
 export default MonJournal;
-
-
-// pour avoir un main stable 
-// import React from 'react';
-
-// const MonJournal = () => {
-// 	return (
-// 		<>
-// 		<h1>journal</h1>
-// 		</>
-// 	);
-// };
-
-// export default MonJournal;

@@ -32,7 +32,10 @@ export function bouttonRevenir(setshowList, setshowJourDetail) {
 	);
 }
 
-export function bouttonValider(setajoutJour, setshowList) {
+export function bouttonValider(setajoutJour, setshowList, moodInt, titre, resume) {
+	console.log(moodInt);
+	console.log(titre);
+	console.log(resume);
 	return (
 		<div className="boutton">
 			<button

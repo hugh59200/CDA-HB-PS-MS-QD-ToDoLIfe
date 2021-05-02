@@ -2,7 +2,7 @@ import React from 'react';
 import { bouttonRevenir } from './Bouttons';
 import { mood } from './Mood';
 
-export function detailJour(jourData, setshowList, setshowJourDetail) {
+function DetailJour(jourData, setshowList, setshowJourDetail) {
 	return (
 		<>
 			<div className="jourdetails">
@@ -18,3 +18,4 @@ export function detailJour(jourData, setshowList, setshowJourDetail) {
 		</>
 	);
 }
+export default DetailJour;
