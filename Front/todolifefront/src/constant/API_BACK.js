@@ -4,6 +4,8 @@ export const API_TODO_LIST = ENV_DEV + 'todolists';
 
 export const API_JOURNAL = ENV_DEV + 'journaux';
 
+export const API_JOUR = ENV_DEV + 'jour';
+
 export const API_JOURNAL_BY_USERID = ENV_DEV + 'utilisateurs/';
 
 export const API_TACHE =  ENV_DEV + 'taches';

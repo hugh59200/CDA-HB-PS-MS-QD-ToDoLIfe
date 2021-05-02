@@ -2,8 +2,8 @@ import '../../assets/css/journal/MonjournalStyle.css';
 
 import React, { useState } from 'react';
 
+import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
 import { Affichage } from './Affichage';
-import FetchFonction from './fonctions/FetchFonction';
 import { Selects } from './fonctions/selects/SelectDate';
 
 const MonJournal = () => {
@@ -24,21 +24,37 @@ const MonJournal = () => {
 					setshowList={setshowList}
 					mois={mois}
 				/>
-				<Affichage 
-				showList={showList}
-				loading={loading}
-				data={data}
-				setjourData={setjourData}
-				setshowList={setshowList}
-				jourData={jourData}
+				<Affichage
+					showList={showList}
+					loading={loading}
+					data={data}
+					setjourData={setjourData}
+					setshowList={setshowList}
+					jourData={jourData}
 				/>
 			</div>
 		</>
 	);
 
-
 	async function FetchUrl(mois, annee) {
-		await FetchFonction(setmois, mois, setannee, annee, setLoading, setData);
+		await setmois(mois);
+		setannee(annee);
+		const response = await fetch(
+			API_JOURNAL_BY_USERID +
+				localStorage.getItem('id') +
+				'/journaux/?mois=' +
+				mois +
+				'&annee=' +
+				annee,
+		);
+		const json = await response.json();
+
+		if (json.length === 0) {
+			setLoading(true);
+		} else {
+			setData(json);
+			setLoading(false);
+		}
 	}
 };
 

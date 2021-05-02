@@ -27,12 +27,12 @@ public class JourServiceImpl implements IJourService {
 
 //	ajouter
 	@Override
-	public void add(JourDto list) throws JourExistantException {
-		Optional<Jour> probEntOpt = this.jourRepository.findById(list.getIdJour());
+	public void add(JourDto jour) throws JourExistantException {
+		Optional<Jour> probEntOpt = this.jourRepository.findById(jour.getIdJour());
 		if (probEntOpt.isPresent()) {
 			throw new JourExistantException();
 		} else {
-			this.jourRepository.save(this.modelMapper.map(list, Jour.class));
+			this.jourRepository.save(this.modelMapper.map(jour, Jour.class));
 		}
 	}
 

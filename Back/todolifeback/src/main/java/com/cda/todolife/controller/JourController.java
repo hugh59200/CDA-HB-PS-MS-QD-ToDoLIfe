@@ -1,6 +1,8 @@
 package com.cda.todolife.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,9 +26,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.JourDto;
+import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
+import com.cda.todolife.exception.JournalIntrouvableException;
 import com.cda.todolife.service.IJourService;
+import com.cda.todolife.service.IJournalService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -36,6 +41,9 @@ public class JourController {
 	@Autowired
 	private IJourService jourService;
 
+	@Autowired
+	private IJournalService journalService;
+
 	// listing
 	@GetMapping("/jour")
 	public List<JourDto> getAll() {
@@ -44,13 +52,28 @@ public class JourController {
 
 	// create
 	@PostMapping("/jour")
-	public ResponseEntity<JourDto> create(@RequestBody JourDto list) throws JourExistantException {
-		try {
-			this.jourService.add(list);
-		} catch (JourExistantException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(list);
+	public ResponseEntity<JourDto> create(@RequestParam(value = "titre") String titre,
+			@RequestParam(value = "humeur") int humeur, @RequestParam(value = "texte") String texte,
+			@RequestParam(value = "id") int id) throws JourExistantException, JournalIntrouvableException {
+
+		JourDto jour = new JourDto();
+		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+		Date now = new Date();
+		jour.setDateJour(sdfDate.format(now));
+		jour.setTitre(titre);
+		jour.setHumeur(humeur);
+		jour.setTexte(texte);
+
+		JournalDto journal = this.journalService.findById(id);
+		List<JourDto> list = journal.getJours();
+		list.add(jour);
+		journal.setJours(list);
+		System.out.println(titre);
+		System.out.println(humeur);
+		System.out.println(id);
+
+		this.jourService.add(jour);
+		return ResponseEntity.ok(jour);
 	}
 
 	// details by Id
@@ -75,10 +98,10 @@ public class JourController {
 
 		System.out.println(mois);
 		System.out.println(annee);
-		
+
 		String dateNoDay = annee + "-" + mois;
 		if (mois < 10) {
-			 dateNoDay = annee + "-0" + mois;
+			dateNoDay = annee + "-0" + mois;
 		}
 
 		List<JourDto> listAll = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
