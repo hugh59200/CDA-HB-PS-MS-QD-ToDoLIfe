@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function bouttonAjouter(setajoutJour, setshowList) {
+export function BouttonAjouter(setajoutJour, setshowList) {
 	return (
 		<div className="boutton">
 			<button
@@ -16,7 +16,7 @@ export function bouttonAjouter(setajoutJour, setshowList) {
 	);
 }
 
-export function bouttonRevenir(setshowList, setshowJourDetail) {
+export function BouttonRevenir(setshowList, setshowJourDetail) {
 	return (
 		<div className="boutton">
 			<button
@@ -32,7 +32,7 @@ export function bouttonRevenir(setshowList, setshowJourDetail) {
 	);
 }
 
-export function bouttonValider(setajoutJour, setshowList, moodInt, titre, resume) {
+export function BouttonValider(setajoutJour, setshowList, moodInt, titre, resume) {
 	console.log(moodInt);
 	console.log(titre);
 	console.log(resume);

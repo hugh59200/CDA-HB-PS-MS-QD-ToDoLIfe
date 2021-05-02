@@ -1,5 +1,5 @@
+import { BouttonRevenir, BouttonValider } from './Bouttons';
 import { React, useState } from 'react';
-import { bouttonRevenir, bouttonValider } from './Bouttons';
 
 import mood1 from '../../../assets/img/mood1.png';
 import mood2 from '../../../assets/img/mood2.png';
@@ -17,8 +17,8 @@ export function AjouterJour(setshowList, setshowJourDetail, setajoutJour) {
 				{ChoixMood(setmoodInt)}
 				{ChoixResume(setresume)}
 			</div>
-			{bouttonValider(setajoutJour, setshowList, titre, moodInt, resume)}
-			{bouttonRevenir(setshowList, setshowJourDetail)}
+			{BouttonValider(setajoutJour, setshowList, titre, moodInt, resume)}
+			{BouttonRevenir(setshowList, setshowJourDetail)}
 		</>
 	);
 }
@@ -30,12 +30,11 @@ function ChoixTitre(settitre) {
 				type="text"
 				className="inputTitre"
 				placeholder="mon titre ici"
-				onClick={(e) => settitre(e.target.value)}
-				></input>
+				onClick={e => settitre(e.target.value)}
+			></input>
 		</div>
 	);
 }
-
 
 export function ChoixMood(setmoodInt) {
 	const mood = [mood1, mood2, mood3, mood4];
@@ -43,13 +42,13 @@ export function ChoixMood(setmoodInt) {
 		<div className="choixMood">
 			{mood.map((mood, i) => (
 				<img
-				src={mood}
-				alt="Logo"
-				value=""
-				key={i}
-				className="mood"
-				onClick={() => {
-					setmoodInt(i + 1);
+					src={mood}
+					alt="Logo"
+					value=""
+					key={i}
+					className="mood"
+					onClick={() => {
+						setmoodInt(i + 1);
 					}}
 				/>
 			))}
@@ -65,8 +64,8 @@ function ChoixResume(setresume) {
 				cols="30"
 				rows="10"
 				placeholder="Alors cette journée ?"
-				onClick={(e) => setresume(e.target.value)}
-				></textarea>
+				onClick={e => setresume(e.target.value)}
+			></textarea>
 		</div>
 	);
 }

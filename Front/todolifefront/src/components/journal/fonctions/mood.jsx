@@ -3,7 +3,7 @@ import mood2 from '../../../assets/img/mood2.png';
 import mood3 from '../../../assets/img/mood3.png';
 import mood4 from '../../../assets/img/mood4.png';
 
-export function mood(moodLevel) {
+function Mood(moodLevel) {
   switch (moodLevel) {
     case 4:
       return <img src={mood1} alt="Logo" className="mood" />;
@@ -17,3 +17,5 @@ export function mood(moodLevel) {
       break;
   }
 }
+
+export default Mood;

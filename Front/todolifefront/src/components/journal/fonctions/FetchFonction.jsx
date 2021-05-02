@@ -1,6 +1,6 @@
 import { API_JOURNAL_BY_USERID } from '../../../constant/API_BACK';
 
-export async function fetchFonction(setmois, mois, setannee, annee, setLoading, setData) {
+export async function FetchFonction(setmois, mois, setannee, annee, setLoading, setData) {
 	setmois(mois);
 	setannee(annee);
 	const response = await fetch(

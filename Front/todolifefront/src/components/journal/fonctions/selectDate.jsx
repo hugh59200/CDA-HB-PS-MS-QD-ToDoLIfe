@@ -1,17 +1,17 @@
 import React from 'react';
 
-export function selects(fetchUrl, annee, setshowList, mois) {
+export function Selects(FetchUrl, annee, setshowList, mois) {
 	return (
 		<>
 			<div className="entete">
-				{selectMois(fetchUrl, annee, setshowList)}
-				{selectAnnee(fetchUrl, mois, setshowList)}
+				{SelectMois(FetchUrl, annee, setshowList)}
+				{SelectAnnee(FetchUrl, mois, setshowList)}
 			</div>
 		</>
 	);
 }
 
-export function selectMois(fetchUrl, annee, setshowList) {
+export function SelectMois(FetchUrl, annee, setshowList) {
 	const allmonth = [
 		'Janvier',
 		'Février',
@@ -33,7 +33,7 @@ export function selectMois(fetchUrl, annee, setshowList) {
 		<select
 			className="form-select"
 			onChange={e => {
-				fetchUrl(e.target.value, annee);
+				FetchUrl(e.target.value, annee);
 				setshowList(true);
 			}}
 		>
@@ -47,13 +47,13 @@ export function selectMois(fetchUrl, annee, setshowList) {
 	);
 }
 
-export function selectAnnee(fetchUrl, mois, setshowList) {
+export function SelectAnnee(FetchUrl, mois, setshowList) {
 	const allyear = ['2020', '2021'];
 	return (
 		<select
 			className="form-select"
 			onChange={e => {
-				fetchUrl(mois, e.target.value);
+				FetchUrl(mois, e.target.value);
 				setshowList(true);
 			}}
 		>
