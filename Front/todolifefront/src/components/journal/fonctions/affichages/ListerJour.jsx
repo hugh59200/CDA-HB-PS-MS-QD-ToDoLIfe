@@ -9,7 +9,7 @@ export function ListerJour(props) {
 					className="jours"
 					onClick={() => {
 						props.setjourData(data);
-						props.propssetshowList(false);
+						props.setshowList(false);
 						props.setshowJourDetail(true);
 					}}
 					key={data.idJour}

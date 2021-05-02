@@ -1,42 +1,51 @@
 import { BouttonRevenir, BouttonValider } from '../Bouttons';
 import { React, useState } from 'react';
 
-import mood1 from '../../../assets/img/mood1.png';
-import mood2 from '../../../assets/img/mood2.png';
-import mood3 from '../../../assets/img/mood3.png';
-import mood4 from '../../../assets/img/mood4.png';
+import mood1 from '../../../../assets/img/mood1.png';
+import mood2 from '../../../../assets/img/mood2.png';
+import mood3 from '../../../../assets/img/mood3.png';
+import mood4 from '../../../../assets/img/mood4.png';
 
-export function AjouterJour(setshowList, setshowJourDetail, setajoutJour) {
+export function AjouterJour(props) {
 	const [titre, settitre] = useState('');
 	const [moodInt, setmoodInt] = useState('');
 	const [resume, setresume] = useState('');
 	return (
 		<>
 			<div className="creationJour">
-				{ChoixTitre(settitre)}
-				{ChoixMood(setmoodInt)}
-				{ChoixResume(setresume)}
+				<ChoixTitre settitre={settitre}/>
+				<ChoixMood setmoodInt={setmoodInt}/>
+				<ChoixResume setresume={setresume}/>
 			</div>
-			{BouttonValider(setajoutJour, setshowList, titre, moodInt, resume)}
-			{BouttonRevenir(setshowList, setshowJourDetail)}
+			<BouttonValider
+			setajoutJour={props.setajoutJour}
+			setshowList={props.setshowList}
+			titre={titre}
+			moodInt={moodInt}
+			resume={resume}
+			/>
+			<BouttonRevenir
+			setshowList={props.setshowList}
+			setshowJourDetail={props.setshowJourDetail}
+			/>
 		</>
 	);
 }
 
-function ChoixTitre(settitre) {
+function ChoixTitre(props) {
 	return (
 		<div className="choixTitre">
 			<input
 				type="text"
 				className="inputTitre"
 				placeholder="mon titre ici"
-				onClick={e => settitre(e.target.value)}
+				onClick={e => props.settitre(e.target.value)}
 			></input>
 		</div>
 	);
 }
 
-export function ChoixMood(setmoodInt) {
+ function ChoixMood(props) {
 	const mood = [mood1, mood2, mood3, mood4];
 	return (
 		<div className="choixMood">
@@ -48,7 +57,7 @@ export function ChoixMood(setmoodInt) {
 					key={i}
 					className="mood"
 					onClick={() => {
-						setmoodInt(i + 1);
+						props.setmoodInt(i + 1);
 					}}
 				/>
 			))}
@@ -56,7 +65,7 @@ export function ChoixMood(setmoodInt) {
 	);
 }
 
-function ChoixResume(setresume) {
+function ChoixResume(props) {
 	return (
 		<div className="choixResume">
 			<textarea
@@ -64,7 +73,7 @@ function ChoixResume(setresume) {
 				cols="30"
 				rows="10"
 				placeholder="Alors cette journée ?"
-				onClick={e => setresume(e.target.value)}
+				onClick={e => props.setresume(e.target.value)}
 			></textarea>
 		</div>
 	);
