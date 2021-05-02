@@ -2,10 +2,11 @@ import '../../assets/css/journal/MonjournalStyle.css';
 
 import React, { useState } from 'react';
 
-import DetailJour from './fonctions/DetailJour';
-import Empty from './fonctions/Empty';
+import { BouttonAjouter } from './fonctions/Bouttons';
+import DetailJour from './fonctions/affichages/DetailJour';
+import Empty from './fonctions/autres/Empty';
 import FetchFonction from './fonctions/FetchFonction';
-import { ListerJour } from './fonctions/ListerJour';
+import { ListerJour } from './fonctions/affichages/ListerJour';
 import { Selects } from './fonctions/SelectDate';
 
 // import { BouttonAjouter } from './fonctions/Bouttons';
@@ -19,7 +20,7 @@ const MonJournal = () => {
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
 	const [showJourDetail, setshowJourDetail] = useState(false);
-	// const [ajoutJour, setajoutJour] = useState(false);
+	const [ajoutJour, setajoutJour] = useState(false);
 
 	async function FetchUrl(mois, annee) {
 		await FetchFonction(setmois, mois, setannee, annee, setLoading, setData);
@@ -33,10 +34,15 @@ const MonJournal = () => {
 						{loading ? (
 							<Empty />
 						) : (
-							ListerJour(data, setjourData, setshowList, setshowJourDetail)
+							<ListerJour
+								data={data}
+								setjourData={setjourData}
+								setshowList={setshowList}
+								setshowJourDetail={setshowJourDetail}
+							/>
 						)}
 					</div>
-					{/* {bouttonAjouter(setajoutJour, setshowList)} */}
+					{/* {BouttonAjouter(setajoutJour, setshowList)} */}
 				</>
 			);
 		}
@@ -48,7 +54,7 @@ const MonJournal = () => {
 					setshowJourDetail={setshowJourDetail}
 				/>
 			);
-		// return DetailJour(jourData, setshowList, setshowJourDetail);
+		return DetailJour(jourData, setshowList, setshowJourDetail);
 		// if (ajoutJour) return <AjouterJour/>
 		//  AjouterJour(setshowList, setshowJourDetail);
 	}

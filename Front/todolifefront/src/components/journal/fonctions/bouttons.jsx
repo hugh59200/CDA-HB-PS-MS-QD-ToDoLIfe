@@ -1,13 +1,13 @@
 import React from 'react';
 
-export function BouttonAjouter(setajoutJour, setshowList) {
+export function BouttonAjouter(props) {
 	return (
 		<div className="boutton">
 			<button
 				className="btn-form"
 				onClick={() => {
-					setajoutJour(true);
-					setshowList(false);
+					props.setajoutJour(true);
+					props.setshowList(false);
 				}}
 			>
 				ajouter
@@ -32,17 +32,17 @@ export function BouttonRevenir(props) {
 	);
 }
 
-export function BouttonValider(setajoutJour, setshowList, moodInt, titre, resume) {
-	console.log(moodInt);
-	console.log(titre);
-	console.log(resume);
+export function BouttonValider(props) {
+	console.log(props.moodInt);
+	console.log(props.titre);
+	console.log(props.resume);
 	return (
 		<div className="boutton">
 			<button
 				className="btn-form"
 				onClick={() => {
-					setajoutJour(false);
-					setshowList(true);
+					props.setajoutJour(false);
+					props.setshowList(true);
 				}}
 			>
 				valider

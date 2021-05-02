@@ -1,4 +1,4 @@
-import { BouttonRevenir, BouttonValider } from './Bouttons';
+import { BouttonRevenir, BouttonValider } from '../Bouttons';
 import { React, useState } from 'react';
 
 import mood1 from '../../../assets/img/mood1.png';
