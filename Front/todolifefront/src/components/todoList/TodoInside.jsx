@@ -18,37 +18,37 @@ const TodoInside = () => {
 
         let postData = dataRecup.map((elem) => (
           <>
-            <tr key={elem.idTache}>
-              
-                <td
-              onClick={function(e){
-                
-                let text =  e.target.innerHTML;
-                // console.log(text)
-                
-                // let text = "<del>"+e.target+"</del>";
-                // console.log(text)
-                
-                e.target.innerHTML=
-                  "<del>"+text+"</del>"
-                
-              }}
+            <div
+              key={elem.idTache}
+              className="overflow-auto mx-auto align-middle d-flex flex-row justify-content-around row css-list-todo"
+            >
+              <div
+                className="media-todo-list col-3 text text-white w-100"
+                // onClick={function (e) {
+                //   let text = e.target.innerHTML;
+                //   // console.log(text)
+
+                //   // let text = "<del>"+e.target+"</del>";
+                //   // console.log(text)
+
+                //   e.target.innerHTML = "<del>" + text + "</del>";
+                // }}
               >
                 {elem.label}
-              </td>
-              <td>
+              </div>
+              <div className="media-todo-list col-3">
                 <button
                   onClick={() => updateTodo(elem.idTache, elem.label)}
                   className="todo-button-update"
                 ></button>
-              </td>
-              <td>
+              </div>
+              <div className="media-todo-list col-3">
                 <button
                   onClick={() => removeTodo(elem.idTache)}
                   className="todo-button-remove"
                 ></button>
-              </td>
-            </tr>
+              </div>
+            </div>
           </>
         ));
         setList(postData);
@@ -88,7 +88,11 @@ const TodoInside = () => {
 
   useEffect(() => {
     putIdLabelList();
-    getTodo();
+    if (localStorage.getItem("label_todolist") === "undefined") {
+      history.push(URL_TODO_LIST);
+    } else {
+      getTodo();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -96,7 +100,7 @@ const TodoInside = () => {
     <>
       <div className="todo-app">
         <button
-          className="todo-button-back float-left"
+          className="todo-button-back float-left text-white"
           onClick={function () {
             history.push(URL_TODO_LIST);
           }}
@@ -107,12 +111,11 @@ const TodoInside = () => {
           {localStorage.getItem("label_todolist")}
         </h1>
         <br />
-        <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
-          <table>
-            <tbody>{list}</tbody>
-            <button onClick={clickAdd} className="todo-button-add"></button>
-          </table>
+        <div className="justify-content-aound m-auto p-auto">
+          <>{list}</>
         </div>
+        <br />
+        <button onClick={clickAdd} className="todo-button-add"></button>
       </div>
     </>
   );

@@ -4,20 +4,12 @@ import {
 } from "../constant/API_BACK";
 
 class TodolistService {
-    // getList() {
-    //     return axios.get(API_TODO_LIST);
-    // }
-
-    // getListByIdToDoList(id) {
-    //     return axios.get(API_TODO_LIST + '/todolist/' + id);
-    // }
-
     getListByUser(id) {
-        return axios.get(API_TODO_LIST + '/utilisateurs/' + id);
+        return axios.get(API_TODO_LIST + '/utilisateur/' + id);
     }
 
     removeById(id) {
-        return axios.delete(API_TODO_LIST + '/id/' + id);
+        return axios.delete(API_TODO_LIST + '/' + id);
     }
 
     create(Data) {
@@ -25,14 +17,11 @@ class TodolistService {
     }
 
     update(Data) {
-        // console.log('test',Data)
-        // console.log(Data)
         return axios.put(API_TODO_LIST, Data);
     }
     
     getListById(id){
-        // console.log("id",id);
-        return axios.get(API_TODO_LIST + '/id/' + id);
+        return axios.get(API_TODO_LIST + '/' + id);
     }
 }
 

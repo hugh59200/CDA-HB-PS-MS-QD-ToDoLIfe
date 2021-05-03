@@ -11,16 +11,8 @@ public interface IToDoListRepository extends CrudRepository<ToDoList, Integer> {
 
 	List<ToDoList> findAll();
 
-	ToDoList findByLabel(String label);
+//	ToDoList findByLabel(String label);
 	
 	@Query(value = "select * from todolist where id_utilisateur = ?1 ", nativeQuery = true)
 	List<ToDoList> findListByUserId(int id);
-	
-	
-	
-//	@Query(value = "insert into todolist (label, id_utilisateur) values (?1, ?2) ", nativeQuery = true)
-//	ToDoList insert(String Label, int id);
-	
-	
-//	ToDoList findByselected();
 }

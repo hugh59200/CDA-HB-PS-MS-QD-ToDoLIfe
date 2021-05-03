@@ -1,18 +1,8 @@
 /* authentification */
-
-// import { useHistory } from "react-router";
-
-// import Cookies from "universal-cookie";
-
-// const cookies = new Cookies();
-
 export let isLoggued = false;
 
 export function authenticated(id, username, token) {
     isLoggued = true;
-    // localStorage.setItem("id", id);
-    // localStorage.setItem("username", username);
-    // localStorage.setItem("token", token);
 }
 
 export function deconnected() {
@@ -22,8 +12,6 @@ export function deconnected() {
     localStorage.removeItem('token')
     localStorage.removeItem('id_todolist')
     localStorage.removeItem('label_todolist')
-    // localStorage.removeItem('user')
-    // cookies.remove('token')
 }
 
 export function isAuthenticated() {
@@ -36,7 +24,6 @@ export function isAuthenticated() {
 }
 
 /* confirmation */
-
 export let isConfirm = false;
 
 export function confirmed() {

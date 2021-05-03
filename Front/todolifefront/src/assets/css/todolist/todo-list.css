@@ -1,139 +1,70 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
-  }
 
-  body {
-    background-color: #14A7FF  !important;
-  }
-  
-  .complete {
-    text-decoration: line-through;
-    opacity: 0.4;
-  }
-  
-  .todo-row>div {
-    font-weight: bold;
-    text-align: center !important;
-  }
-  
-  .todo-button-update {
-    background-image: url( '../../img/update.png' );
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: contain;
-    height:25px!important;
-    width: 30px!important;
-    /* border-radius: 50%!important; */
-    /* margin-left: 20px; */
-    border: none;
-  }
-  
- 
-  
-  .todo-container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-  }
-  
-  .todo-input::placeholder {
-    color: #e2e2e2;
-  }
-  
-  .todo-button-add {
-    background-image: url( '../../img/plus.png' );
-    background-repeat: no-repeat;
-    background-color: transparent;
-    height:40px!important;
-    width: 35px!important;
-    /* border-radius: 50%!important;
-    margin-left: 20px; */
-    border: none;
-  }
-  
-  .todo-button-remove{
-    background-image: url( '../../img/moins.png' );
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: contain;
-    height:25px!important;
-    width: 30px!important;
-    /* border-radius: 50%!important; */
-    /* margin-left: 20px; */
-    border: none;
-  }
-  
-  .icons {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .delete-icon {
-    margin-right: 5px;
-    color: #fff;
-  }
-  
-  .todo-app {
-    width: 600px;
-    min-height: 600px;
-    background: #0090E8;
-    text-align: center;
-    margin: auto;
-    border-radius: 10px;
-    padding-bottom: 32px;
-    margin-top: 50px;
+.complete {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
-.todolist-title {
-    margin: 13%;
-    color: #fff;
-    font-size: 2.5em;
+.todo-button-update {
+  background-image: url('../../img/update.png');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  height: 25px !important;
+  width: 30px !important;
+  border: none;
 }
 
-.todo-form {
-    margin-bottom: 32px;
+.todo-button-add {
+  background-image: url('../../img/plus.png');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  height: 40px !important;
+  width: 35px !important;
+  border: none;
 }
 
-.todo-input {
-    padding: 14px 32px 14px 16px;
-    border-radius: 4px 0 0 4px;
-    border: none;
-    outline: none;
-    width: 80%;
-    background-color: #14A7FF;
-    color: #fff;
-    margin-top: 20px;
-    border-radius: 5px;
+.todo-button-remove {
+  background-image: url('../../img/moins.png');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  height: 25px !important;
+  width: 30px !important;
+  border: none;
 }
-
-.todo-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 4px auto;
-    color: #fff;
-    padding: 16px;
-    border-radius: 5px;
-    width: 90%;    
-}
-
-.todo-row{
-  background-color: #14A7FF;
-} 
 
 .todo-button-back {
-    background-repeat: no-repeat;
-    background-color: #1900ff4f;
-    height: 50px !important;
-    width: 70px !important;
-    /* border-radius: 50%!important; */
-    margin: 20px;
-    border: 1;
-    border: 5px solid #1C6EA4;
-border-radius: 12px;
+  background-repeat: no-repeat;
+  background-color: #0090E8;
+  margin: 20px;
+  border: 1;
+  border: 5px solid #1C6EA4;
+  border-radius: 12px;
+}
+
+.todo-app {
+  background: #0090E8;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+  display: flex !important;
+  align-items: center !important;
+  width: 44% !important;
+  flex-direction: column;
+  
+}
+
+.css-list-todo{
+  background-color: #14A7FF;
+  width: 100% !important;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5%;
+}
+
+@media (max-width: 576px) {
+
+  .todo-app {
+    width: 80% !important;
+  }
 }

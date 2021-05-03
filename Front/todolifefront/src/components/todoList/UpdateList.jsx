@@ -31,7 +31,6 @@ const UpdateList = (props) => {
       label: values.labelList,
       utilisateur: user,
     };
-
     submit(test);
   };
 
@@ -51,7 +50,7 @@ const UpdateList = (props) => {
 
   return (
     <>
-      <h1>update list</h1>
+      <h1 className="text-white">update list</h1>
 
       <Formik
         initialValues={initialValues}
@@ -68,7 +67,7 @@ const UpdateList = (props) => {
               <ErrorMessage name="labelList" component="small" />
             </div>
             <br />
-            <button type="submit"> Submit</button>
+            <button type="submit" className="todo-button-back"> Submit</button>
           </Form>
         )}
       </Formik>

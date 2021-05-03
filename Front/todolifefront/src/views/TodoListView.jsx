@@ -22,26 +22,29 @@ const TodoListView = () => {
     TodolistService.getListByUser(localStorage.getItem("id")).then((res) => {
       let dataRecup = res.data;
       let postData = dataRecup.map((elem) => (
-        <tr key={elem.idTodoList}>
-          <td
-            className="text-white"
+        <div
+          key={elem.idTodoList}
+          className="overflow-auto mx-auto align-middle d-flex flex-row justify-content-around row css-list-todo"
+        >
+          <div
+            className="media-todo-list col-3"
             onClick={() => clickTodo(elem.idTodoList, elem.label)}
           >
-            {elem.label}
-          </td>
-          <td>
+            <h6 className="text text-white w-100">{elem.label}</h6>
+          </div>
+          <div className="media-todo-list col-3">
             <button
               onClick={() => updateList(elem.idTodoList, elem.label)}
               className="todo-button-update"
             ></button>
-          </td>
-          <td>
+          </div>
+          <div className="media-todo-list col-3">
             <button
               onClick={() => removeList(elem.idTodoList)}
               className="todo-button-remove"
             ></button>
-          </td>
-        </tr>
+          </div>
+        </div>
       ));
 
       setList(postData);
@@ -76,18 +79,29 @@ const TodoListView = () => {
   };
 
   return (
-    <div className="todo-app">
-      <h1 className="text-white text-center">Mes todolist :</h1>
-      <br />
-      <div className=" h-auto w-auto table text-center d-flex justify-content-center">
-        <table>
-          <tbody>{list}</tbody>
-          <tfoot>
-            <button onClick={clickAdd} className="todo-button-add"></button>
-          </tfoot>
-        </table>
-      </div>
-    </div>
+    <>
+      {list.length > 1 ? (
+        <div className="todo-app">
+          <h1 className=" text-white text-center">Mes Todo listes :</h1>
+          <br />
+          <div className="text-center d-flex">
+            <div className="justify-content-aound m-auto p-auto">{list}</div>
+          </div>
+          <br />
+          <button onClick={clickAdd} className="todo-button-add"></button>
+        </div>
+      ) : (
+        <div className="todo-app">
+          <h1 className="text-white text-center">Mes Todo liste :</h1>
+          <br />
+          <div className="text-center d-flex">
+            <div className="justify-content-aound m-auto p-auto">{list}</div>
+          </div>
+          <br />
+          <button onClick={clickAdd} className="todo-button-add"></button>
+        </div>
+      )}
+    </>
   );
 };
 

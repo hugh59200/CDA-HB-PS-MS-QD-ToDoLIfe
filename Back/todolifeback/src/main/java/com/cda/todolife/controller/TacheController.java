@@ -43,24 +43,23 @@ public class TacheController {
 	// create
 	@PostMapping("/taches")
 	public ResponseEntity<TacheDto> create(@RequestBody TacheDto tache) throws TacheExistanteException {
-		System.err.println(tache);
 		this.tacheService.add(tache);
 		return ResponseEntity.ok(tache);
 	}
 
-	// details by Id
-	@GetMapping("/taches/id/{id}")
-	public ResponseEntity<TacheDto> getById(@PathVariable int id) throws TacheIntrouvableException {
-		TacheDto tache = tacheService.findById(id);
-		return ResponseEntity.ok(tache);
-	}
+//	// details by Id
+//	@GetMapping("/taches/{id}")
+//	public ResponseEntity<TacheDto> getById(@PathVariable int id) throws TacheIntrouvableException {
+//		TacheDto tache = tacheService.findById(id);
+//		return ResponseEntity.ok(tache);
+//	}
 
-	// details by Label
-	@GetMapping("/taches/label/{label}")
-	public ResponseEntity<TacheDto> getByName(@PathVariable String label) throws TacheIntrouvableException {
-		TacheDto tache = tacheService.findByLabel(label);
-		return ResponseEntity.ok(tache);
-	}
+//	// details by Label
+//	@GetMapping("/taches/label/{label}")
+//	public ResponseEntity<TacheDto> getByName(@PathVariable String label) throws TacheIntrouvableException {
+//		TacheDto tache = tacheService.findByLabel(label);
+//		return ResponseEntity.ok(tache);
+//	}
 	
 	// details by id todolist
 		@GetMapping("/taches/todolists/{id}")
@@ -91,7 +90,7 @@ public class TacheController {
 	}
 
 	// delete
-	@DeleteMapping("/taches/id/{id}")
+	@DeleteMapping("/taches/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws TacheIntrouvableException {
 		tacheService.deleteById(id);
 //		System.out.println("ok");

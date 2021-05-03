@@ -19,7 +19,7 @@ public interface IToDoListService {
 
 	void add(ToDoListDto list) throws ToDoListExistanteException;
 
-	ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException;
+//	ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException;
 	
 //	ToDoListDto findByselected() throws ToDoListIntrouvableException, ToDoListDejaSelectionerException;
 	

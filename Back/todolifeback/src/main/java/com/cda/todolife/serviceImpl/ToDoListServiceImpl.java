@@ -58,11 +58,11 @@ public class ToDoListServiceImpl implements IToDoListService {
 
 	}
 
-//	trouver par label
-	@Override
-	public ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException {
-		return this.modelMapper.map(this.todolistDao.findByLabel(label), ToDoListDto.class);
-	}
+////	trouver par label
+//	@Override
+//	public ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException {
+//		return this.modelMapper.map(this.todolistDao.findByLabel(label), ToDoListDto.class);
+//	}
 
 	// supprimer un film
 	@Override
