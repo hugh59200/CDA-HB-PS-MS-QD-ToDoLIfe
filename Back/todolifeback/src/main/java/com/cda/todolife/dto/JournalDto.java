@@ -15,6 +15,6 @@ public class JournalDto {
 
 	private int idJournal;
 	private String label;
-	private UtilisateurDtoList utilisateur;
-	private List<JourDto> jours;
+	private UtilisateurDto utilisateurDto;
+	private List<JourDto> listJourDto;
 }

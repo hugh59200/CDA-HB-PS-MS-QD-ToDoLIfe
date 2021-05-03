@@ -2,38 +2,66 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.JourDto;
+import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
+import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.model.Jour;
+import com.cda.todolife.model.Journal;
 import com.cda.todolife.repository.IJourRepository;
+import com.cda.todolife.repository.IJournalRepository;
 import com.cda.todolife.service.IJourService;
+import com.cda.todolife.service.IUtilisateurService;
 
 @Service
 public class JourServiceImpl implements IJourService {
 
 	@Autowired
 	private IJourRepository jourRepository;
-	
+
+	@Autowired
+	private IJournalRepository journalRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
 
+	@Autowired
+	private IUtilisateurService utilisateurService;
+
 //	ajouter
 	@Override
-	public void add(JourDto jour) throws JourExistantException {
-		Optional<Jour> probEntOpt = this.jourRepository.findById(jour.getIdJour());
-		if (probEntOpt.isPresent()) {
-			throw new JourExistantException();
-		} else {
-			this.jourRepository.save(this.modelMapper.map(jour, Jour.class));
+	public void add(int idUser, JourDto jourDto)
+			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
+
+		JournalDto journalDto = this.modelMapper.map(this.journalRepository.findByUtilisateurIdUtilisateur(idUser),
+				JournalDto.class);
+
+		if (journalDto.getUtilisateurDto() == null) {
+			journalDto.setUtilisateurDto(this.utilisateurService.findByidUtilisateur(idUser));
+			
+		} else if (jourDto.getJournalDto() == null) {
+			jourDto.setJournalDto(journalDto);
+			
+		} else if (journalDto.getListJourDto() == null) {
+			List<JourDto> listJourDto = new ArrayList<>();
+			listJourDto.add(jourDto);
+			journalDto.setListJourDto(listJourDto);
 		}
+
+		Jour jour = this.modelMapper.map(jourDto, Jour.class);
+		Journal journal = this.modelMapper.map(journalDto, Journal.class);
+		
+		jour.setJournal(journal);
+		jour.setIdJour(this.jourRepository.findAll().size()+1);
+		
+		this.jourRepository.save(jour);
 	}
 
 //	lister
@@ -74,34 +102,14 @@ public class JourServiceImpl implements IJourService {
 		this.jourRepository.findById(id).orElseThrow(JourIntrouvableException::new);
 		this.jourRepository.deleteById(id);
 	}
-	
+
 //	lister jour par idUtilisateur
 	@Override
 	public List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur) {
 		List<JourDto> listJours = new ArrayList<>();
-		this.jourRepository.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
+		this.jourRepository.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur)
+				.forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
 		return listJours;
 	}
 
-	
-////	lister jour par idUtilisateur et date
-//	@Override
-//	public List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
-//		List<JourDto> listJours = new ArrayList<>();
-//		this.jourRepository.findAllByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, dateJour).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
-//		return listJours;
-//	}
-
-////	lister jour par idUtilisateur et entre 2 date
-//	@Override
-//	public List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
-//			int idUtilisateur, String startDate, String endDate) {
-//		List<JourDto> listJours = new ArrayList<>();
-//		this.jourRepository.findAllByJournalUtilisateurIdUtilisateurAndStartDateLessThanEqualAndEndDateGreaterThanEqual(idUtilisateur, startDate, endDate).forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
-//		return listJours;
-//	}
-
-	
-	
-	
 }

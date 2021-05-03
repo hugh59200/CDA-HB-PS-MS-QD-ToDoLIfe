@@ -117,15 +117,6 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		}
 	}
 
-//	@Override
-//	public CurrentUserDto findById(int id) throws ResourceNotFoundException {
-//		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
-//		if (optUser.isPresent()) {
-//			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
-//		} else {
-//			throw new ResourceNotFoundException();
-//		}
-//	}
 	
 	
 	
@@ -201,6 +192,17 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 
 			this.utilisateurRepository.save(this.modelMapper.map(user, Utilisateur.class));
 			return true;
+		}
+	}
+
+	
+	@Override
+	public UtilisateurDto findByidUtilisateur(int id) throws ResourceNotFoundException {
+		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
+		if (optUser.isPresent()) {
+			return this.modelMapper.map(optUser.get(), UtilisateurDto.class);
+		} else {
+			throw new ResourceNotFoundException();
 		}
 	}
 

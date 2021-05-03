@@ -4,10 +4,6 @@ import axios from 'axios';
 
 export function BouttonValider(props) {
 	const id = localStorage.getItem('id');
-	// console.log(props.moodInt);
-	// console.log(props.titre);
-	// console.log(props.resume);
-	// console.log(id);
 	return (
 		<div className="boutton">
 			<button
@@ -25,14 +21,22 @@ export function BouttonValider(props) {
 }
 
 async function creationJour(titre, humeur, texte) {
-	var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-	const dateStr = new Date().toLocaleDateString('fr-FR', options);
+	var optionsDate = { year: 'numeric', month: 'numeric', day: 'numeric' };
+	const dateJour = new Date().toLocaleDateString('fr-FR', optionsDate);
 	const id = localStorage.getItem('id');
 	const jour = {
 		titre,
 		humeur,
 		texte,
-		dateStr,
+		dateJour,
 	};
-	await axios.post(API_JOUR, { params: { jour, id } });
+	
+	const options = {
+		method: 'post',
+		url: API_JOUR ,
+		data: jour,
+		params: { id }
+	};
+	
+	axios(options);
 }

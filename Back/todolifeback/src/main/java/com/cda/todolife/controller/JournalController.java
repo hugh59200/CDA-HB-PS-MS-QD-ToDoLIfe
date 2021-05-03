@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
-import com.cda.todolife.service.IJourService;
 import com.cda.todolife.service.IJournalService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -34,9 +33,6 @@ public class JournalController {
 
 	@Autowired
 	private IJournalService journalService;
-	
-	@Autowired
-	private IJourService jourService;
 
 	// listing
 	@GetMapping("/journaux")
@@ -62,7 +58,6 @@ public class JournalController {
 		JournalDto list = journalService.findById(id);
 		return ResponseEntity.ok(list);
 	}
-
 
 	// details by Label
 	@GetMapping("/journaux/{label}")

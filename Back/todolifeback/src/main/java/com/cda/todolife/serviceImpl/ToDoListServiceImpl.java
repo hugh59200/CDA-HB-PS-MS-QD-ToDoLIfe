@@ -22,17 +22,12 @@ public class ToDoListServiceImpl implements IToDoListService {
 	@Autowired
 	private IToDoListRepository todolistDao;
 
-//	@Autowired
-//	private IUtilisateurRepository utilisateurRepository;
-
 	@Autowired
 	private ModelMapper modelMapper;
 
 //	ajouter une todolist
 	@Override
 	public void add(ToDoListDto list) throws ToDoListExistanteException {
-//		Utilisateur utilisateur = utilisateurRepository.findById(id).get();
-//		ToDoList list = ToDoList.builder().label(label).utilisateur(utilisateur).build();
 		
 		Optional<ToDoList> listOpt = this.todolistDao.findById(list.getIdTodoList());
 		if (listOpt.isPresent()) {

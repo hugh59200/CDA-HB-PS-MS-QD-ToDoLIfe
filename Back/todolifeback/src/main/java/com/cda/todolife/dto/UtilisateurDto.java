@@ -7,11 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(of = { "prenom", "dateNaissance", "email" })
 public class UtilisateurDto {
 
 	private int idUtilisateur;

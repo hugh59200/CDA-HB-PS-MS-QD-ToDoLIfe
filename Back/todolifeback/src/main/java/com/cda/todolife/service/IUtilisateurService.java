@@ -25,8 +25,7 @@ public interface IUtilisateurService {
 
 	CurrentUserDto findByUsername(String name) throws ResourceNotFoundException;
 	
-//	CurrentUserDto findById(int id) throws ResourceNotFoundException;
-
+	UtilisateurDto findByidUtilisateur(int id) throws ResourceNotFoundException ;
 
 	void register(UtilisateurDto user, String siteURL)
 			throws UnsupportedEncodingException, MessagingException, ResourceAlreadyExist;

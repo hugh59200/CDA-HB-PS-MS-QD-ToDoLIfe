@@ -24,12 +24,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.JourDto;
-import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.service.IJourService;
-import com.cda.todolife.service.IJournalService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -39,8 +38,6 @@ public class JourController {
 	@Autowired
 	private IJourService jourService;
 
-	@Autowired
-	private IJournalService journalService;
 
 	// listing
 	@GetMapping("/jour")
@@ -50,44 +47,11 @@ public class JourController {
 
 	// create
 	@PostMapping("/jour")
-	public ResponseEntity<JourDto> create(@RequestParam(value = "titre") JourDto jour,
-			@RequestParam(value = "id") int id) throws JourExistantException, JournalIntrouvableException {
-
-		JournalDto journal = this.journalService.findById(id);
-		List<JourDto> list = journal.getJours();
-		list.add(jour);
-		journal.setJours(list);
-		System.out.println(jour);
-		System.out.println(id);
-
-		this.jourService.add(jour);
-		return ResponseEntity.ok(jour);
+	public ResponseEntity<JourDto> create(@RequestBody JourDto jourDto, @RequestParam(value = "id") int id)
+			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
+		this.jourService.add(id, jourDto);
+		return ResponseEntity.ok(jourDto);
 	}
-//	// create
-//	@PostMapping("/jour")
-//	public ResponseEntity<JourDto> create(@RequestParam(value = "titre") String titre,
-//			@RequestParam(value = "humeur") int humeur, @RequestParam(value = "texte") String texte,
-//			@RequestParam(value = "id") int id) throws JourExistantException, JournalIntrouvableException {
-//		
-//		JourDto jour = new JourDto();
-//		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
-//		Date now = new Date();
-//		jour.setDateJour(sdfDate.format(now));
-//		jour.setTitre(titre);
-//		jour.setHumeur(humeur);
-//		jour.setTexte(texte);
-//		
-//		JournalDto journal = this.journalService.findById(id);
-//		List<JourDto> list = journal.getJours();
-//		list.add(jour);
-//		journal.setJours(list);
-//		System.out.println(titre);
-//		System.out.println(humeur);
-//		System.out.println(id);
-//		
-//		this.jourService.add(jour);
-//		return ResponseEntity.ok(jour);
-//	}
 
 	// details by Id
 	@GetMapping("/jour/{id}")
