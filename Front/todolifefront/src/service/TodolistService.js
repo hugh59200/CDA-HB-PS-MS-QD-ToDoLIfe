@@ -5,11 +5,11 @@ import {
 
 class TodolistService {
     getListByUser(id) {
-        return axios.get(API_TODO_LIST + '/utilisateurs/' + id);
+        return axios.get(API_TODO_LIST + '/utilisateur/' + id);
     }
 
     removeById(id) {
-        return axios.delete(API_TODO_LIST + '/id/' + id);
+        return axios.delete(API_TODO_LIST + '/' + id);
     }
 
     create(Data) {
@@ -21,7 +21,7 @@ class TodolistService {
     }
     
     getListById(id){
-        return axios.get(API_TODO_LIST + '/id/' + id);
+        return axios.get(API_TODO_LIST + '/' + id);
     }
 }
 

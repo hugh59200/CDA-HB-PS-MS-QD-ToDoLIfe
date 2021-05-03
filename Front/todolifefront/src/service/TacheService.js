@@ -9,7 +9,7 @@ class TacheService {
     }
 
     removeById(id) {
-        return axios.delete(API_TACHE + '/id/' + id);
+        return axios.delete(API_TACHE + '/' + id);
     }
 
     create(Data) {
