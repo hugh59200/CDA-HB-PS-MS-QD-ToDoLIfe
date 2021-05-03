@@ -1,6 +1,7 @@
 import { API_JOUR } from '../../../../constant/API_BACK';
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 export function BouttonValider(props) {
 	const id = localStorage.getItem('id');
@@ -21,22 +22,22 @@ export function BouttonValider(props) {
 }
 
 async function creationJour(titre, humeur, texte) {
-	var optionsDate = { year: 'numeric', month: 'numeric', day: 'numeric' };
-	const dateJour = new Date().toLocaleDateString('fr-FR', optionsDate);
 	const id = localStorage.getItem('id');
+	const dateJour = moment(new Date()).format('YYYY-MM-DD');
+
 	const jour = {
 		titre,
 		humeur,
 		texte,
 		dateJour,
 	};
-	
+
 	const options = {
 		method: 'post',
-		url: API_JOUR ,
+		url: API_JOUR,
 		data: jour,
-		params: { id }
+		params: { id },
 	};
-	
+
 	axios(options);
 }

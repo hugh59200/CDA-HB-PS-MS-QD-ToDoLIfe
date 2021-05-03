@@ -6,13 +6,13 @@ import mood4 from '../../../../assets/img/mood4.png';
 export function Mood(props) {
   switch (props.moodLevel) {
     case 4:
-      return <img src={mood1} alt="Logo" className="mood" />;
-    case 3:
-      return <img src={mood2} alt="Logo" className="mood" />;
-    case 2:
-      return <img src={mood3} alt="Logo" className="mood" />;
-    case 1:
       return <img src={mood4} alt="Logo" className="mood" />;
+    case 3:
+      return <img src={mood3} alt="Logo" className="mood" />;
+    case 2:
+      return <img src={mood2} alt="Logo" className="mood" />;
+    case 1:
+      return <img src={mood1} alt="Logo" className="mood" />;
     default:
       break;
   }
