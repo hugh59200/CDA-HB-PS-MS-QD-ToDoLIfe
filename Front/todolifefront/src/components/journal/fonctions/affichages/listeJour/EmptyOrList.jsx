@@ -1,5 +1,5 @@
-import Empty from '../autres/Empty';
-import { ListerJour } from '../affichages/ListerJour';
+import Empty from '../../autres/Empty';
+import { ListerJour } from './ListerJour';
 import React from 'react';
 
 export function EmptyOrList(props) {

@@ -3,7 +3,7 @@ import '../../assets/css/journal/MonjournalStyle.css';
 import React, { useState } from 'react';
 
 import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
-import { Affichage } from './Affichage';
+import { Affichage } from './fonctions/affichages/Affichage';
 import { Selects } from './fonctions/selects/SelectDate';
 
 const MonJournal = () => {

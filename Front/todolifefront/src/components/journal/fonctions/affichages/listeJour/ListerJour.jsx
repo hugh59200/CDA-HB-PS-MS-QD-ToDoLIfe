@@ -1,4 +1,4 @@
-import { FormatDate } from '../autres/FormatDate';
+import { FormatDate } from '../../autres/FormatDate';
 import React from 'react';
 
 export function ListerJour(props) {

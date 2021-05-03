@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { AffichageListe } from './fonctions/listeJour/AffichageListe';
-import { AjouterJour } from './fonctions/affichages/AjouterJour';
-import { DetailJour } from './fonctions/affichages/DetailJour';
+import { AffichageListe } from './listeJour/AffichageListe';
+import { AjouterJour } from './ajouterJour/AjouterJour';
+import { DetailJour } from './detailsJour/DetailJour';
 
 export function Affichage(props) {
 	const [ajoutJour, setajoutJour] = useState(false);
