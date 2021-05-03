@@ -1,3 +1,4 @@
+
 .btn-test{
     background-color: #0090E8;
     text-align: center;
@@ -38,7 +39,7 @@
 
 .bloc-film{
     width: 600px;
-    min-height: 600px;
+    min-height: 69vh;
     background: #0090E8;
     text-align: center;
     margin: auto;
@@ -50,5 +51,81 @@
 .btn-enregistrer{
     background-color: #14A7FF;
     border: none;
+}
+
+
+.ajout-film{
+    background-color: #14A7FF;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+    margin:auto;
+    display: flex;
+   
+}
+
+.icone-suppr-edit{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.titre-film{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.boutton-modifier{
+    background-image: url(../../img/modifier.png );
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 32px!important;
+    width: 35px!important;
+    border-radius: 50%!important;
+    margin-left: 20px;
+    border: none;
+}
+
+.boutton-supprimer{
+    background-image: url(../../img/supprimer.png );
+background-size: 30px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 32px!important;
+    width: 35px!important;
+    border-radius: 50%!important;
+    margin-left: 20px;
+    border: none;
+}
+
+@media (max-width: 576px) { 
+
+    .largeur{
+        width: 90%;
+
+    }
+
+    .largeur-titre{
+        width: 185%;
+        justify-content: end!important;
+        margin-bottom: -30px;
+    }
+
+    .bloc-film{
+        min-height: 75vh!important;
+    }
+
+    .largeurnew{
+        margin-right: 0px;
+        min-height: 86vh!important;
+        margin-top: 0px;
+    }
+
+    .ajout-film{
+width: 94%;
+    }
 }
 
