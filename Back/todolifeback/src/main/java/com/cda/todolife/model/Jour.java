@@ -18,7 +18,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of = { "titre", "dateJour", "texte" })
+@ToString(of = { "dateJour", "humeur", "titre" , "texte" })
 @Entity
 public class Jour {
 

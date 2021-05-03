@@ -25,19 +25,16 @@ async function creationJour(titre, humeur, texte) {
 	const id = localStorage.getItem('id');
 	const dateJour = moment(new Date()).format('YYYY-MM-DD');
 
-	const jour = {
-		titre,
-		humeur,
-		texte,
-		dateJour,
-	};
 
-	const options = {
+	axios({
 		method: 'post',
 		url: API_JOUR,
-		data: jour,
-		params: { id },
-	};
-
-	axios(options);
+		data: {
+			dateJour,
+			humeur,
+			titre,
+			texte,
+		},
+		params: { id }
+	});
 }

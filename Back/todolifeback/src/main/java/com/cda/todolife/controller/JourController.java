@@ -29,6 +29,7 @@ import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalIntrouvableException;
 import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.service.IJourService;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
@@ -37,19 +38,14 @@ public class JourController {
 	@Autowired
 	private IJourService jourService;
 
-
-			@RequestParam(value = "humeur") int humeur, @RequestParam(value = "texte") String texte,
-			@RequestParam(value = "id") int id) throws JourExistantException, JournalIntrouvableException {
-
-		JournalDto journal = this.journalService.findById(id);
-		List<JourDto> list = journal.getJours();
-		list.add(jour);
-		journal.setJours(list);
-		System.out.println(jour);
-		System.out.println(id);
-
-		this.jourService.add(jour);
-		return ResponseEntity.ok(jour);
+	// create by Id
+	@PostMapping("/jour")
+	public ResponseEntity<JourDto> getByIdUser(
+			@RequestBody JourDto jourDto, 
+			@RequestParam(value = "id") int id )
+			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
+		this.jourService.add(id, jourDto);
+		return ResponseEntity.ok(jourDto);
 	}
 
 	// details by Id
