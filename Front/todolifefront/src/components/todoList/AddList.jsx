@@ -11,7 +11,6 @@ const validationSchema = yup.object().shape({
 });
 
 const AddList = () => {
-  
   const history = useHistory();
   const [user, setUser] = useState("");
 
@@ -20,18 +19,16 @@ const AddList = () => {
   };
 
   const getUser = () => {
-    UtilisateurService.getById(localStorage.getItem("id")).then(res => {
+    UtilisateurService.getById(localStorage.getItem("id")).then((res) => {
       setUser(res.data);
     });
   };
 
   const makeList = (values) => {
-
     let test = {
       label: values.labelList,
       utilisateur: user,
     };
-
     submit(test);
   };
 
@@ -58,13 +55,16 @@ const AddList = () => {
       >
         {() => (
           <Form>
-            <label className="text-white" htmlFor="labelList">
-              <h1>Label : </h1>
-            </label>
-            <Field type="text" name="labelList" placeholder="label" />
-            <ErrorMessage name="labelList" component="small" />
-            <br />
-            <button type="submit"> Submit</button>
+            <div className="d-flex align-items-center">
+              <label className="text-white" htmlFor="labelList">
+                <h1>Label : </h1>
+              </label>
+              <Field type="text" name="labelList" placeholder="label" />
+              <ErrorMessage name="labelList" component="small" />
+            </div>
+            <button type="submit" className="todo-button-back">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
