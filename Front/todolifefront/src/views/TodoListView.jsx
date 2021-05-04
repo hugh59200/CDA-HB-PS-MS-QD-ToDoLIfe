@@ -24,21 +24,19 @@ const TodoListView = () => {
       let postData = dataRecup.map((elem) => (
         <div
           key={elem.idTodoList}
-          className="overflow-auto mx-auto align-middle d-flex flex-row justify-content-around row css-list-todo"
+          className="overflow-auto mx-auto align-middle d-flex flex-row css-list-todo test"
         >
           <div
-            className="media-todo-list col-3"
+            className="media-todo-list col-8"
             onClick={() => clickTodo(elem.idTodoList, elem.label)}
           >
             <h6 className="text text-white w-100">{elem.label}</h6>
           </div>
-          <div className="media-todo-list col-3">
+          <div className="media-todo-list col-4">
             <button
               onClick={() => updateList(elem.idTodoList, elem.label)}
               className="todo-button-update"
             ></button>
-          </div>
-          <div className="media-todo-list col-3">
             <button
               onClick={() => removeList(elem.idTodoList)}
               className="todo-button-remove"
@@ -85,7 +83,7 @@ const TodoListView = () => {
           <h1 className=" text-white text-center">Mes Todo listes :</h1>
           <br />
           <div className="text-center d-flex">
-            <div className="justify-content-aound m-auto p-auto">{list}</div>
+            <div className="aaa">{list}</div>
           </div>
           <br />
           <button onClick={clickAdd} className="todo-button-add"></button>
@@ -95,7 +93,7 @@ const TodoListView = () => {
           <h1 className="text-white text-center">Mes Todo liste :</h1>
           <br />
           <div className="text-center d-flex">
-            <div className="justify-content-aound m-auto p-auto">{list}</div>
+            <div className="aaa">{list}</div>
           </div>
           <br />
           <button onClick={clickAdd} className="todo-button-add"></button>
