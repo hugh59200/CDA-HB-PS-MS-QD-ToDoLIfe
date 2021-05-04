@@ -47,5 +47,15 @@ export const URL_NEW_SERIE = '/newserie'
 export const URL_LIVRES = '/livres'
 export const URL_NEW_LIVRE= '/newlivre'
 
+export const URL_FILMS = '/films'
+export const URL_NEW_FILM= '/newfilm'
+
+export const URL_SERIES = '/series'
+export const URL_NEW_SERIE = '/newserie'
+
+
+export const URL_LIVRES = '/livres'
+export const URL_NEW_LIVRE= '/newlivre'
+
 /* attentes */
 export const URL_ATTENTE = '/attentes'

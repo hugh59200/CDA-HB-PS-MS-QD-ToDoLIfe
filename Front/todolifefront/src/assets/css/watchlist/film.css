@@ -13,7 +13,7 @@
     text-align: center;
     color: white;
     border-radius: 0 !important;
-    
+
 }
 .marge-mobile{
     margin-left: -15px;
@@ -61,7 +61,7 @@
     width: 80%;
     margin:auto;
     display: flex;
-   
+
 }
 
 .icone-suppr-edit{
@@ -101,7 +101,7 @@ background-size: 30px;
     border: none;
 }
 
-@media (max-width: 576px) { 
+@media (max-width: 576px) {
 
     .largeur{
         width: 90%;
@@ -128,4 +128,3 @@ background-size: 30px;
 width: 94%;
     }
 }
-
