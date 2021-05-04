@@ -1,76 +1,75 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import * as yup from "yup";
+import { URL_TODO_LIST } from "../../constant/URL_CONST";
 import TodolistService from "../../service/TodolistService";
-
-import { URL_TODO_LIST } from "../constant/URL_CONST";
+import UtilisateurService from "../../service/UtilisateurService";
 
 const validationSchema = yup.object().shape({
-  label: yup.string().required("required"),
-  // utilisateur: yup.string().required("required")
+  labelList: yup.string().required("required"),
 });
 
-// let USER_ID = JSON.parse(localStorage.getItem("utilisateur").id);
-// const USER = localStorage.getItem('utilisateur');
+const AddList = () => {
+  const history = useHistory();
+  const [user, setUser] = useState("");
 
-// let result = [];
-
-class AddList extends Component {
-  state = {
-    initialValues: {
-      label: "",
-      utilisateur: "",
-    },
-    label: [],
-    utilisateur: [],
+  const initialValues = {
+    labelList: ""
   };
 
-  submit = (values) => {
-    console.log(values);
-    TodolistService.create(values).then((res) => {
-      console.log(res);
+  const getUser = () => {
+    UtilisateurService.getById(localStorage.getItem("id")).then((res) => {
+      setUser(res.data);
     });
-
-    this.props.history.push(URL_TODO_LIST);
   };
 
-  componentWillMount() {
+  const makeList = (values) => {
+    let test = {
+      label: values.labelList,
+      utilisateur: user,
+    };
+    submit(test);
+  };
 
-  }
+  useEffect(() => {
+    getUser();
+  }, []);
 
-  render() {
-    const { initialValues } = this.state;
+  const submit = (list) => {
+    TodolistService.create(list).then((res) => {
+      let code = res.status;
 
-    return (
-      <>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={this.submit}
-          validationSchema={validationSchema}
-        >
-          {() => (
-            <Form>
-              <label className="text-white" htmlFor="label">
+      if (code === 200) {
+        history.push(URL_TODO_LIST);
+      }
+    });
+  };
+
+  return (
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={makeList}
+        validationSchema={validationSchema}
+      >
+        {() => (
+          <Form>
+            <div className="d-flex align-items-center">
+              <label className="text-white" htmlFor="labelList">
                 <h1>Label : </h1>
               </label>
-              <br />
-              <Field type="text" name="label" placeholder="label" />
-              <ErrorMessage name="label" component="small" />
-              <br />
-              <button type="submit"> Submit</button>
-              <Field
-                className="invisible"
-                type="text"
-                name="utilisateur"
-                // value={result[1]}
-              />
-              {/* <ErrorMessage name="utilisateur" component="small" /> */}
-            </Form>
-          )}
-        </Formik>
-      </>
-    );
-  }
-}
+              <Field type="text" name="labelList" placeholder="label" />
+              <ErrorMessage name="labelList" component="small" />
+            </div>
+            <button type="submit" className="todo-button-back">
+              Submit
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </>
+  );
+};
 
 export default AddList;

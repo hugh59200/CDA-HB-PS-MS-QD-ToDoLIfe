@@ -24,17 +24,6 @@ public class TacheServiceImpl implements ITacheService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-//	ajouter une tache
-	@Override
-	public void add(TacheDto tache) throws TacheExistanteException {
-		Optional<Tache> probEntOpt = this.tacheDao.findById(tache.getIdTache());
-		if (probEntOpt.isPresent()) {
-			throw new TacheExistanteException();
-		} else {
-			this.tacheDao.save(this.modelMapper.map(tache, Tache.class));
-		}
-	}
-
 //	lister les taches
 	@Override
 	public List<TacheDto> findAll() {
@@ -43,18 +32,18 @@ public class TacheServiceImpl implements ITacheService {
 		return res;
 	}
 
-// trouver par id
-	@Override
-	public TacheDto findById(int id) throws TacheIntrouvableException {
-		return this.modelMapper.map(this.tacheDao.findById(id).get(), TacheDto.class);
-
-	}
-
-//	trouver par nom
-	@Override
-	public TacheDto findByLabel(String label) throws TacheIntrouvableException {
-		return this.modelMapper.map(this.tacheDao.findByLabel(label), TacheDto.class);
-	}
+//// trouver par id
+//	@Override
+//	public TacheDto findById(int id) throws TacheIntrouvableException {
+//		return this.modelMapper.map(this.tacheDao.findById(id).get(), TacheDto.class);
+//
+//	}
+//
+////	trouver par nom
+//	@Override
+//	public TacheDto findByLabel(String label) throws TacheIntrouvableException {
+//		return this.modelMapper.map(this.tacheDao.findByLabel(label), TacheDto.class);
+//	}
 
 	// mettre à jour un film
 	@Override
@@ -76,7 +65,22 @@ public class TacheServiceImpl implements ITacheService {
 	}
 
 	@Override
-	public List<Tache> findTaskByIdList(int id){
-		return this.tacheDao.findTaskByIdList(id);
+	public List<TacheDto> findTaskByIdList(int id) {
+//		return this.tacheDao.findTaskByIdList(id);
+
+		List<TacheDto> res = new ArrayList<>();
+		this.tacheDao.findTaskByIdList(id).forEach(pres -> res.add(this.modelMapper.map(pres, TacheDto.class)));
+		return res;
+	}
+
+//	ajouter une tache
+	@Override
+	public void add(TacheDto tache) throws TacheExistanteException {
+		Optional<Tache> probEntOpt = this.tacheDao.findById(tache.getIdTache());
+		if (probEntOpt.isPresent()) {
+			throw new TacheExistanteException();
+		} else {
+			this.tacheDao.save(this.modelMapper.map(tache, Tache.class));
+		}
 	}
 }

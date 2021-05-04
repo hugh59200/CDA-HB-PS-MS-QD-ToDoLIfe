@@ -83,14 +83,13 @@ function ConnexionForm() {
         let id = res.data.user.id;
         let username = res.data.user.username;
         let token = res.data.user.token;
-        // localStorage.
         authenticated(id, username, token);
         localStorage.setItem("id", id);
         localStorage.setItem("username", username);
         localStorage.setItem("token", token);
-        toast.success("login successful");
         history.push(URL_HOME);
         history.go(0);
+        toast.success("login successful");
       }
     });
   };
@@ -120,7 +119,6 @@ function ConnexionForm() {
           placeholder="mot de passe"
           className="form-input show-pwd"
         />
-
         {iconePwd}
 
         {errors.password && <p className="error">{errors.password.message}</p>}

@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(of = { "dateJour", "humeur", "titre" , "texte" })
 public class JourDto {
 
 	private int idJour;
@@ -16,5 +18,5 @@ public class JourDto {
 	private int humeur;
 	private String titre;
 	private String texte;
-	private JournalDto journal;
+	private JournalDto journalDto;
 }

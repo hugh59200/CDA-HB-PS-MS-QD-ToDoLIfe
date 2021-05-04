@@ -1,8 +1,10 @@
-const ENV_DEV = 'http://localhost:8080/api/';
+export const ENV_DEV = 'http://localhost:8080/api/';
 
 export const API_TODO_LIST = ENV_DEV + 'todolists';
 
 export const API_JOURNAL = ENV_DEV + 'journaux';
+
+export const API_JOUR = ENV_DEV + 'jour';
 
 export const API_JOURNAL_BY_USERID = ENV_DEV + 'utilisateurs/';
 

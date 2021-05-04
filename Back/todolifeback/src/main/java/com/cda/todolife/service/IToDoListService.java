@@ -3,6 +3,7 @@ package com.cda.todolife.service;
 import java.util.List;
 
 import com.cda.todolife.dto.ToDoListDto;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 
@@ -18,8 +19,10 @@ public interface IToDoListService {
 
 	void add(ToDoListDto list) throws ToDoListExistanteException;
 
-	ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException;
+//	ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException;
 	
 //	ToDoListDto findByselected() throws ToDoListIntrouvableException, ToDoListDejaSelectionerException;
+	
+	List<ToDoListDto> findListByUserId(int id) throws ToDoListIntrouvableException, ResourceNotFoundException;
 
 }

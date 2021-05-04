@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import {
+  URL_CONNEXION,
+  URL_HOME,
+  URL_INSCRIPTION,
+  URL_TODO_LIST,
+  URL_JOURNAL,
+  URL_WATCHLIST,
+} from "../../constant/URL_CONST";
+
 import { NavbarBrand } from "react-bootstrap";
 import { deconnected } from "../../service/authentificationService";
 import "../../assets/css/navbar/NavBar.css"
-import {URL_CONNEXION,URL_HOME,URL_INSCRIPTION,URL_TODO_LIST,URL_DECONNEXION,URL_JOURNAL,URL_WATCHLIST} from "../../constant/URL_CONST";
 
 
 const NavBar = () => {
@@ -54,6 +62,7 @@ const NavBar = () => {
           <li className="nav-item">
             <NavLink
               to={URL_JOURNAL}
+              onClick={removeTodoList}
               className="nav-link text-white"
               activeClassName="font-weight-bold"
             >
@@ -64,6 +73,7 @@ const NavBar = () => {
           <li className="nav-item">
             <NavLink
               to={URL_WATCHLIST}
+              onClick={removeTodoList}
               className="nav-link text-white"
               activeClassName="font-weight-bold"
             >
@@ -73,7 +83,7 @@ const NavBar = () => {
 
           <li className="nav-item">
             <NavLink
-              to={URL_DECONNEXION}
+              to={URL_HOME}
               onClick={logout}
               className="nav-link text-white"
               activeClassName="font-weight-bold"
@@ -88,9 +98,14 @@ const NavBar = () => {
 
   const logout = () => {
     deconnected();
-    history.push(URL_DECONNEXION);
+    // history.push(URL_HOME);
     history.go(0);
   };
+
+  const removeTodoList = () =>{
+    localStorage.removeItem('id_todolist')
+    localStorage.removeItem('label_todolist')
+  }
 
   useEffect(() => {
     changeNavBar();
@@ -109,6 +124,7 @@ const NavBar = () => {
             <li className="nav-item">
               <NavLink
                 to={URL_HOME}
+                onClick={removeTodoList}
                 className="nav-link text-white"
                 activeClassName="font-weight-bold"
               >

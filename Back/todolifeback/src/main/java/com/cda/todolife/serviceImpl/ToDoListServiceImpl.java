@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.ToDoListDto;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 import com.cda.todolife.model.ToDoList;
@@ -27,10 +28,12 @@ public class ToDoListServiceImpl implements IToDoListService {
 //	ajouter une todolist
 	@Override
 	public void add(ToDoListDto list) throws ToDoListExistanteException {
-		Optional<ToDoList> probEntOpt = this.todolistDao.findById(list.getIdTodoList());
-		if (probEntOpt.isPresent()) {
+		
+		Optional<ToDoList> listOpt = this.todolistDao.findById(list.getIdTodoList());
+		if (listOpt.isPresent()) {
 			throw new ToDoListExistanteException();
 		} else {
+			
 			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
 		}
 	}
@@ -50,23 +53,11 @@ public class ToDoListServiceImpl implements IToDoListService {
 
 	}
 
-//	trouver par label
-	@Override
-	public ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException {
-		return this.modelMapper.map(this.todolistDao.findByLabel(label), ToDoListDto.class);
-	}
-
-	// mettre à jour un film
-	@Override
-	public void update(ToDoListDto list) throws ToDoListIntrouvableException, ToDoListExistanteException {
-		try {
-			this.todolistDao.findById(list.getIdTodoList()).orElseThrow(ToDoListIntrouvableException::new);
-			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
-		} catch (ToDoListIntrouvableException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
+////	trouver par label
+//	@Override
+//	public ToDoListDto findByLabel(String label) throws ToDoListIntrouvableException {
+//		return this.modelMapper.map(this.todolistDao.findByLabel(label), ToDoListDto.class);
+//	}
 
 	// supprimer un film
 	@Override
@@ -75,5 +66,23 @@ public class ToDoListServiceImpl implements IToDoListService {
 		this.todolistDao.deleteById(id);
 	}
 
+	@Override
+	public List<ToDoListDto> findListByUserId(int id) throws ToDoListIntrouvableException, ResourceNotFoundException {
+		List<ToDoListDto> res = new ArrayList<>();
+		this.todolistDao.findListByUserId(id).forEach(pres -> res.add(this.modelMapper.map(pres, ToDoListDto.class)));
+		return res;
+	}
+
+	@Override
+	public void update(ToDoListDto list) throws ToDoListIntrouvableException, ToDoListExistanteException {
+		
+		System.out.println(list.getUtilisateur());
+		try {
+			this.todolistDao.findById(list.getIdTodoList()).orElseThrow(ToDoListIntrouvableException::new);
+			todolistDao.save(this.modelMapper.map(list, ToDoList.class));
+		} catch (ToDoListIntrouvableException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

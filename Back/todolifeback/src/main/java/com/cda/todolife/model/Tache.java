@@ -23,8 +23,8 @@ public class Tache {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTache;
 	private String label;
-	private boolean donne;
-	private byte priorite;
+//	private boolean donne;
+//	private byte priorite;
 
 	@ManyToOne
 	@JoinColumn(name = "id_todolist", nullable = false)

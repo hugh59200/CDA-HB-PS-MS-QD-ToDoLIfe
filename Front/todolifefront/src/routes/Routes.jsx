@@ -16,11 +16,12 @@ import {
   URL_INSCRIPTION,
   URL_JOURNAL,
   URL_TODO_LIST,
-  URL_DECONNEXION,
   URL_WATCHLIST,
-  URL_SERIES,
-  URL_FILMS,
-  URL_LIVRES,
+  URL_NEW_TODO_LIST,
+  URL_INSIDE_TODOLIST,
+  URL_NEW_TODO,
+  URL_UPDATE_TODO,
+  URL_UPDATE_TODO_LIST,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -29,20 +30,11 @@ import { ToastContainer, Zoom } from "react-toastify";
 import MonJournal from "../components/journal/MonJournal";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
 
-import Auth from "../service/Auth";
-
-import Livres from "../components/watchlist/livres/Livres";
-import NewLivre from "../components/watchlist/livres/NewLivre"
-import { URL_NEW_LIVRE } from './../constant/URL_CONST';
-
-import Series from "../components/watchlist/series/Series";
-import NewSerie from "../components/watchlist/series/NewSerie"
-import { URL_NEW_SERIE } from './../constant/URL_CONST';
-
-import Films from "../components/watchlist/film/Films";
-import NewFilm from './../components/watchlist/film/NewFilm';
-import { URL_NEW_FILM } from './../constant/URL_CONST';
-
+import AddList from "../components/todoList/AddList";
+import TodoInside from "../components/todoList/TodoInside";
+import AddTodo from "../components/todoList/AddTodo";
+import UpdateTodo from "../components/todoList/UpdateTodo";
+import UpdateList from "../components/todoList/UpdateList";
 // import Error404 from "../views/Error404";
 
 const CustomHistory = createBrowserHistory();
@@ -68,11 +60,28 @@ class Routes extends Component {
           {/* Form Connection */}
           <Route path={URL_CONNEXION} component={ConnexionForm} />
 
-          {/* page Deconnection */}
-          <Route path={URL_DECONNEXION} component={Auth} />
+          {/* page connection */}
+          {/* <Route path={PAGE_CONNEXION} component={Auth} /> */}
+          {/* page connection */}
+          {/* <Route path={PAGE_DECONNEXION} component={Auth} /> */}
 
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
+
+          {/* add todolist */}
+          <PrivateRoute path={URL_NEW_TODO_LIST} component={AddList} />
+
+          {/* update todolist */}
+          <PrivateRoute path={URL_UPDATE_TODO_LIST} component={UpdateList} />
+
+          {/* add todo on todolist */}
+          <PrivateRoute path={URL_INSIDE_TODOLIST} component={TodoInside} />
+
+          {/* add a todo */}
+          <PrivateRoute path={URL_NEW_TODO} component={AddTodo} />
+
+          {/* update a todo */}
+          <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
 
           {/* view journal*/}
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />

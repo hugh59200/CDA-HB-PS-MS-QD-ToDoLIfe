@@ -4,12 +4,24 @@ import {
 } from "../constant/API_BACK";
 
 class TodolistService {
-    getList() {
-        return axios.get(API_TODO_LIST);
+    getListByUser(id) {
+        return axios.get(API_TODO_LIST + '/utilisateur/' + id);
     }
 
-    getListByIdToDoList(id) {
-        return axios.get(API_TODO_LIST + '/todolist/' + id);
+    removeById(id) {
+        return axios.delete(API_TODO_LIST + '/' + id);
+    }
+
+    create(Data) {
+        return axios.post(API_TODO_LIST, Data);
+    }
+
+    update(Data) {
+        return axios.put(API_TODO_LIST, Data);
+    }
+    
+    getListById(id){
+        return axios.get(API_TODO_LIST + '/' + id);
     }
 }
 

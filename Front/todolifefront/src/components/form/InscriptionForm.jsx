@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { URL_ATTENTE, URL_HOME } from "../../constant/URL_CONST.js";
 import "../../assets/css/form/FormStyle.css";
-import axios from "axios";
-import { useHistory } from "react-router";
-import { toast } from "react-toastify";
+
+import React, { useEffect, useState } from "react";
+import { URL_ATTENTE, URL_HOME } from "../../constant/URL_CONST.js";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 import { API_USER } from "../../constant/API_BACK.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { toast } from "react-toastify";
 import {
   unConfirmed,
 } from "../../service/authentificationService.js";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const yup = require("yup");
 require("yup-password");
@@ -57,8 +59,6 @@ function InscriptionForm() {
   const [iconePwd, setIconePwd] = useState("");
 
   const showOrHidePassword = () => {
-    // console.log(document.querySelector(".show-pwd").type)
-    // console.log(document.querySelector(".show-pwd").type);
     if (document.querySelector(".show-pwd").type === "password") {
       document.querySelector(".show-pwd").type = "text";
     } else {

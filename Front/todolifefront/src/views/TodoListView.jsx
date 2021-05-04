@@ -1,98 +1,104 @@
 import "../assets/css/todolist/todo-list.css";
 
 import React, { useEffect, useState } from "react";
+import TodolistService from "../service/TodolistService";
 import { useHistory } from "react-router";
-import { URL_TODO_LIST, URL_NEW_TODO_LIST } from "../constant/URL_CONST";
-import TacheService from "../service/TacheService";
-import TodolistService from "../service/TodolistService"
-
+import {
+  URL_INSIDE_TODOLIST,
+  URL_NEW_TODO_LIST,
+  URL_UPDATE_TODO_LIST,
+} from "../constant/URL_CONST";
 
 const TodoListView = () => {
   const history = useHistory();
   const [list, setList] = useState("");
-  const [label, setLabel] = useState("");
-  const [tache, setTache] = useState("");
-  // const [utilisateur, setUtilisateur] = useState("");
 
   useEffect(() => {
-    // getUser();
-
-    TodolistService.getList().then((res) => {
-      let dataRecup = res.data;
-      let postData = dataRecup.map((elem) => (
-        <tr
-          onClick={() => changeCurrentList(elem)}
-          // className=" table-bordered"
-          key={elem.idTodoList}
-        >
-          <td className="text-white"> {elem.label} </td>
-          <td>
-            <button className="todo-button-remove"></button>
-          </td>
-        </tr>
-      ));
-      setList(postData);
-    });
-
+    getListByUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const changeCurrentList = (elem) => {
-    history.push({
-      pathname: URL_TODO_LIST,
-      id: elem.idTodoList,
-      label: elem.label,
-    });
-
-    setLabel(history.location.label);
-
-    TacheService.getListByIdToDoList(history.location.id).then((res) => {
+  const getListByUser = () => {
+    TodolistService.getListByUser(localStorage.getItem("id")).then((res) => {
       let dataRecup = res.data;
       let postData = dataRecup.map((elem) => (
-        <tr
-          // className="table-bordered"
-          key={elem.idTache}
+        <div
+          key={elem.idTodoList}
+          className="overflow-auto mx-auto align-middle d-flex flex-row css-list-todo test"
         >
-          <td className="text-white">{elem.label}</td>
-        </tr>
+          <div
+            className="media-todo-list col-8"
+            onClick={() => clickTodo(elem.idTodoList, elem.label)}
+          >
+            <h6 className="text text-white w-100">{elem.label}</h6>
+          </div>
+          <div className="media-todo-list col-4">
+            <button
+              onClick={() => updateList(elem.idTodoList, elem.label)}
+              className="todo-button-update"
+            ></button>
+            <button
+              onClick={() => removeList(elem.idTodoList)}
+              className="todo-button-remove"
+            ></button>
+          </div>
+        </div>
       ));
-      // console.log(postData);
 
-      setTache(postData);
+      setList(postData);
     });
   };
 
-  // const getUser = () => {
-  //   // UtilisateurService.getCurrentUser(1).then((res) => {
-  //   //   localStorage.setItem("utilisateur", JSON.stringify(res.data));
-  //   // });
-  // };
+  const removeList = (id) => {
+    TodolistService.removeById(id).then((res) => {
+      console.log(res);
+    });
+    history.go(0);
+  };
 
-  const newList = () => {
+  const updateList = (id, label) => {
+    history.push({
+      pathname: URL_UPDATE_TODO_LIST,
+      labelList: label,
+      idList: id,
+    });
+  };
+
+  const clickTodo = (id, label) => {
+    history.push({
+      pathname: URL_INSIDE_TODOLIST,
+      labelList: label,
+      idList: id,
+    });
+  };
+
+  const clickAdd = () => {
     history.push(URL_NEW_TODO_LIST);
   };
 
   return (
     <>
-      <div className="todo-app">
-        <h1 className="text-white text-center">My tolist :</h1>
-        <br />
-        <div className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
-          <table>
-            <tbody>{list}</tbody>
-            <button onClick={newList} className="todo-button-add"></button>
-          </table>
+      {list.length > 1 ? (
+        <div className="todo-app">
+          <h1 className=" text-white text-center">Mes Todo listes :</h1>
+          <br />
+          <div className="text-center d-flex">
+            <div className="aaa">{list}</div>
+          </div>
+          <br />
+          <button onClick={clickAdd} className="todo-button-add"></button>
         </div>
-      </div>
-
-      <div className="todo-app">
-        <h1 className="text-white text-center">{label} </h1>
-        <br />
-        <table className="table-responsive h-auto w-auto table text-center d-flex justify-content-center">
-          <tbody>{tache}</tbody>
-          {/* <button className="todo-button-add"></button> */}
-        </table>
-      </div>
+      ) : (
+        <div className="todo-app">
+          <h1 className="text-white text-center">Mes Todo liste :</h1>
+          <br />
+          <div className="text-center d-flex">
+            <div className="aaa">{list}</div>
+          </div>
+          <br />
+          <button onClick={clickAdd} className="todo-button-add"></button>
+        </div>
+      )}
     </>
   );
 };

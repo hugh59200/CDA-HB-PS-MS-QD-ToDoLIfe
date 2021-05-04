@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.TacheDto;
 import com.cda.todolife.exception.TacheExistanteException;
 import com.cda.todolife.exception.TacheIntrouvableException;
-import com.cda.todolife.model.Tache;
 import com.cda.todolife.service.ITacheService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -44,33 +43,28 @@ public class TacheController {
 	// create
 	@PostMapping("/taches")
 	public ResponseEntity<TacheDto> create(@RequestBody TacheDto tache) throws TacheExistanteException {
-		try {
-			this.tacheService.add(tache);
-		} catch (TacheExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.tacheService.add(tache);
 		return ResponseEntity.ok(tache);
 	}
 
-	// details by Id
-	@GetMapping("/taches/id/{id}")
-	public ResponseEntity<TacheDto> getById(@PathVariable int id) throws TacheIntrouvableException {
-		TacheDto tache = tacheService.findById(id);
-		return ResponseEntity.ok(tache);
-	}
+//	// details by Id
+//	@GetMapping("/taches/{id}")
+//	public ResponseEntity<TacheDto> getById(@PathVariable int id) throws TacheIntrouvableException {
+//		TacheDto tache = tacheService.findById(id);
+//		return ResponseEntity.ok(tache);
+//	}
 
-	// details by Label
-	@GetMapping("/taches/label/{label}")
-	public ResponseEntity<TacheDto> getByName(@PathVariable String label) throws TacheIntrouvableException {
-		TacheDto tache = tacheService.findByLabel(label);
-		return ResponseEntity.ok(tache);
-	}
+//	// details by Label
+//	@GetMapping("/taches/label/{label}")
+//	public ResponseEntity<TacheDto> getByName(@PathVariable String label) throws TacheIntrouvableException {
+//		TacheDto tache = tacheService.findByLabel(label);
+//		return ResponseEntity.ok(tache);
+//	}
 	
 	// details by id todolist
-		@GetMapping("/taches/todolist/{id}")
-		public ResponseEntity<List<Tache>>  findTaskByIdList(@PathVariable int id)  {
-			List<Tache> tache = null;
+		@GetMapping("/taches/todolists/{id}")
+		public ResponseEntity<List<TacheDto>>  findTaskByIdList(@PathVariable int id)  {
+			List<TacheDto> tache = null;
 			try {
 				tache = tacheService.findTaskByIdList(id);
 			} catch (TacheIntrouvableException e) {
@@ -96,10 +90,10 @@ public class TacheController {
 	}
 
 	// delete
-	@DeleteMapping("/taches/id/{id}")
+	@DeleteMapping("/taches/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws TacheIntrouvableException {
 		tacheService.deleteById(id);
-		System.out.println("ok");
+//		System.out.println("ok");
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);

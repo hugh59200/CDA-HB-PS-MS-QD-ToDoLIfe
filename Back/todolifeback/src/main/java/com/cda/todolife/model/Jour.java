@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +18,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of = { "titre", "dateJour", "texte" })
+@ToString(of = { "dateJour", "humeur", "titre" , "texte" })
 @Entity
 public class Jour {
 
@@ -32,8 +30,7 @@ public class Jour {
 	private String titre;
 	private String texte;
 
-	@ManyToOne(targetEntity = Journal.class, cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_journal", nullable = false)
-	@JsonIgnore
 	private Journal journal;
 }

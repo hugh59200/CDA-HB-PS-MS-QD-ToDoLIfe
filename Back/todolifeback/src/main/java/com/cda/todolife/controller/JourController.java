@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
+import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.service.IJourService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -36,21 +38,14 @@ public class JourController {
 	@Autowired
 	private IJourService jourService;
 
-	// listing
-	@GetMapping("/jour")
-	public List<JourDto> getAll() {
-		return this.jourService.findAll();
-	}
-
-	// create
+	// create by Id
 	@PostMapping("/jour")
-	public ResponseEntity<JourDto> create(@RequestBody JourDto list) throws JourExistantException {
-		try {
-			this.jourService.add(list);
-		} catch (JourExistantException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(list);
+	public ResponseEntity<JourDto> getByIdUser(
+			@RequestBody JourDto jourDto,
+			@RequestParam(value = "id") int id )
+			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
+		this.jourService.add(id, jourDto);
+		return ResponseEntity.ok(jourDto);
 	}
 
 	// details by Id
@@ -75,10 +70,10 @@ public class JourController {
 
 		System.out.println(mois);
 		System.out.println(annee);
-		
+
 		String dateNoDay = annee + "-" + mois;
 		if (mois < 10) {
-			 dateNoDay = annee + "-0" + mois;
+			dateNoDay = annee + "-0" + mois;
 		}
 
 		List<JourDto> listAll = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
