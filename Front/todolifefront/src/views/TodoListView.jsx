@@ -24,22 +24,22 @@ const TodoListView = () => {
       let postData = dataRecup.map((elem) => (
         <div
           key={elem.idTodoList}
-          className="overflow-auto mx-auto align-middle d-flex flex-row css-list-todo test"
+          className="css-list-todo "
         >
           <div
             className="media-todo-list col-8"
             onClick={() => clickTodo(elem.idTodoList, elem.label)}
           >
-            <h6 className="text text-white w-100">{elem.label}</h6>
+            <h6 className="ml-4 text-left text-white w-100">{elem.label}</h6>
           </div>
-          <div className="media-todo-list col-4">
+          <div className="media-todo-list col-4 mobile">
             <button
               onClick={() => updateList(elem.idTodoList, elem.label)}
-              className="todo-button-update"
+              className="todo-button-update float-right mr-4"
             ></button>
             <button
               onClick={() => removeList(elem.idTodoList)}
-              className="todo-button-remove"
+              className="todo-button-remove float-right mr-1"
             ></button>
           </div>
         </div>
@@ -82,9 +82,9 @@ const TodoListView = () => {
         <div className="todo-app">
           <h1 className=" text-white text-center">Mes Todo listes :</h1>
           <br />
-          <div className="text-center d-flex">
-            <div className="aaa">{list}</div>
-          </div>
+         
+            {list}
+         
           <br />
           <button onClick={clickAdd} className="todo-button-add"></button>
         </div>
@@ -92,9 +92,7 @@ const TodoListView = () => {
         <div className="todo-app">
           <h1 className="text-white text-center">Mes Todo liste :</h1>
           <br />
-          <div className="text-center d-flex">
-            <div className="aaa">{list}</div>
-          </div>
+          {list}
           <br />
           <button onClick={clickAdd} className="todo-button-add"></button>
         </div>
