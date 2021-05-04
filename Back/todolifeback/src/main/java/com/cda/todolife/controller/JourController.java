@@ -43,8 +43,15 @@ public class JourController {
 	public ResponseEntity<JourDto> getByIdUser(
 			@RequestBody JourDto jourDto, 
 			@RequestParam(value = "id") int id )
-			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
-		this.jourService.add(id, jourDto);
+			throws  ResourceNotFoundException {
+		try {
+			this.jourService.add(id, jourDto);
+		} catch (JourExistantException e) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+		} catch (JournalIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResponseEntity.ok(jourDto);
 	}
 

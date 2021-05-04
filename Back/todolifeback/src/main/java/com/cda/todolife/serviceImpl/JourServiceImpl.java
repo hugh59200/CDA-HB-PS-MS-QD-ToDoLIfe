@@ -2,6 +2,7 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,28 +41,52 @@ public class JourServiceImpl implements IJourService {
 	public void add(int idUser, JourDto jourDto)
 			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
 
-		JournalDto journalDto = this.modelMapper.map(this.journalRepository.findByUtilisateurIdUtilisateur(idUser),
-				JournalDto.class);
-
-		if (journalDto.getUtilisateurDto() == null) {
-			journalDto.setUtilisateurDto(this.utilisateurService.findByidUtilisateur(idUser));
-			
-		} else if (jourDto.getJournalDto() == null) {
-			jourDto.setJournalDto(journalDto);
-			
-		} else if (journalDto.getListJourDto() == null) {
-			List<JourDto> listJourDto = new ArrayList<>();
-			listJourDto.add(jourDto);
-			journalDto.setListJourDto(listJourDto);
+		Optional<Journal> journalEntOpt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
+		
+		if(journalEntOpt.isEmpty()) {
+			throw new JournalIntrouvableException();
 		}
+		
+		Journal journalEnt = journalEntOpt.get();
 
-		Jour jour = this.modelMapper.map(jourDto, Jour.class);
-		Journal journal = this.modelMapper.map(journalDto, Journal.class);
+		List<Jour> jourEntList  = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(),journalEnt);
 		
-		jour.setJournal(journal);
-		jour.setIdJour(this.jourRepository.findAll().size()+1);
+		if(!jourEntList.isEmpty()) {
+			throw new JourExistantException();
+		}
 		
-		this.jourRepository.save(jour);
+		
+//		JournalDto journalDto = this.modelMapper.map(,
+//				JournalDto.class);
+
+//		if (journalDto.getUtilisateurDto() == null) {
+//			journalDto.setUtilisateurDto(this.utilisateurService.findByidUtilisateur(idUser));
+//			
+//		} else 
+		
+//		if (jourDto.getJournalDto() == null) {
+//			jourDto.setJournalDto(journalDto);
+//			
+//		} else 
+			
+//			
+//			if (journalDto.getListJourDto() == null) {
+//			List<JourDto> listJourDto = new ArrayList<>();
+//			listJourDto.add(jourDto);
+//			journalDto.setListJourDto(listJourDto);
+//		}
+
+		Jour jourEnt = this.modelMapper.map(jourDto, Jour.class);
+		
+		jourEnt.setJournal(journalEnt);
+		
+//		Journal journal = this.modelMapper.map(journalDto, Journal.class);
+		
+//		jour.setJournal(journal);
+//		jour.setIdJour(this.jourRepository.findAll().size()+1);
+		
+		jourEnt = jourRepository.save(jourEnt);
+		jourDto.setIdJour(jourEnt.getIdJour());
 	}
 
 //	lister
