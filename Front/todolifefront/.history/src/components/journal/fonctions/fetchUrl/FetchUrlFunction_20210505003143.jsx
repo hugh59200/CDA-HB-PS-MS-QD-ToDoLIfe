@@ -18,7 +18,7 @@ export function FetchUrlFunction(
 	const url =
 		API_JOURNAL_BY_USERID + id + '/journaux/?mois=' + mois + '&annee=' + annee;
 
-		useEffect(() => {
+		// useEffect(() => {
 				axios({
 					method: 'get',
 					url: url,
@@ -31,6 +31,6 @@ export function FetchUrlFunction(
 						setLoading(false);
 					}
 				});
-		}, [setData, setLoading, url]);
+		// }, [setData, setLoading, url]);
 
 }

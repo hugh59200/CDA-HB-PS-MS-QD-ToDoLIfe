@@ -29,6 +29,14 @@ public class JourServiceImpl implements IJourService {
 
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	// test par savoir si un jour a été créér aujourd'hui
+	@Override
+	public JourDto findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
+		Jour jour = this.jourRepository.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, dateJour);
+		JourDto jourDto = this.modelMapper.map(jour, JourDto.class);
+		return jourDto;
+	}
 
 //	ajouter
 	@Override
@@ -102,5 +110,6 @@ public class JourServiceImpl implements IJourService {
 				.forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
 		return listJours;
 	}
+
 
 }
