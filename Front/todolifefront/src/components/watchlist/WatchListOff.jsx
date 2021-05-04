@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { URL_HOME, URL_WATCHLIST } from "./../../constant/URL_CONST";
+import { URL_HOME } from "./../../constant/URL_CONST";
 import axios from "axios";
 import { API_WATCHLIST } from "./../../constant/API_BACK";
 

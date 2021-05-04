@@ -35,7 +35,7 @@ public class WatchListServiceImpl implements IWatchListService {
 	public void add(WatchListDto watchListDto, int id) throws WatchListExistanteException {
 
 		Optional<WatchList> probEntOpt = this.watchListService
-				.findByUtilisateurIdUtilisateur(watchListDto.getIdWatchList());
+				.findById(id);
 		if (probEntOpt.isPresent()) {
 			throw new WatchListExistanteException();
 		} else {
