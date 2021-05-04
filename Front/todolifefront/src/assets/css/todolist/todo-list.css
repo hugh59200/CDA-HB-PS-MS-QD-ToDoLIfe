@@ -1,11 +1,10 @@
-
 .complete {
   text-decoration: line-through;
   opacity: 0.4;
 }
 
 .todo-button-update {
-  background-image: url('../../img/update.png');
+  background-image: url('../../img/modifier.png');
   background-repeat: no-repeat;
   background-color: transparent;
   background-size: contain;
@@ -24,7 +23,7 @@
 }
 
 .todo-button-remove {
-  background-image: url('../../img/moins.png');
+  background-image: url('../../img/supprimer.png');
   background-repeat: no-repeat;
   background-color: transparent;
   background-size: contain;
@@ -42,29 +41,61 @@
   border-radius: 12px;
 }
 
-.todo-app {
-  background: #0090E8;
-  text-align: center;
-  margin: auto;
-  padding: auto;
-  display: flex !important;
-  align-items: center !important;
-  width: 44% !important;
-  flex-direction: column;
-  
-}
-
-.css-list-todo{
+.css-list-todo {
   background-color: #14A7FF;
-  width: 100% !important;
+  width: 300% !important;
   padding: 5px;
   margin: 5px;
   border-radius: 5%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+}
+
+.todo-app {
+  background: #0090E8;
+  text-align: center;
+  margin: auto !important;
+  padding: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  width: 70% !important;
+  flex-direction: column;
+}
+
+.aaa{
+  width: 300% !important;
+  /* display: flex !important;
+  flex-direction: column; */
+  margin: auto !important;
+  padding: auto !important;
+}
+
+.test{
+  display: flex !important;
+  padding: auto !important;
 }
 
 @media (max-width: 576px) {
+  
+  .aaa{
+    width: 100% !important;
+   }
 
   .todo-app {
-    width: 80% !important;
+    width: 95% !important;
+  }
+
+  .css-list-todo {
+    width: 150% !important;
+    margin: auto !important;
+    padding: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
   }
 }

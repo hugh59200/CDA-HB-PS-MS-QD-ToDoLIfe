@@ -24,15 +24,15 @@ const TodoInside = () => {
             >
               <div
                 className="media-todo-list col-3 text text-white w-100"
-                // onClick={function (e) {
-                //   let text = e.target.innerHTML;
-                //   // console.log(text)
+                onClick={function (e) {
+                  let text = e.target.innerHTML;
+                  // console.log(text)
 
-                //   // let text = "<del>"+e.target+"</del>";
-                //   // console.log(text)
+                  // let text = "<del>"+e.target+"</del>";
+                  // console.log(text)
 
-                //   e.target.innerHTML = "<del>" + text + "</del>";
-                // }}
+                  e.target.innerHTML = "<del>" + text + "</del>";
+                }}
               >
                 {elem.label}
               </div>
@@ -41,8 +41,6 @@ const TodoInside = () => {
                   onClick={() => updateTodo(elem.idTache, elem.label)}
                   className="todo-button-update"
                 ></button>
-              </div>
-              <div className="media-todo-list col-3">
                 <button
                   onClick={() => removeTodo(elem.idTache)}
                   className="todo-button-remove"
