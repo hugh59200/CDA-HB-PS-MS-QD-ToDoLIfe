@@ -68,6 +68,11 @@
   height: 70vh;
 }
 
+.test-scroll {
+  /* overflow-y: scroll !important; */
+  /* scrollbar-darkshadow-color: black; */
+}
+
 
 .test{
   display: flex !important;

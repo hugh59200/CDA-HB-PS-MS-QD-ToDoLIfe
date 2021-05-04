@@ -24,7 +24,7 @@ const TodoListView = () => {
       let postData = dataRecup.map((elem) => (
         <div
           key={elem.idTodoList}
-          className="css-list-todo "
+          className="css-list-todo"
         >
           <div
             className="media-todo-list col-8"
@@ -79,12 +79,11 @@ const TodoListView = () => {
   return (
     <>
       {list.length > 1 ? (
-        <div className="todo-app">
+        <div className="todo-app test-scroll">
           <h1 className=" text-white text-center">Mes Todo listes :</h1>
           <br />
-         
+ 
             {list}
-         
           <br />
           <button onClick={clickAdd} className="todo-button-add"></button>
         </div>
