@@ -43,10 +43,11 @@
 
 .css-list-todo {
   background-color: #14A7FF;
-  width: 300% !important;
-  padding: 5px;
+  width: 80% !important;
+  padding-top: 11px;
+  padding-bottom: 7px;
   margin: 5px;
-  border-radius: 5%;
+  border-radius: 5px;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -64,15 +65,9 @@
   align-self: center !important;
   width: 70% !important;
   flex-direction: column;
+  height: 70vh;
 }
 
-.aaa{
-  width: 300% !important;
-  /* display: flex !important;
-  flex-direction: column; */
-  margin: auto !important;
-  padding: auto !important;
-}
 
 .test{
   display: flex !important;
@@ -81,21 +76,12 @@
 
 @media (max-width: 576px) {
   
-  .aaa{
-    width: 100% !important;
-   }
 
   .todo-app {
     width: 95% !important;
   }
 
-  .css-list-todo {
-    width: 150% !important;
-    margin: auto !important;
-    padding: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    align-self: center !important;
+  .mobile{
+    display: flex;
   }
 }
