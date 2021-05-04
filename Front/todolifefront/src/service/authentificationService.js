@@ -1,8 +1,8 @@
 /* authentification */
-export let isLoggued = false;
+export let isLogged = false;
 
 export function authenticated(id, username, token) {
-    isLoggued = true;
+    isLogged = true;
 }
 
 export function deconnected() {
