@@ -26,7 +26,7 @@ public class LivreServiceImpl implements ILivreService {
 
 //	ajouter un livre
 	@Override
-	public void add(LivreDto livre) throws LivreExistantException {
+	public void add(LivreDto livre, int id) throws LivreExistantException {
 		Optional<Livre> probEntOpt = this.livreDao.findById(livre.getIdLivre());
 		if (probEntOpt.isPresent()) {
 			throw new LivreExistantException();

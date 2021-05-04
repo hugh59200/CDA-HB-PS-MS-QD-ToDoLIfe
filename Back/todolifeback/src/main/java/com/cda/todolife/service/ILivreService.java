@@ -16,7 +16,7 @@ public interface ILivreService {
 
 	void deleteById(int id) throws LivreIntrouvableException;
 
-	void add(LivreDto livre) throws LivreExistantException;
+	void add(LivreDto livre, int id) throws LivreExistantException;
 
 	LivreDto findByPageActuel(int page) throws LivreIntrouvableException;
 

@@ -1,15 +1,26 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "../../../assets/css/watchlist/film.css";
 import { useHistory } from "react-router-dom";
 import { URL_LIVRES } from "./../../../constant/URL_CONST";
+import axios from "axios";
+import { API_WATCHLIST } from './../../../constant/API_BACK';
 
 function NewLivre() {
   const history = useHistory();
 
- let nomLivre = "";
- let  pageAct = ""; 
- let monAvis = "";
+  let nomLivre = "";
+  let pageAct = "";
+  let monAvis = "";
+  var id = localStorage.getItem("id");
 
+  const res = {
+    title: nomLivre,
+    pageAct: pageAct,
+    avis: monAvis,
+    
+  };
+  const idWatchlist =  axios.get(API_WATCHLIST +"/utilisateurs/" +id)
+  console.log(idWatchlist);
 
   return (
     <div className="container-fluid marge-mobile">
@@ -39,11 +50,8 @@ function NewLivre() {
                 className="col-10 form-control mb-1"
                 placeholder="Nom du livre"
                 id="nom"
-                onChange={e =>{
-
-                  nomLivre = e.target.value
-                  console.log(nomLivre)
-
+                onChange={(e) => {
+                  nomLivre = e.target.value;
                 }}
               />
             </div>
@@ -54,13 +62,9 @@ function NewLivre() {
                 type="number"
                 className="col-10 form-control mb-3"
                 placeholder="Page actuelle"
-
-                onChange={e =>{
-pageAct = e.target.value
-console.log(pageAct)
-
+                onChange={(e) => {
+                  pageAct = e.target.value;
                 }}
-
               />
             </div>
 
@@ -72,13 +76,31 @@ console.log(pageAct)
                 className="form-control col-10 text-zone"
                 placeholder="Mon avis"
                 rows="3"
-                onChange={e =>{
-                  monAvis = e.target.value
-                  console.log(monAvis)
-                   }}
+                onChange={(e) => {
+                  monAvis = e.target.value;
+                }}
               />
             </div>
-            <button type="submit" className="btn btn-primary btn-enregistrer">
+            <button
+              type="submit"
+              className="btn btn-primary btn-enregistrer"
+              onClick={() => {
+                axios({
+                  method: "post",
+                  url: API_WATCHLIST + "/utilisateurs/" + id,
+                  data: res,
+                })
+                  .then(function (reponse) {
+                    history.push(0);
+                    //On traite la suite une fois la réponse obtenue
+                    console.log(reponse);
+                  })
+                  .catch(function (erreur) {
+                    //On traite ici les erreurs éventuellement survenues
+                    console.log(erreur);
+                  });
+              }}
+            >
               Enregistrer
             </button>
           </form>

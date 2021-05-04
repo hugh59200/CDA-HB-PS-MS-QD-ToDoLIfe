@@ -41,8 +41,8 @@ public class LivreController {
 	}
 
 	// create
-	@PostMapping("/livres")
-	public ResponseEntity<LivreDto> create(@RequestBody LivreDto livreDto) throws LivreIntrouvableException {
+	@PostMapping("/livres/utilisateurs/{id}")
+	public ResponseEntity<LivreDto> create(@RequestBody LivreDto livreDto, @PathVariable int id) throws LivreIntrouvableException {
 		try {
 			this.livreService.add(livreDto);
 		} catch (LivreExistantException e) {
