@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import "../../../assets/css/watchlist/film.css";
 import { useHistory } from "react-router-dom";
 import { URL_LIVRES } from "./../../../constant/URL_CONST";
 
 function NewLivre() {
   const history = useHistory();
+
+ let nomLivre = "";
+ let  pageAct = ""; 
+ let monAvis = "";
+
+
   return (
     <div className="container-fluid marge-mobile">
       <div className="row justify-content-center"></div>
@@ -30,10 +36,15 @@ function NewLivre() {
 
               <input
                 type="text"
-                name="nomLivre"
                 className="col-10 form-control mb-1"
                 placeholder="Nom du livre"
                 id="nom"
+                onChange={e =>{
+
+                  nomLivre = e.target.value
+                  console.log(nomLivre)
+
+                }}
               />
             </div>
 
@@ -41,9 +52,15 @@ function NewLivre() {
             <div className="justify-content-center row">
               <input
                 type="number"
-                name="pageActuelle"
                 className="col-10 form-control mb-3"
                 placeholder="Page actuelle"
+
+                onChange={e =>{
+pageAct = e.target.value
+console.log(pageAct)
+
+                }}
+
               />
             </div>
 
@@ -52,10 +69,13 @@ function NewLivre() {
 
               <textarea
                 type="textarea"
-                name="avisLivre"
                 className="form-control col-10 text-zone"
                 placeholder="Mon avis"
                 rows="3"
+                onChange={e =>{
+                  monAvis = e.target.value
+                  console.log(monAvis)
+                   }}
               />
             </div>
             <button type="submit" className="btn btn-primary btn-enregistrer">

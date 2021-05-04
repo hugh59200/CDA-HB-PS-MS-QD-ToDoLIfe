@@ -41,8 +41,8 @@ public class FilmController {
 	}
 
 	// create
-	@PostMapping("/films")
-	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto) throws FilmIntrouvableException {
+	@PostMapping("/films/watchlists/{id}")
+	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable(value = "id") int idUtilisateur) throws FilmIntrouvableException {
 		try {
 			this.filmService.add(filmDto);
 		} catch (FilmExistantException e) {
