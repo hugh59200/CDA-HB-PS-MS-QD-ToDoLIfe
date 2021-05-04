@@ -10,7 +10,6 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -41,10 +40,8 @@ public class JourController {
 
 	// create by Id
 	@PostMapping("/jour")
-	public ResponseEntity<JourDto> createJourByUserId(
-			@RequestBody JourDto jourDto, 
-			@RequestParam(value = "id") int id )
-			throws  ResourceNotFoundException {
+	public ResponseEntity<JourDto> createJourByUserId(@RequestBody JourDto jourDto, @RequestParam(value = "id") int id)
+			throws ResourceNotFoundException {
 		try {
 			this.jourService.add(id, jourDto);
 		} catch (JourExistantException e) {
