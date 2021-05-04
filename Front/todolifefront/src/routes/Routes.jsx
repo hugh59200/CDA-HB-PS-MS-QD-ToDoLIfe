@@ -7,6 +7,8 @@ import ConnexionForm from "../components/form/ConnexionForm";
 import InscriptionForm from "../components/form/InscriptionForm";
 import AttenteValidation from "../components/pageArrive/AttenteValidation";
 
+
+
 import { createBrowserHistory } from "history";
 
 import {
@@ -22,6 +24,9 @@ import {
   URL_NEW_TODO,
   URL_UPDATE_TODO,
   URL_UPDATE_TODO_LIST,
+  URL_LIVRES,
+  URL_SERIES,
+  URL_FILMS,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -36,6 +41,13 @@ import AddTodo from "../components/todoList/AddTodo";
 import UpdateTodo from "../components/todoList/UpdateTodo";
 import UpdateList from "../components/todoList/UpdateList";
 // import Error404 from "../views/Error404";
+import { URL_NEW_SERIE, URL_NEW_FILM,URL_NEW_LIVRE } from './../constant/URL_CONST';
+import NewFilm from './../components/watchlist/film/NewFilm';
+import Films from './../components/watchlist/livres/Livres';
+import NewSerie from './../components/watchlist/series/NewSerie';
+import Series from './../components/watchlist/series/Series';
+import NewLivre from './../components/watchlist/livres/NewLivre';
+import Livres from "../components/watchlist/livres/Livres";
 
 const CustomHistory = createBrowserHistory();
 
