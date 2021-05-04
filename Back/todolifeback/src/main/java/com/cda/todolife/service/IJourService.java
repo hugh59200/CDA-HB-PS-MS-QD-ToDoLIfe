@@ -6,7 +6,6 @@ import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalIntrouvableException;
-import com.cda.todolife.exception.ResourceNotFoundException;
 
 public interface IJourService {
 
@@ -18,10 +17,10 @@ public interface IJourService {
 
 	void deleteById(int id) throws JourIntrouvableException;
 
-	void add(int idUser, JourDto list) throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException;
+	void add(int idUser, JourDto list) throws JourExistantException, JournalIntrouvableException;
 
 	JourDto findByTitre(String titre) throws JourIntrouvableException;
 
 	List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
-	
+
 }
