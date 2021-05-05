@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.exception.LivreExistantException;
 import com.cda.todolife.exception.LivreIntrouvableException;
+import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.service.ILivreService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -42,9 +43,15 @@ public class LivreController {
 
 	// create
 	@PostMapping("/livres/utilisateurs/{id}")
-	public ResponseEntity<LivreDto> create(@RequestBody LivreDto livreDto, @PathVariable int id) throws LivreIntrouvableException {
+	public ResponseEntity<LivreDto> create(@RequestBody LivreDto livreDto, @PathVariable int id)
+			throws LivreIntrouvableException {
 		try {
+
 			this.livreService.add(livreDto, id);
+		} catch (WatchListIntrouvableException e) {
+
+		e.printStackTrace();
+
 		} catch (LivreExistantException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,63 +59,63 @@ public class LivreController {
 		return ResponseEntity.ok(livreDto);
 	}
 
-	// details by Id
-	@GetMapping("/livres/id/{id}")
-	public ResponseEntity<LivreDto> getById(@PathVariable int id) throws LivreIntrouvableException {
-		LivreDto livreDto = livreService.findById(id);
-		return ResponseEntity.ok(livreDto);
-	}
-
-	// details by title
-	@GetMapping("/livres/title/{title}")
-	public ResponseEntity<LivreDto> getByTitle(@PathVariable String title) throws LivreIntrouvableException {
-		LivreDto livreDto = livreService.findByTitle(title);
-		return ResponseEntity.ok(livreDto);
-	}
-	
-	// details by pageActuel
-		@GetMapping("/livres/page/{page}")
-		public ResponseEntity<LivreDto> getByPageActuel(@PathVariable int page) throws LivreIntrouvableException {
-			LivreDto livreDto = livreService.findByPageActuel(page);
-			return ResponseEntity.ok(livreDto);
-		}
-
-	// update
-	@PutMapping("/livres")
-	public ResponseEntity<LivreDto> update(@RequestBody LivreDto livreDto) throws LivreIntrouvableException {
-
-		try {
-			livreService.update(livreDto);
-		} catch (LivreIntrouvableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LivreExistantException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(livreDto);
-	}
-
-	// delete
-	@DeleteMapping("/livres/id/{id}")
-	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws LivreIntrouvableException {
-		livreService.deleteById(id);
-		System.out.println("ok");
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
-		return ResponseEntity.ok(response);
-	}
-	
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(ConstraintViolationException.class)
-	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
-		Map<String, String> errors = new HashMap<>();
-		ex.getConstraintViolations().forEach(constraintViolation -> {
-			String fieldName = constraintViolation.getPropertyPath().toString();
-			fieldName = fieldName.substring(fieldName.lastIndexOf('.') + 1);
-			String errorMessage = constraintViolation.getMessage();
-			errors.put(fieldName, errorMessage);
-		});
-		return errors;
-	}
+//	// details by Id
+//	@GetMapping("/livres/id/{id}")
+//	public ResponseEntity<LivreDto> getById(@PathVariable int id) throws LivreIntrouvableException {
+//		LivreDto livreDto = livreService.findById(id);
+//		return ResponseEntity.ok(livreDto);
+//	}
+//
+//	// details by title
+//	@GetMapping("/livres/title/{title}")
+//	public ResponseEntity<LivreDto> getByTitle(@PathVariable String title) throws LivreIntrouvableException {
+//		LivreDto livreDto = livreService.findByTitle(title);
+//		return ResponseEntity.ok(livreDto);
+//	}
+//
+//	// details by pageActuel
+//	@GetMapping("/livres/page/{page}")
+//	public ResponseEntity<LivreDto> getByPageActuel(@PathVariable int page) throws LivreIntrouvableException {
+//		LivreDto livreDto = livreService.findByPageActuel(page);
+//		return ResponseEntity.ok(livreDto);
+//	}
+//
+//	// update
+//	@PutMapping("/livres")
+//	public ResponseEntity<LivreDto> update(@RequestBody LivreDto livreDto) throws LivreIntrouvableException {
+//
+//		try {
+//			livreService.update(livreDto);
+//		} catch (LivreIntrouvableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (LivreExistantException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return ResponseEntity.ok(livreDto);
+//	}
+//
+//	// delete
+//	@DeleteMapping("/livres/id/{id}")
+//	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws LivreIntrouvableException {
+//		livreService.deleteById(id);
+//		System.out.println("ok");
+//		Map<String, Boolean> response = new HashMap<>();
+//		response.put("deleted", Boolean.TRUE);
+//		return ResponseEntity.ok(response);
+//	}
+//
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	@ExceptionHandler(ConstraintViolationException.class)
+//	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
+//		Map<String, String> errors = new HashMap<>();
+//		ex.getConstraintViolations().forEach(constraintViolation -> {
+//			String fieldName = constraintViolation.getPropertyPath().toString();
+//			fieldName = fieldName.substring(fieldName.lastIndexOf('.') + 1);
+//			String errorMessage = constraintViolation.getMessage();
+//			errors.put(fieldName, errorMessage);
+//		});
+//		return errors;
+//	}
 }

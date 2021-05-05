@@ -3,24 +3,17 @@ import "../../../assets/css/watchlist/film.css";
 import { useHistory } from "react-router-dom";
 import { URL_LIVRES } from "./../../../constant/URL_CONST";
 import axios from "axios";
-import { API_WATCHLIST } from './../../../constant/API_BACK';
+import { API_LIVRES } from './../../../constant/API_BACK';
 
 function NewLivre() {
   const history = useHistory();
 
-  let nomLivre = "";
-  let pageAct = "";
-  let monAvis = "";
-  var id = localStorage.getItem("id");
+  var nomLivre = "";
+  var pageAct = "";
+  var monAvis = "";
+  var idUtilisateur = localStorage.getItem("id");
 
-  const res = {
-    title: nomLivre,
-    pageAct: pageAct,
-    avis: monAvis,
-    
-  };
-  const idWatchlist =  axios.get(API_WATCHLIST +"/utilisateurs/" +id)
-  console.log(idWatchlist);
+ 
 
   return (
     <div className="container-fluid marge-mobile">
@@ -85,13 +78,21 @@ function NewLivre() {
               type="submit"
               className="btn btn-primary btn-enregistrer"
               onClick={() => {
+                const res = {
+                  title: nomLivre,
+                  pageActuel: pageAct,
+                  avis: monAvis
+                  
+                };
+
                 axios({
                   method: "post",
-                  url: API_WATCHLIST + "/utilisateurs/" + id,
+                  url: API_LIVRES + "/utilisateurs/" + idUtilisateur,
                   data: res,
                 })
                   .then(function (reponse) {
-                    history.push(0);
+             
+                    console.log(res);
                     //On traite la suite une fois la réponse obtenue
                     console.log(reponse);
                   })
@@ -99,6 +100,7 @@ function NewLivre() {
                     //On traite ici les erreurs éventuellement survenues
                     console.log(erreur);
                   });
+                  history.push(URL_LIVRES);
               }}
             >
               Enregistrer

@@ -16,3 +16,5 @@ export const API_LOGIN = ENV_DEV + 'login';
 
 export const API_WATCHLIST = ENV_DEV + 'watchlists';
 
+export const API_LIVRES = ENV_DEV + 'livres';
+
