@@ -70,21 +70,20 @@ public class JourController {
 
 	// test par savoir si un jour a été créér aujourd'hui
 	@GetMapping("/jour/{id}/utilisateurs")
-	public ResponseEntity<JourDto> testJourPresence(
+	public ResponseEntity<Boolean> testJourPresence(
 			@PathVariable(value = "id") int idUtilisateur) {
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		JourDto jourDto = jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, date);
-		return ResponseEntity.ok(jourDto);
+		boolean testJourPresence = jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, date);
+		return ResponseEntity.ok(testJourPresence);
 	}
+	
 	
 	// lister jour by userId selon date
 	@GetMapping("/utilisateurs/{id}/journaux")
 	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
 			@PathVariable(value = "id") int idUtilisateur, @RequestParam(value = "mois") int mois,
 			@RequestParam(value = "annee") int annee) {
-		
-		System.out.println(mois);
-		System.out.println(annee);
+
 		
 		String dateNoDay = annee + "-" + mois;
 		if (mois < 10) {

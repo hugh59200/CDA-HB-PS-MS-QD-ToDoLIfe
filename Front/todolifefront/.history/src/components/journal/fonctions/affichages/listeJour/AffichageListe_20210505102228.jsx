@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export function AffichageListe(props) {
-	// const [jourExistant, setjourExistant] = useState(false);
+	const [jourExistant, setjourExistant] = useState(false);
 
 	// const TestJourExistant = setjourExistant => {
 	// 	const id = localStorage.getItem('id');
@@ -32,7 +32,7 @@ export function AffichageListe(props) {
 	// 	TestJourExistant(setjourExistant);
 	// }
 
-	// console.log(jourExistant);
+	console.log(jourExistant);
 	// TestJourExistant(setjourExistant)
 	// if (!jourExistant) {
 		return (

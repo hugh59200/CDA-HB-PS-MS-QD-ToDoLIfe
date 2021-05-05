@@ -7,32 +7,31 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export function AffichageListe(props) {
-	// const [jourExistant, setjourExistant] = useState(false);
+	const [jourExistant, setjourExistant] = useState(false);
 
-	// const TestJourExistant = setjourExistant => {
-	// 	const id = localStorage.getItem('id');
-	// 	const url = API_JOURNAL + '/' + id + '/utilisateurs';
-	// 	useEffect(() => {
-	// 		axios({
-	// 			method: 'get',
-	// 			url: url,
-	// 		}).then(response => {
-	// 			const json = response.data;
-	// 			if (json.length === 0) {
-	// 				setjourExistant(false);
-	// 				console.log("ok");
-	// 			} else {
-	// 				setjourExistant(true);
-	// 				console.log("ko");
-	// 			}
-	// 		});
-	// 	}, [setjourExistant, url]);
-	// };
+	const TestJourExistant = setjourExistant => {
+		const id = localStorage.getItem('id');
+		const url = API_JOURNAL + '/' + id + '/utilisateurs';
+		useEffect(() => {
+			axios({
+				method: 'get',
+				url: url,
+			}).then(response => {
+				const json = response.data;
+				if (json.length === 0) {
+					setjourExistant(false);
+					console.log(object);
+				} else {
+					setjourExistant(true);
+				}
+			});
+		}, [setjourExistant, url]);
+	};
 	// async function FetchUrlJourExistant(setjourExistant) {
 	// 	TestJourExistant(setjourExistant);
 	// }
 
-	// console.log(jourExistant);
+	console.log(jourExistant);
 	// TestJourExistant(setjourExistant)
 	// if (!jourExistant) {
 		return (
@@ -45,10 +44,10 @@ export function AffichageListe(props) {
 					setshowJourDetail={props.setshowJourDetail}
 				/>
 				<BouttonAjouter
-					// TestJourExistant={TestJourExistant}
+					TestJourExistant={TestJourExistant}
 					setajoutJour={props.setajoutJour}
 					setshowList={props.setshowList}
-					// setjourExistant={setjourExistant}
+					setjourExistant={setjourExistant}
 				/>
 			</>
 		);

@@ -32,7 +32,7 @@ export function AffichageListe(props) {
 	// 	TestJourExistant(setjourExistant);
 	// }
 
-	// console.log(jourExistant);
+	console.log(jourExistant);
 	// TestJourExistant(setjourExistant)
 	// if (!jourExistant) {
 		return (

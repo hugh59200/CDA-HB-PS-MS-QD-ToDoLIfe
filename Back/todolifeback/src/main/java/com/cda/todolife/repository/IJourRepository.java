@@ -1,6 +1,7 @@
 package com.cda.todolife.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -17,6 +18,6 @@ public interface IJourRepository extends CrudRepository<Jour, Integer> {
 
 	List<Jour> findByDateJourAndJournal(String dateJour, Journal journalEnt);
 
-	Jour findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
+	Optional<Jour> findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
 
 }
