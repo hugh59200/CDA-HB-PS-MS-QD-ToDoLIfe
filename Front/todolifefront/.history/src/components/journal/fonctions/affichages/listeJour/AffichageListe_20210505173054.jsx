@@ -11,7 +11,7 @@ export function AffichageListe(props) {
 		affichageBoutton(setjourExistant);
 	})();
 
-	console.log(jourExistant);
+	console.log(object);
 	return (
 		<>
 			<EmptyOrList

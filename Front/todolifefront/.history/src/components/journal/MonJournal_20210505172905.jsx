@@ -17,9 +17,7 @@ const MonJournal = () => {
 
 	return (
 		<div className="monJournal">
-			<div className="titreJournal">
-				<h2>Mon journal</h2>
-			</div>
+			{newFunction()}
 			{!ajoutJour && (
 				<div className="selectDate">
 					<Selects
@@ -53,3 +51,9 @@ const MonJournal = () => {
 };
 
 export default MonJournal;
+function newFunction() {
+	return <div className="titreJournal">
+		<h2>Mon journal</h2>
+	</div>;
+}
+
