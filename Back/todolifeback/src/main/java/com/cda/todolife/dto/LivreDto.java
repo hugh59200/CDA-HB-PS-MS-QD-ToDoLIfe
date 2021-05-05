@@ -15,5 +15,5 @@ public class LivreDto {
 	private int idLivre;
 	private String title;
 	private int pageActuel;
-	private WatchListDto watchList;
+	private WatchListDto watchListDto;
 }
