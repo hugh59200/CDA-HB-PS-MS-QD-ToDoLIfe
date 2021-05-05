@@ -1,3 +1,4 @@
+import { API_JOURNAL } from './../../../../../constant/API_BACK';
 import { BouttonAjouter } from '../../bouttons/BouttonAjouter';
 import { EmptyOrList } from './EmptyOrList';
 import React from 'react';
@@ -22,7 +23,7 @@ export function AffichageListe(props) {
 
 		
 
-	// if (jourExistant === true ) {
+	if (jourExistant === true ) {
 		return (
 			<>
 				<EmptyOrList
@@ -38,17 +39,17 @@ export function AffichageListe(props) {
 				/>
 			</>
 		);
-	// } else {
-	// 		return (
-	// 			<>
-	// 				<EmptyOrList
-	// 					loading={props.loading}
-	// 					data={props.data}
-	// 					setjourData={props.setjourData}
-	// 					setshowList={props.setshowList}
-	// 					setshowJourDetail={props.setshowJourDetail}
-	// 				/>
-	// 			</>
-	// 		);
-	// 	}
+	} else {
+			return (
+				<>
+					<EmptyOrList
+						loading={props.loading}
+						data={props.data}
+						setjourData={props.setjourData}
+						setshowList={props.setshowList}
+						setshowJourDetail={props.setshowJourDetail}
+					/>
+				</>
+			);
+		}
 	}

@@ -28,9 +28,9 @@ export const PostRequest = async (jour, setshowList, setajoutJour) => {
 };
 
 function timeOut(time, status, setshowList, setajoutJour) {
-	// setshowList(true);
-	// setajoutJour(false);
 	setTimeout(() => {
+		setshowList(true);
+		setajoutJour(false);
 	
 		// popUpSuccess(status);
 		console.log('ok');

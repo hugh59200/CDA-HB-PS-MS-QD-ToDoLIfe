@@ -23,19 +23,19 @@ export const PostRequest = async (jour, setshowList, setajoutJour) => {
 		})
 		.catch(error => {
 			console.log('Une erreur est survenue');
-			timeOut(2000, error, setshowList, setajoutJour);
+			// timeOut(2000, error, setshowList, setajoutJour);
 		});
 };
 
-function timeOut(time, status, setshowList, setajoutJour) {
-	// setshowList(true);
-	// setajoutJour(false);
-	setTimeout(() => {
+// function timeOut(time, status, setshowList, setajoutJour) {
+// 	setTimeout(() => {
 	
-		// popUpSuccess(status);
-		console.log('ok');
-	}, time);
-}
+// 		// popUpSuccess(status);
+// 		console.log('ok');
+// 		// setshowList(true);
+// 		// setajoutJour(false);
+// 	}, time);
+// }
 
 // function popUpSuccess(status) {
 // 	if (status === 200) {
