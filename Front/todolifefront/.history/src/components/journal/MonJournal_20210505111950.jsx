@@ -7,6 +7,8 @@ import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
 
 const MonJournal = () => {
+	// const [mois, setmois] = useState(new Date().getMonth());
+	// const [annee, setannee] = useState(new Date().getFullYear());
 	const mois = new Date().getMonth();
 	const annee = new Date().getFullYear();
 	const [loading, setLoading] = useState(true);
@@ -42,3 +44,4 @@ const MonJournal = () => {
 };
 
 export default MonJournal;
+

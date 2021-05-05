@@ -7,20 +7,20 @@ export function FetchUrlFunction(mois, annee, setLoading, setData) {
 	const url = stringToFetch1 + stringToFetch2;
 
 
-		// 	useEffect(() => {
-		// 		axios({
-		// 			method: 'get',
-		// 			url: url,
-		// 		}).then(response => {
-		// 			const json = response.data;
-		// 			if (json.length === 0) {
-		// 				setLoading(true);
-		// 			} else {
-		// 				setData(json);
-		// 				setLoading(false);
-		// 			}
-		// 		});
-		// }, [setData, setLoading, url]);
+	// 		useEffect(() => {
+// 				axios({
+// 					method: 'get',
+// 					url: url,
+// 				}).then(response => {
+// 					const json = response.data;
+// 					if (json.length === 0) {
+// 						setLoading(true);
+// 					} else {
+// 						setData(json);
+// 						setLoading(false);
+// 					}
+// 				});
+// 		}, [setData, setLoading, url]);
 
 
 	axios({
@@ -37,6 +37,32 @@ export function FetchUrlFunction(mois, annee, setLoading, setData) {
 	});
 }
 
+
+
+
+
+
+
+
+// import { API_JOURNAL_BY_USERID } from "../../../../constant/API_BACK";
+// import axios from "axios";
+// import { useEffect } from "react";
+
+// export function FetchUrlFunction(
+// 	setmois,
+// 	mois,
+// 	setannee,
+// 	annee,
+// 	setLoading,
+// 	setData,
+// ) {
+// 	setmois(mois);
+// 	setannee(annee);
+
+// 	const id = localStorage.getItem('id');
+// 	const url =
+// 		API_JOURNAL_BY_USERID + id + '/journaux/?mois=' + mois + '&annee=' + annee;
+
 // 		useEffect(() => {
 // 				axios({
 // 					method: 'get',
@@ -51,3 +77,5 @@ export function FetchUrlFunction(mois, annee, setLoading, setData) {
 // 					}
 // 				});
 // 		}, [setData, setLoading, url]);
+
+// }

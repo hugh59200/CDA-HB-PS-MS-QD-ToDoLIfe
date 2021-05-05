@@ -7,8 +7,10 @@ import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
 
 const MonJournal = () => {
-	const mois = new Date().getMonth();
-	const annee = new Date().getFullYear();
+	// const [mois, setmois] = useState(new Date().getMonth());
+	// const [annee, setannee] = useState(new Date().getFullYear());
+	// const [mois, setmois] = useState(new Date().getMonth());
+	// const [annee, setannee] = useState(new Date().getFullYear());
 	const [loading, setLoading] = useState(true);
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
@@ -20,9 +22,9 @@ const MonJournal = () => {
 			<div className="monJournal">
 				<Selects
 					FetchUrl={FetchUrl}
-					annee={annee}
+					// annee={annee}
 					setshowList={setshowList}
-					mois={mois}
+					// mois={mois}
 				/>
 				<Affichage
 					showList={showList}
@@ -42,3 +44,4 @@ const MonJournal = () => {
 };
 
 export default MonJournal;
+
