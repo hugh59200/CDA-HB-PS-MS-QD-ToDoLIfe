@@ -129,7 +129,7 @@
 .choixResume>textarea {
   background-color: #0090E8;
   color: white;
-  width: 90%;
+  width: 80%;
   height: 100%;
   border: 3px solid rgb(216, 216, 216);
   border-top-left-radius: 20px;
@@ -147,7 +147,7 @@
 
 .deuxBoutons>button {
   height: 40px;
-  width: 200px;
+  width: 150px;
   font-size: 20px;
   text-align: center;
   letter-spacing: 2px;
@@ -155,7 +155,7 @@
   color: white;
   background-color: #14A7FF;
   border: none;
-  padding: 5px;
+  padding: 15px;
 }
 
 .choixResume>textarea:focus::placeholder {

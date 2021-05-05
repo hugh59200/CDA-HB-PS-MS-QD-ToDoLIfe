@@ -12,5 +12,6 @@ export function BouttonRevenir(props) {
 			>
 				revenir
 			</button>
+		</div>
 	);
 }

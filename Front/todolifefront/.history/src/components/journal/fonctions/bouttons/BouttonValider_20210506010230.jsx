@@ -27,5 +27,6 @@ export function BouttonValider(props) {
 			>
 				valider
 			</button>
+		</div>
 	);
 }

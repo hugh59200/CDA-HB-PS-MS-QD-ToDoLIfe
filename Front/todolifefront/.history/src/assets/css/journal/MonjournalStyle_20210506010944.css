@@ -130,7 +130,7 @@
   background-color: #0090E8;
   color: white;
   width: 90%;
-  height: 100%;
+  height: 90%;
   border: 3px solid rgb(216, 216, 216);
   border-top-left-radius: 20px;
   margin: 25px;
@@ -141,13 +141,13 @@
 .deuxBoutons {
   display: flex;
   justify-content: space-around;
-  margin-top: 60px;
+  margin-top: 30px;
   /* padding: 10px; */
 }
 
 .deuxBoutons>button {
   height: 40px;
-  width: 200px;
+  width: 150px;
   font-size: 20px;
   text-align: center;
   letter-spacing: 2px;
@@ -155,7 +155,7 @@
   color: white;
   background-color: #14A7FF;
   border: none;
-  padding: 5px;
+  padding: 15px;
 }
 
 .choixResume>textarea:focus::placeholder {

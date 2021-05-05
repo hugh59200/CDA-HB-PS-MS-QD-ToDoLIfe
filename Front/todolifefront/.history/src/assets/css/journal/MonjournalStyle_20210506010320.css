@@ -8,11 +8,11 @@
   letter-spacing: 2px;
 }
 
-.monJournal>.titreJournal {
+.monJournal > .titreJournal {
   height: 10%;
 }
 
-.monJournal>.selectDate {
+.monJournal > .selectDate {
   height: 8%;
   display: flex;
   justify-content: space-around;
@@ -20,11 +20,11 @@
   border-radius: 10px;
 }
 
-.monJournal>.affichage {
+.monJournal > .affichage{
   height: 80%;
 }
 
-.monJournal>.affichage>.journalItem {
+.monJournal > .affichage > .journalItem{
   height: 80%;
   width: 100%;
   padding: 20px;
@@ -32,14 +32,14 @@
   margin: 0 auto;
 }
 
-.monJournal>.affichage>.journalItem>p {
+.monJournal > .affichage > .journalItem> p{
   height: 20%;
   width: 100%;
   padding: 20px;
   margin: 50% auto;
 }
 
-.monJournal>.affichage>.boutton {
+.monJournal > .affichage > .boutton{
   height: 15%;
   width: 400px;
   align-self: center;
@@ -47,14 +47,14 @@
   margin: 50px auto;
 }
 
-.monJournal>.affichage>.boutton>.btn-ajouter {
+.monJournal > .affichage > .boutton > .btn-ajouter{
   height: 100%;
   width: 100%;
-  font-size: 25px;
+  font-size: 25px; 
   text-align: center;
   letter-spacing: 2px;
-  border-radius: 30px;
-  color: white;
+  border-radius: 30px; 
+  color: white; 
   background-color: #14A7FF;
   border: none;
 }
@@ -75,7 +75,7 @@
   margin: auto;
 }
 
-.choixTitre>input {
+.choixTitre> input {
   background-color: #0090E8;
   height: 60%;
   width: 80%;
@@ -97,12 +97,10 @@
 .choixTitre>input:focus::placeholder {
   color: transparent;
 }
-
 .choixTitre>input::placeholder {
   font-style: italic;
   text-align: center;
 }
-
 .choixMood {
   height: 30%;
   display: flex;
@@ -130,7 +128,7 @@
   background-color: #0090E8;
   color: white;
   width: 90%;
-  height: 100%;
+  height: 90%;
   border: 3px solid rgb(216, 216, 216);
   border-top-left-radius: 20px;
   margin: 25px;
@@ -138,24 +136,13 @@
   overflow: auto;
 }
 
-.deuxBoutons {
+.deuxBoutons{
   display: flex;
   justify-content: space-around;
-  margin-top: 60px;
-  /* padding: 10px; */
 }
 
-.deuxBoutons>button {
-  height: 40px;
-  width: 200px;
-  font-size: 20px;
-  text-align: center;
-  letter-spacing: 2px;
-  border-radius: 30px;
-  color: white;
-  background-color: #14A7FF;
-  border: none;
-  padding: 5px;
+.deuxBoutons{
+
 }
 
 .choixResume>textarea:focus::placeholder {
@@ -209,7 +196,7 @@
   height: 100%;
   background-color: rgb(72, 173, 255);
   padding: 30px;
-
+ 
 }
 
 
