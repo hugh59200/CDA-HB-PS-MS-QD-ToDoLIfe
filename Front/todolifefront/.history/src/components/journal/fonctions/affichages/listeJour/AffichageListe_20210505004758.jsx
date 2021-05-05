@@ -10,7 +10,7 @@ export function AffichageListe(props) {
 	const [jourExistant, setjourExistant] = useState(false);
 	console.log(jourExistant);
 	// TestJourExistant(setjourExistant)
-	if (!jourExistant) {
+	if (jourExistant) {
 		return (
 			<>
 				<EmptyOrList
@@ -41,7 +41,7 @@ export function AffichageListe(props) {
 		);
 	}
 
-	// async function FetchUrlJourExistant(setjourExistant) {
-	// 	TestJourExistant(setjourExistant);
-	// }
+	async function FetchUrlJourExistant(setjourExistant) {
+		TestJourExistant(setjourExistant);
+	}
 }

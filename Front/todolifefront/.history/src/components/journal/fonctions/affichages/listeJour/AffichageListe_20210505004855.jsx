@@ -1,16 +1,14 @@
 import { BouttonAjouter } from '../../bouttons/BouttonAjouter';
 import { EmptyOrList } from './EmptyOrList';
 import React from 'react';
+import { TestJourExistant } from '../../fetchUrl/TestJourExistant';
 import { useState } from 'react';
 
-// import { TestJourExistant } from '../../fetchUrl/TestJourExistant';
-
-
 export function AffichageListe(props) {
-	const [jourExistant, setjourExistant] = useState(false);
+	const [jourExistant, setjourExistant] = useState(true);
 	console.log(jourExistant);
 	// TestJourExistant(setjourExistant)
-	if (!jourExistant) {
+	if (jourExistant) {
 		return (
 			<>
 				<EmptyOrList
@@ -41,7 +39,7 @@ export function AffichageListe(props) {
 		);
 	}
 
-	// async function FetchUrlJourExistant(setjourExistant) {
-	// 	TestJourExistant(setjourExistant);
-	// }
+	async function FetchUrlJourExistant(setjourExistant) {
+		TestJourExistant(setjourExistant);
+	}
 }

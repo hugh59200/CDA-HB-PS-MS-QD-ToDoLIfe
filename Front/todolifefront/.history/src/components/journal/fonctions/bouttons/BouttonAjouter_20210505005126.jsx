@@ -8,7 +8,7 @@ export function BouttonAjouter(props) {
 				onClick={() => {
 					props.setjourExistant(false);
 					props.setajoutJour(true);
-					// props.setshowList(false);
+					props.setshowList(true);
 				}}
 			>
 				ajouter

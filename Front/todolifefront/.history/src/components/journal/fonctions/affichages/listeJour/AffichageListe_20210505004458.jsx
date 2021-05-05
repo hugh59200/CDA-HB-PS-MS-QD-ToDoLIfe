@@ -1,10 +1,8 @@
 import { BouttonAjouter } from '../../bouttons/BouttonAjouter';
 import { EmptyOrList } from './EmptyOrList';
 import React from 'react';
+import { TestJourExistant } from '../../fetchUrl/TestJourExistant';
 import { useState } from 'react';
-
-// import { TestJourExistant } from '../../fetchUrl/TestJourExistant';
-
 
 export function AffichageListe(props) {
 	const [jourExistant, setjourExistant] = useState(false);
@@ -23,7 +21,7 @@ export function AffichageListe(props) {
 				<BouttonAjouter
 					setajoutJour={props.setajoutJour}
 					setshowList={props.setshowList}
-					setjourExistant={setjourExistant}
+					// setjourExistant={setjourExistant}
 				/>
 			</>
 		);
@@ -41,7 +39,7 @@ export function AffichageListe(props) {
 		);
 	}
 
-	// async function FetchUrlJourExistant(setjourExistant) {
-	// 	TestJourExistant(setjourExistant);
-	// }
+	async function FetchUrlJourExistant(setjourExistant) {
+		TestJourExistant(setjourExistant);
+	}
 }

@@ -1,10 +1,8 @@
 import { BouttonAjouter } from '../../bouttons/BouttonAjouter';
 import { EmptyOrList } from './EmptyOrList';
 import React from 'react';
+import { TestJourExistant } from '../../fetchUrl/TestJourExistant';
 import { useState } from 'react';
-
-// import { TestJourExistant } from '../../fetchUrl/TestJourExistant';
-
 
 export function AffichageListe(props) {
 	const [jourExistant, setjourExistant] = useState(false);
