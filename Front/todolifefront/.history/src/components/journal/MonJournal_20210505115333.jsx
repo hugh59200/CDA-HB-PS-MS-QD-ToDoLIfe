@@ -40,8 +40,8 @@ const MonJournal = () => {
 		</>
 	);
 
-	async function FetchUrl(mois, annee) {
-		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
+	async function FetchUrl(mois, annee, setmois) {
+		FetchUrlFunction(mois, annee, setLoading, setData);
 	}
 };
 

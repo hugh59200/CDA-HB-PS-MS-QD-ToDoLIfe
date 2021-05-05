@@ -10,7 +10,7 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 	const stringToFetch2 = '/journaux/?mois=' + mois + '&annee=' + annee;
 	const url = stringToFetch1 + stringToFetch2;
 
-		// useEffect(() => {
+		useEffect(() => {
 			axios({
 				method: 'get',
 				url: url,
@@ -23,5 +23,5 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 					setLoading(false);
 				}
 			});
-	// }, [setData, setLoading, url]);
+	}, [setData, setLoading, url]);
 }

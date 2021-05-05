@@ -23,5 +23,5 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 					setLoading(false);
 				}
 			});
-	// }, [setData, setLoading, url]);
+	}, [setData, setLoading, url]);
 }

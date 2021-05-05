@@ -9,6 +9,8 @@ import { Selects } from './fonctions/selects/SelectDate';
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());
 	const [annee, setannee] = useState(new Date().getFullYear());
+	// const mois = new Date().getMonth();
+	// const annee = new Date().getFullYear();
 	const [loading, setLoading] = useState(true);
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
@@ -41,7 +43,7 @@ const MonJournal = () => {
 	);
 
 	async function FetchUrl(mois, annee) {
-		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
+		FetchUrlFunction(mois, annee, setLoading, setData);
 	}
 };
 

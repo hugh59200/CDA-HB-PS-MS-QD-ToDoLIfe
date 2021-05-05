@@ -23,7 +23,7 @@ export function BouttonValider(props) {
 					props.setajoutJour(false);
 					props.setshowList(true);
 					// PostRequest(jour);
-					PostRequest(jour, props.setshowList, props.setajoutJour);
+					// PostRequest(jour, props.setshowList, props.setajoutJour);
 				}}
 			>
 				valider

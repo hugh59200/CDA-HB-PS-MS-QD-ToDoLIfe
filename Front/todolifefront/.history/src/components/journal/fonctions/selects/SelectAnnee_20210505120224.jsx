@@ -8,6 +8,8 @@ export function SelectAnnee(props) {
 			className="form-select"
 			onChange={e => {
 				props.setshowList(true);
+				props.FetchowList(true);
+				props.FetchowList(true);
 				props.FetchUrl(props.mois, e.target.value);
 			}}
 		>

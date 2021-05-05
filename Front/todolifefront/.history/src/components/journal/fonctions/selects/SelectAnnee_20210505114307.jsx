@@ -7,8 +7,11 @@ export function SelectAnnee(props) {
 		<select
 			className="form-select"
 			onChange={e => {
-				props.setshowList(true);
 				props.FetchUrl(props.mois, e.target.value);
+				props.setshowList(true);
+				props.FetchUrl(props.mois, props.setannee(e.target.value));
+				// props.FetchUrl(props.mois, props.setannee(e.target.value));
+				props.setshowList(true);
 			}}
 		>
 			<option defaultValue={props.mois}>{actualYear}</option>

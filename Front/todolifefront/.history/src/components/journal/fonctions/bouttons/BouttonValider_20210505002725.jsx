@@ -14,7 +14,6 @@ export function BouttonValider(props) {
 		humeur,
 		texte,
 	};
-	
 	return (
 		<div className="boutton">
 			<button
@@ -22,8 +21,8 @@ export function BouttonValider(props) {
 				onClick={() => {
 					props.setajoutJour(false);
 					props.setshowList(true);
-					// PostRequest(jour);
-					PostRequest(jour, props.setshowList, props.setajoutJour);
+					PostRequest(jour);
+					// PostRequest(jour, props.setshowList, props.setajoutJour);
 				}}
 			>
 				valider
