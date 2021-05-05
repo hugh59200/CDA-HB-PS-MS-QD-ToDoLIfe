@@ -2,23 +2,21 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.JourDto;
-import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalIntrouvableException;
-import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.model.Jour;
 import com.cda.todolife.model.Journal;
 import com.cda.todolife.repository.IJourRepository;
 import com.cda.todolife.repository.IJournalRepository;
 import com.cda.todolife.service.IJourService;
-import com.cda.todolife.service.IUtilisateurService;
 
 @Service
 public class JourServiceImpl implements IJourService {
@@ -32,36 +30,41 @@ public class JourServiceImpl implements IJourService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@Autowired
-	private IUtilisateurService utilisateurService;
+	// test par savoir si un jour a été créér aujourd'hui
+	@Override
+	public boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
+		Optional<Jour> jour = this.jourRepository.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur,
+				dateJour);
+		if (!jour.isPresent()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 //	ajouter
 	@Override
-	public void add(int idUser, JourDto jourDto)
-			throws JourExistantException, JournalIntrouvableException, ResourceNotFoundException {
+	public void add(int idUser, JourDto jourDto) throws JournalIntrouvableException, JourExistantException {
 
-		JournalDto journalDto = this.modelMapper.map(this.journalRepository.findByUtilisateurIdUtilisateur(idUser),
-				JournalDto.class);
+		Optional<Journal> journalEntOpt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
 
-		if (journalDto.getUtilisateurDto() == null) {
-			journalDto.setUtilisateurDto(this.utilisateurService.findByidUtilisateur(idUser));
-			
-		} else if (jourDto.getJournalDto() == null) {
-			jourDto.setJournalDto(journalDto);
-			
-		} else if (journalDto.getListJourDto() == null) {
-			List<JourDto> listJourDto = new ArrayList<>();
-			listJourDto.add(jourDto);
-			journalDto.setListJourDto(listJourDto);
+		if (journalEntOpt.isEmpty()) {
+			throw new JournalIntrouvableException();
 		}
 
-		Jour jour = this.modelMapper.map(jourDto, Jour.class);
-		Journal journal = this.modelMapper.map(journalDto, Journal.class);
-		
-		jour.setJournal(journal);
-		jour.setIdJour(this.jourRepository.findAll().size()+1);
-		
-		this.jourRepository.save(jour);
+		Journal journalEnt = journalEntOpt.get();
+
+		List<Jour> jourEntList = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journalEnt);
+
+		if (!jourEntList.isEmpty()) {
+			throw new JourExistantException();
+		}
+
+		Jour jourEnt = this.modelMapper.map(jourDto, Jour.class);
+
+		jourEnt.setJournal(journalEnt);
+		jourDto.setIdJour(jourEnt.getIdJour());
+		jourEnt = jourRepository.save(jourEnt);
 	}
 
 //	lister
