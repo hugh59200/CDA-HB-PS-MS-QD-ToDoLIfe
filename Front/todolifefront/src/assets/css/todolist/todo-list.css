@@ -13,13 +13,13 @@
   border: none;
 }
 
-.todo-button-add {
-  background-image: url('../../img/plus.png');
-  background-repeat: no-repeat;
-  background-color: transparent;
-  height: 40px !important;
-  width: 35px !important;
-  border: none;
+
+
+.div-haut {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  position: static;
 }
 
 .todo-button-remove {
@@ -30,12 +30,20 @@
   height: 25px !important;
   width: 30px !important;
   border: none;
+  
+}
+.todo-button-add {
+  background-image: url('../../img/plus.png');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  height: 40px !important;
+  width: 35px !important;
+  border: none;
 }
 
 .todo-button-back {
   background-repeat: no-repeat;
   background-color: #0090E8;
-  margin: 20px;
   border: 1;
   border: 5px solid #1C6EA4;
   border-radius: 12px;
@@ -54,7 +62,7 @@
   align-self: center !important;
 }
 
-.todo-app {
+.todo-app,.todo-app-2 {
   background: #0090E8;
   text-align: center;
   margin: auto !important;
@@ -63,25 +71,77 @@
   align-items: center !important;
   justify-content: center !important;
   align-self: center !important;
-  width: 70% !important;
   flex-direction: column;
-  height: 70vh;
+  /* width: 70% !important;
+  height: 70vh; */
 }
 
+.test-scroll-paire {
+  overflow-y: scroll !important;
+  /* padding-top: 9vh !important; */
+}
 
-.test{
+.test-scroll-impaire {
+  overflow-y: scroll !important;
+}
+
+.test {
   display: flex !important;
   padding: auto !important;
 }
 
 @media (max-width: 576px) {
-  
+  .title-list {
+    font-size: 4.4vh;
+  }
 
   .todo-app {
+    height: 60vh !important;
     width: 95% !important;
   }
 
-  .mobile{
+  .mobile {
     display: flex;
+  }
+
+  .test-scroll-paire {
+    overflow-y: scroll !important;
+    padding-top: 9vh !important;
+  }
+
+  .test-scroll-impaire {
+    overflow-y: scroll !important;
+  }
+
+  .div-haut {
+    position: absolute;
+    margin-left: 4vh;
+  }
+  
+  .todo-app-2 {
+    height: 60vh !important;
+    width: 95% !important;
+  }
+  
+  .test-scroll-paire-2 {
+    overflow-y: scroll !important;
+    padding-top: 23vh !important;
+  }
+
+  .test-scroll-impaire-2 {
+    overflow-y: scroll !important;
+    padding-top: 15vh !important;
+  }
+.div-haut-2>h1{
+    padding-left: -2%;
+  }
+
+  .div-haut-2>button{
+    padding-right: +2%;
+  }
+  
+  .taille-input{
+    width: auto !important;
+    height: auto !important;
   }
 }

@@ -2,9 +2,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import * as yup from "yup";
-import { URL_TODO_LIST } from "../../constant/URL_CONST";
-import TodolistService from "../../service/TodolistService";
-import UtilisateurService from "../../service/UtilisateurService";
+import { URL_TODO_LIST } from "../../../constant/URL_CONST";
+import TodolistService from "../../../service/TodolistService";
+import UtilisateurService from "../../../service/UtilisateurService";
 
 const validationSchema = yup.object().shape({
   labelList: yup.string().required("required"),
@@ -47,10 +47,14 @@ const UpdateList = (props) => {
       }
     });
   };
+  
+  const retour = () =>{
+    history.push(URL_TODO_LIST)
+  }
 
   return (
     <>
-      <h1 className="text-white">update list</h1>
+      <h1 className="text-white text-center">update list</h1>
 
       <Formik
         initialValues={initialValues}
@@ -59,7 +63,7 @@ const UpdateList = (props) => {
       >
         {() => (
           <Form>
-            <div>
+            <div className="d-flex justify-content-center">
               <label className="text-white" htmlFor="labelList">
                 <h1>Label : </h1>
               </label>
@@ -67,7 +71,11 @@ const UpdateList = (props) => {
               <ErrorMessage name="labelList" component="small" />
             </div>
             <br />
-            <button type="submit" className="todo-button-back"> Submit</button>
+            <div className="d-flex justify-content-around">
+            <button type="submit" className="todo-button-back text-white"> Submit</button>
+            <button onClick={retour} className="todo-button-back text-white"> Retour</button>
+            </div>
+            
           </Form>
         )}
       </Formik>

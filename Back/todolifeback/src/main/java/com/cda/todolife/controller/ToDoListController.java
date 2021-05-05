@@ -39,11 +39,11 @@ public class ToDoListController {
 	@Autowired
 	private IUtilisateurService utilisateurService;
 
-	// listing
-	@GetMapping("/todolists")
-	public List<ToDoListDto> getAll() {
-		return this.todolistService.findAll();
-	}
+//	// listing
+//	@GetMapping("/todolists")
+//	public List<ToDoListDto> getAll() {
+//		return this.todolistService.findAll();
+//	}
 
 	// show by User id
 	@GetMapping("/todolists/utilisateur/{id}")

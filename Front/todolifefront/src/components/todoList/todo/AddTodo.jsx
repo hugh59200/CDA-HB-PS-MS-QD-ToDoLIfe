@@ -2,21 +2,20 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import * as yup from "yup";
-import { URL_INSIDE_TODOLIST } from "../../constant/URL_CONST";
-import TacheService from "../../service/TacheService";
-import TodolistService from "../../service/TodolistService";
+import { URL_INSIDE_TODOLIST } from "../../../constant/URL_CONST";
+import TacheService from "../../../service/TacheService";
+import TodolistService from "../../../service/TodolistService";
 
 const validationSchema = yup.object().shape({
   label: yup.string().required("required"),
 });
 
-const UpdateTodo = (props) => {
+const AddTodo = () => {
   const history = useHistory();
   const [list, setList] = useState("");
 
   const initialValues = {
-    idTache: props.history.location.idTodo,
-    label: props.history.location.labelTodo,
+    label: ""
   };
 
   const getList = () => {
@@ -28,42 +27,40 @@ const UpdateTodo = (props) => {
   };
 
   const makeTask = (values) => {
-    let test = {
-      idTache: values.idTache,
+    let todo = {
       label: values.label,
       list: list,
     };
-    submit(test);
+    submit(todo);
   };
 
   useEffect(() => {
     getList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const submit = (todo) => {
-
-    TacheService.update(todo).then((res) => {
+    TacheService.create(todo).then((res) => {
       let code = res.status;
-      console.log(res.data);
 
       if (code === 200) {
         let idTodoList = localStorage.getItem("id_todolist");
-        let labelList = localStorage.getItem("label_todolist");
-
+        let labelTodoList = localStorage.getItem("label_todolist");
+        
         history.push({
           pathname: URL_INSIDE_TODOLIST,
           idList: idTodoList,
-          labelList: labelList,
+          labelList: labelTodoList,
         });
       }
     });
   };
+  
+  const retour = () =>{
+    history.push(URL_INSIDE_TODOLIST)
+  }
 
   return (
     <>
-      <h1>update todo</h1>
-
       <Formik
         initialValues={initialValues}
         onSubmit={makeTask}
@@ -71,15 +68,18 @@ const UpdateTodo = (props) => {
       >
         {() => (
           <Form>
-            <div>
-              <label className="text-white" htmlFor="label">
-                <h1>Label : </h1>
-              </label>
-              <Field type="text" name="label" placeholder="label" />
-              <ErrorMessage name="label" component="small" />
-            </div>
+          <div className="d-flex justify-content-center align-self-stretch">
+            <label className="text-white" htmlFor="label">
+              <h1> label : </h1>
+            </label>
+            <Field type="text" name="label" placeholder="label" />
+            <ErrorMessage name="label" component="small" />
+          </div>
             <br />
-            <button type="submit" className="todo-button-back"> Submit</button>
+            <div className="d-flex justify-content-around">
+            <button type="submit" className="todo-button-back text-white"> Submit</button>
+            <button onClick={retour} className="todo-button-back text-white"> Retour</button>
+            </div>
           </Form>
         )}
       </Formik>
@@ -87,4 +87,4 @@ const UpdateTodo = (props) => {
   );
 };
 
-export default UpdateTodo;
+export default AddTodo;

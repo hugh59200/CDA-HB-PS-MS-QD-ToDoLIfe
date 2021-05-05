@@ -4,10 +4,10 @@ import {
   URL_NEW_TODO,
   URL_TODO_LIST,
   URL_UPDATE_TODO,
-} from "../../constant/URL_CONST";
-import TacheService from "../../service/TacheService";
+} from "../../../constant/URL_CONST";
+import TacheService from "../../../service/TacheService";
 
-const TodoInside = () => {
+const Todos = () => {
   const history = useHistory();
   const [list, setList] = useState("");
 
@@ -18,32 +18,29 @@ const TodoInside = () => {
 
         let postData = dataRecup.map((elem) => (
           <>
-            <div
-              key={elem.idTache}
-              className="overflow-auto mx-auto align-middle d-flex flex-row justify-content-around row css-list-todo"
-            >
+            <div key={elem.idTache} className="css-list-todo">
               <div
-                className="media-todo-list col-3 text text-white w-100"
-                onClick={function (e) {
-                  let text = e.target.innerHTML;
-                  // console.log(text)
+                className="media-todo-list col-8 text-white"
+                // onClick={function (e) {
+                //   let text = e.target.innerHTML;
+                //   // console.log(text)
 
-                  // let text = "<del>"+e.target+"</del>";
-                  // console.log(text)
+                //   // let text = "<del>"+e.target+"</del>";
+                //   // console.log(text)
 
-                  e.target.innerHTML = "<del>" + text + "</del>";
-                }}
+                //   e.target.innerHTML = "<del>" + text + "</del>";
+                // }}
               >
                 {elem.label}
               </div>
-              <div className="media-todo-list col-3">
+              <div className="media-todo-list col-4 mobile">
                 <button
                   onClick={() => updateTodo(elem.idTache, elem.label)}
-                  className="todo-button-update"
+                  className="todo-button-update float-right mr-4"
                 ></button>
                 <button
                   onClick={() => removeTodo(elem.idTache)}
-                  className="todo-button-remove"
+                  className="todo-button-remove float-right mr-1e"
                 ></button>
               </div>
             </div>
@@ -96,7 +93,7 @@ const TodoInside = () => {
 
   return (
     <>
-      <div className="todo-app">
+      {/* <div className="todo-app test-scroll">
         <button
           className="todo-button-back float-left text-white"
           onClick={function () {
@@ -109,14 +106,42 @@ const TodoInside = () => {
           {localStorage.getItem("label_todolist")}
         </h1>
         <br />
-        <div className="justify-content-aound m-auto p-auto">
-          <>{list}</>
-        </div>
+        <>{list}</>
         <br />
         <button onClick={clickAdd} className="todo-button-add"></button>
+      </div> */}
+      <div className="d-flex justify-content-around align-items-center div-haut-2">
+        <button
+          className="todo-button-back float-left text-white"
+          onClick={function () {
+            history.push(URL_TODO_LIST);
+          }}
+        >
+          retour
+        </button>
+        <h1 className="text-white text-center tile-list">
+          {localStorage.getItem("label_todolist")}
+        </h1>
       </div>
+      {list.length % 2 === 0 ? (
+        <>
+          <div className="todo-app todo-app-paire test-scroll-paire-2">
+            {list}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="todo-app todo-app-impaire test-scroll-impaire-2">
+            {list}
+          </div>
+        </>
+      )}
+      <button
+        onClick={clickAdd}
+        className="todo-button-add div-haut d-flex"
+      ></button>
     </>
   );
 };
 
-export default TodoInside;
+export default Todos;
