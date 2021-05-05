@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
-import { affichageBoutton } from "./fonctions/fetchUrl/affichageBoutton";
 
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());
@@ -14,10 +13,9 @@ const MonJournal = () => {
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
 	const [data, setData] = useState([]);
-	const [jourExistant, setjourExistant] = useState(false);
-	
-	(function(){ affichageBoutton(jourExistant, setjourExistant)})()
-	
+const [jourExistant, setjourExistant] = useState(false);
+
+
 	return (
 		<>
 			<h2 className="titreJournal">Mon journal</h2>
@@ -42,10 +40,10 @@ const MonJournal = () => {
 		</>
 	);
 
-	
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
 	}
 };
 
 export default MonJournal;
+

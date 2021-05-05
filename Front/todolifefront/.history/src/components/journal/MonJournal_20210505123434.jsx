@@ -1,11 +1,10 @@
 import '../../assets/css/journal/MonjournalStyle.css';
 
+import { FetchUrlFunction, affichageBoutton } from './fonctions/fetchUrl/FetchUrlFunction';
 import React, { useState } from 'react';
 
 import { Affichage } from './fonctions/affichages/Affichage';
-import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
-import { affichageBoutton } from "./fonctions/fetchUrl/affichageBoutton";
 
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());

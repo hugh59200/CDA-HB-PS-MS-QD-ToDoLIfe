@@ -26,4 +26,25 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 	// }, [setData, setLoading, url]);
 }
 
+export function affichageBoutton(jourExistant, setjourExistant, setLoading, setData, setmois, setannee) {
+	setmois(mois)
+	setannee(annee)
+	const stringToFetch1 = API_JOURNAL_BY_USERID + localStorage.getItem('id');
+	const stringToFetch2 = '/journaux/?mois=' + mois + '&annee=' + annee;
+	const url = stringToFetch1 + stringToFetch2;
 
+		// useEffect(() => {
+			axios({
+				method: 'get',
+				url: url,
+			}).then(response => {
+				const json = response.data;
+				if (json.length === 0) {
+					setLoading(true);
+				} else {
+					setData(json);
+					setLoading(false);
+				}
+			});
+	// }, [setData, setLoading, url]);
+}

@@ -1,4 +1,5 @@
-import { API_JOURNAL_BY_USERID } from '../../../../constant/API_BACK';
+import { API_JOURNAL, API_JOURNAL_BY_USERID } from '../../../../constant/API_BACK';
+
 import axios from 'axios';
 
 // import { useEffect } from 'react';
@@ -26,4 +27,20 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 	// }, [setData, setLoading, url]);
 }
 
+export function affichageBoutton(jourExistant, setjourExistant) {
+console.log(object);
+		axios({
+			method: 'get',
+			url: API_JOURNAL + '/' + localStorage.getItem('id') + '/utilisateurs',
+		}).then(response => {
+			const json = response.data;
+			if (json.length === 0) {
+				setjourExistant(false);
+				console.log("ok");
+			} else {
+				setjourExistant(true);
+				console.log("ko");
+			}
+		});
 
+}

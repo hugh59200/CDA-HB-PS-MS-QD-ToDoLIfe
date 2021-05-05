@@ -26,4 +26,20 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 	// }, [setData, setLoading, url]);
 }
 
+export function affichageBoutton(jourExistant, setjourExistant) {
 
+		axios({
+			method: 'get',
+			url: API_JOURNAL + '/' + localStorage.getItem('id') + '/utilisateurs',
+		}).then(response => {
+			const json = response.data;
+			if (json.length === 0) {
+				setjourExistant(false);
+				console.log("ok");
+			} else {
+				setjourExistant(true);
+				console.log("ko");
+			}
+		});
+
+}

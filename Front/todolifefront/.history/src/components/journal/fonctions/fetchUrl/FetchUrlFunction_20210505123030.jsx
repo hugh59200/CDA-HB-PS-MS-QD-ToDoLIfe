@@ -26,4 +26,6 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 	// }, [setData, setLoading, url]);
 }
 
+export function affichageBoutton(jourExistant, setjourExistant) {
 
+}
