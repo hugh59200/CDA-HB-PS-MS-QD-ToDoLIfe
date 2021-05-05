@@ -20,6 +20,11 @@
   height: 40px !important;
   width: 35px !important;
   border: none;
+  margin-left: 20vh;
+}
+
+.div-haut {
+  position: absolute;
 }
 
 .todo-button-remove {
@@ -63,30 +68,50 @@
   align-items: center !important;
   justify-content: center !important;
   align-self: center !important;
-  width: 70% !important;
   flex-direction: column;
-  height: 70vh;
+  /* width: 70% !important;
+  height: 70vh; */
 }
 
-.test-scroll {
-  /* overflow-y: scroll !important; */
-  /* scrollbar-darkshadow-color: black; */
+.test-scroll-paire {
+  overflow-y: scroll !important;
+  /* padding-top: 9vh !important; */
 }
 
+.test-scroll-impaire {
+  overflow-y: scroll !important;
+}
 
-.test{
+.test {
   display: flex !important;
   padding: auto !important;
 }
 
 @media (max-width: 576px) {
-  
+  .title-list{
+  font-size: 4.5vh;
+}
 
   .todo-app {
+    height: 60vh !important;
     width: 95% !important;
   }
 
-  .mobile{
+  .mobile {
     display: flex;
+  }
+
+  .test-scroll-paire {
+    overflow-y: scroll !important;
+    padding-top: 9vh !important;
+  }
+
+  .test-scroll-impaire {
+    overflow-y: scroll !important;
+  }
+  
+  .div-haut {
+    position: absolute;
+    margin-left: 4vh;
   }
 }

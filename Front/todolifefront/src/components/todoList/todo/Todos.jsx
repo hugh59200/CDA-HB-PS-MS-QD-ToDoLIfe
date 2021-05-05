@@ -4,10 +4,10 @@ import {
   URL_NEW_TODO,
   URL_TODO_LIST,
   URL_UPDATE_TODO,
-} from "../../constant/URL_CONST";
-import TacheService from "../../service/TacheService";
+} from "../../../constant/URL_CONST";
+import TacheService from "../../../service/TacheService";
 
-const TodoInside = () => {
+const Todos = () => {
   const history = useHistory();
   const [list, setList] = useState("");
 
@@ -20,10 +20,10 @@ const TodoInside = () => {
           <>
             <div
               key={elem.idTache}
-              className="overflow-auto mx-auto align-middle d-flex flex-row justify-content-around row css-list-todo"
+              className="css-list-todo"
             >
               <div
-                className="media-todo-list col-3 text text-white w-100"
+                className="media-todo-list col-8"
                 onClick={function (e) {
                   let text = e.target.innerHTML;
                   // console.log(text)
@@ -36,14 +36,14 @@ const TodoInside = () => {
               >
                 {elem.label}
               </div>
-              <div className="media-todo-list col-3">
+              <div className="media-todo-list col-4 mobile">
                 <button
                   onClick={() => updateTodo(elem.idTache, elem.label)}
-                  className="todo-button-update"
+                  className="todo-button-update float-right mr-4"
                 ></button>
                 <button
                   onClick={() => removeTodo(elem.idTache)}
-                  className="todo-button-remove"
+                  className="todo-button-remove float-right mr-1e"
                 ></button>
               </div>
             </div>
@@ -96,7 +96,7 @@ const TodoInside = () => {
 
   return (
     <>
-      <div className="todo-app">
+      <div className="todo-app test-scroll">
         <button
           className="todo-button-back float-left text-white"
           onClick={function () {
@@ -109,9 +109,7 @@ const TodoInside = () => {
           {localStorage.getItem("label_todolist")}
         </h1>
         <br />
-        <div className="justify-content-aound m-auto p-auto">
-          <>{list}</>
-        </div>
+        <>{list}</>
         <br />
         <button onClick={clickAdd} className="todo-button-add"></button>
       </div>
@@ -119,4 +117,4 @@ const TodoInside = () => {
   );
 };
 
-export default TodoInside;
+export default Todos;

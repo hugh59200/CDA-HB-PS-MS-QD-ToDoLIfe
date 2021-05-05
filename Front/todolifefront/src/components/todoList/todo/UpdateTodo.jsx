@@ -2,9 +2,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import * as yup from "yup";
-import { URL_INSIDE_TODOLIST } from "../../constant/URL_CONST";
-import TacheService from "../../service/TacheService";
-import TodolistService from "../../service/TodolistService";
+import { URL_INSIDE_TODOLIST } from "../../../constant/URL_CONST";
+import TacheService from "../../../service/TacheService";
+import TodolistService from "../../../service/TodolistService";
 
 const validationSchema = yup.object().shape({
   label: yup.string().required("required"),
