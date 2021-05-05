@@ -5,6 +5,7 @@ import java.util.List;
 import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.exception.LivreExistantException;
 import com.cda.todolife.exception.LivreIntrouvableException;
+import com.cda.todolife.exception.WatchListIntrouvableException;
 
 public interface ILivreService {
 
@@ -16,7 +17,7 @@ public interface ILivreService {
 
 	void deleteById(int id) throws LivreIntrouvableException;
 
-	void add(LivreDto livre, int id) throws LivreExistantException;
+	void add(LivreDto livre, int id) throws LivreExistantException, WatchListIntrouvableException;
 
 	LivreDto findByPageActuel(int page) throws LivreIntrouvableException;
 
