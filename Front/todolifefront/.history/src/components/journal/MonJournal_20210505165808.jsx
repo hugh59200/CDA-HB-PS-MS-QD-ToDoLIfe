@@ -20,7 +20,7 @@ const MonJournal = () => {
 			<div className="titreJournal">
 				<h2>Mon journal</h2>
 			</div>
-			{!ajoutJour && (
+			{!ajoutJour ? (
 				<div className="selectDate">
 					<Selects
 						FetchUrl={FetchUrl}
@@ -31,6 +31,8 @@ const MonJournal = () => {
 						setannee={setannee}
 					/>
 				</div>
+			) : (
+				''
 			)}
 			<div className="affichage">
 				<Affichage
@@ -46,6 +48,7 @@ const MonJournal = () => {
 			</div>
 		</div>
 	);
+
 
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);

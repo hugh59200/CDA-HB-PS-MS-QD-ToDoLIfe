@@ -32,6 +32,18 @@ const MonJournal = () => {
 					/>
 				</div>
 			)}
+			{!ajoutJour && (
+				<div className="selectDate">
+					<Selects
+						FetchUrl={FetchUrl}
+						annee={annee}
+						setshowList={setshowList}
+						mois={mois}
+						setmois={setmois}
+						setannee={setannee}
+					/>
+				</div>
+			)}
 			<div className="affichage">
 				<Affichage
 					showList={showList}

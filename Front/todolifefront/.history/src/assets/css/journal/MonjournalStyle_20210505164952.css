@@ -12,7 +12,6 @@
 
 .monJournal > div {
   width: 100%;
-  border-radius: 10px;
 }
 
 .monJournal > .titreJournal {
@@ -26,15 +25,15 @@
   height: 10%;
   display: flex;
   justify-content: space-around;
+  /* color: white; */
+  font-size: x-large;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .monJournal > .affichage{
   height: 80%;
 }
-
-
-
 
 .jourdetails {
   height: 600px;

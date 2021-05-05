@@ -23,7 +23,7 @@
 
 .monJournal > .selectDate {
   background-color: #55b8ff;
-  height: 10%;
+  height: 5%;
   display: flex;
   justify-content: space-around;
   padding: 10px;
@@ -32,6 +32,7 @@
 .monJournal > .affichage{
   height: 80%;
 }
+
 
 
 

@@ -38,4 +38,31 @@ export function Affichage(props) {
 			)}
 		</>
 	);
+	// if (props.showList)
+	// 	return (
+	// 		<AffichageListe
+	// 			loading={props.loading}
+	// 			data={props.data}
+	// 			setjourData={props.setjourData}
+	// 			setshowList={props.setshowList}
+	// 			setshowJourDetail={setshowJourDetail}
+	// 			setajoutJour={setajoutJour}
+	// 		/>
+	// 	);
+	// if (showJourDetail)
+	// 	return (
+	// 		<DetailJour
+	// 			jourData={props.jourData}
+	// 			setshowList={props.setshowList}
+	// 			setshowJourDetail={setshowJourDetail}
+	// 		/>
+	// 	);
+	// if (ajoutJour)
+	// 	return (
+	// 		<AjouterJour
+	// 			setshowList={props.setshowList}
+	// 			setshowJourDetail={setshowJourDetail}
+	// 			setajoutJour={setajoutJour}
+	// 		/>
+	// 	);
 }

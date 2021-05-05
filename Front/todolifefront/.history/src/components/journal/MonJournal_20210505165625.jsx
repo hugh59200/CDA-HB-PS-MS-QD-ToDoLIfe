@@ -17,22 +17,31 @@ const MonJournal = () => {
 
 	return (
 		<div className="monJournal">
-			<div className="titreJournal">
-				<h2>Mon journal</h2>
-			</div>
-			{!ajoutJour && (
-				<div className="selectDate">
-					<Selects
-						FetchUrl={FetchUrl}
-						annee={annee}
-						setshowList={setshowList}
-						mois={mois}
-						setmois={setmois}
-						setannee={setannee}
-					/>
+				<div  className="titreJournal">
+					<h2>Mon journal</h2>
 				</div>
-			)}
-			<div className="affichage">
+				{!ajoutJour ? 	<div className="selectDate">
+				<Selects
+					FetchUrl={FetchUrl}
+					annee={annee}
+					setshowList={setshowList}
+					mois={mois}
+					setmois={setmois}
+					setannee={setannee}
+				/>
+				</div> : ''}
+		{/* if (!ajoutJour) { */}
+				{/* <div className="selectDate">
+				<Selects
+					FetchUrl={FetchUrl}
+					annee={annee}
+					setshowList={setshowList}
+					mois={mois}
+					setmois={setmois}
+					setannee={setannee}
+				/>
+				</div> */}
+				<div className="affichage">
 				<Affichage
 					showList={showList}
 					loading={loading}
@@ -43,9 +52,29 @@ const MonJournal = () => {
 					setajoutJour={setajoutJour}
 					ajoutJour={ajoutJour}
 				/>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	// } 
+	// else {
+	// 	return (
+	// 		<>
+	// 			<h2 className="titreJournal">Mon journal</h2>
+	// 			<div className="monJournal">
+	// 				<Affichage
+	// 					showList={showList}
+	// 					loading={loading}
+	// 					data={data}
+	// 					setjourData={setjourData}
+	// 					setshowList={setshowList}
+	// 					jourData={jourData}
+	// 					setajoutJour={setajoutJour}
+	// 					ajoutJour={ajoutJour}
+	// 				/>
+	// 			</div>
+	// 		</>
+	// 	);
+	// }
 
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
