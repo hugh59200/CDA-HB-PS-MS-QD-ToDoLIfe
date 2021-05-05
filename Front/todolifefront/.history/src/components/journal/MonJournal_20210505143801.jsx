@@ -47,6 +47,7 @@ const MonJournal = () => {
 			<>
 				<h2 className="titreJournal">Mon journal</h2>
 				<div className="monJournal">
+		
 					<Affichage
 						showList={showList}
 						loading={loading}

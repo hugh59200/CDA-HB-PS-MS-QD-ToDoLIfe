@@ -1,16 +1,16 @@
 import React from 'react';
 
-export function BouttonAjouter(props) {
+export function BouttonRevenir(props) {
 	return (
 		<div className="boutton">
 			<button
 				className="btn-form"
 				onClick={() => {
-					props.setajoutJour(true);
-					props.setshowList(false);
+					props.setshowList(true);
+					props.setshowJourDetail(false);
 				}}
 			>
-				Mon humeur du jour
+				revenir
 			</button>
 		</div>
 	);

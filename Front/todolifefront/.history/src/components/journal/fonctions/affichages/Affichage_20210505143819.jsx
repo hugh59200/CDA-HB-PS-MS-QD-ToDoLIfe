@@ -25,7 +25,7 @@ export function Affichage(props) {
 				setshowJourDetail={setshowJourDetail}
 			/>
 		);
-	if (props.ajoutJour)
+	if (ajoutJour)
 		return (
 			<AjouterJour
 				setshowList={props.setshowList}

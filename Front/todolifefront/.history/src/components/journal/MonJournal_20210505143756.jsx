@@ -47,6 +47,14 @@ const MonJournal = () => {
 			<>
 				<h2 className="titreJournal">Mon journal</h2>
 				<div className="monJournal">
+					<Selects
+						FetchUrl={FetchUrl}
+						annee={annee}
+						setshowList={setshowList}
+						mois={mois}
+						setmois={setmois}
+						setannee={setannee}
+					/>
 					<Affichage
 						showList={showList}
 						loading={loading}

@@ -43,23 +43,7 @@ const MonJournal = () => {
 		);
 		
 	} else {
-		return (
-			<>
-				<h2 className="titreJournal">Mon journal</h2>
-				<div className="monJournal">
-					<Affichage
-						showList={showList}
-						loading={loading}
-						data={data}
-						setjourData={setjourData}
-						setshowList={setshowList}
-						jourData={jourData}
-						setajoutJour={setajoutJour}
-						ajoutJour={ajoutJour}
-					/>
-				</div>
-			</>
-		);
+		
 	}
 
 	

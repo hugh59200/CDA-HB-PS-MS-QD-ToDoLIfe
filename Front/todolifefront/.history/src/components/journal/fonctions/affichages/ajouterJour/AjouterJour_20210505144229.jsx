@@ -25,6 +25,7 @@ export function AjouterJour(props) {
 				titre={titre}
 				moodInt={moodInt}
 				resume={resume}
+				setajoutJour={props.setajoutJour}
 			/>
 			<BouttonRevenir
 				setshowList={props.setshowList}

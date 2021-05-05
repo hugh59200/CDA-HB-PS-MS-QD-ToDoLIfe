@@ -29,7 +29,6 @@ export function AjouterJour(props) {
 			<BouttonRevenir
 				setshowList={props.setshowList}
 				setshowJourDetail={props.setshowJourDetail}
-				setajoutJour={props.setajoutJour}
 			/>
 		</>
 	);

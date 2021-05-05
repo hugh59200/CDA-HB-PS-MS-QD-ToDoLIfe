@@ -5,6 +5,7 @@ import { AjouterJour } from './ajouterJour/AjouterJour';
 import { DetailJour } from './detailsJour/DetailJour';
 
 export function Affichage(props) {
+	// const [ajoutJour, setajoutJour] = useState(false);
 	const [showJourDetail, setshowJourDetail] = useState(false);
 	if (props.showList)
 		return (
@@ -25,7 +26,7 @@ export function Affichage(props) {
 				setshowJourDetail={setshowJourDetail}
 			/>
 		);
-	if (props.ajoutJour)
+	if (ajoutJour)
 		return (
 			<AjouterJour
 				setshowList={props.setshowList}

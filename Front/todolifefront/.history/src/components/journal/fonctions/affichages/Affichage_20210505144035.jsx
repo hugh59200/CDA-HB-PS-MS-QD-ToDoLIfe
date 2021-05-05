@@ -30,7 +30,8 @@ export function Affichage(props) {
 			<AjouterJour
 				setshowList={props.setshowList}
 				setshowJourDetail={setshowJourDetail}
-				setajoutJour={props.setajoutJour}
+				setajoutJour={setajoutJour}
+						ajoutJour={ajoutJour}
 			/>
 		);
 }
