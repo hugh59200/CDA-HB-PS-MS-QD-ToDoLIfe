@@ -1,6 +1,5 @@
 import { API_JOURNAL_BY_USERID } from '../../../../constant/API_BACK';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 export function FetchUrlFunction(mois, annee, setLoading, setData) {
 	const stringToFetch1 = API_JOURNAL_BY_USERID + localStorage.getItem('id');
@@ -34,4 +33,6 @@ export function FetchUrlFunction(mois, annee, setLoading, setData) {
 					}
 				});
 		}, [setData, setLoading, url]);
+
+
 }
