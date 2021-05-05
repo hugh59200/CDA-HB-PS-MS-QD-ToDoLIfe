@@ -4,7 +4,7 @@ export function BouttonAjouter(props) {
 	return (
 		<div className="boutton">
 			<button
-				className="btn-ajouter"
+				className="btn-Ajouter"
 				onClick={() => {
 					props.setajoutJour(true);
 					props.setshowList(false);

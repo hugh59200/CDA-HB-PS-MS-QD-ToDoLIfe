@@ -2,9 +2,8 @@ import React from 'react';
 
 export function BouttonAjouter(props) {
 	return (
-		<div className="boutton">
 			<button
-				className="btn-ajouter"
+				className="btn-form"
 				onClick={() => {
 					props.setajoutJour(true);
 					props.setshowList(false);
@@ -12,6 +11,5 @@ export function BouttonAjouter(props) {
 			>
 				Mon humeur du jour
 			</button>
-		</div>
 	);
 }
