@@ -18,21 +18,18 @@ const Todos = () => {
 
         let postData = dataRecup.map((elem) => (
           <>
-            <div
-              key={elem.idTache}
-              className="css-list-todo"
-            >
+            <div key={elem.idTache} className="css-list-todo">
               <div
-                className="media-todo-list col-8"
-                onClick={function (e) {
-                  let text = e.target.innerHTML;
-                  // console.log(text)
+                className="media-todo-list col-8 text-white"
+                // onClick={function (e) {
+                //   let text = e.target.innerHTML;
+                //   // console.log(text)
 
-                  // let text = "<del>"+e.target+"</del>";
-                  // console.log(text)
+                //   // let text = "<del>"+e.target+"</del>";
+                //   // console.log(text)
 
-                  e.target.innerHTML = "<del>" + text + "</del>";
-                }}
+                //   e.target.innerHTML = "<del>" + text + "</del>";
+                // }}
               >
                 {elem.label}
               </div>
@@ -96,7 +93,7 @@ const Todos = () => {
 
   return (
     <>
-      <div className="todo-app test-scroll">
+      {/* <div className="todo-app test-scroll">
         <button
           className="todo-button-back float-left text-white"
           onClick={function () {
@@ -112,7 +109,37 @@ const Todos = () => {
         <>{list}</>
         <br />
         <button onClick={clickAdd} className="todo-button-add"></button>
+      </div> */}
+      <div className="d-flex justify-content-around align-items-center div-haut-2">
+        <button
+          className="todo-button-back float-left text-white"
+          onClick={function () {
+            history.push(URL_TODO_LIST);
+          }}
+        >
+          retour
+        </button>
+        <h1 className="text-white text-center tile-list">
+          {localStorage.getItem("label_todolist")}
+        </h1>
       </div>
+      {list.length % 2 === 0 ? (
+        <>
+          <div className="todo-app todo-app-paire test-scroll-paire-2">
+            {list}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="todo-app todo-app-impaire test-scroll-impaire-2">
+            {list}
+          </div>
+        </>
+      )}
+      <button
+        onClick={clickAdd}
+        className="todo-button-add div-haut d-flex"
+      ></button>
     </>
   );
 };

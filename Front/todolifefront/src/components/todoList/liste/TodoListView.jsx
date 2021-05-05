@@ -14,18 +14,8 @@ const TodoListView = () => {
 
   const [list, setList] = useState([]);
 
-  // const [currentCountries, setCurrentCountries] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(null);
-  // const [totalPages, setTotalPages] = useState(null);
-
-  // const totalCountries = allCountries.length;
-
   useEffect(() => {
     getListByUser();
-    // onPageChanged()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // console.log("list",allCountries);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -83,24 +73,9 @@ const TodoListView = () => {
     history.push(URL_NEW_TODO_LIST);
   };
 
-  // const onPageChanged = (data) => {
-  //   // const { allCountries } = this.state;
-  //   // console.log(data)
-  //   const { currentPage, totalPages, pageLimit } = data;
-
-  //   const offset = (currentPage - 1) * pageLimit;
-  //   const currentCountries = allCountries.slice(offset, offset + pageLimit);
-
-  //   setCurrentPage(currentPage);
-  //   setCurrentCountries(currentCountries);
-  //   setTotalPages(totalPages);
-
-  // }
-
   return (
     <>
       <div className="justify-content-cente align-items-center">
-        <button onClick={clickAdd} className="todo-button-add div-haut d-flex"></button>
         <h1 className="text-white text-center title-list">Mes Todo listes :</h1>
       </div>
 
@@ -117,15 +92,10 @@ const TodoListView = () => {
           </div>
         </>
       )}
-
-      {/* {currentCountries} */}
-
-      {/* <Pagination
-          totalRecords={totalCountries}
-          pageLimit={5}
-          pageNeighbours={1}
-          onPageChanged={onPageChanged}
-        /> */}
+      <button
+        onClick={clickAdd}
+        className="todo-button-add div-haut d-flex"
+      ></button>
     </>
   );
 };

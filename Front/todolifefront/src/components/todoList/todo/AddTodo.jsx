@@ -54,6 +54,10 @@ const AddTodo = () => {
       }
     });
   };
+  
+  const retour = () =>{
+    history.push(URL_INSIDE_TODOLIST)
+  }
 
   return (
     <>
@@ -64,13 +68,18 @@ const AddTodo = () => {
       >
         {() => (
           <Form>
+          <div className="d-flex justify-content-center align-self-stretch">
             <label className="text-white" htmlFor="label">
-              <h1> add todo : </h1>
+              <h1> label : </h1>
             </label>
             <Field type="text" name="label" placeholder="label" />
             <ErrorMessage name="label" component="small" />
+          </div>
             <br />
-            <button type="submit" className="todo-button-back"> Submit</button>
+            <div className="d-flex justify-content-around">
+            <button type="submit" className="todo-button-back text-white"> Submit</button>
+            <button onClick={retour} className="todo-button-back text-white"> Retour</button>
+            </div>
           </Form>
         )}
       </Formik>

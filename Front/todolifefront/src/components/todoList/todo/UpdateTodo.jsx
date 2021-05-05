@@ -59,10 +59,14 @@ const UpdateTodo = (props) => {
       }
     });
   };
+  
+  const retour = () =>{
+    history.push(URL_INSIDE_TODOLIST)
+  }
 
   return (
     <>
-      <h1>update todo</h1>
+      <h1 className="text-white text-center">update todo</h1>
 
       <Formik
         initialValues={initialValues}
@@ -71,15 +75,18 @@ const UpdateTodo = (props) => {
       >
         {() => (
           <Form>
-            <div>
-              <label className="text-white" htmlFor="label">
-                <h1>Label : </h1>
+            <div className="d-flex justify-content-center">
+              <label htmlFor="label">
+                <h1 className="text-white">Label : </h1>
               </label>
               <Field type="text" name="label" placeholder="label" />
               <ErrorMessage name="label" component="small" />
             </div>
             <br />
-            <button type="submit" className="todo-button-back"> Submit</button>
+            <div className="d-flex justify-content-around">
+            <button type="submit" className="todo-button-back text-white"> Submit</button>
+            <button onClick={retour} className="todo-button-back text-white"> Retour</button>
+            </div>
           </Form>
         )}
       </Formik>
