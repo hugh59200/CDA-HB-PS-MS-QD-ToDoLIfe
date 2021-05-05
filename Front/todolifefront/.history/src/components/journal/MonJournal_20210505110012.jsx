@@ -6,7 +6,6 @@ import { API_JOURNAL_BY_USERID } from './../../constant/API_BACK';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
-import axios from 'axios';
 
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());

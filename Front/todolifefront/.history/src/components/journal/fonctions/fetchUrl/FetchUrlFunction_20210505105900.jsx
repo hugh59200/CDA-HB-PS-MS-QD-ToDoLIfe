@@ -18,6 +18,14 @@ export async function FetchUrlFunction(mois, annee, setLoading, setData) {
 						setLoading(false);
 					}
 				});
+	// const response = await fetch(stringToFetch1, stringToFetch2);
+	// const json = await response.json();
+	// if (json.length === 0) {
+	// 	setLoading(true);
+	// } else {
+	// 	setData(json);
+	// 	setLoading(false);
+	// }
 }
 // export function FetchUrlFunction(
 // 	setmois,

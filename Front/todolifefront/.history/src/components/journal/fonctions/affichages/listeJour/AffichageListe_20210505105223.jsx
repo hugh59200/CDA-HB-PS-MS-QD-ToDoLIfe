@@ -1,13 +1,11 @@
+import React, { useEffect } from 'react';
+
+import { API_JOURNAL } from '../../../../../constant/API_BACK';
 import { BouttonAjouter } from '../../bouttons/BouttonAjouter';
 import { EmptyOrList } from './EmptyOrList';
-import React from 'react';
-
-// import { API_JOURNAL } from '../../../../../constant/API_BACK';
-
-
 
 // import axios from 'axios';
-// import { useState, useEffect } from 'react';
+// import { useState } from 'react';
 
 export function AffichageListe(props) {
 	// const [jourExistant, setjourExistant] = useState(false);
