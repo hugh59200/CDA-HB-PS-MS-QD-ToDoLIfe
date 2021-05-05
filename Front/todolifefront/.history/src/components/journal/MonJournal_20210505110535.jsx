@@ -5,10 +5,7 @@ import React, { useState } from 'react';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
-
-// import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
-
-
+import { FetchUrlFunction } from './FetchUrlFunction';
 
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());
@@ -46,4 +43,5 @@ const MonJournal = () => {
 };
 
 export default MonJournal;
+
 

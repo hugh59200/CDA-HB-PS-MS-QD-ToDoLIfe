@@ -6,10 +6,6 @@ import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
 
-// import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
-
-
-
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());
 	const [annee, setannee] = useState(new Date().getFullYear());
@@ -41,9 +37,24 @@ const MonJournal = () => {
 	);
 
 	async function FetchUrl(mois, annee) {
-		FetchUrlFunction(mois, annee, setLoading, setData);
+		const stringToFetch1 = API_JOURNAL_BY_USERID + localStorage.getItem('id');
+		const stringToFetch2 = '/journaux/?mois=' + mois + '&annee=' + annee;
+		const url = stringToFetch1 + stringToFetch2;
+						axios({
+						method: 'get',
+						url: url,
+					}).then(response => {
+						const json = response.data;
+						if (json.length === 0) {
+							setLoading(true);
+						} else {
+							setData(json);
+							setLoading(false);
+						}
+					});
 	}
 };
 
 export default MonJournal;
 
+// FetchUrlFunction(setmois, mois, setannee, annee, setLoading, setData);

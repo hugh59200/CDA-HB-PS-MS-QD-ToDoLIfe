@@ -5,10 +5,7 @@ import React, { useState } from 'react';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
-
-// import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
-
-
+import { FetchUrlFunction } from './FetchUrlFunction';
 
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());
@@ -17,6 +14,9 @@ const MonJournal = () => {
 	const [showList, setshowList] = useState(true);
 	const [jourData, setjourData] = useState('');
 	const [data, setData] = useState([]);
+	async function FetchUrl(mois, annee) {
+		FetchUrlFunction(mois, annee, setLoading, setData);
+	}
 
 	return (
 		<>
@@ -40,10 +40,8 @@ const MonJournal = () => {
 		</>
 	);
 
-	async function FetchUrl(mois, annee) {
-		FetchUrlFunction(mois, annee, setLoading, setData);
-	}
 };
 
 export default MonJournal;
+
 

@@ -1,4 +1,4 @@
-import { API_JOURNAL_BY_USERID } from '../../../../constant/API_BACK';
+import { API_JOURNAL_BY_USERID } from '../../constant/API_BACK';
 import axios from 'axios';
 
 export function FetchUrlFunction(mois, annee, setLoading, setData) {

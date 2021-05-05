@@ -3,7 +3,7 @@ import '../../assets/css/journal/MonjournalStyle.css';
 import React, { useState } from 'react';
 
 import { Affichage } from './fonctions/affichages/Affichage';
-import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
+import { FetchUrlFunction } from './FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
 
 // import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
