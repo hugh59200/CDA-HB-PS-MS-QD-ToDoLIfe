@@ -14,37 +14,34 @@ const MonJournal = () => {
 	const [jourData, setjourData] = useState('');
 	const [data, setData] = useState([]);
 	const [ajoutJour, setajoutJour] = useState(false);
-
+	
 	if (!ajoutJour) {
 		return (
-			<div className="monJournal">
-				<div  className="titreJournal">
-					<h2>Mon journal</h2>
+			<>
+				<h2 className="titreJournal">Mon journal</h2>
+				<div>
+					<Selects
+						FetchUrl={FetchUrl}
+						annee={annee}
+						setshowList={setshowList}
+						mois={mois}
+						setmois={setmois}
+						setannee={setannee}
+					/>
+					<Affichage
+						showList={showList}
+						loading={loading}
+						data={data}
+						setjourData={setjourData}
+						setshowList={setshowList}
+						jourData={jourData}
+						setajoutJour={setajoutJour}
+						ajoutJour={ajoutJour}
+					/>
 				</div>
-				<div className="selectDate">
-				<Selects
-					FetchUrl={FetchUrl}
-					annee={annee}
-					setshowList={setshowList}
-					mois={mois}
-					setmois={setmois}
-					setannee={setannee}
-				/>
-				</div>
-				<div className="affichage">
-				<Affichage
-					showList={showList}
-					loading={loading}
-					data={data}
-					setjourData={setjourData}
-					setshowList={setshowList}
-					jourData={jourData}
-					setajoutJour={setajoutJour}
-					ajoutJour={ajoutJour}
-				/>
-				</div>
-			</div>
+			</>
 		);
+		
 	} else {
 		return (
 			<>
@@ -65,6 +62,7 @@ const MonJournal = () => {
 		);
 	}
 
+	
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
 	}

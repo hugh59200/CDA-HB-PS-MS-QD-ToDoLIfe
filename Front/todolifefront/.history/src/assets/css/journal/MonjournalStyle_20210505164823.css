@@ -17,11 +17,13 @@
 .monJournal > .titreJournal {
   font-size: 50px;
   height: 10%;
+  /* margin: 0 auto; */
   letter-spacing: 2px;
 }
 
 .monJournal > .selectDate {
   background-color: #55b8ff;
+  width: 100%;
   height: 10%;
   display: flex;
   justify-content: space-around;
@@ -32,6 +34,7 @@
 }
 
 .monJournal > .affichage{
+  width: 100%;
   height: 80%;
 }
 

@@ -18,7 +18,7 @@ const MonJournal = () => {
 	if (!ajoutJour) {
 		return (
 			<div className="monJournal">
-				<div  className="titreJournal">
+				<div className>
 					<h2>Mon journal</h2>
 				</div>
 				<div className="selectDate">

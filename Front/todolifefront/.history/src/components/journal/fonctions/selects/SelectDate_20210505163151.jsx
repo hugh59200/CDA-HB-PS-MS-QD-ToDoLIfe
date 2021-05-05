@@ -4,7 +4,8 @@ import { SelectMois } from './SelectMois';
 
 export function Selects(props) {
 	return (
-			<>
+		<>
+			<div className="select">
 				<SelectMois
 					FetchUrl={props.FetchUrl}
 					annee={props.annee}
@@ -15,7 +16,8 @@ export function Selects(props) {
 					mois={props.mois}
 					setshowList={props.setshowList}
 				/>
-			</>
+			</div>
+		</>
 	);
 }
 

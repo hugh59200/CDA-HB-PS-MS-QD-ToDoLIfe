@@ -18,11 +18,12 @@ const MonJournal = () => {
 	if (!ajoutJour) {
 		return (
 			<div className="monJournal">
-				<div  className="titreJournal">
-					<h2>Mon journal</h2>
+				<h2 className="titreJournal">Mon journal</h2>
+				<div>
+					
 				</div>
-				<div className="selectDate">
 				<Selects
+					className="selectDate"
 					FetchUrl={FetchUrl}
 					annee={annee}
 					setshowList={setshowList}
@@ -30,8 +31,6 @@ const MonJournal = () => {
 					setmois={setmois}
 					setannee={setannee}
 				/>
-				</div>
-				<div className="affichage">
 				<Affichage
 					showList={showList}
 					loading={loading}
@@ -42,7 +41,6 @@ const MonJournal = () => {
 					setajoutJour={setajoutJour}
 					ajoutJour={ajoutJour}
 				/>
-				</div>
 			</div>
 		);
 	} else {
