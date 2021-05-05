@@ -1,6 +1,6 @@
 .monJournal {
   background-color: #0090E8;
-  height: 900px;
+  height: 1000px;
   width: 600px;
   margin: 0 auto;
   /* margin-top: 0; */
@@ -156,12 +156,12 @@
 }
 
 .journalItem {
-  height: 400px;
+  height: 500px;
   margin-top: 50px;
 }
 
 .boutton {
-  height: 120px;
+  height: 60px;
   width: 400px;
   align-self: center;
   padding: 20px;

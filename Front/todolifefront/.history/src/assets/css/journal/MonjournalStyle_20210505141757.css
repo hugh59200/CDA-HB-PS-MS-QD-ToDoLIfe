@@ -3,7 +3,7 @@
   height: 900px;
   width: 600px;
   margin: 0 auto;
-  /* margin-top: 0; */
+  margin-top: 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -41,10 +41,10 @@
 }
 
 .choixTitre>input:focus {
-  background-color: #1fa1fd;
+  /* background-color: #1fa1fd;
   border-top-left-radius: 20px;
   border: #55b8ff;
-  outline: none;
+  outline: none; */
 }
 
 .choixTitre>input:focus::placeholder {
@@ -156,13 +156,12 @@
 }
 
 .journalItem {
-  height: 400px;
+  height: 600px;
   margin-top: 50px;
 }
 
 .boutton {
-  height: 120px;
-  width: 400px;
+  height: 30px;
   align-self: center;
   padding: 20px;
   margin-bottom: 20px;

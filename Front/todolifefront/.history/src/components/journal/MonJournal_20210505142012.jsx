@@ -6,6 +6,8 @@ import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
 
+// import { affichageBoutton } from "./fonctions/fetchUrl/affichageBoutton";
+
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth());
 	const [annee, setannee] = useState(new Date().getFullYear());

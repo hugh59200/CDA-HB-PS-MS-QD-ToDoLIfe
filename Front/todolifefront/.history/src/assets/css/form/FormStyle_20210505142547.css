@@ -36,6 +36,10 @@ h2{
 
 .btn-form {
   font-size: 25px; 
+  font-weight: bold;
+  width : auto;
+  height: 70px;
+  font-size: 20px;
   text-align: center;
   letter-spacing: 2px;
   border-radius: 30px; 

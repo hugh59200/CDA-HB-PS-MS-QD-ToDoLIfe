@@ -36,13 +36,18 @@ h2{
 
 .btn-form {
   font-size: 25px; 
+  width : auto;
+  height: 70px;
+  font-size: 20px;
   text-align: center;
   letter-spacing: 2px;
   border-radius: 30px; 
   color: white; 
   background-color: #14A7FF;
+  align-self: center;
   border: none;
-  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 3px #1670BE;
 }
 
 .form-input:focus

@@ -5,11 +5,12 @@ import { EmptyOrList } from './EmptyOrList';
 import { affichageBoutton } from './../../fetchUrl/affichageBoutton';
 
 export function AffichageListe(props) {
-const [jourExistant, setjourExistant] = useState(false);
+const [jourExistant, setjourExistant] = useState(true);
 
-(function(){ affichageBoutton(setjourExistant)})()
+// (function(){ affichageBoutton()})()
+(function(){ affichageBoutton(jourExistant, setjourExistant)})()
 
-	if (!jourExistant ) {
+	// if (jourExistant === true ) {
 		return (
 			<>
 				<EmptyOrList
@@ -25,17 +26,17 @@ const [jourExistant, setjourExistant] = useState(false);
 				/>
 			</>
 		);
-	} else {
-			return (
-				<>
-					<EmptyOrList
-						loading={props.loading}
-						data={props.data}
-						setjourData={props.setjourData}
-						setshowList={props.setshowList}
-						setshowJourDetail={props.setshowJourDetail}
-					/>
-				</>
-			);
-		}
+	// } else {
+	// 		return (
+	// 			<>
+	// 				<EmptyOrList
+	// 					loading={props.loading}
+	// 					data={props.data}
+	// 					setjourData={props.setjourData}
+	// 					setshowList={props.setshowList}
+	// 					setshowJourDetail={props.setshowJourDetail}
+	// 				/>
+	// 			</>
+	// 		);
+	// 	}
 	}

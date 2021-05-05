@@ -1,7 +1,7 @@
 import { API_JOUR } from '../../../../constant/API_BACK';
 import axios from 'axios';
 
-export function affichageBoutton(setjourExistant) {
+export function affichageBoutton(jourExistant, setjourExistant) {
 
 	axios({
 		method: 'get',

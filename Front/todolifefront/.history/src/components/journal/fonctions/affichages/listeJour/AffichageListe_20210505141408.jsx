@@ -7,9 +7,9 @@ import { affichageBoutton } from './../../fetchUrl/affichageBoutton';
 export function AffichageListe(props) {
 const [jourExistant, setjourExistant] = useState(false);
 
-(function(){ affichageBoutton(setjourExistant)})()
+(function(){ affichageBoutton(jourExistant, setjourExistant)})()
 
-	if (!jourExistant ) {
+	// if (!jourExistant ) {
 		return (
 			<>
 				<EmptyOrList

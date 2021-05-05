@@ -6,6 +6,7 @@ export function BouttonAjouter(props) {
 			<button
 				className="btn-form"
 				onClick={() => {
+					// props.setjourExistant(false);
 					props.setajoutJour(true);
 					props.setshowList(false);
 				}}
