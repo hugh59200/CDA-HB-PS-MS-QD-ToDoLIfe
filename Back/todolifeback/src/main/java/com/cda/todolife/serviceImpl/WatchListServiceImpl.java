@@ -34,14 +34,13 @@ public class WatchListServiceImpl implements IWatchListService {
 	@Override
 	public void add(WatchListDto watchListDto, int id) throws WatchListExistanteException {
 
-		Optional<WatchList> probEntOpt = this.watchListService
-				.findById(id);
+		Optional<WatchList> probEntOpt = this.watchListService.findById(id);
 		if (probEntOpt.isPresent()) {
 			throw new WatchListExistanteException();
 		} else {
 			Optional<Utilisateur> userDto = this.utilisateurService.findById(id);
 			watchListDto.setUtilisateur(this.modelMapper.map(userDto.get(), UtilisateurDto.class));
-			
+
 			this.watchListService.save(this.modelMapper.map(watchListDto, WatchList.class));
 		}
 	}

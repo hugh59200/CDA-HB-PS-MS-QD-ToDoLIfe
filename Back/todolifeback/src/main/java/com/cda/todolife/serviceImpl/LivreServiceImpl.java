@@ -24,7 +24,7 @@ public class LivreServiceImpl implements ILivreService {
 
 	@Autowired
 	private IlivreRepository livreService;
-	
+
 	@Autowired
 	private IWatchListRepository watchlistService;
 
@@ -34,23 +34,32 @@ public class LivreServiceImpl implements ILivreService {
 //	ajouter un livre
 	@Override
 	public void add(LivreDto livre, int id) throws LivreExistantException, WatchListIntrouvableException {
-		
-		Optional<WatchList> watchlistOpt = this.watchlistService.findByUtilisateurIdUtilisateur(id); 
-		
+
+		Optional<WatchList> watchlistOpt = this.watchlistService.findByUtilisateurIdUtilisateur(id);
+
 		if (watchlistOpt.isEmpty()) {
 			throw new WatchListIntrouvableException();
-			}else {
-			Optional<Livre> probEntOpt = this.livreService.findById(livre.getIdLivre());
-		if (probEntOpt.isPresent()) {
-			throw new LivreExistantException();
 		} else {
-			livre.setWatchListDto(this.modelMapper.map(watchlistOpt.get(), WatchListDto.class));
-			this.livreService.save(this.modelMapper.map(livre, Livre.class));
-		}	
+			Optional<Livre> probEntOpt = this.livreService.findById(livre.getIdLivre());
+			if (probEntOpt.isPresent()) {
+				throw new LivreExistantException();
+			} else {
+				livre.setWatchListDto(this.modelMapper.map(watchlistOpt.get(), WatchListDto.class));
+				this.livreService.save(this.modelMapper.map(livre, Livre.class));
 			}
-		
-		
+		}
+	}
 
+	// lister les livres d'un utilisateur
+	@Override
+	public List<LivreDto> findAllByIdUtilisateur(int id) {
+
+		Optional<WatchList> watchlist = this.watchlistService.findByUtilisateurIdUtilisateur(id);
+		List<LivreDto> livreDto = new ArrayList<LivreDto>();
+		this.livreService.findAllBywatchListIdWatchList(watchlist.get().getIdWatchList())
+				.forEach(res -> livreDto.add(this.modelMapper.map(res, LivreDto.class)));
+
+		return livreDto;
 	}
 
 //	lister les livres

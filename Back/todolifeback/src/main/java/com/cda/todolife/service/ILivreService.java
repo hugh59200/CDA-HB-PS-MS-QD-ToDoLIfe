@@ -23,4 +23,6 @@ public interface ILivreService {
 
 	LivreDto findByTitle(String livre) throws LivreIntrouvableException;
 
+	List<LivreDto> findAllByIdUtilisateur(int id);
+
 }
