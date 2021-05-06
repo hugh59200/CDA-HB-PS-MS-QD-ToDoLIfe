@@ -24,6 +24,7 @@ public class Livre {
 	private int idLivre;
 	private String title;
 	private int pageActuel;
+	private String avis;
 
 	@ManyToOne
 	@JoinColumn(name = "id_watch_list", nullable = false)

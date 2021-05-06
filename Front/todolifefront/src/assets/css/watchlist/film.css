@@ -1,6 +1,12 @@
-
 .btn-test{
     background-color: #0090E8;
+    text-align: center;
+    color: white;
+    border-radius: 0 !important;
+}
+
+.btn-test2{
+    background-color: #0b68a7;
     text-align: center;
     color: white;
     border-radius: 0 !important;
@@ -13,7 +19,7 @@
     text-align: center;
     color: white;
     border-radius: 0 !important;
-
+    
 }
 .marge-mobile{
     margin-left: -15px;
@@ -59,6 +65,17 @@
     border-radius: 5px;
     padding: 10px;
     width: 80%;
+    margin:auto;
+    display: flex;
+
+}
+
+.ajout-film2{
+    background-color: #0090E8;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+    font-weight: bold;
     margin:auto;
     display: flex;
 

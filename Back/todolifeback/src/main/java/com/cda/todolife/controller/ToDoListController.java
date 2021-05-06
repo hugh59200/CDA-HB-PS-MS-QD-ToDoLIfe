@@ -45,10 +45,10 @@ public class ToDoListController {
 //		return this.todolistService.findAll();
 //	}
 
-	// show by User id
-	@GetMapping("/todolists/utilisateur/{id}")
-	public ResponseEntity<List<ToDoListDto>> showListByUserId(@PathVariable int id) throws ToDoListExistanteException {
-		List<ToDoListDto> list = null;
+	// create
+	@PostMapping("/todolists/utilisateurs/{id}")
+	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list, @PathVariable int id)
+			throws ToDoListExistanteException {
 		try {
 			this.utilisateurService.show(id);
 			list = this.todolistService.findListByUserId(id);

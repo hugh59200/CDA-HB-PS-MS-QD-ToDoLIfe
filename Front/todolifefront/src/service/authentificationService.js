@@ -1,12 +1,12 @@
 /* authentification */
-export let isLoggued = false;
+export let isLogged = false;
 
 export function authenticated(id, username, token) {
-    isLoggued = true;
+    isLogged = true;
 }
 
 export function deconnected() {
-    isLoggued = false;
+    isLogged = false;
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('token')
@@ -20,7 +20,7 @@ export function isAuthenticated() {
     } else {
         deconnected()
     }
-    return isLoggued;
+    return isLogged;
 }
 
 /* confirmation */

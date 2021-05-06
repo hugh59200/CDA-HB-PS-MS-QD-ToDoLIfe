@@ -15,4 +15,5 @@ public interface IWatchListRepository extends CrudRepository<WatchList, Integer>
 	WatchList findByLabel(String title);
 
 	Optional<WatchList> findByUtilisateurIdUtilisateur(int id);
+
 }

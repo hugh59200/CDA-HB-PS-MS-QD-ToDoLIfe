@@ -21,7 +21,7 @@ function NewSerie() {
           </div>
 
         <form>
-        <div className="form-group row justify-content-center ">
+        <div className="form-group row justify-content-center">
     <input type="text" className="col-10 form-control" placeholder="Nom de la serie" id="nom"/>
   </div>
 
@@ -41,7 +41,7 @@ function NewSerie() {
 
   <div className="form-group row justify-content-center">
     <textarea type="textarea"  className="form-control col-10 text-zone" name="textarea" rows="3" />
-
+    
       </div>
       <button type="submit" className="btn btn-primary btn-enregistrer">Enregistrer</button>
         </form>

@@ -5,14 +5,14 @@ import { URL_NEW_SERIE, URL_LIVRES, URL_FILMS } from './../../../constant/URL_CO
 
 
 function Series() {
-  const history = useHistory();
+const history=useHistory();
   return (
 
-    <div className="container-fluid largeur">
-      <div className="row justify-content-center largeur-titre">
-        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test" onClick={() => { history.push(URL_FILMS) }}>FILMS</button>
-        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test">SERIES</button>
-        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test" onClick={() => { history.push(URL_LIVRES) }}>LIVRES</button>
+    <div className="container-fluid ">
+      <div className="row justify-content-center">
+        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test" onClick={()=>{history.push(URL_FILMS)}}>FILMS</button>
+        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test2">SERIES</button>
+        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test" onClick={()=>{history.push(URL_LIVRES)}}>LIVRES</button>
       </div>
 
       <div className="row justify-content-center ">
