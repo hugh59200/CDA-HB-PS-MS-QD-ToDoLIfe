@@ -7,7 +7,7 @@ import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
 
 const MonJournal = () => {
-	const [mois, setmois] = useState(new Date().getMonth()+1);
+	const [mois, setmois] = useState(new Date().getMonth());
 	const [annee, setannee] = useState(new Date().getFullYear());
 	const [loading, setLoading] = useState(true);
 	const [showList, setshowList] = useState(true);
@@ -16,7 +16,7 @@ const MonJournal = () => {
 	const [ajoutJour, setajoutJour] = useState(false);
 	const [showJourDetail, setshowJourDetail] = useState(false);
 
-	console.log(mois);
+	console.log(object);
 	useEffect(() => {
     const fetchProducts = async () => {
       await FetchUrl(mois, annee);

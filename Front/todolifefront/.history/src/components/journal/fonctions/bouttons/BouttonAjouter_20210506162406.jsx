@@ -12,7 +12,7 @@ export function BouttonAjouter(props) {
 				onClick={() => {
 					props.setajoutJour(true);
 					props.setshowList(false);
-					
+					// window.location.reload()
 				}}
 			>
 				Mon humeur du jour
