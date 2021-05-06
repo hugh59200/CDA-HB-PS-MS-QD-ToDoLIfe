@@ -25,6 +25,7 @@ import {
   URL_FILMS,
   URL_SERIES,
   URL_LIVRES,
+  URL_MODIF_LIVRE,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -50,6 +51,7 @@ import NewSerie from "./../components/watchlist/series/NewSerie";
 import Series from "./../components/watchlist/series/Series";
 import NewLivre from "./../components/watchlist/livres/NewLivre";
 import Livres from "./../components/watchlist/livres/Livres";
+import ModifLivre from "../components/watchlist/livres/ModifLivre";
 
 const CustomHistory = createBrowserHistory();
 
@@ -104,6 +106,7 @@ class Routes extends Component {
           <PrivateRoute path={URL_WATCHLIST} component={MaWatchlist} />
           <PrivateRoute path={URL_LIVRES} component={Livres} />
           <PrivateRoute path={URL_NEW_LIVRE} component={NewLivre} />
+          <PrivateRoute path={URL_MODIF_LIVRE} component={ModifLivre} />
           <PrivateRoute path={URL_SERIES} component={Series} />
           <PrivateRoute path={URL_NEW_SERIE} component={NewSerie} />
           <PrivateRoute path={URL_FILMS} component={Films} />

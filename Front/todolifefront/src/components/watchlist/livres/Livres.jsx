@@ -6,9 +6,12 @@ import {
   URL_SERIES,
   URL_FILMS,
 } from "./../../../constant/URL_CONST";
+import ListeLivres from "./ListeLivres";
 
 function Films() {
   const history = useHistory();
+
+
   return (
     <div className="container-fluid ">
       <div className="row justify-content-center">
@@ -33,42 +36,21 @@ function Films() {
         </button>
       </div>
 
-      <div className="row justify-content-center ">
-        <div className="col-12 col-md-6 col-lg-6 bloc-film">
+      <div className="row justify-content-center m-auto">
+        <div className="col-12 col-md-6 col-lg-6 m-auto bloc-film">
           <div>
             <button
-              className="todo-button-add"
+              className="btn btn-success mt-2 mb-2 text-center"
               onClick={() => {
                 history.push(URL_NEW_LIVRE);
               }}
             >
-              {" "}
+              Ajouter
             </button>
           </div>
 
-          <div className="ajout-film row">
-            <div className="titre-film col-6">
-              <span className="text-white">Interstellar</span>
-            </div>
-            <div className="icone-suppr-edit col-6">
-              <button
-                className="boutton-modifier"
-                onClick={() => {
-                  history.push(URL_NEW_LIVRE);
-                }}
-              >
-                {" "}
-              </button>
-              <button
-                className="boutton-supprimer"
-                onClick={() => {
-                  history.push(URL_NEW_LIVRE);
-                }}
-              >
-                {" "}
-              </button>
-            </div>
-          </div>
+          <ListeLivres />
+          {/*  emplacement liste  */}
         </div>
       </div>
     </div>
