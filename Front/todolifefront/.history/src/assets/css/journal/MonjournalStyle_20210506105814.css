@@ -27,17 +27,13 @@
   height: 80%;
 }
 
-.journalItem {
+.monJournal>.affichage>.journalItem {
   height: 80%;
   width: 100%;
   padding: 20px;
-  margin: 10px auto;
-  overflow: auto;
-  /* background-color: antiquewhite; */
-}
-.journalItem::-webkit-scrollbar {
-  width: 5px;
-  height: 8px;
+  margin-bottom: 20px;
+  margin: 0 auto;
+  
 }
 
 .monJournal>.affichage>.journalItem>p {
@@ -49,12 +45,11 @@
 }
 
 .monJournal>.affichage>.boutton {
-  /* background-color: antiquewhite; */
   height: 15%;
   width: 400px;
   align-self: center;
   padding: 20px;
-  margin: 30px auto;
+  margin: 50px auto;
 }
 
 .monJournal>.affichage>.boutton>.btn-ajouter {

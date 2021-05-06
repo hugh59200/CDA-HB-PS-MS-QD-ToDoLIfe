@@ -2,7 +2,7 @@ import { FormatDate } from '../../autres/FormatDate';
 import React from 'react';
 
 export function ListerJour(props) {
-	return <>
+	return <div>
 		{props.data.map(data => {
 			return (
 				<div
@@ -19,5 +19,5 @@ export function ListerJour(props) {
 				</div>
 			);
 		})}
-	</>;
+	</div>;
 }

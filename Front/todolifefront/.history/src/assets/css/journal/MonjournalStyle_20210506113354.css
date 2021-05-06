@@ -31,9 +31,10 @@
   height: 80%;
   width: 100%;
   padding: 20px;
+  /* margin-bottom: 30px; */
   margin: 10px auto;
   overflow: auto;
-  /* background-color: antiquewhite; */
+  background-color: antiquewhite;
 }
 .journalItem::-webkit-scrollbar {
   width: 5px;
