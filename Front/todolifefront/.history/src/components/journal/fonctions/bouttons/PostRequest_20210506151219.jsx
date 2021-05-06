@@ -2,7 +2,8 @@ import { API_JOUR } from '../../../../constant/API_BACK';
 
 const axios = require('axios');
 
-export const PostRequest = async (jour, setshowList, setajoutJour) => {
+export const PostRequest = async jour => {
+// export const PostRequest = async (jour, setshowList, setajoutJour) => {
 	const id = localStorage.getItem('id');
 
 	axios({
@@ -16,22 +17,25 @@ export const PostRequest = async (jour, setshowList, setajoutJour) => {
 
 			if (status === 200) {
 				console.log('Jour ajouté avec succés !');
-				// setajoutJour(false);
-			  // setshowList(true);
-				timeOut(2000, status, setshowList, setajoutJour);
 			}
+			if (status !== 200) {
+				console.log('Une erreur est survenue !');
+				// FetchUrl(moisActuel, actualYear);
+				// timeOut(2000, setshowList, setajoutJour);
+			}
+			// timeOut(2000, setshowList, setajoutJour);
 		})
 		.catch(error => {
 			console.log('Une erreur est survenue');
-			timeOut(2000, error, setshowList, setajoutJour);
+			// timeOut(2000, setshowList, setajoutJour);
 		});
 };
 
-function timeOut(time, status, setshowList, setajoutJour) {
-	// setshowList(true);
-	// setajoutJour(false);
+// function timeOut(time, status, setshowList, setajoutJour) {
+function timeOut(time, setshowList, setajoutJour) {
+	setshowList(true);
+	setajoutJour(false);
 	setTimeout(() => {
-	
 		// popUpSuccess(status);
 		console.log('ok');
 	}, time);
