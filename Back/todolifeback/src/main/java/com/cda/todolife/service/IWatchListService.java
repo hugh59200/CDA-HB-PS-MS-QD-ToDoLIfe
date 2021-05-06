@@ -5,7 +5,6 @@ import java.util.List;
 import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.WatchListExistanteException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
-import com.cda.todolife.model.WatchList;
 
 public interface IWatchListService {
 

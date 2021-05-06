@@ -19,8 +19,6 @@
 //import com.cda.todolife.dto.WatchListDto;
 //import com.cda.todolife.exception.LivreExistantException;
 //import com.cda.todolife.exception.LivreIntrouvableException;
-//import com.cda.todolife.exception.WatchListExistanteException;
-//import com.cda.todolife.exception.WatchListIntrouvableException;
 //import com.cda.todolife.repository.IWatchListRepository;
 //import com.cda.todolife.repository.IlivreRepository;
 //import com.cda.todolife.service.ILivreService;
@@ -59,25 +57,26 @@
 //		assertEquals(0, this.livreService.findAll().size());
 //	}
 //
-//	@Order(2)
-//	@Test
-//	public void create() {
-//		try {
-//			int vSize = this.livreService.findAll().size();
-//			this.watchListService.add(WatchListDto.builder().label("myList_a").build());
-//			this.livreService.add(LivreDto.builder().title("book-one").pageActuel(244).watchList(watchListService.findById(1)).build());
-//			assertEquals(vSize + 1, this.livreService.findAll().size());
-//		} catch (WatchListExistanteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (LivreExistantException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (WatchListIntrouvableException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+////	@Order(2)
+////	@Test
+////	public void create() {
+////		try {
+////			int vSize = this.livreService.findAll().size();
+////			this.watchListService.add(WatchListDto.builder().label("myList_a").build());
+////			this.livreService.add(LivreDto.builder().title("book-one").pageActuel(244)
+////					.watchList(watchListService.findById(1)).build());
+////			assertEquals(vSize + 1, this.livreService.findAll().size());
+////		} catch (WatchListExistanteException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} catch (LivreExistantException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} catch (WatchListIntrouvableException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////	}
 //
 ////	@Order(3)
 ////	@Test
@@ -112,7 +111,7 @@
 //			e.printStackTrace();
 //		}
 //	}
-//	
+//
 //	@Order(6)
 //	@Test
 //	public void findByPage() {
@@ -145,7 +144,7 @@
 //			e.printStackTrace();
 //		}
 //	}
-//	
+//
 //	@Order(8)
 //	@Test
 //	static void reset(@Autowired IWatchListRepository watchListDao, @Autowired IlivreRepository livreDao) {
