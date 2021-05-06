@@ -90,14 +90,17 @@ public class LivreServiceImpl implements ILivreService {
 
 // mettre à jour un livre	
 	@Override
-	public void update(LivreDto livre) throws LivreIntrouvableException, LivreExistantException {
-		try {
-			this.livreService.findById(livre.getIdLivre()).orElseThrow(LivreIntrouvableException::new);
+	public void update(LivreDto livre, int idLivre) throws LivreIntrouvableException, LivreExistantException {
+
+		Optional<Livre> livreTest = this.livreService.findById(idLivre);
+
+		if (livreTest.get().getIdLivre() == livre.getIdLivre()) {
+			livre.setWatchListDto(this.modelMapper.map(livreTest.get().getWatchList(), WatchListDto.class));
 			this.livreService.save(this.modelMapper.map(livre, Livre.class));
-		} catch (LivreIntrouvableException e) {
-			// TODO: handle exception
-			e.printStackTrace();
+		} else {
+			throw new LivreIntrouvableException();
 		}
+
 	}
 
 //  supprimer un livre

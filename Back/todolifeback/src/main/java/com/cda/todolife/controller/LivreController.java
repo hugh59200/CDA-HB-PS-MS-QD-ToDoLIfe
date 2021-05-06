@@ -1,13 +1,17 @@
 package com.cda.todolife.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +45,7 @@ public class LivreController {
 			this.livreService.add(livreDto, id);
 		} catch (WatchListIntrouvableException e) {
 
-		e.printStackTrace();
+			e.printStackTrace();
 
 		} catch (LivreExistantException e) {
 			// TODO Auto-generated catch block
@@ -64,34 +68,33 @@ public class LivreController {
 //		return ResponseEntity.ok(livreDto);
 //	}
 
+	// update
+	@PutMapping("/livres/{idLivre}")
+	public ResponseEntity<LivreDto> update(@RequestBody LivreDto livreDto, @PathVariable("idLivre") int idLivre)
+			throws LivreIntrouvableException {
 
-//
-//	// update
-//	@PutMapping("/livres")
-//	public ResponseEntity<LivreDto> update(@RequestBody LivreDto livreDto) throws LivreIntrouvableException {
-//
-//		try {
-//			livreService.update(livreDto);
-//		} catch (LivreIntrouvableException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (LivreExistantException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return ResponseEntity.ok(livreDto);
-//	}
-//
-//	// delete
-//	@DeleteMapping("/livres/id/{id}")
-//	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws LivreIntrouvableException {
-//		livreService.deleteById(id);
-//		System.out.println("ok");
-//		Map<String, Boolean> response = new HashMap<>();
-//		response.put("deleted", Boolean.TRUE);
-//		return ResponseEntity.ok(response);
-//	}
-//
+		try {
+			livreService.update(livreDto,idLivre);
+		} catch (LivreIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LivreExistantException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResponseEntity.ok(livreDto);
+	}
+
+	// delete
+	@DeleteMapping("/livres/{id}")
+	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws LivreIntrouvableException {
+		livreService.deleteById(id);
+		System.out.println("ok");
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return ResponseEntity.ok(response);
+	}
+
 //	@ResponseStatus(HttpStatus.BAD_REQUEST)
 //	@ExceptionHandler(ConstraintViolationException.class)
 //	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {

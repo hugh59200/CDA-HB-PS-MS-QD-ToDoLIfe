@@ -13,7 +13,7 @@ public interface ILivreService {
 
 	LivreDto findById(int id) throws LivreIntrouvableException;
 
-	void update(LivreDto livre) throws LivreIntrouvableException, LivreExistantException;
+	void update(LivreDto livre, int idLivre) throws LivreIntrouvableException, LivreExistantException;
 
 	void deleteById(int id) throws LivreIntrouvableException;
 

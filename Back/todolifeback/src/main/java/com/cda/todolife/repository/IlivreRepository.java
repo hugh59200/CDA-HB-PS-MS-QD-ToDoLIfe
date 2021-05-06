@@ -15,8 +15,9 @@ public interface IlivreRepository extends CrudRepository<Livre, Integer> {
 
 	Livre findByPageActuel(int page);
 
-
-
-
 	Iterable<Livre> findAllBywatchListIdWatchList(int idWatchList);
+
+	Object save(LivreDto livre);
+
+
 }
