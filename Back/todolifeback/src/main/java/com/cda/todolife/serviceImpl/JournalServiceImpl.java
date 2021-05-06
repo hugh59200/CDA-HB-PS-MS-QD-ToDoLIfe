@@ -21,9 +21,6 @@ public class JournalServiceImpl implements IJournalService {
 	@Autowired
 	private IJournalRepository journalRepository;
 
-//	@Autowired
-//	private IJourRepository jourRepository;
-
 	@Autowired
 	private ModelMapper modelMapper;
 

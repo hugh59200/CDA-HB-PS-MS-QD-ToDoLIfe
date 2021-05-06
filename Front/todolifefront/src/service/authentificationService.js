@@ -6,7 +6,7 @@ export function authenticated(id, username, token) {
 }
 
 export function deconnected() {
-    isLogged = false;
+    isLoggued = false;
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('token')
@@ -20,7 +20,7 @@ export function isAuthenticated() {
     } else {
         deconnected()
     }
-    return isLogged;
+    return isLoggued;
 }
 
 /* confirmation */

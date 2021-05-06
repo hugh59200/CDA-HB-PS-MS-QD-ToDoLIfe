@@ -1,11 +1,20 @@
-body, html {
-  background-image: url("../Background.png");
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
-   bottom: 0;
-   right: 0;
+/* * {
+    background-image: url(../Background.png)!important;
+    background-position: 'center';
+    background-size: 'cover';
+    background-repeat: 'no-repeat';
+    background-attachment: fixed;
+}  */
+
+.homeMgTopTxt {
+    margin-top: 25%;
+    padding-left: 15%;
+}
+
+body{
+    background-image: url(../Background.png)!important;
+    /* background-position: 'center';
+    background-size: 'cover';
+    background-repeat: 'no-repeat';
+    background-attachment: fixed; */
 }

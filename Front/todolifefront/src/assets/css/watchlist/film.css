@@ -79,7 +79,7 @@
 
 .titre-film{
     display: flex;
-    justify-content: end;
+    /* justify-content: end; */
     align-items: center;
 }
 
