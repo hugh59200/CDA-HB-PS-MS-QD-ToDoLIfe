@@ -14,5 +14,7 @@ public class FilmDto {
 
 	private int idFilm;
 	private String name;
-	private WatchListDto watchList;
+	private WatchListDto watchListDto;
+	private String avis;
+	private String moment;
 }

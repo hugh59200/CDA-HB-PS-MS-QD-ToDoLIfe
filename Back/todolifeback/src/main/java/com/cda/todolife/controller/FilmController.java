@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.FilmDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
+import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.service.IFilmService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -41,13 +42,17 @@ public class FilmController {
 	}
 
 	// create
-	@PostMapping("/films/watchlists/{id}")
-	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable(value = "id") int idUtilisateur) throws FilmIntrouvableException {
+	@PostMapping("/films/utilisateurs/{id}")
+	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable int id) throws FilmIntrouvableException {
 		try {
-			this.filmService.add(filmDto);
+			this.filmService.add(filmDto, id);
+
+		}catch (WatchListIntrouvableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 		} catch (FilmExistantException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+					e.printStackTrace();
 		}
 		return ResponseEntity.ok(filmDto);
 	}
