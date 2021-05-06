@@ -3,13 +3,13 @@ import React from 'react';
 
 export function ListerJour(props) {
 	const listJour = [...props.data];
-	listJour.sort(function (a, b) {
-		return new Date(b.dateJour) - new Date(a.dateJour);
+	console.log(listJour[0].dateJour);
+	listJour.sort(function(o1,o2){
+		return sort_o1_before_o2 ? -1 : sort_o1_after_o2 ? 1 : 0;
 	});
-
 	return (
 		<>
-			{listJour.map(data => {
+			{props.data.map(data => {
 				return (
 					<div
 						className="jours"

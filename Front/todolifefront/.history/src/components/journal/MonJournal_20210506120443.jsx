@@ -38,13 +38,13 @@ const MonJournal = () => {
 					showList={showList}
 					loading={loading}
 					data={data}
-					jourData={jourData}
 					setjourData={setjourData}
+					jourData={jourData}
 					setshowList={setshowList}
-					ajoutJour={ajoutJour}
 					setajoutJour={setajoutJour}
-					showJourDetail={showJourDetail}
 					setshowJourDetail={setshowJourDetail}
+					showJourDetail={showJourDetail}
+					ajoutJour={ajoutJour}
 				/>
 			</div>
 		</div>

@@ -2,14 +2,20 @@ import { FormatDate } from '../../autres/FormatDate';
 import React from 'react';
 
 export function ListerJour(props) {
-	const listJour = [...props.data];
-	listJour.sort(function (a, b) {
-		return new Date(b.dateJour) - new Date(a.dateJour);
-	});
+	const listJour = [];
+	props.data.map(data => {
+			 listJour.push(	
+			// {FormatDate(data.dateJour)}
+			// {data.titre}
+			);
+				
+			
+		}),
+
 
 	return (
 		<>
-			{listJour.map(data => {
+			{props.data.map(data => {
 				return (
 					<div
 						className="jours"
@@ -20,7 +26,14 @@ export function ListerJour(props) {
 						}}
 						key={data.idJour}
 					>
-						<div className="date">{FormatDate(data.dateJour)}</div>
+						<div className="date">{
+			 listJour.push(	
+			// {FormatDate(data.dateJour)}
+			// {data.titre}
+			);
+				
+			
+		}{FormatDate(data.dateJour)}</div>
 						<div className="evenement">{data.titre}</div>
 					</div>
 				);

@@ -2,14 +2,21 @@ import { FormatDate } from '../../autres/FormatDate';
 import React from 'react';
 
 export function ListerJour(props) {
-	const listJour = [...props.data];
-	listJour.sort(function (a, b) {
-		return new Date(b.dateJour) - new Date(a.dateJour);
-	});
+	const listJour = [];
+	listJour.push(
+		props.data.map(data => {
+			{(data.dateJour)}
+				// FormatDate(data.dateJour);
+				// data.titre
+			
+				
+			
+		}),
+	);
 
 	return (
 		<>
-			{listJour.map(data => {
+			{props.data.map(data => {
 				return (
 					<div
 						className="jours"

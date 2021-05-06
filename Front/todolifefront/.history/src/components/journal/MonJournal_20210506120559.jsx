@@ -43,8 +43,8 @@ const MonJournal = () => {
 					setshowList={setshowList}
 					ajoutJour={ajoutJour}
 					setajoutJour={setajoutJour}
-					showJourDetail={showJourDetail}
 					setshowJourDetail={setshowJourDetail}
+					showJourDetail={showJourDetail}
 				/>
 			</div>
 		</div>

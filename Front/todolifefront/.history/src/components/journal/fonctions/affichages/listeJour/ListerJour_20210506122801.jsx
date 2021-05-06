@@ -9,7 +9,7 @@ export function ListerJour(props) {
 
 	return (
 		<>
-			{listJour.map(data => {
+			{props.data.map(data => {
 				return (
 					<div
 						className="jours"

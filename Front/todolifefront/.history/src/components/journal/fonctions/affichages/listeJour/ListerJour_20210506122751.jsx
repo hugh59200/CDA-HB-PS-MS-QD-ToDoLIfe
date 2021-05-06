@@ -7,9 +7,11 @@ export function ListerJour(props) {
 		return new Date(b.dateJour) - new Date(a.dateJour);
 	});
 
+	console.log(listJour);
+
 	return (
 		<>
-			{listJour.map(data => {
+			{props.data.map(data => {
 				return (
 					<div
 						className="jours"
