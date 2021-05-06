@@ -8,7 +8,7 @@ export function BouttonValider(props) {
 	const titre = props.titre;
 	const humeur = props.moodInt;
 	const texte = props.resume;
-	new Date();
+	
 	const jour = {
 		dateJour,
 		titre,
@@ -16,7 +16,8 @@ export function BouttonValider(props) {
 		texte,
 	};
 
-	useEffect(() => {}, [props, dateJour, titre, humeur, texte]);
+	useEffect(() => {
+  }, [props, dateJour, titre, humeur, texte]);
 
 	return (
 		<button
@@ -25,7 +26,9 @@ export function BouttonValider(props) {
 				props.setshowList(true);
 				props.setajoutJour(false);
 				PostRequest(jour);
-				window.location.reload();
+				window.location.reload()
+
+				setmois={props.setmois}
 			}}
 		>
 			valider
