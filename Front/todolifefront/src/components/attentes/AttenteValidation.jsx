@@ -27,13 +27,14 @@ const AttenteValidation = () => {
       }
     });
   };
-
+  
   return (
     <>
       {isConfirmed() ? (
         <Redirect to={URL_CONNEXION} />
       ) : (
         <>
+        <div className="d-flex flex-collum">
           <div className="container">
             <div className="box">
               <span></span>
@@ -55,6 +56,7 @@ const AttenteValidation = () => {
           <button onClick={click} className="btn-done">
             I'm done
           </button>
+        </div>
         </>
       )}
     </>

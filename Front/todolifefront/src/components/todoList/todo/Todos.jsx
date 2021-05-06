@@ -91,34 +91,13 @@ const Todos = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const retour = () => {
+    history.push(URL_TODO_LIST);
+  };
+
   return (
     <>
-      {/* <div className="todo-app test-scroll">
-        <button
-          className="todo-button-back float-left text-white"
-          onClick={function () {
-            history.push(URL_TODO_LIST);
-          }}
-        >
-          retour
-        </button>
-        <h1 className="text-white text-center">
-          {localStorage.getItem("label_todolist")}
-        </h1>
-        <br />
-        <>{list}</>
-        <br />
-        <button onClick={clickAdd} className="todo-button-add"></button>
-      </div> */}
       <div className="d-flex justify-content-around align-items-center div-haut-2">
-        <button
-          className="todo-button-back float-left text-white"
-          onClick={function () {
-            history.push(URL_TODO_LIST);
-          }}
-        >
-          retour
-        </button>
         <h1 className="text-white text-center tile-list">
           {localStorage.getItem("label_todolist")}
         </h1>
@@ -136,10 +115,14 @@ const Todos = () => {
           </div>
         </>
       )}
-      <button
-        onClick={clickAdd}
-        className="todo-button-add div-haut d-flex"
-      ></button>
+      <div className="d-flex align-items-center justify-content-center mt-1">
+        <button onClick={clickAdd} className="btn btn-success">
+          ajouter
+        </button>
+        <button onClick={retour} className="btn btn-primary">
+          Retour
+        </button>
+      </div>
     </>
   );
 };

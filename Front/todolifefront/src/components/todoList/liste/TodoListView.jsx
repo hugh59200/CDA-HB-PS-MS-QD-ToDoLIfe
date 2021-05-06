@@ -92,10 +92,11 @@ const TodoListView = () => {
           </div>
         </>
       )}
-      <button
-        onClick={clickAdd}
-        className="todo-button-add div-haut d-flex"
-      ></button>
+      <div className="d-flex align-items-center justify-content-center mt-1">
+        <button onClick={clickAdd} className="btn btn-success">
+          ajouter
+        </button>
+      </div>
     </>
   );
 };

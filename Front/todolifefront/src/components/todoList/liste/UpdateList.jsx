@@ -71,11 +71,10 @@ const UpdateList = (props) => {
               <ErrorMessage name="labelList" component="small" />
             </div>
             <br />
-            <div className="d-flex justify-content-around">
-            <button type="submit" className="todo-button-back text-white"> Submit</button>
-            <button onClick={retour} className="todo-button-back text-white"> Retour</button>
+            <div className="d-flex justify-content-center">
+            <button type="submit" className="btn btn-success"> Submit</button>
+            <button onClick={retour} className="btn btn-primary"> Retour</button>
             </div>
-            
           </Form>
         )}
       </Formik>

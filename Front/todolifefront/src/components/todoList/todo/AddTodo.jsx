@@ -76,9 +76,9 @@ const AddTodo = () => {
             <ErrorMessage name="label" component="small" />
           </div>
             <br />
-            <div className="d-flex justify-content-around">
-            <button type="submit" className="todo-button-back text-white"> Submit</button>
-            <button onClick={retour} className="todo-button-back text-white"> Retour</button>
+            <div className="d-flex align-items-center justify-content-center mt-1">
+            <button type="submit" className="btn btn-success"> ajouter</button>
+            <button onClick={retour} className="btn btn-primary"> Retour</button>
             </div>
           </Form>
         )}
