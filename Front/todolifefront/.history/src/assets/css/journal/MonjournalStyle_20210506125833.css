@@ -27,14 +27,14 @@
   height: 80%;
 }
 
-.journalItem {
-  height: 85%;
+.emplacementliste {
+  height: 80%;
   width: 100%;
   padding: 20px;
-  margin: 15px auto;
+  margin: 10px auto;
   overflow: auto;
 }
-.journalItem::-webkit-scrollbar {
+.emplacementliste::-webkit-scrollbar {
   width: 5px;
   height: 8px;
 }
@@ -52,7 +52,7 @@
   width: 400px;
   align-self: center;
   padding: 20px;
-  margin: 20px auto;
+  margin: 30px auto;
 }
 
 .monJournal>.affichage>.boutton>.btn-ajouter {

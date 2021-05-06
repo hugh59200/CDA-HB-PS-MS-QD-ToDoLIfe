@@ -27,14 +27,14 @@
   height: 80%;
 }
 
-.journalItem {
-  height: 85%;
+.emplacementliste>.journalItem {
+  height: 95%;
   width: 100%;
   padding: 20px;
-  margin: 15px auto;
+  margin: 20px auto;
   overflow: auto;
 }
-.journalItem::-webkit-scrollbar {
+.emplacementliste::-webkit-scrollbar {
   width: 5px;
   height: 8px;
 }
@@ -47,15 +47,16 @@
   font-size: 20px;
 }
 
-.monJournal>.affichage>.boutton {
+.monJournal>.affichage>.emplacementliste>.boutton {
   height: 15%;
   width: 400px;
   align-self: center;
   padding: 20px;
-  margin: 20px auto;
+  bottom:0;
+  /* margin: 30px auto; */
 }
 
-.monJournal>.affichage>.boutton>.btn-ajouter {
+.monJournal>.affichage>.emplacementliste>.boutton>.btn-ajouter {
   height: 100%;
   width: 100%;
   font-size: 25px;

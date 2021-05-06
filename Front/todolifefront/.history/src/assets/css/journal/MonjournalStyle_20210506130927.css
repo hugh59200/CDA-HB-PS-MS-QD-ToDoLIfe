@@ -28,10 +28,10 @@
 }
 
 .journalItem {
-  height: 85%;
+  height: 80%;
   width: 100%;
   padding: 20px;
-  margin: 15px auto;
+  margin: 10px auto;
   overflow: auto;
 }
 .journalItem::-webkit-scrollbar {
@@ -48,11 +48,11 @@
 }
 
 .monJournal>.affichage>.boutton {
-  height: 15%;
+  height: 10%;
   width: 400px;
   align-self: center;
   padding: 20px;
-  margin: 20px auto;
+  margin: 40px auto;
 }
 
 .monJournal>.affichage>.boutton>.btn-ajouter {
