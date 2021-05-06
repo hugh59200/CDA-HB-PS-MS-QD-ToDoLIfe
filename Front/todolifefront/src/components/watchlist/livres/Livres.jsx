@@ -8,7 +8,7 @@ import {
 } from "./../../../constant/URL_CONST";
 import ListeLivres from "./ListeLivres";
 
-function Films() {
+function Livres() {
   const history = useHistory();
 
 
@@ -57,4 +57,4 @@ function Films() {
   );
 }
 
-export default Films;
+export default Livres;

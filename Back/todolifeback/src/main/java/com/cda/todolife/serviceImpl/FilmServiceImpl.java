@@ -9,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
+import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.model.Film;
+import com.cda.todolife.model.WatchList;
 import com.cda.todolife.repository.IFilmRepository;
+import com.cda.todolife.repository.IWatchListRepository;
 import com.cda.todolife.service.IFilmService;
 
 @Service
@@ -23,16 +27,27 @@ public class FilmServiceImpl implements IFilmService {
 
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private IWatchListRepository watchlistService;
 
 //	ajouter un film
 	@Override
-	public void add(FilmDto film) throws FilmExistantException {
-		Optional<Film> probEntOpt = this.filmDao.findById(film.getIdFilm());
+	public void add(FilmDto film,int id) throws FilmExistantException,WatchListIntrouvableException {
+		
+		Optional<WatchList> watchlistOpt = this.watchlistService.findByUtilisateurIdUtilisateur(id);
+		
+		if(watchlistOpt.isEmpty()) {
+			throw new FilmExistantException();
+		}else {
+			Optional<Film> probEntOpt = this.filmDao.findById(film.getIdFilm());
 		if (probEntOpt.isPresent()) {
 			throw new FilmExistantException();
 		} else {
+			film.setWatchListDto(this.modelMapper.map(watchlistOpt.get() , WatchListDto.class));
 			this.filmDao.save(this.modelMapper.map(film, Film.class));
 		}
+	  }
 	}
 
 //	lister les film
