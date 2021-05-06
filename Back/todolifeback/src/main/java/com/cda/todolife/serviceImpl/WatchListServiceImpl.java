@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.UtilisateurDto;
-import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.WatchListExistanteException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
@@ -41,7 +40,7 @@ public class WatchListServiceImpl implements IWatchListService {
 		} else {
 			Optional<Utilisateur> userDto = this.utilisateurService.findById(id);
 			watchListDto.setUtilisateur(this.modelMapper.map(userDto.get(), UtilisateurDto.class));
-			
+
 			this.watchListService.save(this.modelMapper.map(watchListDto, WatchList.class));
 		}
 	}
