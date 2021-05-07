@@ -88,6 +88,8 @@ function ModifFilm() {
                 })
 
               history.push(URL_FILMS)
+              window.location.reload();
+
 
             }}
 

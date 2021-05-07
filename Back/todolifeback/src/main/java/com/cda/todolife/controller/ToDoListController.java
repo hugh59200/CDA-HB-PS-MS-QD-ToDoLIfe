@@ -1,11 +1,8 @@
 package com.cda.todolife.controller;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.validation.ConstraintViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,35 +17,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cda.todolife.dto.ToDoListDto;
 import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 import com.cda.todolife.service.IToDoListService;
 import com.cda.todolife.service.IUtilisateurService;
-
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class ToDoListController {
-
 	@Autowired
 	private IToDoListService todolistService;
-
 	@Autowired
 	private IUtilisateurService utilisateurService;
-
 //	// listing
 //	@GetMapping("/todolists")
 //	public List<ToDoListDto> getAll() {
 //		return this.todolistService.findAll();
 //	}
-
-	// create
-	@PostMapping("/todolists/utilisateurs/{id}")
-	public ResponseEntity<ToDoListDto> create(@RequestBody ToDoListDto list, @PathVariable int id)
-			throws ToDoListExistanteException {
+	// show by User id
+	@GetMapping("/todolists/utilisateur/{id}")
+	public ResponseEntity<List<ToDoListDto>> showListByUserId(@PathVariable int id) throws ToDoListExistanteException {
+		List<ToDoListDto> list = null;
 		try {
 			this.utilisateurService.show(id);
 			list = this.todolistService.findListByUserId(id);
@@ -60,14 +51,12 @@ public class ToDoListController {
 		}
 		return ResponseEntity.ok(list);
 	}
-
 	// details by Id
 	@GetMapping("/todolists/{id}")
 	public ResponseEntity<ToDoListDto> getById(@PathVariable int id) throws ToDoListIntrouvableException {
 		ToDoListDto list = todolistService.findById(id);
 		return ResponseEntity.ok(list);
 	}
-
 	// create
 		@PostMapping("/todolists")
 		public void create(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
@@ -78,19 +67,16 @@ public class ToDoListController {
 				e.printStackTrace();
 			}
 		}
-
 //	// details by Label
 //	@GetMapping("/todolists/label/{label}")
 //	public ResponseEntity<ToDoListDto> getByName(@PathVariable String label) throws ToDoListIntrouvableException {
 //		ToDoListDto list = todolistService.findByLabel(label);
 //		return ResponseEntity.ok(list);
 //	}
-
 	// update
 	@PutMapping("/todolists")
 	public ResponseEntity<ToDoListDto> update(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
 		System.out.println(list);
-
 		try {
 			this.todolistService.update(list);
 			return ResponseEntity.ok(list);
@@ -103,7 +89,6 @@ public class ToDoListController {
 		}
 		return null;
 	}
-
 	// delete
 	@DeleteMapping("/todolists/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws ToDoListIntrouvableException {
@@ -113,7 +98,6 @@ public class ToDoListController {
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
 	}
-
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ConstraintViolationException.class)
 	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
