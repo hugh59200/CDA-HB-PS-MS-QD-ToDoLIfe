@@ -1,4 +1,5 @@
 package com.cda.todolife.controller;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import com.cda.todolife.exception.ToDoListExistanteException;
 import com.cda.todolife.exception.ToDoListIntrouvableException;
 import com.cda.todolife.service.IToDoListService;
 import com.cda.todolife.service.IUtilisateurService;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
@@ -31,6 +33,7 @@ public class ToDoListController {
 	private IToDoListService todolistService;
 	@Autowired
 	private IUtilisateurService utilisateurService;
+
 //	// listing
 //	@GetMapping("/todolists")
 //	public List<ToDoListDto> getAll() {
@@ -51,12 +54,14 @@ public class ToDoListController {
 		}
 		return ResponseEntity.ok(list);
 	}
+
 	// details by Id
 	@GetMapping("/todolists/{id}")
 	public ResponseEntity<ToDoListDto> getById(@PathVariable int id) throws ToDoListIntrouvableException {
 		ToDoListDto list = todolistService.findById(id);
 		return ResponseEntity.ok(list);
 	}
+
 	// create
 	@PostMapping("/todolists")
 	public void create(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
@@ -66,6 +71,8 @@ public class ToDoListController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
 //	// details by Label
 //	@GetMapping("/todolists/label/{label}")
 //	public ResponseEntity<ToDoListDto> getByName(@PathVariable String label) throws ToDoListIntrouvableException {
@@ -88,6 +95,7 @@ public class ToDoListController {
 		}
 		return null;
 	}
+
 	// delete
 	@DeleteMapping("/todolists/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws ToDoListIntrouvableException {
@@ -97,6 +105,7 @@ public class ToDoListController {
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
 	}
+
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ConstraintViolationException.class)
 	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
