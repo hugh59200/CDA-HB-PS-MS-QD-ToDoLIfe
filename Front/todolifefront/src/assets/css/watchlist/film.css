@@ -43,6 +43,10 @@
     margin-right: 8%;
 }
 
+.affichagedisplay{
+    display: table-column;
+}
+
 .bloc-film{
     width: 600px;
     min-height: 69vh;

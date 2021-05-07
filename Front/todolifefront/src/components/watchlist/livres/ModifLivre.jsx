@@ -40,7 +40,7 @@ function ModifLivre() {
           </div>
 
           <form>
-            <div className="form-group row justify-content-center">
+            <div className="form-group row justify-content-center affichagedisplay">
               <label className="text-white timer-actuel col-12">
                 Titre du livre :{" "}
               </label>
