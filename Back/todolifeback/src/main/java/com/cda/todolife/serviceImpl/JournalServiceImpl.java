@@ -24,6 +24,15 @@ public class JournalServiceImpl implements IJournalService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	// test par savoir si un utilisateur possede un journal
+	@Override
+	public Boolean findByUtilisateurIdUtilisateur1(int idUser) {
+		if (this.journalRepository.findByUtilisateurIdUtilisateur1(idUser)) {
+			return true;
+		}
+		return false;
+	}
+
 //	ajouter
 	@Override
 	public void add(JournalDto list) throws JournalExistantException {
@@ -49,12 +58,6 @@ public class JournalServiceImpl implements IJournalService {
 		return this.modelMapper.map(this.journalRepository.findById(id).get(), JournalDto.class);
 
 	}
-
-////	trouver par label
-//	@Override
-//	public JournalDto findByLabel(String label) throws JournalIntrouvableException {
-//		return this.modelMapper.map(this.journalRepository.findByLabel(label), JournalDto.class);
-//	}
 
 	// mettre à jour
 	@Override
