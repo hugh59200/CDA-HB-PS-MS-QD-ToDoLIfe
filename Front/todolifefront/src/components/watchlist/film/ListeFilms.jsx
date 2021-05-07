@@ -38,7 +38,7 @@ const ListeFilms = () => {
           <>
             <div className="ajout-film row mb-1">
               <div
-                className="titre-film col-10"
+                className="titre-film col-8 col-md-10 col-lg-10"
                 onClick={() => {
                   let filmEnQuestion = {
                     avis: films.avis,
@@ -55,7 +55,7 @@ const ListeFilms = () => {
               >
                 <span className="text-white">{films.name}</span>
               </div>   
-              <div className="icone-suppr-edit col-2">
+              <div className="icone-suppr-edit col-4 col-lg-2 col-md-2">
                 <button
                   className="boutton-supprimer"
                   onClick={() => {
