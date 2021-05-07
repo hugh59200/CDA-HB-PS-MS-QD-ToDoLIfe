@@ -31,14 +31,14 @@ function NewLivre() {
           </div>
 
           <form>
-            <div className="form-group row justify-content-center">
+            <div className="form-group row justify-content-center d-block">
               <label className="text-white timer-actuel">
                 Titre du livre :{" "}
               </label>
 
               <input
                 type="text"
-                className="col-10 form-control mb-1"
+                className="col-10 form-control mb-1 m-auto"
                 placeholder="Nom du livre"
                 id="nom"
                 onChange={(e) => {
@@ -48,10 +48,10 @@ function NewLivre() {
             </div>
 
             <label className="text-white timer-actuel">Page actuelle : </label>
-            <div className="justify-content-center row">
+            <div className="justify-content-center row d-block mb-3">
               <input
                 type="number"
-                className="col-10 form-control mb-3"
+                className="col-10 form-control mb-3 m-auto"
                 placeholder="Page actuelle"
                 onChange={(e) => {
                   pageAct = e.target.value;
@@ -59,12 +59,12 @@ function NewLivre() {
               />
             </div>
 
-            <div className="form-group row justify-content-center">
+            <div className="form-group row justify-content-center d-block">
               <label className="text-white timer-actuel">Mon avis : </label>
 
               <textarea
                 type="textarea"
-                className="form-control col-10 text-zone"
+                className="form-control col-10 text-zone m-auto"
                 placeholder="Mon avis"
                 rows="3"
                 onChange={(e) => {
