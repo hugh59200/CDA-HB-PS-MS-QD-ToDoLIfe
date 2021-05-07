@@ -10,11 +10,11 @@ function NewFilm() {
 
   const history = useHistory();
 
-  let nomFilm = "";
-  let heure = "";
-  let minute = "";
-  let seconde = "";
-  let avisFilm = "";
+  var nomFilm = "";
+  var heure = "";
+  var minute = "";
+  var seconde = "";
+  var avisFilm = "";
   var id = localStorage.getItem("id");
 
   return (
@@ -71,8 +71,9 @@ function NewFilm() {
                   url: API_FILMS + "/utilisateurs/" + id,
                   data: res,
                 })
-                  .then(function (response) {
+                  .then(function (reponse) {
                     console.log(res)
+                    console.log(reponse)
 
                   })
                   .catch(function (erreur) {
@@ -80,6 +81,7 @@ function NewFilm() {
                   })
 
                 history.push(URL_FILMS)
+                window.location.reload();
 
               }}
 

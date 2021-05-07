@@ -39,6 +39,7 @@ export const URL_WATCHLIST = '/watchlist'
 
 export const URL_FILMS = '/films'
 export const URL_NEW_FILM = '/newfilm'
+export const URL_MODIF_FILM = '/modiffilm'
 
 export const URL_SERIES = '/series'
 export const URL_NEW_SERIE = '/newserie'

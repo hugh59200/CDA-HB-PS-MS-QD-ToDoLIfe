@@ -13,12 +13,14 @@ public interface IFilmService {
 	
 	FilmDto findById(int id) throws FilmIntrouvableException;
 
-	void update(FilmDto film) throws FilmIntrouvableException, FilmExistantException;
+	void update(FilmDto film,int idFilm) throws FilmIntrouvableException, FilmExistantException;
 
 	void deleteById(int id) throws FilmIntrouvableException;
 
 	void add(FilmDto film, int id) throws FilmExistantException, WatchListIntrouvableException;
 
 	FilmDto findByName(String nom) throws FilmIntrouvableException;
+
+	List<FilmDto> findAllByIdUtilisateur(int id);
 
 }
