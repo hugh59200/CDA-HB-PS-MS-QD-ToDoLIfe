@@ -18,7 +18,7 @@ function NewLivre() {
       <div className="row justify-content-center"></div>
 
       <div className="row justify-content-center ">
-        <div className="col-11 col-md-6 col-lg-6 bloc-film">
+        <div className="col-11 col-md-6 col-lg-6 bloc-film testaff">
           <div>
             <button
               className="btn btn-primary btn-enregistrer mt-3 mb-3"
