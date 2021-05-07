@@ -11,9 +11,9 @@ export function AjouterJour(props) {
 	const [titre, settitre] = useState('');
 	const [moodInt, setmoodInt] = useState('');
 	const [resume, setresume] = useState('');
-	
+
 	useEffect(() => {}, [props]);
-	
+
 	return (
 		<>
 			<div className="creationJour">
@@ -22,17 +22,17 @@ export function AjouterJour(props) {
 				<ChoixResume setresume={setresume} />
 			</div>
 			<div className="deuxBoutons">
+				<BouttonRevenir
+					setshowList={props.setshowList}
+					setshowJourDetail={props.setshowJourDetail}
+					setajoutJour={props.setajoutJour}
+				/>
 				<BouttonValider
 					setajoutJour={props.setajoutJour}
 					setshowList={props.setshowList}
 					titre={titre}
 					moodInt={moodInt}
 					resume={resume}
-				/>
-				<BouttonRevenir
-					setshowList={props.setshowList}
-					setshowJourDetail={props.setshowJourDetail}
-					setajoutJour={props.setajoutJour}
 				/>
 			</div>
 		</>
