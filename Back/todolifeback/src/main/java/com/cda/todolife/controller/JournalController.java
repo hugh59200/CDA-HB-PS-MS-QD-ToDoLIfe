@@ -34,6 +34,12 @@ public class JournalController {
 	@Autowired
 	private IJournalService journalService;
 
+	// test par savoir si un utilisateur possede un journal
+	@GetMapping("/jour/{id}/utilisateurs")
+	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) {
+		return ResponseEntity.ok(journalService.findByUtilisateurIdUtilisateur1(idUtilisateur));
+	}
+
 	// listing
 	@GetMapping("/journaux")
 	public List<JournalDto> getAll() {
@@ -58,13 +64,6 @@ public class JournalController {
 		JournalDto list = journalService.findById(id);
 		return ResponseEntity.ok(list);
 	}
-
-//	// details by Label
-//	@GetMapping("/journaux/{label}")
-//	public ResponseEntity<JournalDto> getByName(@PathVariable String label) throws JournalIntrouvableException {
-//		JournalDto list = journalService.findByLabel(label);
-//		return ResponseEntity.ok(list);
-//	}
 
 	// update
 	@PutMapping("/journaux")
