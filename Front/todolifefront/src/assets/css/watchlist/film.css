@@ -147,5 +147,11 @@ background-size: 30px;
 
     .ajout-film{
 width: 94%;
+
+    }
+
+    .testaff{
+        margin: auto;
+        margin-left:30px!important
     }
 }
