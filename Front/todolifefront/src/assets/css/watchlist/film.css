@@ -150,6 +150,10 @@ width: 94%;
 
     }
 
+    .mob{
+        height: 86vh;
+    }
+
     .testaff{
         margin: auto;
         margin-left:30px!important

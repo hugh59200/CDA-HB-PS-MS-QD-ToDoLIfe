@@ -9,15 +9,17 @@ import { useState } from "react";
 
 function ModifFilm() {
   const history = useHistory();
+  var moment = history.location.filmEnQuestion.moment
+  var momentSplit=moment.split(':')
+  
 
   const [filmAct, setFilmAct] = useState([]);
 
   var nomFilm = history.location.filmEnQuestion.name;
-  var heure = history.location.filmEnQuestion.heure;
-  var minute = history.location.filmEnQuestion.minute;
-  var seconde = history.location.filmEnQuestion.seconde;
+  var heure = momentSplit[0];
+  var minute = momentSplit[1];
+  var seconde =momentSplit[2];
   var avisFilm = history.location.filmEnQuestion.avis;
-
   var idFilm = history.location.filmEnQuestion.idFilm;
 
   useEffect(() => {
@@ -50,9 +52,9 @@ function ModifFilm() {
 
           </div>
           <div className="form-group row justify-content-center">
-            <input type="number" className=" marge-film form-control col-3"  min="0" max="5"  defaultValue={filmAct.heure} onChange={(e) => { heure = e.target.value; }} />
-            <input type="number" className="marge-film form-control col-3"  min="0" max="59"  defaultValue={filmAct.minute} onChange={(e) => { minute = e.target.value; }} />
-            <input type="number" className=" marge-film form-control col-3" min="0" max="59"  defaultValue={filmAct.seconde} onChange={(e) => { seconde = e.target.value; }} />
+            <input type="number" className=" marge-film form-control col-3"  min="0" max="5"  defaultValue={heure} onChange={(e) => { heure = e.target.value; }} />
+            <input type="number" className="marge-film form-control col-3"  min="0" max="59"  defaultValue={minute} onChange={(e) => { minute = e.target.value; }} />
+            <input type="number" className=" marge-film form-control col-3" min="0" max="59"  defaultValue={seconde} onChange={(e) => { seconde = e.target.value; }} />
           </div>
 
           <label className="text-white timer-actuel">Mon avis : </label>
