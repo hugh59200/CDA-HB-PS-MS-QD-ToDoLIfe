@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.WatchListExistanteException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
-import com.cda.todolife.model.WatchList;
 import com.cda.todolife.service.IWatchListService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -34,8 +33,6 @@ public class WatchListController {
 
 	@Autowired
 	private IWatchListService watchListService;
-	
-	
 
 	// listing
 	@GetMapping("/watchlists")
@@ -60,14 +57,13 @@ public class WatchListController {
 	// details by Id
 	@GetMapping("/watchlists/utilisateurs/{id}")
 	public ResponseEntity<Boolean> getByIdUtilisateur(@PathVariable int id) throws WatchListIntrouvableException {
-		
+
 		try {
-			return new ResponseEntity<>(watchListService.findByIdUtilisateur(id),HttpStatus.OK);
+			return new ResponseEntity<>(watchListService.findByIdUtilisateur(id), HttpStatus.OK);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		
-	
+
 	}
 
 	// details by label
