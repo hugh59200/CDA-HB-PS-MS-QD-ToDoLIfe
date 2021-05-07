@@ -58,14 +58,13 @@ public class ToDoListController {
 		return ResponseEntity.ok(list);
 	}
 	// create
-		@PostMapping("/todolists")
-		public void create(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
-			try {
-				this.todolistService.add(list);
-			} catch (ToDoListExistanteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	@PostMapping("/todolists")
+	public void create(@RequestBody ToDoListDto list) throws ToDoListIntrouvableException {
+		try {
+			this.todolistService.add(list);
+		} catch (ToDoListExistanteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 //	// details by Label
 //	@GetMapping("/todolists/label/{label}")
