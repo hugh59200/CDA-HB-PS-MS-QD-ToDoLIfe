@@ -28,6 +28,7 @@ import {
   URL_SERIES,
   URL_FILMS,
   URL_MODIF_LIVRE,
+  URL_MODIF_FILM,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -51,6 +52,7 @@ import Todos from "../components/todoList/todo/Todos";
 import AddTodo from "../components/todoList/todo/AddTodo";
 import UpdateTodo from "../components/todoList/todo/UpdateTodo";
 import ModifLivre from './../components/watchlist/livres/ModifLivre';
+import ModifFilm from './../components/watchlist/film/ModifFilm';
 
 const CustomHistory = createBrowserHistory();
 
@@ -110,6 +112,7 @@ class Routes extends Component {
           <PrivateRoute path={URL_NEW_SERIE} component={NewSerie} />
           <PrivateRoute path={URL_FILMS} component={Films} />
           <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
+          <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />
           {/* <Route component={Error404} /> */}
 
           {/* composants toaster */}

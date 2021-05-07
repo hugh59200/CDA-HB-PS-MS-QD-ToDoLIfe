@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
+import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.service.IFilmService;
 
@@ -43,7 +45,8 @@ public class FilmController {
 
 	// create
 	@PostMapping("/films/utilisateurs/{id}")
-	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable int id) throws FilmIntrouvableException {
+	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable int id) 
+			throws FilmIntrouvableException {
 		try {
 			this.filmService.add(filmDto, id);
 
@@ -58,24 +61,26 @@ public class FilmController {
 	}
 
 	// details by Id
-	@GetMapping("/films/id/{id}")
-	public ResponseEntity<FilmDto> getById(@PathVariable int id) throws FilmIntrouvableException {
-		FilmDto filmDto = filmService.findById(id);
+	@GetMapping("/films/utilisateurs/{id}")
+	public ResponseEntity<List<FilmDto>> getAllByIdUtilisateur(@PathVariable int id) throws FilmIntrouvableException {
+		List<FilmDto> filmDto = filmService.findAllByIdUtilisateur(id);
 		return ResponseEntity.ok(filmDto);
 	}
-
+	
 	// details by Name
-	@GetMapping("/films/name/{name}")
-	public ResponseEntity<FilmDto> getByName(@PathVariable String name) throws FilmIntrouvableException {
-		FilmDto filmDto = filmService.findByName(name);
-		return ResponseEntity.ok(filmDto);
-	}
+	//@GetMapping("/films/name/{name}")
+	//public ResponseEntity<FilmDto> getByName(@PathVariable String name) throws FilmIntrouvableException {
+	//	FilmDto filmDto = filmService.findByName(name);
+	//	return ResponseEntity.ok(filmDto);
+	//}
 
 	// update
-	@PutMapping("/films")
-	public ResponseEntity<FilmDto> update(@RequestBody FilmDto filmDto) throws FilmIntrouvableException {
+	@PutMapping("/films/{idFilm}")
+	public ResponseEntity<FilmDto> update(@RequestBody FilmDto filmDto, @PathVariable("idFilm") int idFilm) 
+			throws FilmIntrouvableException {
+		
 		try {
-			filmService.update(filmDto);
+			filmService.update(filmDto, idFilm);
 		} catch (FilmIntrouvableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,7 +92,7 @@ public class FilmController {
 	}
 
 	// delete
-	@DeleteMapping("/films/id/{id}")
+	@DeleteMapping("/films/{id}")
 	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws FilmIntrouvableException {
 		filmService.deleteById(id);
 		System.out.println("ok");
@@ -96,16 +101,16 @@ public class FilmController {
 		return ResponseEntity.ok(response);
 	}
 
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(ConstraintViolationException.class)
-	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
-		Map<String, String> errors = new HashMap<>();
-		ex.getConstraintViolations().forEach(constraintViolation -> {
-			String fieldName = constraintViolation.getPropertyPath().toString();
-			fieldName = fieldName.substring(fieldName.lastIndexOf('.') + 1);
-			String errorMessage = constraintViolation.getMessage();
-			errors.put(fieldName, errorMessage);
-		});
-		return errors;
-	}
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	@ExceptionHandler(ConstraintViolationException.class)
+//	public Map<String, String> handleValidationExceptions(ConstraintViolationException ex) {
+//		Map<String, String> errors = new HashMap<>();
+//		ex.getConstraintViolations().forEach(constraintViolation -> {
+//			String fieldName = constraintViolation.getPropertyPath().toString();
+//			fieldName = fieldName.substring(fieldName.lastIndexOf('.') + 1);
+//			String errorMessage = constraintViolation.getMessage();
+//			errors.put(fieldName, errorMessage);
+//		});
+//		return errors;
+//	}
 }

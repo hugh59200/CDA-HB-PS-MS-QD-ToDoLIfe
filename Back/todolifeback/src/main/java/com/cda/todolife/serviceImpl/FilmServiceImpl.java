@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.dto.WatchListDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
+import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.model.Film;
+import com.cda.todolife.model.Livre;
 import com.cda.todolife.model.WatchList;
 import com.cda.todolife.repository.IFilmRepository;
 import com.cda.todolife.repository.IWatchListRepository;
@@ -50,6 +53,18 @@ public class FilmServiceImpl implements IFilmService {
 	  }
 	}
 
+	// lister les films d'un utilisateur
+	@Override
+	public List<FilmDto> findAllByIdUtilisateur(int id) {
+
+		Optional<WatchList> watchlist = this.watchlistService.findByUtilisateurIdUtilisateur(id);
+		List<FilmDto> filmDto = new ArrayList<FilmDto>();
+		this.filmDao.findAllBywatchListIdWatchList(watchlist.get().getIdWatchList())
+				.forEach(res -> filmDto.add(this.modelMapper.map(res, FilmDto.class)));
+
+		return filmDto;
+	}
+	
 //	lister les film
 	@Override
 	public List<FilmDto> findAll() {
@@ -73,13 +88,15 @@ public class FilmServiceImpl implements IFilmService {
 
 	// mettre à jour un film
 	@Override
-	public void update(FilmDto film) throws FilmIntrouvableException, FilmExistantException {
-		try {
-			this.filmDao.findById(film.getIdFilm()).orElseThrow(FilmIntrouvableException::new);
+	public void update(FilmDto film, int idFilm) throws FilmIntrouvableException, FilmExistantException {
+		
+		Optional<Film> filmTest = this.filmDao.findById(idFilm);
+
+		if (filmTest.get().getIdFilm() == film.getIdFilm()) {
+			film.setWatchListDto(this.modelMapper.map(filmTest.get().getWatchList(), WatchListDto.class));
 			this.filmDao.save(this.modelMapper.map(film, Film.class));
-		} catch (FilmIntrouvableException e) {
-			// TODO: handle exception
-			e.printStackTrace();
+		} else {
+			throw new FilmIntrouvableException();
 		}
 	}
 
@@ -89,4 +106,8 @@ public class FilmServiceImpl implements IFilmService {
 		this.filmDao.findById(id).orElseThrow(FilmIntrouvableException::new);
 		this.filmDao.deleteById(id);
 	}
+
+
+
+
 }
