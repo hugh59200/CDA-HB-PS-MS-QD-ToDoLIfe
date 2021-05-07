@@ -18,6 +18,7 @@ export function FetchUrlFunction(mois, annee, setLoading, setData, setmois, seta
 				} else {
 					setData(json);
 					setLoading(false);
+					// window.location.reload();
 				}
 			});
 }

@@ -1,6 +1,6 @@
 import '../../assets/css/journal/MonjournalStyle.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
@@ -16,15 +16,15 @@ const MonJournal = () => {
 	const [ajoutJour, setajoutJour] = useState(false);
 	const [showJourDetail, setshowJourDetail] = useState(false);
 
-	console.log(mois);
-	useEffect(() => {
-    const fetchProducts = async () => {
-      await FetchUrl(mois, annee);
-      setmois(mois)
-      setannee(annee)
-    }
-    fetchProducts()
-  }, [annee, mois])
+	// console.log(mois);
+	// useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     await FetchUrl(mois, annee);
+  //     setmois(mois)
+  //     setannee(annee)
+  //   }
+  //   fetchProducts()
+  // }, [annee, mois])
 	
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
