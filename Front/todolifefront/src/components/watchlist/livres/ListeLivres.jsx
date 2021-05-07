@@ -33,8 +33,8 @@ const ListeLivres = () => {
     <>
       <div className="row w-100 m-auto justify-content-around">
         <div className="ajout-film2 row mb-1">
-          <div className="titre-film text-white col-lg-8 col-7">Titre :</div>
-          <div className="titre-film text-white  col-lg-2 col-2">Page :</div>
+          <div className="titre-film text-white col-lg-8 col-7">Titre</div>
+          <div className="titre-film text-white  col-lg-2 col-2">Page</div>
           <div className="titre-film  col-lg-2 col-3"></div>
         </div>
       </div>
@@ -78,7 +78,7 @@ const ListeLivres = () => {
               >
                 <span className="text-white">{livres.pageActuel}</span>
               </div>
-              <div className="icone-suppr-edit col-lg-2 col-3">
+              <div className="icone-suppr-edit col-lg-2 col-3 p-0">
                 <button
                   className="boutton-supprimer"
                   onClick={() => {

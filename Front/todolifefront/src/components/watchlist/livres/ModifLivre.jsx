@@ -27,7 +27,7 @@ function ModifLivre() {
       <div className="row justify-content-center"></div>
 
       <div className="row justify-content-center ">
-        <div className="col-11 col-md-6 col-lg-6 bloc-film">
+        <div className="col-11 col-md-6 col-lg-6 bloc-film testaff mob">
           <div>
             <button
               className="btn btn-primary btn-enregistrer mt-3 mb-3"
@@ -40,7 +40,7 @@ function ModifLivre() {
           </div>
 
           <form>
-            <div className="form-group row justify-content-center affichagedisplay">
+            <div className="form-group row justify-content-center">
               <label className="text-white timer-actuel col-12">
                 Titre du livre :{" "}
               </label>
