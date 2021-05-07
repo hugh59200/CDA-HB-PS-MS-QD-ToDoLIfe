@@ -24,7 +24,7 @@ const MonJournal = () => {
   //     setannee(annee)
   //   }
   //   fetchProducts()
-  // }, [])
+  // }, [annee, mois])
 	
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);

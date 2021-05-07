@@ -4,28 +4,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.ConstraintViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
-import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.service.IFilmService;
 
@@ -45,17 +38,17 @@ public class FilmController {
 
 	// create
 	@PostMapping("/films/utilisateurs/{id}")
-	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable int id) 
+	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable int id)
 			throws FilmIntrouvableException {
 		try {
 			this.filmService.add(filmDto, id);
 
-		}catch (WatchListIntrouvableException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		} catch (WatchListIntrouvableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (FilmExistantException e) {
 			// TODO Auto-generated catch block
-					e.printStackTrace();
+			e.printStackTrace();
 		}
 		return ResponseEntity.ok(filmDto);
 	}
@@ -66,19 +59,20 @@ public class FilmController {
 		List<FilmDto> filmDto = filmService.findAllByIdUtilisateur(id);
 		return ResponseEntity.ok(filmDto);
 	}
-	
+
 	// details by Name
-	//@GetMapping("/films/name/{name}")
-	//public ResponseEntity<FilmDto> getByName(@PathVariable String name) throws FilmIntrouvableException {
-	//	FilmDto filmDto = filmService.findByName(name);
-	//	return ResponseEntity.ok(filmDto);
-	//}
+	// @GetMapping("/films/name/{name}")
+	// public ResponseEntity<FilmDto> getByName(@PathVariable String name) throws
+	// FilmIntrouvableException {
+	// FilmDto filmDto = filmService.findByName(name);
+	// return ResponseEntity.ok(filmDto);
+	// }
 
 	// update
 	@PutMapping("/films/{idFilm}")
-	public ResponseEntity<FilmDto> update(@RequestBody FilmDto filmDto, @PathVariable("idFilm") int idFilm) 
+	public ResponseEntity<FilmDto> update(@RequestBody FilmDto filmDto, @PathVariable("idFilm") int idFilm)
 			throws FilmIntrouvableException {
-		
+
 		try {
 			filmService.update(filmDto, idFilm);
 		} catch (FilmIntrouvableException e) {

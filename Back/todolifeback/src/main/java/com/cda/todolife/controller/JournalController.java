@@ -59,12 +59,12 @@ public class JournalController {
 		return ResponseEntity.ok(list);
 	}
 
-	// details by Label
-	@GetMapping("/journaux/{label}")
-	public ResponseEntity<JournalDto> getByName(@PathVariable String label) throws JournalIntrouvableException {
-		JournalDto list = journalService.findByLabel(label);
-		return ResponseEntity.ok(list);
-	}
+//	// details by Label
+//	@GetMapping("/journaux/{label}")
+//	public ResponseEntity<JournalDto> getByName(@PathVariable String label) throws JournalIntrouvableException {
+//		JournalDto list = journalService.findByLabel(label);
+//		return ResponseEntity.ok(list);
+//	}
 
 	// update
 	@PutMapping("/journaux")

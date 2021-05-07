@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { API_WATCHLIST } from './../../constant/API_BACK';
+import { API_WATCHLIST } from '../../../constant/API_BACK';
 import WatchListOff from './WatchListOff';
 import WatchListOn from './WatchListOn';
 import axios from 'axios';

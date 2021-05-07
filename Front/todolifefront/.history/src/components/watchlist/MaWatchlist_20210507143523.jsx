@@ -7,6 +7,8 @@ import axios from 'axios';
 
 const MaWatchlist=()=> {
 
+
+
   const [isWatchList,setIsWatchList] =useState([]);
 
   useEffect(() => {

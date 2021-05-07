@@ -18,6 +18,6 @@ public interface IJournalService {
 
 	void add(JournalDto list) throws JournalExistantException;
 
-	JournalDto findByLabel(String label) throws JournalIntrouvableException;
+//	JournalDto findByLabel(String label) throws JournalIntrouvableException;
 
 }

@@ -50,11 +50,11 @@ public class JournalServiceImpl implements IJournalService {
 
 	}
 
-//	trouver par label
-	@Override
-	public JournalDto findByLabel(String label) throws JournalIntrouvableException {
-		return this.modelMapper.map(this.journalRepository.findByLabel(label), JournalDto.class);
-	}
+////	trouver par label
+//	@Override
+//	public JournalDto findByLabel(String label) throws JournalIntrouvableException {
+//		return this.modelMapper.map(this.journalRepository.findByLabel(label), JournalDto.class);
+//	}
 
 	// mettre à jour
 	@Override
@@ -73,15 +73,5 @@ public class JournalServiceImpl implements IJournalService {
 		this.journalRepository.findById(id).orElseThrow(JournalIntrouvableException::new);
 		this.journalRepository.deleteById(id);
 	}
-
-	// lister jours via userId
-//	@Override
-//	public List<JourDto> findAllByJournalIdJournal(int id) throws ResourceNotFoundException {
-//		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(id);
-//		int idJournal = journal.getIdJournal();
-//		System.out.println(this.jourRepository.findAllByJournalIdJournal(idJournal));
-
-//	List<JourDto> res = new ArrayList<>();this.jourRepository.findAll().forEach(pres->res.add(this.modelMapper.map(pres,JourDto.class)));return res;
-//}
 
 }

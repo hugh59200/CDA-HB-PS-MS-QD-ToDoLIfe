@@ -20,13 +20,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString(of = { "idJournal", "label", "utilisateur" })
+@ToString(of = { "idJournal", "utilisateur" })
 public class Journal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idJournal;
-	private String label;
+//	private String label;
 
 	@JsonIgnore
 	@OneToOne

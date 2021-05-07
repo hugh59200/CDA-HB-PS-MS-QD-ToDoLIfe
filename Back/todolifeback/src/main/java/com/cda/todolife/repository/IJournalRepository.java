@@ -11,7 +11,7 @@ public interface IJournalRepository extends CrudRepository<Journal, Integer> {
 
 	List<Journal> findAll();
 
-	Journal findByLabel(String label);
+//	Journal findByLabel(String label);
 
 	Optional<Journal> findByUtilisateurIdUtilisateur(int idUser);
 

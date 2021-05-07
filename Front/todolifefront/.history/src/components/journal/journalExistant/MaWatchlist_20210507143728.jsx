@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { API_WATCHLIST } from './../../constant/API_BACK';
-import WatchListOff from './WatchListOff';
-import WatchListOn from './WatchListOn';
+import WatchListOff from './journalExistant/WatchListOff';
+import WatchListOn from './journalExistant/WatchListOn';
 import axios from 'axios';
 
 const MaWatchlist=()=> {
