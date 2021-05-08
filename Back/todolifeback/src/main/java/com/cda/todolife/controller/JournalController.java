@@ -57,6 +57,17 @@ public class JournalController {
 		}
 		return ResponseEntity.ok(journalDto);
 	}
+//	
+//	// create par userId
+//	@PostMapping("/journauxByUser")
+//		public ResponseEntity<JournalDto> createById(@RequestBody JournalDto journalDto) throws JournalExistantException {
+//		try {
+//			this.journalService.add(journalDto);
+//		} catch (JournalExistantException e) {
+//			e.printStackTrace();
+//		}
+//		return ResponseEntity.ok(journalDto);
+//	}
 
 	// details by Id
 	@GetMapping("/journaux/{id}")

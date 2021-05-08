@@ -25,9 +25,6 @@ import lombok.ToString;
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = "email"), @UniqueConstraint(columnNames = "username") })
 public class Utilisateur implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -40,8 +37,5 @@ public class Utilisateur implements Serializable {
 	private String username;
 	private String password;
 
-//	@ManyToOne
-//	@JoinColumn(name = "id_role", nullable = false)
-//	private Role role;
 
 }
