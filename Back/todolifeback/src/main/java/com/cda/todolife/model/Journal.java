@@ -26,7 +26,6 @@ public class Journal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idJournal;
-//	private String label;
 
 	@JsonIgnore
 	@OneToOne

@@ -62,17 +62,43 @@ const MonJournal = () => {
 export default MonJournal;
 
 function JournalExistant() {
+	const idUser = localStorage.getItem('id');
+
 	axios({
 		method: 'get',
-		url: API_JOURNAL + '/ ' + localStorage.getItem('id') + '/exist',
+		url: API_JOURNAL + '/ ' + idUser + '/exist',
 	}).then(response => {
 		if (response.data === true) {
-			console.log(response.data);
-			console.log('journal deja existant');
+			// console.log(response.data);
+			// console.log('journal deja existant');
 		} else {
-			console.log(response.data);
-			console.log('journal non existant');
-			
+			// CreateJournalByIdUser(idUser);
+			// console.log(response.data);
+			// console.log('journal non existant');
 		}
 	});
+}
+
+function CreateJournalByIdUser(idUser) {
+	// const journalDto = { idUser }
+	// console.log(journalDto.idUser);
+	// axios({
+	// 	method: 'post',
+	// 	url: API_JOURNAL,
+	// 	// params: { idUser },
+	// 	data: journalDto,
+	// })
+	// 	.then(response => {
+	// 		const status = response.request.status;
+
+	// 		if (status === 200) {
+	// 			console.log('Journal ajouté avec succés !');
+	// 		}
+	// 		if (status !== 200) {
+	// 			console.log('Une erreur est survenue !');
+	// 		}
+	// 	})
+	// 	.catch(error => {
+	// 		console.log('Une erreur est survenue' + error);
+	// 	});
 }
