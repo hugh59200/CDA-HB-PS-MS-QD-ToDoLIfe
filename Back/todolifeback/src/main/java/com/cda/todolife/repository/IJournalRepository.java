@@ -11,8 +11,5 @@ public interface IJournalRepository extends CrudRepository<Journal, Integer> {
 
 	List<Journal> findAll();
 
-	Boolean findByUtilisateurIdUtilisateur1(int idUser);
-
 	Optional<Journal> findByUtilisateurIdUtilisateur(int idUser);
-
 }

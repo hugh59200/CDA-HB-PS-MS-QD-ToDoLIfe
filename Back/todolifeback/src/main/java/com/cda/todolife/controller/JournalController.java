@@ -35,9 +35,9 @@ public class JournalController {
 	private IJournalService journalService;
 
 	// test par savoir si un utilisateur possede un journal
-	@GetMapping("/jour/{id}/utilisateurs")
+	@GetMapping("/journaux/{id}/exist")
 	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) {
-		return ResponseEntity.ok(journalService.findByUtilisateurIdUtilisateur1(idUtilisateur));
+		return ResponseEntity.ok(journalService.findIfJournalExist(idUtilisateur));
 	}
 
 	// listing
@@ -49,13 +49,13 @@ public class JournalController {
 
 	// create
 	@PostMapping("/journaux")
-	public ResponseEntity<JournalDto> create(@RequestBody JournalDto list) throws JournalExistantException {
+	public ResponseEntity<JournalDto> create(@RequestBody JournalDto journalDto) throws JournalExistantException {
 		try {
-			this.journalService.add(list);
+			this.journalService.add(journalDto);
 		} catch (JournalExistantException e) {
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(list);
+		return ResponseEntity.ok(journalDto);
 	}
 
 	// details by Id
@@ -67,15 +67,15 @@ public class JournalController {
 
 	// update
 	@PutMapping("/journaux")
-	public ResponseEntity<JournalDto> update(@RequestBody JournalDto list) throws JournalIntrouvableException {
+	public ResponseEntity<JournalDto> update(@RequestBody JournalDto journalDto) throws JournalIntrouvableException {
 		try {
-			journalService.update(list);
+			journalService.update(journalDto);
 		} catch (JournalIntrouvableException e) {
 			e.printStackTrace();
 		} catch (JournalExistantException e) {
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(list);
+		return ResponseEntity.ok(journalDto);
 	}
 
 	// delete

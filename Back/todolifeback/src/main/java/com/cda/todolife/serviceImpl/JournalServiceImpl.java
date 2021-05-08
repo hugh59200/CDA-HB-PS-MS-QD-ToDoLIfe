@@ -26,8 +26,9 @@ public class JournalServiceImpl implements IJournalService {
 
 	// test par savoir si un utilisateur possede un journal
 	@Override
-	public Boolean findByUtilisateurIdUtilisateur1(int idUser) {
-		if (this.journalRepository.findByUtilisateurIdUtilisateur1(idUser)) {
+	public Boolean findIfJournalExist(int idUser) {
+		Optional<Journal> journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
+		if (journal.isPresent()) {
 			return true;
 		}
 		return false;
@@ -35,12 +36,12 @@ public class JournalServiceImpl implements IJournalService {
 
 //	ajouter
 	@Override
-	public void add(JournalDto list) throws JournalExistantException {
-		Optional<Journal> probEntOpt = this.journalRepository.findById(list.getIdJournal());
+	public void add(JournalDto journalDto) throws JournalExistantException {
+		Optional<Journal> probEntOpt = this.journalRepository.findById(journalDto.getIdJournal());
 		if (probEntOpt.isPresent()) {
 			throw new JournalExistantException();
 		} else {
-			this.journalRepository.save(this.modelMapper.map(list, Journal.class));
+			this.journalRepository.save(this.modelMapper.map(journalDto, Journal.class));
 		}
 	}
 
