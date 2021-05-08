@@ -2,12 +2,14 @@ import '../../assets/css/journal/MonjournalStyle.css';
 
 import React, { useState } from 'react';
 
+import { API_JOURNAL } from '../../constant/API_BACK';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
+import axios from 'axios';
 
 const MonJournal = () => {
-	const [mois, setmois] = useState(new Date().getMonth()+1);
+	const [mois, setmois] = useState(new Date().getMonth() + 1);
 	const [annee, setannee] = useState(new Date().getFullYear());
 	const [loading, setLoading] = useState(true);
 	const [showList, setshowList] = useState(true);
@@ -16,23 +18,11 @@ const MonJournal = () => {
 	const [ajoutJour, setajoutJour] = useState(false);
 	const [showJourDetail, setshowJourDetail] = useState(false);
 
-	// console.log(mois);
-	// useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     await FetchUrl(mois, annee);
-  //     setmois(mois)
-  //     setannee(annee)
-  //   }
-  //   fetchProducts()
-  // }, [])
-	
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
 	}
-	
-	async function JournalExistant(mois, annee) {
-		
-	}
+
+	JournalExistant();
 
 	return (
 		<div className="monJournal">
@@ -70,3 +60,19 @@ const MonJournal = () => {
 };
 
 export default MonJournal;
+
+function JournalExistant() {
+	axios({
+		method: 'get',
+		url: API_JOURNAL + '/ ' + localStorage.getItem('id') + '/exist',
+	}).then(response => {
+		if (response.data === true) {
+			console.log(response.data);
+			console.log('journal deja existant');
+		} else {
+			console.log(response.data);
+			console.log('journal non existant');
+			
+		}
+	});
+}

@@ -18,6 +18,6 @@ public interface IJournalService {
 
 	void add(JournalDto list) throws JournalExistantException;
 
-	Boolean findByUtilisateurIdUtilisateur1(int idUser);
+	Boolean findIfJournalExist(int idUser);
 
 }
