@@ -16,52 +16,59 @@ const MonJournal = () => {
 	const [jourData, setjourData] = useState('');
 	const [data, setData] = useState([]);
 	const [ajoutJour, setajoutJour] = useState(false);
+	const [journalExiste, setjournalExiste] = useState();
 	const [showJourDetail, setshowJourDetail] = useState(false);
 
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
 	}
 
-	JournalExistant();
+	JournalExistant(setjournalExiste);
 
-	return (
-		<div className="monJournal">
-			<div className="titreJournal">
-				<h2>Mon journal</h2>
-			</div>
-			{!ajoutJour && !showJourDetail && (
-				<div className="selectDate">
-					<Selects
-						FetchUrl={FetchUrl}
-						annee={annee}
-						mois={mois}
+	console.log(journalExiste);
+
+	if (!journalExiste) {
+		return <div>journal a creer</div>;
+	} else {
+		return (
+			<div className="monJournal">
+				<div className="titreJournal">
+					<h2>Mon journal</h2>
+				</div>
+				{!ajoutJour && !showJourDetail && (
+					<div className="selectDate">
+						<Selects
+							FetchUrl={FetchUrl}
+							annee={annee}
+							mois={mois}
+							setshowList={setshowList}
+							setmois={setmois}
+							setannee={setannee}
+						/>
+					</div>
+				)}
+				<div className="affichage">
+					<Affichage
+						showList={showList}
+						loading={loading}
+						data={data}
+						jourData={jourData}
+						setjourData={setjourData}
 						setshowList={setshowList}
-						setmois={setmois}
-						setannee={setannee}
+						ajoutJour={ajoutJour}
+						setajoutJour={setajoutJour}
+						showJourDetail={showJourDetail}
+						setshowJourDetail={setshowJourDetail}
 					/>
 				</div>
-			)}
-			<div className="affichage">
-				<Affichage
-					showList={showList}
-					loading={loading}
-					data={data}
-					jourData={jourData}
-					setjourData={setjourData}
-					setshowList={setshowList}
-					ajoutJour={ajoutJour}
-					setajoutJour={setajoutJour}
-					showJourDetail={showJourDetail}
-					setshowJourDetail={setshowJourDetail}
-				/>
 			</div>
-		</div>
-	);
+		);
+	}
 };
 
 export default MonJournal;
 
-function JournalExistant() {
+function JournalExistant(setjournalExiste) {
 	const idUser = localStorage.getItem('id');
 
 	axios({
@@ -69,36 +76,38 @@ function JournalExistant() {
 		url: API_JOURNAL + '/ ' + idUser + '/exist',
 	}).then(response => {
 		if (response.data === true) {
+			setjournalExiste(true);
 			// console.log(response.data);
-			// console.log('journal deja existant');
+			console.log('journal deja existant');
 		} else {
+			setjournalExiste(false);
 			// CreateJournalByIdUser(idUser);
 			// console.log(response.data);
-			// console.log('journal non existant');
+			console.log('journal non existant');
 		}
 	});
 }
 
-function CreateJournalByIdUser(idUser) {
-	// const journalDto = { idUser }
-	// console.log(journalDto.idUser);
-	// axios({
-	// 	method: 'post',
-	// 	url: API_JOURNAL,
-	// 	// params: { idUser },
-	// 	data: journalDto,
-	// })
-	// 	.then(response => {
-	// 		const status = response.request.status;
+// function CreateJournalByIdUser(idUser) {
+// 	// const journalDto = { idUser }
+// 	// console.log(journalDto.idUser);
+// 	// axios({
+// 	// 	method: 'post',
+// 	// 	url: API_JOURNAL,
+// 	// 	// params: { idUser },
+// 	// 	data: journalDto,
+// 	// })
+// 	// 	.then(response => {
+// 	// 		const status = response.request.status;
 
-	// 		if (status === 200) {
-	// 			console.log('Journal ajouté avec succés !');
-	// 		}
-	// 		if (status !== 200) {
-	// 			console.log('Une erreur est survenue !');
-	// 		}
-	// 	})
-	// 	.catch(error => {
-	// 		console.log('Une erreur est survenue' + error);
-	// 	});
-}
+// 	// 		if (status === 200) {
+// 	// 			console.log('Journal ajouté avec succés !');
+// 	// 		}
+// 	// 		if (status !== 200) {
+// 	// 			console.log('Une erreur est survenue !');
+// 	// 		}
+// 	// 	})
+// 	// 	.catch(error => {
+// 	// 		console.log('Une erreur est survenue' + error);
+// 	// 	});
+// }
