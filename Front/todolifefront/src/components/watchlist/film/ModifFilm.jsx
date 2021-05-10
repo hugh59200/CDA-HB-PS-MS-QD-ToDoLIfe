@@ -1,10 +1,11 @@
+import "../../../assets/css/watchlist/film.css";
 
 import React, { useEffect } from "react";
-import "../../../assets/css/watchlist/film.css";
-import { useHistory } from "react-router-dom";
+
+import { API_FILMS } from "./../../../constant/API_BACK";
 import { URL_FILMS } from "./../../../constant/URL_CONST";
 import axios from "axios";
-import { API_FILMS } from "./../../../constant/API_BACK";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 function ModifFilm() {
@@ -26,7 +27,7 @@ function ModifFilm() {
     console.log(history.location);
     setFilmAct(history.location.filmEnQuestion);
     console.log(idFilm);
-  }, []);
+  }, [history.location, idFilm]);
   return (
     <div className="container-fluid marge-mobile">
     <div className="row justify-content-center">
