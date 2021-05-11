@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-
 import { PostRequest } from '../fetchUrl/PostRequest';
+import React from 'react';
 import moment from 'moment';
 
 export function BouttonValider(props) {
@@ -15,19 +14,24 @@ export function BouttonValider(props) {
 		humeur,
 		texte,
 	};
-
-	useEffect(() => {}, [props, dateJour, titre, humeur, texte]);
-
 	return (
 		<button
 			className="btn-form"
 			onClick={() => {
-				props.setshowList(true);
-				props.setajoutJour(false);
-				PostRequest(jour);
+				handleSubmit(props);
 			}}
 		>
 			valider
 		</button>
 	);
+
+	function handleSubmit(props) {
+		if (props.titre.length !== 0) {
+			props.setshowList(true);
+			props.setajoutJour(false);
+			PostRequest(jour);
+		} else {
+			props.setplaceholderTitre("n'oubliez pas le titre ici")
+		}
+	}
 }

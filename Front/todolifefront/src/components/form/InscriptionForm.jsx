@@ -161,9 +161,6 @@ function InscriptionForm() {
               {...register("dateNaissance")}
               type="date"
               placeholder="date de naissance"
-              // onMouseEnter={(e) => (e.target.type = "date")}
-              // onMouseLeave={(e) => (e.target.type = "text")}
-              // date-format="yyyy-MM-dd"
               pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"
               className="form-input date-input"
             />

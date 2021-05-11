@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 
 import { BouttonRevenir } from '../../bouttons/BouttonRevenir';
 import { BouttonValider } from '../../bouttons/BouttonValider';
@@ -11,13 +11,14 @@ export function AjouterJour(props) {
 	const [titre, settitre] = useState('');
 	const [moodInt, setmoodInt] = useState('');
 	const [resume, setresume] = useState('');
-
-	useEffect(() => {}, [props]);
-
+	const [placeholderTitre, setplaceholderTitre] = useState("mon titre ici");
 	return (
 		<>
 			<div className="creationJour">
-				<ChoixTitre settitre={settitre} />
+				<ChoixTitre 
+				settitre={settitre}
+				placeholderTitre={placeholderTitre}
+				 />
 				<ChoixMood setmoodInt={setmoodInt} />
 				<ChoixResume setresume={setresume} />
 			</div>
@@ -33,6 +34,7 @@ export function AjouterJour(props) {
 					titre={titre}
 					moodInt={moodInt}
 					resume={resume}
+					setplaceholderTitre={setplaceholderTitre}
 				/>
 			</div>
 		</>
@@ -45,7 +47,9 @@ function ChoixTitre(props) {
 			<input
 				type="text"
 				className="inputTitre"
-				placeholder="mon titre ici"
+				id={props.id}
+				placeholder= {props.placeholderTitre}
+				placeholderTextColor='red'
 				onChange={e => props.settitre(e.target.value)}
 			></input>
 		</div>
@@ -54,6 +58,7 @@ function ChoixTitre(props) {
 
 function ChoixMood(props) {
 	const mood = [mood4, mood3, mood2, mood1];
+	
 	return (
 		<div className="choixMood">
 			{mood.map((mood, i) => (
