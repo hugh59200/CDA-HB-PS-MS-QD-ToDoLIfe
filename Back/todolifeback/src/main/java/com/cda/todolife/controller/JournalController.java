@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.exception.JournalExistantException;
@@ -55,33 +54,29 @@ public class JournalController {
 		return this.journalService.findAll();
 	}
 
-	// create
-	@PostMapping("/journaux")
-	public ResponseEntity<JournalDto> create(@RequestBody JournalDto journalDto) throws JournalExistantException {
-		try {
-			this.journalService.add(journalDto);
-		} catch (JournalExistantException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(journalDto);
-	}
-
-	// create par userId
-	@PostMapping("/journaux/utilisateurs/{id}")
-	public ResponseEntity<JournalDto> createById(@RequestBody JournalDto journalDto, @RequestParam(value = "idUser") int idUser)
-			throws JournalExistantException, ResourceNotFoundException {
-//		public ResponseEntity<JournalDto> createById(@RequestBody JournalDto journalDto, @PathVariable int idUser) throws JournalExistantException {
+//	// create
+//	@PostMapping("/journaux")
+//	public ResponseEntity<JournalDto> create(@RequestBody JournalDto journalDto) throws JournalExistantException {
 //		try {
-//		UtilisateurDto userDto = this.utilisateurService.findByidUtilisateur(idUser);
-//		JournalDto journalDto = new JournalDto();
-//		journalDto.setUtilisateurDto(userDto);
-		System.out.println(journalDto);
-		System.out.println(idUser);
 //			this.journalService.add(journalDto);
 //		} catch (JournalExistantException e) {
 //			e.printStackTrace();
 //		}
-		return ResponseEntity.ok(journalDto);
+//		return ResponseEntity.ok(journalDto);
+//	}
+
+	// create par userId
+	@PostMapping("/journaux/utilisateurs")
+	public void createById(@RequestParam(value = "idUser") int idUser)
+			throws JournalExistantException, ResourceNotFoundException {
+		try {
+			UtilisateurDto userDto = this.utilisateurService.findByidUtilisateur(idUser);
+			JournalDto journalDto = new JournalDto();
+			journalDto.setUtilisateurDto(userDto);
+			this.journalService.add(journalDto);
+		} catch (JournalExistantException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// details by Id
