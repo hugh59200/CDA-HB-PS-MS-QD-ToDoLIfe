@@ -8,11 +8,20 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.dto.SerieDto;
+import com.cda.todolife.dto.WatchListDto;
+import com.cda.todolife.exception.LivreExistantException;
+import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.SerieExistanteException;
 import com.cda.todolife.exception.SerieIntrouvableException;
+import com.cda.todolife.exception.WatchListIntrouvableException;
+import com.cda.todolife.model.Livre;
 import com.cda.todolife.model.Serie;
+import com.cda.todolife.model.WatchList;
 import com.cda.todolife.repository.ISerieRepository;
+import com.cda.todolife.repository.IWatchListRepository;
 import com.cda.todolife.service.ISerieService;
 
 @Service
@@ -24,17 +33,40 @@ public class SerieServiceImpl implements ISerieService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	@Autowired
+	private IWatchListRepository watchlistService;
+
 //	ajouter une série
 	@Override
-	public void add(SerieDto serie) throws SerieExistanteException {
-		Optional<Serie> probEntOpt = this.serieDao.findById(serie.getIdSerie());
-		if (probEntOpt.isPresent()) {
-			throw new SerieExistanteException();
+	public void add(SerieDto serie, int id) throws SerieExistanteException, WatchListIntrouvableException {
+
+		Optional<WatchList> watchlistOpt = this.watchlistService.findByUtilisateurIdUtilisateur(id);
+
+		if (watchlistOpt.isEmpty()) {
+			throw new WatchListIntrouvableException();
 		} else {
-			this.serieDao.save(this.modelMapper.map(serie, Serie.class));
+			Optional<Serie> probEntOpt = this.serieDao.findById(serie.getIdSerie());
+			if (probEntOpt.isPresent()) {
+				throw new SerieExistanteException();
+			} else {
+				serie.setWatchListDto(this.modelMapper.map(watchlistOpt.get(), WatchListDto.class));
+				this.serieDao.save(this.modelMapper.map(serie, Serie.class));
+			}
 		}
 	}
 
+	// lister les series d'un utilisateur
+	@Override
+	public List<SerieDto> findAllByIdUtilisateur(int id) {
+		Optional<WatchList> watchlist = this.watchlistService.findByUtilisateurIdUtilisateur(id);
+		List<SerieDto> serieDao = new ArrayList<SerieDto>();
+		this.serieDao.findAllBywatchListIdWatchList(watchlist.get().getIdWatchList())
+				.forEach(res -> serieDao.add(this.modelMapper.map(res, SerieDto.class)));
+
+		return serieDao;
+	}
+	
+	
 // lister toutes les séries
 	@Override
 	public List<SerieDto> findAll() {
@@ -44,39 +76,42 @@ public class SerieServiceImpl implements ISerieService {
 	}
 
 //	trouver par id
-	@Override
-	public SerieDto findById(int id) throws SerieIntrouvableException {
-		return this.modelMapper.map(this.serieDao.findById(id).get(), SerieDto.class);
-	}
+	//	@Override
+	//	public SerieDto findById(int id) throws SerieIntrouvableException {
+	//	return this.modelMapper.map(this.serieDao.findById(id).get(), SerieDto.class);
+		//	}
 
 //	trouver par nom
-	@Override
-	public SerieDto findByName(String name) throws SerieIntrouvableException {
-		return this.modelMapper.map(this.serieDao.findByName(name), SerieDto.class);
-	}
+	//	@Override
+	//	public SerieDto findByName(String name) throws SerieIntrouvableException {
+	//		return this.modelMapper.map(this.serieDao.findByName(name), SerieDto.class);
+		//	}
 
 //	trouver par saison
-	@Override
-	public SerieDto findBySaison(int saison) throws SerieIntrouvableException {
-		return this.modelMapper.map(this.serieDao.findBySaison(saison), SerieDto.class);
-	}
+	//	@Override
+	//public SerieDto findBySaison(int saison) throws SerieIntrouvableException {
+	//	return this.modelMapper.map(this.serieDao.findBySaison(saison), SerieDto.class);
+	//}
 
 //	trouver par episode
-	@Override
-	public SerieDto findByEpisode(int episode) throws SerieIntrouvableException {
-		return this.modelMapper.map(this.serieDao.findByEpisode(episode), SerieDto.class);
-	}
+	//@Override
+	//	public SerieDto findByEpisode(int episode) throws SerieIntrouvableException {
+	//	return this.modelMapper.map(this.serieDao.findByEpisode(episode), SerieDto.class);
+	//}
 
 // mettre à jour une série
 	@Override
-	public void update(SerieDto serie) throws SerieIntrouvableException, SerieExistanteException {
-		try {
-			this.serieDao.findById(serie.getIdSerie()).orElseThrow(SerieIntrouvableException::new);
+	public void update(SerieDto serie, int idSerie) throws SerieIntrouvableException, SerieExistanteException {
+
+		Optional<Serie> serieTest = this.serieDao.findById(idSerie);
+
+		if (serieTest.get().getIdSerie() == serie.getIdSerie()) {
+			serie.setWatchListDto(this.modelMapper.map(serieTest.get().getWatchList(), WatchListDto.class));
 			this.serieDao.save(this.modelMapper.map(serie, Serie.class));
-		} catch (SerieIntrouvableException e) {
-			// TODO: handle exception
-			e.printStackTrace();
+		} else {
+			throw new SerieIntrouvableException();
 		}
+
 	}
 
 // supprimer une série
@@ -84,5 +119,31 @@ public class SerieServiceImpl implements ISerieService {
 	public void deleteById(int id) throws SerieIntrouvableException {
 		this.serieDao.findById(id).orElseThrow(SerieIntrouvableException::new);
 		this.serieDao.deleteById(id);
+	}
+
+
+
+	@Override
+	public SerieDto findById(int id) throws SerieIntrouvableException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SerieDto findByName(String nom) throws SerieIntrouvableException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SerieDto findBySaison(int saison) throws SerieIntrouvableException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SerieDto findByEpisode(int episode) throws SerieIntrouvableException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
