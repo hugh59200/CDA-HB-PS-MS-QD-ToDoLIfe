@@ -1,13 +1,11 @@
 import '../../assets/css/journal/MonjournalStyle.css';
 
+import { JournalExistant, demandeJournal } from './journalExistant/demandeJournal';
 import React, { useState } from 'react';
 
-import { API_JOURNAL } from '../../constant/API_BACK';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
-import { URL_HOME } from './../../constant/URL_CONST';
-import axios from 'axios';
 import { useHistory } from 'react-router';
 
 const MonJournal = () => {
@@ -21,39 +19,15 @@ const MonJournal = () => {
 	const [journalExiste, setjournalExiste] = useState();
 	const [showJourDetail, setshowJourDetail] = useState(false);
 	const history = useHistory();
+	JournalExistant(setjournalExiste);
 
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
 	}
-
-	JournalExistant(setjournalExiste);
-
-	console.log(journalExiste);
+	
 
 	if (!journalExiste) {
-		return (
-			<div className="questionJournal">
-				<h2>
-					Vous n'avez actuellement pas de journal, souhaitez-vous en créer un ?
-				</h2>
-				<div className="yesOrNo emplacement">
-					<button
-						onClick={() => {
-							CreateJournalByIdUser();
-						}}
-					>
-						oui
-					</button>
-					<button
-						onClick={() => {
-							history.push(URL_HOME);
-						}}
-					>
-						non
-					</button>
-				</div>
-			</div>
-		);
+		return demandeJournal(history);
 	} else {
 		return (
 			<div className="monJournal">
@@ -92,47 +66,3 @@ const MonJournal = () => {
 };
 
 export default MonJournal;
-
-function JournalExistant(setjournalExiste) {
-	const idUser = localStorage.getItem('id');
-
-	axios({
-		method: 'get',
-		url: API_JOURNAL + '/ ' + idUser + '/exist',
-	}).then(response => {
-		if (response.data === true) {
-			setjournalExiste(true);
-			// console.log(response.data);
-			console.log('journal deja existant');
-		} else {
-			setjournalExiste(false);
-			// CreateJournalByIdUser(idUser);
-			// console.log(response.data);
-			console.log('journal non existant');
-		}
-	});
-}
-
-function CreateJournalByIdUser() {
-	const idUser = localStorage.getItem('id');
-	const journalDto = { idUser };
-	axios({
-		method: 'post',
-		url: API_JOURNAL + '/utilisateurs',
-		data: journalDto,
-		params: { idUser },
-	})
-		.then(response => {
-			const status = response.request.status;
-
-			if (status === 200) {
-				console.log('Journal ajouté avec succés !');
-			}
-			if (status !== 200) {
-				console.log('Une erreur est survenue !');
-			}
-		})
-		.catch(error => {
-			console.log('Une erreur est survenue' + error);
-		});
-}

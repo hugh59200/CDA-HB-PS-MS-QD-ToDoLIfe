@@ -1,4 +1,4 @@
-import { API_JOURNAL } from '../../constant/API_BACK';
+import { API_JOURNAL } from '../../../constant/API_BACK';
 import axios from 'axios';
 
 export function JournalExistant() {
