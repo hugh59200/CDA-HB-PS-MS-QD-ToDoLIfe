@@ -25,7 +25,6 @@ export function BouttonValider(props) {
 				props.setshowList(true);
 				props.setajoutJour(false);
 				PostRequest(jour);
-				// window.location.reload();
 			}}
 		>
 			valider
