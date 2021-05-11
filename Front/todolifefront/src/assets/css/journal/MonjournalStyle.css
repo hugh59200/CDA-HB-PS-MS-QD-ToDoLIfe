@@ -8,10 +8,44 @@
   letter-spacing: 2px;
 }
 
+.questionJournal {
+  background-color: #0090E8;
+  height: 300px;
+  width: 800px;
+  margin: 200px auto;
+  padding: 20px;
+  letter-spacing: 2px;
+}
+
+.questionJournal>h2 {
+  height: 60%;
+  padding: 30px;
+}
+
+.questionJournal> .yesOrNo {
+  height: 40%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.questionJournal> .yesOrNo > button {
+  height: 40px;
+  width: 200px;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 2px;
+  border-radius: 30px;
+  color: white;
+  background-color: #14A7FF;
+  border: none;
+  padding: 5px;
+}
+
 .monJournal>.titreJournal {
   height: 10%;
 }
-.monJournal>.titreJournal> h2 {
+
+.monJournal>.titreJournal>h2 {
   font-size: 40px;
 }
 
@@ -34,6 +68,7 @@
   margin: 15px auto;
   overflow: auto;
 }
+
 .journalItem::-webkit-scrollbar {
   width: 5px;
   height: 8px;
@@ -223,7 +258,7 @@
 
 
 
-.jourdetails> button{
+.jourdetails>button {
   height: 10%;
   width: 200px;
   margin: 5% 32%;

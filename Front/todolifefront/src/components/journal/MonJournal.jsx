@@ -6,7 +6,9 @@ import { API_JOURNAL } from '../../constant/API_BACK';
 import { Affichage } from './fonctions/affichages/Affichage';
 import { FetchUrlFunction } from './fonctions/fetchUrl/FetchUrlFunction';
 import { Selects } from './fonctions/selects/SelectDate';
+import { URL_HOME } from './../../constant/URL_CONST';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 const MonJournal = () => {
 	const [mois, setmois] = useState(new Date().getMonth() + 1);
@@ -18,6 +20,7 @@ const MonJournal = () => {
 	const [ajoutJour, setajoutJour] = useState(false);
 	const [journalExiste, setjournalExiste] = useState();
 	const [showJourDetail, setshowJourDetail] = useState(false);
+	const history = useHistory();
 
 	async function FetchUrl(mois, annee) {
 		FetchUrlFunction(mois, annee, setLoading, setData, setmois, setannee);
@@ -28,7 +31,29 @@ const MonJournal = () => {
 	console.log(journalExiste);
 
 	if (!journalExiste) {
-		return <div>journal a creer</div>;
+		return (
+			<div className="questionJournal">
+				<h2>
+					Vous n'avez actuellement pas de journal, souhaitez-vous en créer un ?
+				</h2>
+				<div className="yesOrNo emplacement">
+					<button
+						onClick={() => {
+							CreateJournalByIdUser();
+						}}
+					>
+						oui
+					</button>
+					<button
+						onClick={() => {
+							history.push(URL_HOME);
+						}}
+					>
+						non
+					</button>
+				</div>
+			</div>
+		);
 	} else {
 		return (
 			<div className="monJournal">
@@ -88,26 +113,26 @@ function JournalExistant(setjournalExiste) {
 	});
 }
 
-// function CreateJournalByIdUser(idUser) {
-// 	// const journalDto = { idUser }
-// 	// console.log(journalDto.idUser);
-// 	// axios({
-// 	// 	method: 'post',
-// 	// 	url: API_JOURNAL,
-// 	// 	// params: { idUser },
-// 	// 	data: journalDto,
-// 	// })
-// 	// 	.then(response => {
-// 	// 		const status = response.request.status;
+function CreateJournalByIdUser() {
+	const idUser = localStorage.getItem('id');
+	const journalDto = { idUser };
+	axios({
+		method: 'post',
+		url: API_JOURNAL + '/utilisateurs',
+		data: journalDto,
+		params: { idUser },
+	})
+		.then(response => {
+			const status = response.request.status;
 
-// 	// 		if (status === 200) {
-// 	// 			console.log('Journal ajouté avec succés !');
-// 	// 		}
-// 	// 		if (status !== 200) {
-// 	// 			console.log('Une erreur est survenue !');
-// 	// 		}
-// 	// 	})
-// 	// 	.catch(error => {
-// 	// 		console.log('Une erreur est survenue' + error);
-// 	// 	});
-// }
+			if (status === 200) {
+				console.log('Journal ajouté avec succés !');
+			}
+			if (status !== 200) {
+				console.log('Une erreur est survenue !');
+			}
+		})
+		.catch(error => {
+			console.log('Une erreur est survenue' + error);
+		});
+}
