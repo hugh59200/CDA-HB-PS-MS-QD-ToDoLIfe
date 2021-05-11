@@ -54,16 +54,6 @@ public class JournalController {
 		return this.journalService.findAll();
 	}
 
-//	// create
-//	@PostMapping("/journaux")
-//	public ResponseEntity<JournalDto> create(@RequestBody JournalDto journalDto) throws JournalExistantException {
-//		try {
-//			this.journalService.add(journalDto);
-//		} catch (JournalExistantException e) {
-//			e.printStackTrace();
-//		}
-//		return ResponseEntity.ok(journalDto);
-//	}
 
 	// create par userId
 	@PostMapping("/journaux/utilisateurs")

@@ -27,7 +27,7 @@ const MonJournal = () => {
 	
 
 	if (!journalExiste) {
-		return demandeJournal(history);
+		return demandeJournal(history, setjournalExiste);
 	} else {
 		return (
 			<div className="monJournal">
