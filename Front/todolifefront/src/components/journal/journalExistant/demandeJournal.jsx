@@ -3,7 +3,7 @@ import React from 'react';
 import { URL_HOME } from '../../../constant/URL_CONST';
 import axios from 'axios';
 
-export function demandeJournal(history) {
+export function demandeJournal(history, setjournalExiste) {
 	
 	return (
 		<div className="questionJournal">
@@ -13,7 +13,7 @@ export function demandeJournal(history) {
 			<div className="yesOrNo emplacement">
 				<button
 					onClick={() => {
-						CreateJournalByIdUser();
+						CreateJournalByIdUser(setjournalExiste);
 					}}
 				>
 					oui
@@ -45,7 +45,7 @@ export function JournalExistant(setjournalExiste) {
 		}
 	});
 }
-function CreateJournalByIdUser() {
+function CreateJournalByIdUser(setjournalExiste) {
 	const idUser = localStorage.getItem('id');
 	axios({
 		method: 'post',
@@ -57,6 +57,7 @@ function CreateJournalByIdUser() {
 
 			if (status === 200) {
 				console.log('Journal ajouté avec succés !');
+				setjournalExiste(true);
 			}
 			if (status !== 200) {
 				console.log('Une erreur est survenue !');

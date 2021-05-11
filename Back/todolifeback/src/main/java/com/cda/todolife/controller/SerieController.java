@@ -4,27 +4,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.ConstraintViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.dto.SerieDto;
-import com.cda.todolife.exception.LivreExistantException;
-import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.SerieExistanteException;
 import com.cda.todolife.exception.SerieIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
@@ -90,21 +81,21 @@ public class SerieController {
 	// ResponseEntity.ok(serieDto);
 	//}
 
-	// update
-	@PutMapping("/series")
-	public ResponseEntity<SerieDto> update(@RequestBody SerieDto SerieDto, @PathVariable("idSerie") int idSerie)
-			throws SerieIntrouvableException {
-		try {
-			serieService.update(SerieDto, idSerie);
-		} catch (SerieIntrouvableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SerieExistanteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(SerieDto);
-	}
+//	// update
+//	@PutMapping("/series")
+//	public ResponseEntity<SerieDto> update(@RequestBody SerieDto SerieDto, @PathVariable("idSerie") int idSerie)
+//			throws SerieIntrouvableException {
+//		try {
+//			serieService.update(SerieDto);
+//		} catch (SerieIntrouvableException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SerieExistanteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return ResponseEntity.ok(SerieDto);
+//	}
 
 	// delete
 	@DeleteMapping("/series/{id}")
