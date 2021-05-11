@@ -15,5 +15,5 @@ public class SerieDto {
 	private String name;
 	private int saison;
 	private int episode;
-	private WatchListDto watchList;
+	private WatchListDto watchListDto;
 }

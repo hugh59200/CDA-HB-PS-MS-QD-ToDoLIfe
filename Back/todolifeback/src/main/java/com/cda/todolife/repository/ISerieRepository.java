@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.cda.todolife.dto.SerieDto;
 import com.cda.todolife.model.Serie;
 
 public interface ISerieRepository extends CrudRepository<Serie, Integer> {
@@ -15,4 +16,6 @@ public interface ISerieRepository extends CrudRepository<Serie, Integer> {
 	Serie findBySaison(int saison);
 	
 	Serie findByEpisode(int episode);
+
+	Iterable<SerieDto> findAllBywatchListIdWatchList(int idWatchList);
 }
