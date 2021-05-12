@@ -3,6 +3,8 @@ import '../../../assets/css/watchlist/film.css'
 import { useHistory } from 'react-router-dom';
 import { URL_NEW_FILM, URL_LIVRES, URL_SERIES } from './../../../constant/URL_CONST';
 import ListeFilms from "./ListeFilms";
+import "../../../assets/css/watchlist/film.css"
+
 
 function Films() {
   const history = useHistory();

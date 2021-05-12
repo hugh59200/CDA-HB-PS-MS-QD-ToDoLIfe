@@ -115,6 +115,8 @@ function ModifLivre() {
                     console.log(erreur);
                   });
                 history.push(URL_LIVRES);
+                window.location.reload();
+
               }}
             >
               Enregistrer

@@ -95,7 +95,7 @@ public class SerieController {
 	public ResponseEntity<SerieDto> update(@RequestBody SerieDto SerieDto, @PathVariable("idSerie") int idSerie)
 			throws SerieIntrouvableException {
 		try {
-			serieService.update(SerieDto);
+			serieService.update(SerieDto, idSerie);
 		} catch (SerieIntrouvableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
