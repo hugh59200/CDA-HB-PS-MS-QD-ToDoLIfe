@@ -24,14 +24,14 @@
   padding: 30px;
 }
 
-.questionJournal> .yesOrNo {
+.questionJournal>.yesOrNo {
   height: 40%;
   display: flex;
   justify-content: space-around;
 }
 
-.questionJournal> .yesOrNo > button {
-   height: 40px;
+.questionJournal>.yesOrNo>button {
+  height: 40px;
   width: 200px;
   font-size: 20px;
   text-align: center;
@@ -298,14 +298,21 @@
   justify-content: space-around;
 }
 
-.evenement > p{
+.evenement>p {
   width: 70%;
 }
 
-.evenement > .updateIcon{
+.evenement>.updateIcon {
   margin-bottom: 10px;
-  width: auto;
+  width: 25px;
   height: auto;
+  transform: scale(1);
+  transition: .3s ease-in-out;
+}
+
+.evenement>.updateIcon:hover {
+  color: #0090E8;
+  transform: scale(1.5);
 }
 
 .evenement:hover {
