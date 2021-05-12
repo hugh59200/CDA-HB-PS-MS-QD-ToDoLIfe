@@ -4,23 +4,24 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { URL_MODIF_FILM } from "./../../../constant/URL_CONST";
-import { API_FILMS } from './../../../constant/API_BACK';
+import { URL_MODIF_SERIE } from "./../../../constant/URL_CONST";
+import {API_SERIES } from './../../../constant/API_BACK';
 import "../../../assets/css/watchlist/film.css";
 
-const ListeFilms = () => {
+
+const ListeSeries = () => {
   var idUtilisateur = localStorage.getItem("id");
   const history = useHistory();
-  const [ListeFilm, setListeFilm] = useState([]);
+  const [ListeSerie, setListeSerie] = useState([]);
 
   useEffect(() => {
     axios
-      .get(API_FILMS + "/utilisateurs/" + idUtilisateur)
+      .get(API_SERIES + "/utilisateurs/" + idUtilisateur)
       .then(function (response) {
         if (response.status === 200) {
-            setListeFilm(response.data);
-            ListeFilm.map((Film, i) => {
-            console.log(Film);
+            setListeSerie(response.data);
+            ListeSerie.map((Serie, i) => {
+            console.log(Serie);
           });
 
           console.log(response.data);
@@ -35,26 +36,27 @@ const ListeFilms = () => {
     <>
     
       <div className="row w-100 m-auto justify-content-around">
-        {ListeFilm.map((films, i) => (
+        {ListeSerie.map((series, i) => (
           <>
             <div className="ajout-film row mb-1">
               <div
                 className="titre-film col-8 col-md-10 col-lg-10"
                 onClick={() => {
-                  let filmEnQuestion = {
-                    avis: films.avis,
-                    idFilm: films.idFilm,
-                    moment: films.moment,
-                    name: films.name,
-                  };
-
-                  history.push({
-                    pathname: URL_MODIF_FILM,
-                    filmEnQuestion: filmEnQuestion,
-                  });
-                }}
+                    let serieEnQuestion = {
+                      avis: series.avis,
+                      idSerie: series.idSerie,
+                      saison: series.saison,
+                      episode: series.episode,
+                      name: series.name,
+                    };
+                
+                    history.push({
+                      pathname: URL_MODIF_SERIE,
+                      serieEnQuestion: serieEnQuestion,
+                    });
+                  }}
               >
-                <span className="text-white">{films.name}</span>
+                <span className="text-white">{series.name}</span>
               </div>   
               <div className="icone-suppr-edit col-4 col-lg-2 col-md-2">
                 <button
@@ -62,7 +64,7 @@ const ListeFilms = () => {
                   onClick={() => {
                     axios({
                       method: "delete",
-                      url: API_FILMS + "/" + films.idFilm,
+                      url: API_SERIES + "/" + series.idSerie,
                     })
                       .then(function (reponse) {
                         //On traite la suite une fois la réponse obtenue
@@ -83,4 +85,6 @@ const ListeFilms = () => {
     </>
   );
 };
-export default ListeFilms;
+export default ListeSeries;
+
+

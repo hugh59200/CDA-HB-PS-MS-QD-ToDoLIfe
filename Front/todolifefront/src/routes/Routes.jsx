@@ -29,6 +29,7 @@ import {
   URL_FILMS,
   URL_MODIF_LIVRE,
   URL_MODIF_FILM,
+  URL_MODIF_SERIE,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -43,6 +44,8 @@ import NewFilm from './../components/watchlist/film/NewFilm';
 import Films from './../components/watchlist/film/Films';
 import NewSerie from './../components/watchlist/series/NewSerie';
 import Series from './../components/watchlist/series/Series';
+import ModifSerie from './../components/watchlist/series/ModifSerie';
+
 import NewLivre from './../components/watchlist/livres/NewLivre';
 import Livres from "../components/watchlist/livres/Livres";
 import TodoListView from "../components/todoList/liste/TodoListView";
@@ -110,6 +113,8 @@ class Routes extends Component {
           <PrivateRoute path={URL_MODIF_LIVRE} component={ModifLivre} />
           <PrivateRoute path={URL_SERIES} component={Series} />
           <PrivateRoute path={URL_NEW_SERIE} component={NewSerie} />
+          <PrivateRoute path={URL_MODIF_SERIE} component={ModifSerie} />
+
           <PrivateRoute path={URL_FILMS} component={Films} />
           <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />

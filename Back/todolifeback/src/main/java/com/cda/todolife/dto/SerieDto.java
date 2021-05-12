@@ -15,5 +15,6 @@ public class SerieDto {
 	private String name;
 	private int saison;
 	private int episode;
+	private String avis; 
 	private WatchListDto watchListDto;
 }

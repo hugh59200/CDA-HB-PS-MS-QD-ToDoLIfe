@@ -1,16 +1,18 @@
 import React from "react";
 import '../../../assets/css/watchlist/film.css'
 import { useHistory } from 'react-router-dom';
-import { URL_NEW_SERIE, URL_LIVRES, URL_FILMS } from './../../../constant/URL_CONST';
+import { URL_NEW_SERIE, URL_FILMS, URL_LIVRES } from './../../../constant/URL_CONST';
+import ListeSeries from "./ListeSeries";
+import "../../../assets/css/watchlist/film.css"
 
 
 function Series() {
-const history=useHistory();
+  const history = useHistory();
   return (
 
     <div className="container-fluid largeur">
       <div className="row justify-content-center largeur-titre">
-        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test" onClick={() => { history.push(URL_FILMS) }}>FILMS</button>
+        <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test"onClick={() => { history.push(URL_FILMS) }}>FILMS</button>
         <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test2">SERIES</button>
         <button className="m-2 col-2 col-md-2 col-lg-2 btn btn-test" onClick={() => { history.push(URL_LIVRES) }}>LIVRES</button>
       </div>
@@ -19,18 +21,11 @@ const history=useHistory();
         <div className="col-12 col-md-6 col-lg-6 bloc-film">
           <div>
             <button className="btn btn-success mt-2 mb-2 text-center" onClick={() => { history.push(URL_NEW_SERIE) }}  >Ajouter</button>
-
           </div>
-          <div className="ajout-film row">
-            <div className="titre-film col-6">
-              <span className="text-white">Interstellar</span>
-            </div>
-            <div className="icone-suppr-edit col-6">
-              <button className="boutton-modifier" onClick={() => { history.push(URL_NEW_SERIE) }}  >   </button>
-              <button className="boutton-supprimer" onClick={() => { history.push(URL_NEW_SERIE) }}  >   </button>
-            </div>
 
-          </div>
+      
+          <ListeSeries />
+
         </div>
       </div>
     </div>
@@ -39,3 +34,4 @@ const history=useHistory();
 
 
 export default Series;
+

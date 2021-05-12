@@ -25,6 +25,7 @@ public class Serie {
 	private String name;
 	private int saison;
 	private int episode;
+	private String avis;
 
 	@ManyToOne
 	@JoinColumn(name = "id_watch_list", nullable = false)

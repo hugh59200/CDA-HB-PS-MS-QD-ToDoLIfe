@@ -43,6 +43,8 @@ export const URL_MODIF_FILM = '/modiffilm'
 
 export const URL_SERIES = '/series'
 export const URL_NEW_SERIE = '/newserie'
+export const URL_MODIF_SERIE = '/modifserie'
+
 
 
 export const URL_LIVRES = '/livres'
