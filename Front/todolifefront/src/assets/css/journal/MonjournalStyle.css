@@ -1,12 +1,14 @@
 .monJournal {
   background-color: #0090E8;
   height: 700px;
-  width: 600px;
+  width: 700px;
   margin: 50px auto;
   padding: 20px;
   border-top-left-radius: 80px 80px;
   letter-spacing: 2px;
 }
+
+
 
 .questionJournal {
   background-color: #0090E8;
@@ -277,7 +279,7 @@
 }
 
 .date {
-  width: 35%;
+  width: 30%;
   padding-top: 10px;
   font-size: 17px;
   font-style: italic;
@@ -288,10 +290,22 @@
   font-weight: bold;
   background-color: rgb(72, 173, 255);
   border-radius: 10px;
-  width: 65%;
+  width: 70%;
   height: 60px;
   padding-top: 15px;
   font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.evenement > p{
+  width: 70%;
+}
+
+.evenement > .updateIcon{
+  margin-bottom: 10px;
+  width: auto;
+  height: auto;
 }
 
 .evenement:hover {
