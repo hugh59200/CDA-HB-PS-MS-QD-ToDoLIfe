@@ -16,7 +16,7 @@ const MonJournal = () => {
 	const [jourData, setjourData] = useState('');
 	const [data, setData] = useState([]);
 	const [ajoutJour, setajoutJour] = useState(false);
-	const [journalExiste, setjournalExiste] = useState();
+	const [journalExiste, setjournalExiste] = useState(true);
 	const [showJourDetail, setshowJourDetail] = useState(false);
 	const history = useHistory();
 	JournalExistant(setjournalExiste);

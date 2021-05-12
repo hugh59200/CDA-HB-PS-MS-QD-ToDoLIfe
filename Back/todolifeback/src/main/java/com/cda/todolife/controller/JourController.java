@@ -103,15 +103,15 @@ public class JourController {
 
 	// update
 	@PutMapping("/jour")
-	public ResponseEntity<JourDto> update(@RequestBody JourDto list) throws JourIntrouvableException {
+	public ResponseEntity<JourDto> update(@RequestBody JourDto jourDto) throws JourIntrouvableException {
 		try {
-			jourService.update(list);
+			jourService.update(jourDto);
 		} catch (JourIntrouvableException e) {
 			e.printStackTrace();
 		} catch (JourExistantException e) {
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(list);
+		return ResponseEntity.ok(jourDto);
 	}
 
 	// delete

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { FormatDate } from '../../autres/FormatDate';
+import updateJour from '../../../../../assets/img/modifier.png';
 
 export function ListerJour(props) {
 	const listJour = [...props.data];
@@ -8,8 +9,7 @@ export function ListerJour(props) {
 		return new Date(b.dateJour) - new Date(a.dateJour);
 	});
 
-	useEffect(() => {
-  }, [props]);
+	useEffect(() => {}, [props]);
 
 	return (
 		<>
@@ -25,7 +25,10 @@ export function ListerJour(props) {
 						key={data.idJour}
 					>
 						<div className="date">{FormatDate(data.dateJour)}</div>
-						<div className="evenement">{data.titre}</div>
+						<div className="evenement">
+							<p>{data.titre}</p>
+							<img src={updateJour} alt="" className="updateIcon" />
+						</div>
 					</div>
 				);
 			})}
