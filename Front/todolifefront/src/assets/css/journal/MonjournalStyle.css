@@ -289,21 +289,21 @@
   margin: 20px;
 }
 
-.textJour>p {
+.textJour> p {
+  background-color: rgb(72, 173, 255);
   border-top-left-radius: 20px;
   font-size: 20px;
-  height: 20%;
+  height: 100%;
   padding: 20px;
   vertical-align: middle;
-}
-
-.textJour>p {
-  height: 100%;
-  background-color: rgb(72, 173, 255);
   padding: 30px;
 }
 
-
+/* .inputTitreUpdate{
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+} */
 
 .jourdetails>button {
   height: 10%;

@@ -16,6 +16,7 @@ export function DetailJour(props) {
 		props.jourData.titre,
 	);
 	const [moodUpdateValue, setmoodUpdateValue] = useState();
+	const [resumeUpdate, setresumeUpdate] = useState(false);
 	const [resumeUpdateValue, setresumeUpdateValue] = useState();
 
 	return (
@@ -64,7 +65,27 @@ export function DetailJour(props) {
 				</div>
 			</div>
 			<div className="textJour">
-				<p className="jourDataTexte">{props.jourData.texte}</p>
+				{props.updateJour && !resumeUpdate && (
+					<p
+						className="jourDataTexte"
+						onClick={() => {
+							setresumeUpdate(true);
+						}}
+					>
+						{props.jourData.texte}
+					</p>
+				)}
+				{props.updateJour && resumeUpdate && (
+					<div className="choixResume">
+						<textarea
+							name=""
+							cols="30"
+							rows="10"
+							placeholder="Alors cette journée ?"
+							onChange={e => props.setresumeUpdateValue(e.target.value)}
+						></textarea>
+					</div>
+				)}
 			</div>
 			<div className="deuxBoutons">
 				<BouttonRevenir
@@ -75,13 +96,13 @@ export function DetailJour(props) {
 				/>
 				{props.updateJour && (
 					<BouttonModifier
-					titreUpdateValue={titreUpdateValue}
-					moodUpdateValue={moodUpdateValue}
-					resumeUpdateValue={resumeUpdateValue}
-					// setupdateJour={props.setupdateJour}
-					// setshowList={props.setshowList}
-					// setshowJourDetail={props.setshowJourDetail}
-					// setajoutJour={props.setajoutJour}
+						titreUpdateValue={titreUpdateValue}
+						moodUpdateValue={moodUpdateValue}
+						resumeUpdateValue={resumeUpdateValue}
+						// setupdateJour={props.setupdateJour}
+						// setshowList={props.setshowList}
+						// setshowJourDetail={props.setshowJourDetail}
+						// setajoutJour={props.setajoutJour}
 					/>
 				)}
 			</div>
