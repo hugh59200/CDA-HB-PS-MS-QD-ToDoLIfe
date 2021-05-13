@@ -11,9 +11,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Mood } from '../../autres/Mood';
 
 export function DetailJour(props) {
-	const [titreUpdate, settitreUpdate] = useState(props.jourData.titre);
-	const [moodUpdate, setmoodUpdate] = useState();
-	const [resumeUpdate, setresumeUpdate] = useState();
+	const [titreUpdate, settitreUpdate] = useState(false);
+	const [titreUpdateValue, settitreUpdateValue] = useState(
+		props.jourData.titre,
+	);
+	const [moodUpdateValue, setmoodUpdateValue] = useState();
+	const [resumeUpdateValue, setresumeUpdateValue] = useState();
 
 	return (
 		<div className="jourdetails">
@@ -36,25 +39,27 @@ export function DetailJour(props) {
 					)}
 				</div>
 				<div className="titreJour">
-					<p>{titreUpdate}</p>
-					{props.updateJour && titreUpdate && (
-						<FontAwesomeIcon
-							icon={faPen}
-							className="updateTitre"
-							onClick={() => {
-								settitreUpdate();
-							}}
-						/>
-					)}
 					{props.updateJour && !titreUpdate && (
-							<input
-								type="text"
-								className="inputTitreUpdate"
-								id={props.id}
-								placeholder= "nouveau titre"
-								placeholderTextColor="red"
-								// onChange={e => settitreUpdate(e.target.value)}
-							></input>
+						<>
+							<p>{titreUpdateValue}</p>
+							<FontAwesomeIcon
+								icon={faPen}
+								className="updateTitre"
+								onClick={() => {
+									settitreUpdate(true);
+								}}
+							/>
+						</>
+					)}
+					{props.updateJour && titreUpdate && (
+						<input
+							type="text"
+							className="inputTitreUpdate"
+							id={props.id}
+							placeholder="nouveau titre"
+							placeholderTextColor="red"
+							onChange={e => settitreUpdateValue(e.target.value)}
+						></input>
 					)}
 				</div>
 			</div>
@@ -70,6 +75,9 @@ export function DetailJour(props) {
 				/>
 				{props.updateJour && (
 					<BouttonModifier
+					titreUpdateValue={titreUpdateValue}
+					moodUpdateValue={moodUpdateValue}
+					resumeUpdateValue={resumeUpdateValue}
 					// setupdateJour={props.setupdateJour}
 					// setshowList={props.setshowList}
 					// setshowJourDetail={props.setshowJourDetail}
