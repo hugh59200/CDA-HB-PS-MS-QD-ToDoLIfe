@@ -16,7 +16,8 @@ export function EmptyOrList(props) {
 				data={props.data}
 				setjourData={props.setjourData}
 				setshowList={props.setshowList}
-				setshowJourDetail={props.setshowJourDetail} />
+				setshowJourDetail={props.setshowJourDetail}
+				setupdateJour={props.setupdateJour} />
 		)}
 	</div>;
 }

@@ -6,7 +6,8 @@ import { DetailJour } from './detailsJour/DetailJour';
 
 export function Affichage(props) {
 	const [ajoutJour, setajoutJour] = useState(false);
-
+	const [updateJour, setupdateJour] = useState(false);
+	
 	useEffect(() => {
   }, [props, ajoutJour]);
 	
@@ -20,6 +21,7 @@ export function Affichage(props) {
 					setshowList={props.setshowList}
 					setshowJourDetail={props.setshowJourDetail}
 					setajoutJour={setajoutJour}
+					setupdateJour={setupdateJour}
 				/>
 			)}
 
@@ -29,6 +31,7 @@ export function Affichage(props) {
 					setshowList={props.setshowList}
 					setshowJourDetail={props.setshowJourDetail}
 					setajoutJour={setajoutJour}
+					updateJour={updateJour}
 				/>
 			)}
 
