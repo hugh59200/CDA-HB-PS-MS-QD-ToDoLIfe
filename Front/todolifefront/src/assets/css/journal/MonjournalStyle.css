@@ -15,7 +15,7 @@
 }
 
 .jourData>.fleche:hover {
-  color: #14A7FF;
+  color: rgb(213, 214, 116);
 }
 
 
@@ -158,6 +158,16 @@
 .choixTitre>input::placeholder {
   font-style: italic;
   text-align: center;
+}
+
+.inputTitreUpdate{
+  background-color: #1fa1fd;
+  border-radius: 10px;
+  height: 50px;
+  text-align: center;
+  color: white;
+  border: none;
+  outline:none;
 }
 
 .choixMood {
