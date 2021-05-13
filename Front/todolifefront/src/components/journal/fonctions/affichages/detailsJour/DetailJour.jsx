@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
 	faArrowAltCircleLeft,
 	faArrowAltCircleRight,
@@ -8,9 +9,12 @@ import { BouttonModifier } from './../../bouttons/BouttonModifier';
 import { BouttonRevenir } from '../../bouttons/BouttonRevenir';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Mood } from '../../autres/Mood';
-import React from 'react';
 
 export function DetailJour(props) {
+	const [titreUpdate, settitreUpdate] = useState(props.jourData.titre);
+	const [moodUpdate, setmoodUpdate] = useState();
+	const [resumeUpdate, setresumeUpdate] = useState();
+
 	return (
 		<div className="jourdetails">
 			<div className="enteteJour">
@@ -32,15 +36,25 @@ export function DetailJour(props) {
 					)}
 				</div>
 				<div className="titreJour">
-					<p>{props.jourData.titre}</p>
-					{props.updateJour && (
+					<p>{titreUpdate}</p>
+					{props.updateJour && titreUpdate && (
 						<FontAwesomeIcon
 							icon={faPen}
 							className="updateTitre"
 							onClick={() => {
-								props.setupdateJour(true);
+								settitreUpdate();
 							}}
 						/>
+					)}
+					{props.updateJour && !titreUpdate && (
+							<input
+								type="text"
+								className="inputTitreUpdate"
+								id={props.id}
+								placeholder= "nouveau titre"
+								placeholderTextColor="red"
+								// onChange={e => settitreUpdate(e.target.value)}
+							></input>
 					)}
 				</div>
 			</div>
