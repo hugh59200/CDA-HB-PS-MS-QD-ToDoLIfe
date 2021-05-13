@@ -8,7 +8,15 @@
   letter-spacing: 2px;
 }
 
+.jourData > .fleche {
+  width: 30px;
+  height: auto;
+  margin: 10px 30px;
+}
 
+.jourData > .fleche:hover {
+  color: #14A7FF;
+}
 
 .questionJournal {
   background-color: #0090E8;
