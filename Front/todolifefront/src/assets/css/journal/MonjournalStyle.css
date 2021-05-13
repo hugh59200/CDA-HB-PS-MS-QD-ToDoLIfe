@@ -8,15 +8,17 @@
   letter-spacing: 2px;
 }
 
-.jourData > .fleche {
+.jourData>.fleche {
   width: 30px;
   height: auto;
   margin: 10px 30px;
 }
 
-.jourData > .fleche:hover {
+.jourData>.fleche:hover {
   color: #14A7FF;
 }
+
+
 
 .questionJournal {
   background-color: #0090E8;
@@ -232,8 +234,33 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.titreJour {
-  padding-top: 50px;
+.enteteJour>.jourData {
+  width: 40%;
+}
+
+.enteteJour>.titreJour {
+  width: 60%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.titreJour> p {
+ padding: 15px;
+}
+
+.titreJour>.updateTitre {
+  margin: 20px 0px;
+  height: 15px;
+  width: auto;
+  transform: scale(1);
+  transition: .3s ease-in-out;
+}
+
+.titreJour>.updateTitre:hover {
+  color: rgb(213, 214, 116);
+  transform: scale(1.5);
 }
 
 .enteteJour>div {

@@ -1,10 +1,11 @@
 import {
 	faArrowAltCircleLeft,
 	faArrowAltCircleRight,
+	faPen,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { BouttonModifier } from './../../bouttons/BouttonModifier';
 import { BouttonRevenir } from '../../bouttons/BouttonRevenir';
-import { BouttonValider } from './../../bouttons/BouttonValider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Mood } from '../../autres/Mood';
 import React from 'react';
@@ -30,7 +31,18 @@ export function DetailJour(props) {
 						/>
 					)}
 				</div>
-				<div className="titreJour">{props.jourData.titre}</div>
+				<div className="titreJour">
+					<p>{props.jourData.titre}</p>
+					{props.updateJour && (
+						<FontAwesomeIcon
+							icon={faPen}
+							className="updateTitre"
+							onClick={() => {
+								props.setupdateJour(true);
+							}}
+						/>
+					)}
+				</div>
 			</div>
 			<div className="textJour">
 				<p className="jourDataTexte">{props.jourData.texte}</p>
@@ -40,9 +52,11 @@ export function DetailJour(props) {
 					setshowList={props.setshowList}
 					setshowJourDetail={props.setshowJourDetail}
 					setajoutJour={props.setajoutJour}
+					setupdateJour={props.setupdateJour}
 				/>
 				{props.updateJour && (
-					<BouttonValider
+					<BouttonModifier
+					// setupdateJour={props.setupdateJour}
 					// setshowList={props.setshowList}
 					// setshowJourDetail={props.setshowJourDetail}
 					// setajoutJour={props.setajoutJour}
