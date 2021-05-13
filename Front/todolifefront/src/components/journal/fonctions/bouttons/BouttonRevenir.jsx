@@ -12,6 +12,7 @@ export function BouttonRevenir(props) {
 					props.setshowList(true);
 					props.setshowJourDetail(false);
 					props.setajoutJour(false);
+					props.setupdateJour(false)
 				}}
 			>
 				revenir
