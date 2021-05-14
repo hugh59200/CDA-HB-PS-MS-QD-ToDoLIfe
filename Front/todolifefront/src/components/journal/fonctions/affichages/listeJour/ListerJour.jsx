@@ -8,7 +8,7 @@ export function ListerJour(props) {
 	listJour.sort(function (a, b) {
 		return new Date(b.dateJour) - new Date(a.dateJour);
 	});
-
+	
 	return (
 		<>
 			{listJour.map(data => {
@@ -30,6 +30,7 @@ export function ListerJour(props) {
 								className="updateIcon"
 								onClick={() => {
 									props.setupdateJour(true);
+									props.setdateUpdatevalue(data.dateJour)
 								}}
 							/>
 						</div>

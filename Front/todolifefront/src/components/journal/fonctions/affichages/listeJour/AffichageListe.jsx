@@ -23,6 +23,7 @@ export function AffichageListe(props) {
 				setshowList={props.setshowList}
 				setshowJourDetail={props.setshowJourDetail}
 				setupdateJour={props.setupdateJour}
+				setdateUpdatevalue={props.setdateUpdatevalue}
 			/>
 			{!jourExistant && (
 				<BouttonAjouter
