@@ -12,7 +12,7 @@ import { Mood } from '../../autres/Mood';
 export function DetailJour(props) {
 	const [avertissement, setavertissement] = useState('');
 	const [titreUpdateValue, settitreUpdateValue] = useState('');
-	// const [moodUpdateValue, setmoodUpdateValue] = useState();
+	const [moodUpdateValue, setmoodUpdateValue] = useState(props.jourData.humeur);
 	const [resumeUpdateValue, setresumeUpdateValue] = useState('');
 
 	if (!props.updateJour) {
@@ -44,17 +44,26 @@ export function DetailJour(props) {
 			<div className="jourdetails">
 				<div className="enteteJour">
 					<div className="jourData">
-						<FontAwesomeIcon
-							icon={faArrowAltCircleLeft}
-							className="fleche"
-							onClick={() => {}}
-						/>
-						<Mood moodLevel={props.jourData.humeur} />
-						<FontAwesomeIcon
-							icon={faArrowAltCircleRight}
-							className="fleche"
-							onClick={() => {}}
-						/>
+						{moodUpdateValue > 1 && (
+							<FontAwesomeIcon
+								icon={faArrowAltCircleLeft}
+								className="fleche"
+								onClick={() => {
+									HumeurNeg(moodUpdateValue, setmoodUpdateValue);
+								}}
+							/>
+						)}
+
+						<Mood moodLevel={moodUpdateValue} />
+						{moodUpdateValue < 4 && (
+							<FontAwesomeIcon
+								icon={faArrowAltCircleRight}
+								className="fleche"
+								onClick={() => {
+									HumeurPos(moodUpdateValue, setmoodUpdateValue);
+								}}
+							/>
+						)}
 					</div>
 					<div className="titreJour">
 						<span>{avertissement}</span>
@@ -87,7 +96,7 @@ export function DetailJour(props) {
 					/>
 					<BouttonModifier
 						titreUpdateValue={titreUpdateValue}
-						// moodUpdateValue={moodUpdateValue}
+						moodUpdateValue={moodUpdateValue}
 						resumeUpdateValue={resumeUpdateValue}
 						setupdateJour={props.setupdateJour}
 						setshowList={props.setshowList}
@@ -99,5 +108,17 @@ export function DetailJour(props) {
 				</div>
 			</div>
 		);
+	}
+}
+
+function HumeurNeg(humeur, setHumeur) {
+	if (humeur > 1) {
+		setHumeur(humeur - 1);
+	}
+}
+
+function HumeurPos(humeur, setHumeur) {
+	if (humeur < 4) {
+		setHumeur(humeur + 1);
 	}
 }
