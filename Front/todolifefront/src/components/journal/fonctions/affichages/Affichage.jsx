@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { AffichageListe } from './listeJour/AffichageListe';
 import { AjouterJour } from './ajouterJour/AjouterJour';
-import { DetailJour } from './detailsJour/DetailJour';
+import { DetailOrUpdateJour } from './detailsJour/DetailOrUpdateJour';
 
 export function Affichage(props) {
 	const [ajoutJour, setajoutJour] = useState(false);
@@ -25,7 +25,7 @@ export function Affichage(props) {
 			)}
 
 			{props.showJourDetail && (
-				<DetailJour
+				<DetailOrUpdateJour
 					jourData={props.jourData}
 					setshowList={props.setshowList}
 					setshowJourDetail={props.setshowJourDetail}
