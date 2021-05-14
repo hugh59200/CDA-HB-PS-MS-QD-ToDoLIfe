@@ -23,14 +23,14 @@ function updateJour(props) {
 	// props.setshowList(true);
 	// props.setajoutJour(false);
 	// props.setupdateJour(false);
-	// const dateJour = '';
+	const dateJour = props.dateUpdatevalue;
 
 	const titre = props.titreUpdateValue;
 	// const humeur = props.moodUpdateValue;
 	const texte = props.resumeUpdateValue;
 
 	const jour = {
-		// dateJour,
+		dateJour,
 		titre,
 		// humeur,
 		texte,
@@ -38,4 +38,5 @@ function updateJour(props) {
 
 	console.log(jour.titre);
 	console.log(jour.texte);
+	console.log(jour.dateJour);
 }

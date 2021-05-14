@@ -94,6 +94,7 @@ export function DetailJour(props) {
 						setshowJourDetail={props.setshowJourDetail}
 						setajoutJour={props.setajoutJour}
 						setavertissement={setavertissement}
+						dateUpdatevalue={props.dateUpdatevalue}
 					/>
 				</div>
 			</div>
