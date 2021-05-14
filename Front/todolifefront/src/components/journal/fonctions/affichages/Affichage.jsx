@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AffichageListe } from './listeJour/AffichageListe';
 import { AjouterJour } from './ajouterJour/AjouterJour';
@@ -41,6 +41,7 @@ export function Affichage(props) {
 					setshowList={props.setshowList}
 					setshowJourDetail={props.setshowJourDetail}
 					setajoutJour={setajoutJour}
+					setupdateJour={setupdateJour}
 				/>
 			)}
 		</>

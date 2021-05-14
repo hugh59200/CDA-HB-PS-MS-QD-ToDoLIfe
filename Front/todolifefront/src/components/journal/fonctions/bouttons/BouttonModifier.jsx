@@ -1,5 +1,5 @@
 import { API_JOUR } from './../../../../constant/API_BACK';
-import axios from "axios";
+import axios from 'axios';
 
 export function BouttonModifier(props) {
 	return (
@@ -23,9 +23,6 @@ function handleSubmit(props) {
 }
 
 function updateJour(props) {
-	// props.setshowList(true);
-	// props.setajoutJour(false);
-	// props.setupdateJour(false);
 	const dateJour = props.dateUpdatevalue;
 
 	const titre = props.titreUpdateValue;
@@ -39,25 +36,29 @@ function updateJour(props) {
 		texte,
 	};
 
-		const id = localStorage.getItem('id');
-	
-		axios({
-			method: 'put',
-			url: API_JOUR,
-			data: jour,
-			params: { id },
+	const id = localStorage.getItem('id');
+
+	axios({
+		method: 'put',
+		url: API_JOUR,
+		data: jour,
+		params: { id },
+	})
+		.then(response => {
+			const status = response.request.status;
+
+			if (status === 200) {
+				console.log('Jour modifié avec succés !');
+				props.setshowList(true);
+				props.setajoutJour(false);
+				props.setupdateJour(false);
+				props.setshowJourDetail(false);
+			}
+			if (status !== 200) {
+				console.log('Une erreur est survenue !');
+			}
 		})
-			.then(response => {
-				const status = response.request.status;
-	
-				if (status === 200) {
-					console.log('Jour modifié avec succés !');
-				}
-				if (status !== 200) {
-					console.log('Une erreur est survenue !');
-				}
-			})
-			.catch(error => {
-				console.log('Une erreur est survenue' + error);
-			});
+		.catch(error => {
+			console.log('Une erreur est survenue' + error);
+		});
 }

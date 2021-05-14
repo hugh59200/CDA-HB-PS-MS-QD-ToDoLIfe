@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-
 import Empty from '../../autres/Empty';
 import { ListerJour } from './ListerJour';
+import React from 'react';
 
 export function EmptyOrList(props) {
 	return (
