@@ -216,6 +216,25 @@
   margin-top: 80px;
 }
 
+.unBouton {
+  margin: 30px 230px;
+  justify-content: center;
+  height: 50px;
+}
+
+.unBouton>button {
+  height: 40px;
+  width: 200px;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 2px;
+  border-radius: 30px;
+  color: white;
+  background-color: #14A7FF;
+  border: none;
+  padding: 5px;
+}
+
 .bouttonsPartieUpdate {
   display: flex;
   justify-content: space-around;
@@ -371,7 +390,7 @@ img.mood {
 }
 
 .evenement>.updateIcon:hover {
-  color: rgb(213, 214, 116);
+  color: rgb(214, 163, 116);
   transform: scale(1.5);
 }
 
