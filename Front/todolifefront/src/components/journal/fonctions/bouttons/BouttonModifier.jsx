@@ -1,3 +1,6 @@
+import { API_JOUR } from './../../../../constant/API_BACK';
+import axios from "axios";
+
 export function BouttonModifier(props) {
 	return (
 		<button
@@ -26,17 +29,35 @@ function updateJour(props) {
 	const dateJour = props.dateUpdatevalue;
 
 	const titre = props.titreUpdateValue;
-	// const humeur = props.moodUpdateValue;
+	const humeur = props.moodUpdateValue;
 	const texte = props.resumeUpdateValue;
 
 	const jour = {
 		dateJour,
 		titre,
-		// humeur,
+		humeur,
 		texte,
 	};
 
-	console.log(jour.titre);
-	console.log(jour.texte);
-	console.log(jour.dateJour);
+		const id = localStorage.getItem('id');
+	
+		axios({
+			method: 'put',
+			url: API_JOUR,
+			data: jour,
+			params: { id },
+		})
+			.then(response => {
+				const status = response.request.status;
+	
+				if (status === 200) {
+					console.log('Jour modifié avec succés !');
+				}
+				if (status !== 200) {
+					console.log('Une erreur est survenue !');
+				}
+			})
+			.catch(error => {
+				console.log('Une erreur est survenue' + error);
+			});
 }

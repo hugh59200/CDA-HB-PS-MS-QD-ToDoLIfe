@@ -103,9 +103,12 @@ public class JourController {
 
 	// update
 	@PutMapping("/jour")
-	public ResponseEntity<JourDto> update(@RequestBody JourDto jourDto) throws JourIntrouvableException {
+	public ResponseEntity<JourDto> update(@RequestBody JourDto jourDto, @RequestParam(value = "id") int idUser) throws JourIntrouvableException {
+		System.out.println(jourDto);
+		System.out.println(idUser);
 		try {
-			jourService.update(jourDto);
+			jourService.update(jourDto, idUser);
+//			jourService.update(jourDto);
 		} catch (JourIntrouvableException e) {
 			e.printStackTrace();
 		} catch (JourExistantException e) {

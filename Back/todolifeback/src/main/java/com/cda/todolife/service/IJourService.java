@@ -13,7 +13,9 @@ public interface IJourService {
 
 	JourDto findById(int id) throws JourIntrouvableException;
 
-	void update(JourDto list) throws JourIntrouvableException, JourExistantException;
+	void update(JourDto list, int idUser) throws JourIntrouvableException, JourExistantException;
+	
+//	void update(JourDto list) throws JourIntrouvableException, JourExistantException;
 
 	void deleteById(int id) throws JourIntrouvableException;
 
