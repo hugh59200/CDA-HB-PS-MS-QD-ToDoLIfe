@@ -90,10 +90,10 @@ public class JourServiceImpl implements IJourService {
 
 	// mettre à jour
 	@Override
-	public void update(JourDto list) throws JourIntrouvableException, JourExistantException {
+	public void update(JourDto jourDto, int idUser) throws JourIntrouvableException, JourExistantException {
 		try {
-			this.jourRepository.findById(list.getIdJour()).orElseThrow(JourIntrouvableException::new);
-			this.jourRepository.save(this.modelMapper.map(list, Jour.class));
+			this.jourRepository.findById(jourDto.getIdJour()).orElseThrow(JourIntrouvableException::new);
+			this.jourRepository.save(this.modelMapper.map(jourDto, Jour.class));
 		} catch (JourIntrouvableException e) {
 			e.printStackTrace();
 		}
