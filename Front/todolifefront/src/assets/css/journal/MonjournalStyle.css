@@ -229,10 +229,6 @@
   padding: 5px;
 }
 
-/* textarea {
-  height: 500px;
-} */
-
 .choixResume>textarea:focus::placeholder {
   color: transparent;
 }
@@ -245,28 +241,34 @@
   font-style: italic;
 }
 
-
 .enteteJour {
-  height: 25%;
+  height: 30%;
   display: flex;
   justify-content: space-between;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 img.mood {
-  width: 100px;
-  /* margin-left: 100px; */
+  width: auto;
 }
 
 .enteteJour>.titreJour {
   padding-top: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   font-size: 30px;
 }
 
 .titreJour>p {
   padding: 15px;
+}
+
+.titreJour> span {
+  color: red;
+  font-style: italic;
+  font-size: 25px;
+  padding-bottom: 10px;
 }
 
 .titreJour>.updateTitre {
