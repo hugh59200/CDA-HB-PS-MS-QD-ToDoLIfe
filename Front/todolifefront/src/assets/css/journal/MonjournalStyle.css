@@ -160,14 +160,14 @@
   text-align: center;
 }
 
-.inputTitreUpdate{
+.inputTitreUpdate {
   background-color: #1fa1fd;
   border-radius: 10px;
   height: 50px;
   text-align: center;
   color: white;
   border: none;
-  outline:none;
+  outline: none;
 }
 
 .choixMood {
@@ -189,11 +189,12 @@
 }
 
 .choixResume {
-  height: 50%;
+  height: 100%;
   justify-content: center;
 }
 
 .choixResume>textarea {
+  font-size: 25px;
   background-color: #0090E8;
   color: white;
   width: 90%;
@@ -203,6 +204,10 @@
   margin: 25px;
   padding: 20px;
   overflow: auto;
+}
+
+.choixResume>textarea:focus {
+  outline: none;
 }
 
 .deuxBoutons {
@@ -224,6 +229,10 @@
   padding: 5px;
 }
 
+/* textarea {
+  height: 500px;
+} */
+
 .choixResume>textarea:focus::placeholder {
   color: transparent;
 }
@@ -240,24 +249,24 @@
 .enteteJour {
   height: 25%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.enteteJour>.jourData {
-  width: 40%;
+img.mood {
+  width: 100px;
+  /* margin-left: 100px; */
 }
 
 .enteteJour>.titreJour {
-  width: 60%;
   padding-top: 20px;
   display: flex;
   justify-content: center;
   font-size: 30px;
 }
 
-.titreJour> p {
- padding: 15px;
+.titreJour>p {
+  padding: 15px;
 }
 
 .titreJour>.updateTitre {
@@ -289,7 +298,7 @@
   margin: 20px;
 }
 
-.textJour> p {
+.textJour>p {
   background-color: rgb(72, 173, 255);
   border-top-left-radius: 20px;
   font-size: 20px;
@@ -356,7 +365,7 @@
 }
 
 .evenement>.updateIcon:hover {
-  color: #0090E8;
+  color: rgb(213, 214, 116);
   transform: scale(1.5);
 }
 
