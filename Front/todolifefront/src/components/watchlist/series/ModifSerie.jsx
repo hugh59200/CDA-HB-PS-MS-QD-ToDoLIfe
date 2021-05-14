@@ -1,10 +1,11 @@
+import "../../../assets/css/watchlist/film.css";
 
 import React, { useEffect } from "react";
-import "../../../assets/css/watchlist/film.css";
-import { useHistory } from "react-router-dom";
+
+import { API_SERIES } from "./../../../constant/API_BACK";
 import { URL_SERIES } from "./../../../constant/URL_CONST";
 import axios from "axios";
-import { API_SERIES } from "./../../../constant/API_BACK";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 function ModifFilm() {
@@ -23,7 +24,7 @@ function ModifFilm() {
     console.log(history.location);
     setSerieAct(history.location.serieEnQuestion);
     console.log(idSerie);
-  }, []);
+  }, [history.location, idSerie]);
   return (
   
     <div className="container-fluid marge-mobile">

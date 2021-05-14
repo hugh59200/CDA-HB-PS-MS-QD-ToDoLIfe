@@ -1,13 +1,15 @@
 
 /* eslint-disable no-lone-blocks */
-import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { URL_MODIF_SERIE } from "./../../../constant/URL_CONST";
-import {API_SERIES } from './../../../constant/API_BACK';
+
 import "../../../assets/css/watchlist/film.css";
 
+import { useEffect, useState } from "react";
+
+import {API_SERIES} from './../../../constant/API_BACK';
+import React from "react";
+import { URL_MODIF_SERIE } from "./../../../constant/URL_CONST";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const ListeSeries = () => {
   var idUtilisateur = localStorage.getItem("id");
@@ -20,6 +22,7 @@ const ListeSeries = () => {
       .then(function (response) {
         if (response.status === 200) {
             setListeSerie(response.data);
+            // eslint-disable-next-line array-callback-return
             ListeSerie.map((Serie, i) => {
             console.log(Serie);
           });
@@ -30,7 +33,7 @@ const ListeSeries = () => {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [ListeSerie, idUtilisateur]);
 
   return (
     <>
