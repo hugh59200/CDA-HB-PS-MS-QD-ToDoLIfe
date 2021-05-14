@@ -15,35 +15,37 @@ export function DetailJour(props) {
 	const [moodUpdateValue, setmoodUpdateValue] = useState(props.jourData.humeur);
 	const [resumeUpdateValue, setresumeUpdateValue] = useState('');
 
-	if (!props.updateJour) {
-		return (
-			<div className="jourdetails">
-				<div className="enteteJour">
-					<div>
-						<Mood moodLevel={props.jourData.humeur} className="jourData" />
+	return (
+		<>
+			{!props.updateJour && (
+				<div className="jourdetails">
+					<div className="enteteJour">
+						<div className="jourData">
+							<Mood moodLevel={props.jourData.humeur} />
+						</div>
+						<div className="titreJour">
+							<p>{props.jourData.titre}</p>
+						</div>
 					</div>
-					<div className="titreJour">
-						<p>{props.jourData.titre}</p>
+					<div className="textJour">
+						<p className="jourDataTexte">{props.jourData.texte}</p>
+					</div>
+					<div className="unBouton">
+						<BouttonRevenir
+							setshowList={props.setshowList}
+							setshowJourDetail={props.setshowJourDetail}
+							setajoutJour={props.setajoutJour}
+							setupdateJour={props.setupdateJour}
+						/>
 					</div>
 				</div>
-				<div className="textJour">
-					<p className="jourDataTexte">{props.jourData.texte}</p>
-				</div>
-				<div className="deuxBoutons">
-					<BouttonRevenir
-						setshowList={props.setshowList}
-						setshowJourDetail={props.setshowJourDetail}
-						setajoutJour={props.setajoutJour}
-						setupdateJour={props.setupdateJour}
-					/>
-				</div>
-			</div>
-		);
-	} else if (props.updateJour) {
-		return (
-			<div className="jourdetails">
+			)}
+
+			{props.updateJour && (
+							<div className="jourdetails">
 				<div className="enteteJour">
 					<div className="jourData">
+
 						{moodUpdateValue > 1 && (
 							<FontAwesomeIcon
 								icon={faArrowAltCircleLeft}
@@ -55,6 +57,7 @@ export function DetailJour(props) {
 						)}
 
 						<Mood moodLevel={moodUpdateValue} />
+
 						{moodUpdateValue < 4 && (
 							<FontAwesomeIcon
 								icon={faArrowAltCircleRight}
@@ -65,7 +68,9 @@ export function DetailJour(props) {
 							/>
 						)}
 					</div>
+
 					<div className="titreJour">
+
 						<span>{avertissement}</span>
 						<input
 							type="text"
@@ -74,11 +79,13 @@ export function DetailJour(props) {
 							placeholder={props.jourData.titre}
 							onChange={e => settitreUpdateValue(e.target.value)}
 						></input>
-					</div>
-				</div>
-				<div className="textJour">
-					<div className="choixResume">
-						<textarea
+
+	 				</div>
+
+	 			</div>
+	 			<div className="textJour">
+	 				<div className="choixResume">
+	 					<textarea
 							name=""
 							cols="30"
 							rows="10"
@@ -107,9 +114,11 @@ export function DetailJour(props) {
 					/>
 				</div>
 			</div>
-		);
-	}
+		)}
+		</>
+	);
 }
+
 
 function HumeurNeg(humeur, setHumeur) {
 	if (humeur > 1) {
