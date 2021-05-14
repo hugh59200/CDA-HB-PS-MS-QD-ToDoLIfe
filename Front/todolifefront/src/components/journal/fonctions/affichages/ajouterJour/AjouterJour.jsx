@@ -27,6 +27,7 @@ export function AjouterJour(props) {
 					setshowList={props.setshowList}
 					setshowJourDetail={props.setshowJourDetail}
 					setajoutJour={props.setajoutJour}
+					setupdateJour={props.setupdateJour}
 				/>
 				<BouttonValider
 					setajoutJour={props.setajoutJour}

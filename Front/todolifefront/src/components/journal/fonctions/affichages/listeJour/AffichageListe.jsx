@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { BouttonAjouter } from '../../bouttons/BouttonAjouter';
 import { EmptyOrList } from './EmptyOrList';
@@ -10,9 +10,6 @@ export function AffichageListe(props) {
 	(function () {
 		affichageBoutton(setjourExistant);
 	})();
-	
-	useEffect(() => {
-  }, [props, jourExistant]);
 
 	return (
 		<>

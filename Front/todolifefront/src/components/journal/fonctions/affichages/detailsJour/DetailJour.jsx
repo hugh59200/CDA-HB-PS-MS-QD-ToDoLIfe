@@ -87,7 +87,7 @@ export function DetailJour(props) {
 						></textarea>
 					</div>
 				</div>
-				<div className="deuxBoutons">
+				<div className="bouttonsPartieUpdate">
 					<BouttonRevenir
 						setshowList={props.setshowList}
 						setshowJourDetail={props.setshowJourDetail}
