@@ -10,10 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Mood } from '../../autres/Mood';
 
 export function DetailJour(props) {
-	const [avertissement, setavertissement] = useState();
-	const [titreUpdateValue, settitreUpdateValue] = useState();
-	const [moodUpdateValue, setmoodUpdateValue] = useState();
-	const [resumeUpdateValue, setresumeUpdateValue] = useState();
+	const [avertissement, setavertissement] = useState('');
+	const [titreUpdateValue, settitreUpdateValue] = useState('');
+	// const [moodUpdateValue, setmoodUpdateValue] = useState();
+	const [resumeUpdateValue, setresumeUpdateValue] = useState('');
 
 	if (!props.updateJour) {
 		return (
@@ -63,7 +63,6 @@ export function DetailJour(props) {
 							className="inputTitreUpdate"
 							id={props.id}
 							placeholder={props.jourData.titre}
-							placeholderTextColor="red"
 							onChange={e => settitreUpdateValue(e.target.value)}
 						></input>
 					</div>
@@ -75,7 +74,7 @@ export function DetailJour(props) {
 							cols="30"
 							rows="10"
 							placeholder={props.jourData.texte}
-							// onChange={e => props.setresumeUpdateValue(e.target.value)}
+							onChange={e => setresumeUpdateValue(e.target.value)}
 						></textarea>
 					</div>
 				</div>
@@ -88,13 +87,12 @@ export function DetailJour(props) {
 					/>
 					<BouttonModifier
 						titreUpdateValue={titreUpdateValue}
-						moodUpdateValue={moodUpdateValue}
+						// moodUpdateValue={moodUpdateValue}
 						resumeUpdateValue={resumeUpdateValue}
 						setupdateJour={props.setupdateJour}
 						setshowList={props.setshowList}
 						setshowJourDetail={props.setshowJourDetail}
 						setajoutJour={props.setajoutJour}
-						settitreUpdateValue={settitreUpdateValue}
 						setavertissement={setavertissement}
 					/>
 				</div>
