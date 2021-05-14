@@ -1,6 +1,3 @@
-
-// /* eslint-disable no-lone-blocks */
-
 // import { useEffect, useState } from "react";
 
 // import { API_FILMS } from './../../../constant/API_BACK';

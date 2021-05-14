@@ -19,3 +19,5 @@ export const API_WATCHLIST = ENV_DEV + 'watchlists';
 export const API_LIVRES = ENV_DEV + 'livres';
 
 export const API_FILMS = ENV_DEV + 'films';
+
+export const API_SERIES = ENV_DEV + 'series';
