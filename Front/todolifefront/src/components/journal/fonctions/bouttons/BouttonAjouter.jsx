@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export function BouttonAjouter(props) {
-
-	useEffect(() => {
-  }, [props]);
 	
 	return (
 		<div className="boutton">

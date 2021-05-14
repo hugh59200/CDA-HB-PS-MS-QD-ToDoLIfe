@@ -1,37 +1,41 @@
-// import { PostRequest } from '../fetchUrl/PostRequest';
-// import React from 'react';
-// import moment from 'moment';
-
 export function BouttonModifier(props) {
-	// const dateJour = moment(new Date()).format('YYYY-MM-DD');
-	// const titre = props.titre;
-	// const humeur = props.moodInt;
-	// const texte = props.resume;
-	// new Date();
-	// const jour = {
-	// 	dateJour,
-	// 	titre,
-	// 	humeur,
-	// 	texte,
-	// };
+	const dateJour = '';
+	const titre = props.titreUpdateValue;
+	const humeur = props.moodUpdateValue;
+	const texte = props.resumeUpdateValue;
+	
+	const jour = {
+		dateJour,
+		titre,
+		humeur,
+		texte,
+	};
+	
 	return (
 		<button
 			className="btn-form"
 			onClick={() => {
-				// handleSubmit(props);
+				handleSubmit(props, jour);
 			}}
 		>
 			modifier
 		</button>
 	);
 
-	// function handleSubmit(props) {
-	// 	if (props.titre.length !== 0) {
-	// 		props.setshowList(true);
-	// 		props.setajoutJour(false);
-	// 		PostRequest(jour);
-	// 	} else {
-	// 		props.setplaceholderTitre("n'oubliez pas le titre ici")
-	// 	}
-	// }
+	function handleSubmit(props, jour) {
+		console.log(props.settitreUpdateValue.length);
+		if (props.settitreUpdateValue.length > 1) {
+			console.log("ok");
+			// props.setshowList(true);
+			// props.setajoutJour(false);
+			// props.setupdateJour(false);
+			updateJour(jour);
+		} else {
+			props.setavertissement("n'oubliez pas le titre")
+		}
+	}
+}
+
+function updateJour(jour) {
+	console.log(jour);
 }

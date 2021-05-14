@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
 	faArrowAltCircleLeft,
 	faArrowAltCircleRight,
-	faPen,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { BouttonModifier } from './../../bouttons/BouttonModifier';
@@ -11,19 +10,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Mood } from '../../autres/Mood';
 
 export function DetailJour(props) {
-	// const [titreUpdate, settitreUpdate] = useState(false);
-	// const [titreUpdateValue, settitreUpdateValue] = useState(
-	// 	props.jourData.titre,
-	// );
-	// const [moodUpdateValue, setmoodUpdateValue] = useState();
-	// const [resumeUpdate, setresumeUpdate] = useState(false);
-	// const [resumeUpdateValue, setresumeUpdateValue] = useState();
+	const [avertissement, setavertissement] = useState();
+	const [titreUpdateValue, settitreUpdateValue] = useState();
+	const [moodUpdateValue, setmoodUpdateValue] = useState();
+	const [resumeUpdateValue, setresumeUpdateValue] = useState();
 
 	if (!props.updateJour) {
 		return (
 			<div className="jourdetails">
 				<div className="enteteJour">
-					<Mood moodLevel={props.jourData.humeur} className="jourData" />
+					<div>
+						<Mood moodLevel={props.jourData.humeur} className="jourData" />
+					</div>
 					<div className="titreJour">
 						<p>{props.jourData.titre}</p>
 					</div>
@@ -59,13 +57,14 @@ export function DetailJour(props) {
 						/>
 					</div>
 					<div className="titreJour">
+						<span>{avertissement}</span>
 						<input
 							type="text"
 							className="inputTitreUpdate"
 							id={props.id}
 							placeholder={props.jourData.titre}
 							placeholderTextColor="red"
-							// onChange={e => settitreUpdateValue(e.target.value)}
+							onChange={e => settitreUpdateValue(e.target.value)}
 						></input>
 					</div>
 				</div>
@@ -88,13 +87,15 @@ export function DetailJour(props) {
 						setupdateJour={props.setupdateJour}
 					/>
 					<BouttonModifier
-						// titreUpdateValue={titreUpdateValue}
-						// moodUpdateValue={moodUpdateValue}
-						// resumeUpdateValue={resumeUpdateValue}
-						// setupdateJour={props.setupdateJour}
-						// setshowList={props.setshowList}
-						// setshowJourDetail={props.setshowJourDetail}
-						// setajoutJour={props.setajoutJour}
+						titreUpdateValue={titreUpdateValue}
+						moodUpdateValue={moodUpdateValue}
+						resumeUpdateValue={resumeUpdateValue}
+						setupdateJour={props.setupdateJour}
+						setshowList={props.setshowList}
+						setshowJourDetail={props.setshowJourDetail}
+						setajoutJour={props.setajoutJour}
+						settitreUpdateValue={settitreUpdateValue}
+						setavertissement={setavertissement}
 					/>
 				</div>
 			</div>
