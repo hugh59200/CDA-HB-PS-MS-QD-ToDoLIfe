@@ -13,7 +13,7 @@ public class TacheDto {
 
 	private int idTache;
 	private String label;
-//	private boolean donne;
+	private boolean donne;
 //	private byte priorite;
 	private ToDoListDto list;
 }

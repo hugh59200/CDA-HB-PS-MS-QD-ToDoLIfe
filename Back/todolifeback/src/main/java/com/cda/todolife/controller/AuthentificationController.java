@@ -26,6 +26,7 @@ import com.cda.todolife.security.LoginEtMotdepasseDto;
 import com.cda.todolife.security.service.IJwtTokenService;
 import com.cda.todolife.service.IUtilisateurService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api")
 @RestController
 public class AuthentificationController {
@@ -44,7 +45,6 @@ public class AuthentificationController {
 		return "notAutorized";
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> login(@RequestBody LoginEtMotdepasseDto loginAndPasswordDto)
 			throws ResourceNotFoundException {

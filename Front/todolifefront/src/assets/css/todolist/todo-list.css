@@ -30,8 +30,9 @@
   height: 25px !important;
   width: 30px !important;
   border: none;
-  
+
 }
+
 .todo-button-add {
   /* background-image: url('../../img/plus.png');
   background-repeat: no-repeat; */
@@ -62,7 +63,8 @@
   align-self: center !important;
 }
 
-.todo-app,.todo-app-2 {
+.todo-app,
+.todo-app-2 {
   background: #0090E8;
   text-align: center;
   margin: auto !important;
@@ -72,17 +74,34 @@
   justify-content: center !important;
   align-self: center !important;
   flex-direction: column;
-  /* width: 70% !important;
-  height: 70vh; */
+  width: 70% !important;
+  height: 750px;
+  max-height: 750px !important;
+}
+
+.test-scroll-paire,
+.test-scroll-impaire {
+  overflow-y: scroll !important;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.test-scroll-paire::-webkit-scrollbar,
+.test-scroll-impaire::-webkit-scrollbar {
+  display: none;
 }
 
 .test-scroll-paire {
-  overflow-y: scroll !important;
-  /* padding-top: 9vh !important; */
+  padding-top: 3vh !important;
 }
 
 .test-scroll-impaire {
-  overflow-y: scroll !important;
+  padding-top: 8vh !important;
 }
 
 .test {
@@ -117,12 +136,12 @@
     position: absolute;
     margin-left: 4vh;
   } */
-  
+
   .todo-app-2 {
     height: 60vh !important;
     width: 95% !important;
   }
-  
+
   .test-scroll-paire-2 {
     overflow-y: scroll !important;
     padding-top: 23vh !important;
@@ -132,15 +151,16 @@
     overflow-y: scroll !important;
     padding-top: 15vh !important;
   }
-.div-haut-2>h1{
+
+  .div-haut-2>h1 {
     padding-left: -2%;
   }
 
-  .div-haut-2>button{
+  .div-haut-2>button {
     padding-right: +2%;
   }
-  
-  .taille-input{
+
+  .taille-input {
     width: auto !important;
     height: auto !important;
   }

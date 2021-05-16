@@ -28,7 +28,7 @@ const TodoListView = () => {
             className="media-todo-list col-8"
             onClick={() => clickTodo(elem.idTodoList, elem.label)}
           >
-            <h6 className="ml-4 text-left text-white w-100">{elem.label}</h6>
+            <h6 className="ml-4 text-left text-white w-100 text-center">{elem.label}</h6>
           </div>
           <div className="media-todo-list col-4 mobile">
             <button
