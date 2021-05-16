@@ -15,7 +15,8 @@ const AddTodo = () => {
   const [list, setList] = useState("");
 
   const initialValues = {
-    label: ""
+    label: "",
+    donne : false
   };
 
   const getList = () => {
@@ -29,8 +30,11 @@ const AddTodo = () => {
   const makeTask = (values) => {
     let todo = {
       label: values.label,
+      donne: values.donne,
       list: list,
     };
+    
+    // console.log(todo)
     submit(todo);
   };
 
@@ -39,6 +43,7 @@ const AddTodo = () => {
   }, []);
 
   const submit = (todo) => {
+    console.log(todo)
     TacheService.create(todo).then((res) => {
       let code = res.status;
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import {
+  URL_INSIDE_TODOLIST,
   URL_NEW_TODO,
   URL_TODO_LIST,
   URL_UPDATE_TODO,
@@ -20,18 +21,21 @@ const Todos = () => {
           <>
             <div key={elem.idTache} className="css-list-todo">
               <div
-                className="media-todo-list col-8 text-white"
-                // onClick={function (e) {
-                //   let text = e.target.innerHTML;
-                //   // console.log(text)
-
-                //   // let text = "<del>"+e.target+"</del>";
-                //   // console.log(text)
-
-                //   e.target.innerHTML = "<del>" + text + "</del>";
-                // }}
+                className="media-todo-list col-8 text-white text-center"
+                onClick={() =>
+                  setDonne(elem.idTache, elem.label, elem.donne, elem.list)
+                }
               >
-                {elem.label}
+                {console.log(elem.donne)}
+
+                {elem.donne ? (
+                  <>
+                    <del>{elem.label}</del>
+                  </>
+                ) : (
+                  <>{elem.label}</>
+                )}
+                {/* {elem.label} */}
               </div>
               <div className="media-todo-list col-4 mobile">
                 <button
@@ -49,6 +53,50 @@ const Todos = () => {
         setList(postData);
       }
     );
+  };
+
+  const changeDonneOnDatabase = (todo) => {
+    console.log("todo", todo);
+    TacheService.update(todo).then((res) => {
+      let code = res.status;
+      console.log(res.data);
+
+      if (code === 200) {
+        let idTodoList = localStorage.getItem("id_todolist");
+        let labelList = localStorage.getItem("label_todolist");
+
+        history.push({
+          pathname: URL_INSIDE_TODOLIST,
+          idList: idTodoList,
+          labelList: labelList,
+        });
+        document.location.reload();
+      }
+    });
+  };
+
+  const setDonne = (id, label, donne, list) => {
+    
+    let todo;
+
+    if (donne) {
+      todo = {
+        idTache: id,
+        label: label,
+        donne: false,
+        list: list,
+      };
+      
+    } else {
+      todo = {
+        idTache: id,
+        label: label,
+        donne: true,
+        list: list,
+      };
+    }
+    // console.log("todo", todo);
+    changeDonneOnDatabase(todo);
   };
 
   const putIdLabelList = () => {

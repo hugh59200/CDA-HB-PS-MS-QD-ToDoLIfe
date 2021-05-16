@@ -23,7 +23,7 @@ public class Tache {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTache;
 	private String label;
-//	private boolean donne;
+	private boolean donne;
 //	private byte priorite;
 
 	@ManyToOne
