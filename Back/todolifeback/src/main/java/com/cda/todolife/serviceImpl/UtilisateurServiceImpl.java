@@ -84,11 +84,11 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 	}
 
 	@Override
-	public List<UtilisateurDtoList> list() {
+	public List<UtilisateurDto> list() {
 
-		List<UtilisateurDtoList> result = new ArrayList<UtilisateurDtoList>();
+		List<UtilisateurDto> result = new ArrayList<UtilisateurDto>();
 		this.utilisateurRepository.findAll()
-				.forEach(utilisateur -> result.add(this.modelMapper.map(utilisateur, UtilisateurDtoList.class)));
+				.forEach(utilisateur -> result.add(this.modelMapper.map(utilisateur, UtilisateurDto.class)));
 
 		return result;
 	}

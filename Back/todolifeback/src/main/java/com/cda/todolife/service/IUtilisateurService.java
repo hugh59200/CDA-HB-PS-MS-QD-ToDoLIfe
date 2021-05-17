@@ -13,7 +13,7 @@ import com.cda.todolife.exception.ResourceNotFoundException;
 
 public interface IUtilisateurService {
 
-	List<UtilisateurDtoList> list();
+	List<UtilisateurDto> list();
 
 	void create(UtilisateurDto userDto) throws ResourceAlreadyExist;
 

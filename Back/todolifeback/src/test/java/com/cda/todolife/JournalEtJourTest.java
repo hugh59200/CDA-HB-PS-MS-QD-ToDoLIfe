@@ -2,10 +2,12 @@ package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 //import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
@@ -158,9 +160,9 @@ public class JournalEtJourTest {
 	@Test
 	public void utilisateurfindBy() {
 
-		List<UtilisateurDtoList> listUtilisateur = this.IUtilisateurService.list();
+		List<UtilisateurDto> listUtilisateur = this.IUtilisateurService.list();
 
-		for (UtilisateurDtoList utilisateurDto : listUtilisateur) {
+		for (UtilisateurDto utilisateurDto : listUtilisateur) {
 			try {
 				assertNotNull(this.IUtilisateurService.findByUsername(utilisateurDto.getUsername()));
 				assertNotNull(this.IUtilisateurService.findByidUtilisateur(utilisateurDto.getIdUtilisateur()));
@@ -202,9 +204,31 @@ public class JournalEtJourTest {
 		}
 	}
 
-//	@Order(6)
-//	@Test
-//	public void update() {
+	@Order(7)
+	@Test
+	public void updateUtilisateur() {
+		List<UtilisateurDto> listUtilisateur = this.IUtilisateurService.list();
+
+		for (UtilisateurDto utilisateurDto : listUtilisateur) {
+			String oldUsername = utilisateurDto.getUsername();
+			String oldNom = utilisateurDto.getNom();
+			String oldPrenom = utilisateurDto.getPrenom();
+			Date oldDateNaissance = utilisateurDto.getDateNaissance();
+			utilisateurDto.setUsername("paul59");
+			utilisateurDto.setDateNaissance(new java.sql.Date(1992 - 10 - 10));
+			utilisateurDto.setNom("zakbandt");
+			utilisateurDto.setPrenom("paul");
+			try {
+				this.IUtilisateurService.update(utilisateurDto);
+			} catch (ResourceAlreadyExist e) {
+				e.printStackTrace();
+			}
+			assertNotEquals(utilisateurDto.getUsername(), oldUsername);
+			assertNotEquals(utilisateurDto.getDateNaissance(), oldDateNaissance);
+			assertNotEquals(utilisateurDto.getNom(), oldNom);
+			assertNotEquals(utilisateurDto.getPrenom(), oldPrenom);
+		}
+
 //		try {
 //			JournalDto journalDto = this.journalService.findById(1);
 //			String titre = journalDto.getLabel();
@@ -216,7 +240,7 @@ public class JournalEtJourTest {
 //		} catch (JournalExistantException e) {
 //			e.printStackTrace();
 //		}
-//	}
+	}
 
 	@Order(7)
 	@Test

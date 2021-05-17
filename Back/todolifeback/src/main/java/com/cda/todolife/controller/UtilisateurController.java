@@ -50,7 +50,7 @@ public class UtilisateurController {
 
 	// get all
 	@GetMapping("/utilisateurs")
-	public List<UtilisateurDtoList> getAll() {
+	public List<UtilisateurDto> getAll() {
 		return this.utilisateurService.list();
 	}
 
