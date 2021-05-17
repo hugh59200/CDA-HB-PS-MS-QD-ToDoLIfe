@@ -12,6 +12,8 @@ import {
 import { NavbarBrand } from "react-bootstrap";
 import { deconnected } from "../../service/authentificationService";
 import "../../assets/css/navbar/NavBar.css"
+import logo from '../../assets/img/logotodolife.png'
+
 
 
 const NavBar = () => {
@@ -115,7 +117,7 @@ const NavBar = () => {
   return (
     <>
       <header className="navbar navbar-expand-lg">
-        <NavbarBrand className="navbarTitle"> ToDoLife</NavbarBrand>
+        <img src={logo} className="logotodolife" alt="" />
         <button className="navbar-toggler">
           <span className="navbar-toggler-icon"></span>
         </button>

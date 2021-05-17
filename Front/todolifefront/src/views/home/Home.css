@@ -10,3 +10,27 @@
   color: white;
   letter-spacing: 8px;
 }
+
+@font-face {
+  font-family: "gottam" ;
+  src: url("../../assets/font/GothamNarrow-Book.otf");
+}
+
+@font-face {
+  font-family: "gottamgras" ;
+  src: url("../../assets/font/GothamNarrow-Medium.otf");
+}
+
+.fonthome{
+  font-family: gottam;
+float: left;
+text-align: left;
+font-size: 7vh;
+}
+
+@media (max-width: 576px) { 
+
+  .fonthome{
+    margin-left: 20px;
+  }
+}
