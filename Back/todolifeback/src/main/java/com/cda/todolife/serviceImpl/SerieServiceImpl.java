@@ -8,16 +8,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.dto.SerieDto;
 import com.cda.todolife.dto.WatchListDto;
-import com.cda.todolife.exception.LivreExistantException;
-import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.SerieExistanteException;
 import com.cda.todolife.exception.SerieIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
-import com.cda.todolife.model.Livre;
 import com.cda.todolife.model.Serie;
 import com.cda.todolife.model.WatchList;
 import com.cda.todolife.repository.ISerieRepository;
@@ -65,8 +60,7 @@ public class SerieServiceImpl implements ISerieService {
 
 		return serieDao;
 	}
-	
-	
+
 // lister toutes les séries
 	@Override
 	public List<SerieDto> findAll() {
@@ -76,28 +70,31 @@ public class SerieServiceImpl implements ISerieService {
 	}
 
 //	trouver par id
-	//	@Override
-	//	public SerieDto findById(int id) throws SerieIntrouvableException {
-	//	return this.modelMapper.map(this.serieDao.findById(id).get(), SerieDto.class);
-		//	}
+	// @Override
+	// public SerieDto findById(int id) throws SerieIntrouvableException {
+	// return this.modelMapper.map(this.serieDao.findById(id).get(),
+	// SerieDto.class);
+	// }
 
 //	trouver par nom
-	//	@Override
-	//	public SerieDto findByName(String name) throws SerieIntrouvableException {
-	//		return this.modelMapper.map(this.serieDao.findByName(name), SerieDto.class);
-		//	}
+	// @Override
+	// public SerieDto findByName(String name) throws SerieIntrouvableException {
+	// return this.modelMapper.map(this.serieDao.findByName(name), SerieDto.class);
+	// }
 
 //	trouver par saison
-	//	@Override
-	//public SerieDto findBySaison(int saison) throws SerieIntrouvableException {
-	//	return this.modelMapper.map(this.serieDao.findBySaison(saison), SerieDto.class);
-	//}
+	// @Override
+	// public SerieDto findBySaison(int saison) throws SerieIntrouvableException {
+	// return this.modelMapper.map(this.serieDao.findBySaison(saison),
+	// SerieDto.class);
+	// }
 
 //	trouver par episode
-	//@Override
-	//	public SerieDto findByEpisode(int episode) throws SerieIntrouvableException {
-	//	return this.modelMapper.map(this.serieDao.findByEpisode(episode), SerieDto.class);
-	//}
+	// @Override
+	// public SerieDto findByEpisode(int episode) throws SerieIntrouvableException {
+	// return this.modelMapper.map(this.serieDao.findByEpisode(episode),
+	// SerieDto.class);
+	// }
 
 // mettre à jour une série
 	@Override
@@ -120,8 +117,6 @@ public class SerieServiceImpl implements ISerieService {
 		this.serieDao.findById(id).orElseThrow(SerieIntrouvableException::new);
 		this.serieDao.deleteById(id);
 	}
-
-
 
 	@Override
 	public SerieDto findById(int id) throws SerieIntrouvableException {

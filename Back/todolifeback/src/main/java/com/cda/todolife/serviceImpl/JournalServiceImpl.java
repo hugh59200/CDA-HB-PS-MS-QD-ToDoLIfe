@@ -38,6 +38,7 @@ public class JournalServiceImpl implements IJournalService {
 	@Override
 	public void add(JournalDto journalDto) throws JournalExistantException {
 		Optional<Journal> probEntOpt = this.journalRepository.findById(journalDto.getIdJournal());
+		
 		if (probEntOpt.isPresent()) {
 			throw new JournalExistantException();
 		} else {
@@ -76,6 +77,11 @@ public class JournalServiceImpl implements IJournalService {
 	public void deleteById(int id) throws JournalIntrouvableException {
 		this.journalRepository.findById(id).orElseThrow(JournalIntrouvableException::new);
 		this.journalRepository.deleteById(id);
+	}
+
+	@Override
+	public JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException {
+		return this.modelMapper.map(this.journalRepository.findByUtilisateurUsername(username).get(), JournalDto.class);
 	}
 
 }

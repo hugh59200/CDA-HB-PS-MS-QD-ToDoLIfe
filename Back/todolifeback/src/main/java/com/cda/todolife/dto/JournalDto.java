@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class JournalDto {
 
 	private int idJournal;
-//	private String label;
 	private UtilisateurDto utilisateurDto;
 	private List<JourDto> listJourDto;
 }

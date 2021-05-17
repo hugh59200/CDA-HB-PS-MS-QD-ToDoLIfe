@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 
-import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -23,9 +22,9 @@ public interface IUtilisateurService {
 
 	void delete(int id) throws ResourceNotFoundException;
 
-	CurrentUserDto findByUsername(String name) throws ResourceNotFoundException;
-	
-	UtilisateurDto findByidUtilisateur(int id) throws ResourceNotFoundException ;
+	UtilisateurDto findByUsername(String name) throws ResourceNotFoundException;
+
+	UtilisateurDto findByidUtilisateur(int id) throws ResourceNotFoundException;
 
 	void register(UtilisateurDto user, String siteURL)
 			throws UnsupportedEncodingException, MessagingException, ResourceAlreadyExist;

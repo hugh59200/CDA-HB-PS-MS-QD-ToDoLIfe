@@ -2,7 +2,6 @@ package com.cda.todolife.service;
 
 import java.util.List;
 
-import com.cda.todolife.dto.LivreDto;
 import com.cda.todolife.dto.SerieDto;
 import com.cda.todolife.exception.SerieExistanteException;
 import com.cda.todolife.exception.SerieIntrouvableException;
@@ -16,7 +15,7 @@ public interface ISerieService {
 
 	void deleteById(int id) throws SerieIntrouvableException;
 
-	void add(SerieDto serie, int id) throws SerieExistanteException,WatchListIntrouvableException;
+	void add(SerieDto serie, int id) throws SerieExistanteException, WatchListIntrouvableException;
 
 	SerieDto findByName(String nom) throws SerieIntrouvableException;
 
@@ -27,7 +26,5 @@ public interface ISerieService {
 	List<SerieDto> findAllByIdUtilisateur(int id);
 
 	void update(SerieDto serie, int idSerie) throws SerieIntrouvableException, SerieExistanteException;
-
-	
 
 }

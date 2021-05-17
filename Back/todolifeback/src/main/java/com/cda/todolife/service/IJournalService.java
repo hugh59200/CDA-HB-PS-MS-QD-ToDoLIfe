@@ -12,12 +12,15 @@ public interface IJournalService {
 
 	JournalDto findById(int id) throws JournalIntrouvableException;
 
-	void update(JournalDto list) throws JournalIntrouvableException, JournalExistantException;
+	void update(JournalDto journalDto) throws JournalIntrouvableException, JournalExistantException;
 
 	void deleteById(int id) throws JournalIntrouvableException;
 
-	void add(JournalDto list) throws JournalExistantException;
+	void add(JournalDto journalDto) throws JournalExistantException;
 
 	Boolean findIfJournalExist(int idUser);
+
+	JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException;
+
 
 }

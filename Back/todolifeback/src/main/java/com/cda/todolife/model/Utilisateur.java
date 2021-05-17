@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,8 +29,9 @@ import lombok.ToString;
 public class Utilisateur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUtilisateur;
 	private String nom;

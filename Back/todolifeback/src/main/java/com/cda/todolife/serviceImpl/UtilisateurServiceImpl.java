@@ -16,7 +16,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -117,9 +116,6 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		}
 	}
 
-	
-	
-	
 	@Override
 	public void update(UtilisateurDto userDto) throws ResourceAlreadyExist {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findById(userDto.getIdUtilisateur());
@@ -141,7 +137,6 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		}
 	}
 
-	
 	@Override
 	public void delete(int id) throws ResourceNotFoundException {
 		Optional<Utilisateur> clrOpt = this.utilisateurRepository.findById(id);
@@ -151,18 +146,16 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 			throw new ResourceNotFoundException();
 		}
 	}
-	
 
 	@Override
-	public CurrentUserDto findByUsername(String username) throws ResourceNotFoundException {
+	public UtilisateurDto findByUsername(String username) throws ResourceNotFoundException {
 		Optional<Utilisateur> optUser = this.utilisateurRepository.findByUsername(username);
 		if (optUser.isPresent()) {
-			return this.modelMapper.map(optUser.get(), CurrentUserDto.class);
+			return this.modelMapper.map(optUser.get(), UtilisateurDto.class);
 		} else {
 			throw new ResourceNotFoundException();
 		}
 	}
-
 
 	@Override
 	public boolean verify(String dateNaissance, String mail, String nom, String prenom, String pass, String username)
@@ -195,7 +188,6 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		}
 	}
 
-	
 	@Override
 	public UtilisateurDto findByidUtilisateur(int id) throws ResourceNotFoundException {
 		Optional<Utilisateur> optUser = this.utilisateurRepository.findById(id);
