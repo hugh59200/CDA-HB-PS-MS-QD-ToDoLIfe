@@ -1,4 +1,4 @@
-	package com.cda.todolife.controller;
+package com.cda.todolife.controller;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.CurrentUserDto;
+import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.security.LoginEtMotdepasseDto;
 import com.cda.todolife.security.service.IJwtTokenService;
@@ -54,9 +54,9 @@ public class AuthentificationController {
 		Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 		if (authentication != null && authentication.isAuthenticated()) {
 			String token = jwtTokenService.createTokens(authentication);
-			CurrentUserDto currentUserDto = this.userService.findByUsername(authentication.getName());
+			UtilisateurDto currentUserDto = this.userService.findByUsername(authentication.getName());
 			currentUserDto.setToken(token);
-			HashMap<String, CurrentUserDto> responseBody = new LinkedHashMap<>();
+			HashMap<String, UtilisateurDto> responseBody = new LinkedHashMap<>();
 			responseBody.put("user", currentUserDto);
 			return ResponseEntity.ok().body(responseBody);
 		}

@@ -18,5 +18,6 @@ public class JourDto {
 	private int humeur;
 	private String titre;
 	private String texte;
+	private String token;
 	private JournalDto journalDto;
 }

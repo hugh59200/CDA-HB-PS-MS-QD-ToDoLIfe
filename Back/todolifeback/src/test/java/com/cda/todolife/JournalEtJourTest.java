@@ -137,6 +137,20 @@ public class JournalEtJourTest {
 		});
 		assertEquals(vSizeJour, this.jourService.findAll().size());
 	}
+	
+	@Order(4)
+	@Test
+	public void introuvableExceptions() {
+		
+		// utilisateur
+	
+		
+		
+		// journal
+
+		// jour
+
+	}
 
 //	@Order(4)
 //	@Test

@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.CurrentUserDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -104,7 +103,7 @@ public class UtilisateurController {
 
 	// details by userName
 	@GetMapping("/utilisateurs/username/{username}")
-	public ResponseEntity<CurrentUserDto> getByUserName(@PathVariable("username") String username)
+	public ResponseEntity<UtilisateurDto> getByUserName(@PathVariable("username") String username)
 			throws ResourceNotFoundException {
 
 		try {
