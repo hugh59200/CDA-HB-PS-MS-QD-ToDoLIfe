@@ -29,7 +29,7 @@ public class Journal {
 
 	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name = "id_utilisateur", nullable = false, unique = true)
+	@JoinColumn(name = "id_utilisateur", unique = true)
 	private Utilisateur utilisateur;
 
 }

@@ -23,3 +23,18 @@ spring:
     url: jdbc:postgresql://localhost:5432/todolife
     initialization-mode: always
   jpa.hibernate.ddl-auto : update
+  
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: todolifecda@gmail.com
+    password: prfCda1598753.
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false

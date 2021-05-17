@@ -1,6 +1,5 @@
 package com.cda.todolife.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of = { "dateJour", "humeur", "titre" , "texte" })
+@ToString(of = { "dateJour", "humeur", "titre", "texte" })
 @Entity
 public class Jour {
 
@@ -30,7 +29,7 @@ public class Jour {
 	private String titre;
 	private String texte;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_journal", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_journal")
 	private Journal journal;
 }
