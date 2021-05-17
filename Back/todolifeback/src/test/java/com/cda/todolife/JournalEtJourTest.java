@@ -1,13 +1,15 @@
 package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+//import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
@@ -18,11 +20,10 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.dto.UtilisateurDto;
-import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalExistantException;
@@ -82,9 +83,9 @@ public class JournalEtJourTest {
 		// etape 1 -> creation d'un utilisateur
 
 		int nbUser = this.jourService.findAll().size();
+		Date date = Date.valueOf("1988-10-10");
 		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
-				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
-				.build();
+				.prenom("hugo").password("12345").username("hugh59").dateNaissance(date).build();
 		try {
 			this.IUtilisateurService.create(utilisateurDto);
 		} catch (ResourceAlreadyExist e) {
@@ -139,6 +140,18 @@ public class JournalEtJourTest {
 
 		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
 
+	}
+
+	@Order(2)
+	@Test
+	public void utilisateurDoublons() {
+		int nbUser = this.jourService.findAll().size();
+		Assertions.assertThrows(ResourceAlreadyExist.class, () -> {
+			this.IUtilisateurService
+					.create(UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand").prenom("hugo")
+							.password("12345").username("hugh59").dateNaissance(Date.valueOf("1988-10-10")).build());
+		});
+		assertEquals(nbUser, this.jourService.findAll().size());
 	}
 
 //	@Order(3)
@@ -215,7 +228,8 @@ public class JournalEtJourTest {
 			String oldPrenom = utilisateurDto.getPrenom();
 			Date oldDateNaissance = utilisateurDto.getDateNaissance();
 			utilisateurDto.setUsername("paul59");
-			utilisateurDto.setDateNaissance(new java.sql.Date(1992 - 10 - 10));
+			Date date = Date.valueOf("1992-10-10");
+			utilisateurDto.setDateNaissance(date);
 			utilisateurDto.setNom("zakbandt");
 			utilisateurDto.setPrenom("paul");
 			try {
@@ -228,21 +242,39 @@ public class JournalEtJourTest {
 			assertNotEquals(utilisateurDto.getNom(), oldNom);
 			assertNotEquals(utilisateurDto.getPrenom(), oldPrenom);
 		}
-
-//		try {
-//			JournalDto journalDto = this.journalService.findById(1);
-//			String titre = journalDto.getLabel();
-//			journalDto.setLabel("hugoJournal");
-//			this.journalService.update(journalDto);
-//			assertNotEquals(journalDto.getLabel(), titre);
-//		} catch (JournalIntrouvableException e) {
-//			e.printStackTrace();
-//		} catch (JournalExistantException e) {
-//			e.printStackTrace();
-//		}
 	}
 
-	@Order(7)
+//	// update a revoir
+//	@Order(7)
+//	@Test
+//	public void updateJour() {
+//		List<JourDto> listJourDto = this.jourService.findAll();
+//
+//		for (JourDto jourDto : listJourDto) {
+//			String oldDateJour = jourDto.getDateJour();
+//			int oldHumeur = jourDto.getHumeur();
+//			String oldTexte = jourDto.getTexte();
+//			String oldTitre = jourDto.getTitre();
+//			JourDto newJourDto = new JourDto();
+//			newJourDto.setDateJour("2021-05-17");
+//			newJourDto.setTitre("new titre");
+//			newJourDto.setHumeur(1);
+//			newJourDto.setTexte("new blabla");
+//			try {
+//				this.jourService.update(newJourDto, jourDto.getJournalDto().getUtilisateurDto().getIdUtilisateur());
+//			} catch (JourIntrouvableException | JourExistantException | JournalIntrouvableException
+//					| ResourceNotFoundException e) {
+//				e.printStackTrace();
+//			}
+//			assertNotEquals(jourDto.getDateJour(), oldDateJour);
+//			assertNotEquals(jourDto.getHumeur(), oldHumeur);
+//			assertNotEquals(jourDto.getTexte(), oldTexte);
+//			assertNotEquals(jourDto.getTitre(), oldTitre);
+//		}
+//
+//	}
+
+	@Order(9)
 	@Test
 	static void reset(@Autowired IJourRepository jourRepository, @Autowired IJournalRepository journalRepository,
 			@Autowired IUtilisateurRepository utilisateurRepository) {
