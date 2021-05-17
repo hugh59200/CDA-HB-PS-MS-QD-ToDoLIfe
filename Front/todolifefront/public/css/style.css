@@ -8,10 +8,11 @@
 
 .homeMgTopTxt {
     margin-top: 25%;
-    padding-left: 15%;
+
+
 }
 
 body{
     background-image: url(../Background.png)!important;
-
+    background-size: cover;
 }

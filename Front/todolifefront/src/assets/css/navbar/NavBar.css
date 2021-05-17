@@ -28,3 +28,14 @@ header{
 .nav-link{
 margin-left: 30px;
 }
+
+.logotodolife{
+  width: 14%!important;
+}
+
+@media (max-width: 576px) { 
+
+  .logotodolife{
+    width: 40%!important;
+  }
+}
