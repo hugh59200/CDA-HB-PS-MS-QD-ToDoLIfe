@@ -17,5 +17,5 @@ public interface ISerieRepository extends CrudRepository<Serie, Integer> {
 	
 	Serie findByEpisode(int episode);
 
-	Iterable<SerieDto> findAllBywatchListIdWatchList(int idWatchList);
+	Iterable<Serie> findAllBywatchListIdWatchList(int idWatchList);
 }
