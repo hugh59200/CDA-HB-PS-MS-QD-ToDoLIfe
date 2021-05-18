@@ -1,11 +1,12 @@
 package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
@@ -16,7 +17,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.dto.UtilisateurDto;
@@ -78,65 +79,70 @@ public class JournalEtJourTest {
 			JournalIntrouvableException, ResourceAlreadyExist {
 
 		// etape 1 -> creation d'un utilisateur
-
 		int nbUser = this.jourService.findAll().size();
 		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
 				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
 				.build();
-		
-			this.IUtilisateurService.create(utilisateurDto);
-			
+		this.IUtilisateurService.create(utilisateurDto);
 		assertEquals(nbUser + 1, this.IUtilisateurService.list().size());
 
 		// etape 2 -> creation d'un jour
-
+		int vSizeJour = this.jourService.findAll().size();
 		JourDto jourDto = JourDto.builder().dateJour("2021 - 05 - 17").titre("mon titre").humeur(4).texte("blablabla")
 				.build();
 
 		// etape 3 -> creation d'un journal
-
 		int vSizeJournal = this.journalService.findAll().size();
-		int vSizeJour = this.jourService.findAll().size();
 		JournalDto journalDto = JournalDto.builder().build();
-
-		// 1) on lie le journal a l'utilisateur (crée étape 1) et on lui attribut le
-		// jour (crée étape 2)
-
 		utilisateurDto.setIdUtilisateur(this.IUtilisateurService.findByUsername("hugh59").getId());
-
 		journalDto.setUtilisateurDto(utilisateurDto);
-
 		List<JourDto> listJour = new ArrayList<JourDto>();
 		listJour.add(jourDto);
 		journalDto.setListJourDto(listJour);
-
-		// 2) on peu maintenant l'ajouter sans soucis puis lancer les test concernant
-		// journal et jour
-
 		this.journalService.add(journalDto.getUtilisateurDto().getIdUtilisateur());
-
 		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
-
 		this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
-
 		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
 
 	}
 
-//	@Order(3)
-//	@Test
-//	public void doublons() throws JournalExistantException {
-//		
-//		int vSize = this.journalService.findAll().size();
-//		
-//		Assertions.assertThrows(JournalExistantException.class, () -> {
-//			this.journalService.add(JournalDto.builder().build());
-//		});
-//		
-//		System.err.println(this.journalService.findAll());
-//		
-//		assertEquals(vSize, this.journalService.findAll().size());
-//	}
+	@Order(3)
+	@Test
+	public void doublons() {
+		int vSize = this.IUtilisateurService.list().size();
+
+		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
+				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
+				.build();
+
+		Assertions.assertThrows(ResourceAlreadyExist.class, () -> {
+			this.IUtilisateurService.create(utilisateurDto);
+		});
+		assertEquals(vSize, this.journalService.findAll().size());
+
+		// jour
+		int vSizeJour = this.jourService.findAll().size();
+
+		Assertions.assertThrows(JourExistantException.class, () -> {
+			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getId(),
+					this.jourService.findByTitre("mon titre"));
+		});
+		assertEquals(vSizeJour, this.journalService.findAll().size());
+
+		// journal
+		int vSizejournal = this.journalService.findAll().size();
+		int idUtilisateur;
+		try {
+			idUtilisateur = this.jourService.findByTitre("hugh59").getJournalDto().getUtilisateurDto()
+					.getIdUtilisateur();
+			Assertions.assertThrows(JournalExistantException.class, () -> {
+				this.journalService.add(idUtilisateur);
+			});
+		} catch (JourIntrouvableException e) {
+			e.printStackTrace();
+		}
+		assertEquals(vSizejournal, this.journalService.findAll().size());
+	}
 
 	@Order(4)
 	@Test
@@ -156,53 +162,36 @@ public class JournalEtJourTest {
 
 	@Order(5)
 	@Test
-	public void journalfindBy() {
-
-		try {
-			List<JournalDto> listJournal = this.journalService.findAll();
-			for (JournalDto journalDto : listJournal) {
-				assertNotNull(this.journalService.findById(journalDto.getIdJournal()));
-				assertNotNull(this.journalService.findIfJournalExist(journalDto.getIdJournal()));
-			}
-		} catch (JournalIntrouvableException e) {
-			e.printStackTrace();
+	public void journalfindBy() throws JournalIntrouvableException {
+		List<JournalDto> listJournal = this.journalService.findAll();
+		for (JournalDto journalDto : listJournal) {
+			assertNotNull(this.journalService.findById(journalDto.getIdJournal()));
+			assertNotNull(this.journalService.findIfJournalExist(journalDto.getIdJournal()));
 		}
 		assertNotNull(this.journalService.findAll());
 	}
 
 	@Order(6)
 	@Test
-	public void jourfindBy() {
-
+	public void jourfindBy() throws JourIntrouvableException {
 		List<JourDto> listJour = this.jourService.findAll();
 		for (JourDto jourDto : listJour) {
-			try {
-				assertNotNull(this.jourService.findById(jourDto.getIdJour()));
-				assertNotNull(this.jourService.findByTitre(jourDto.getTitre()));
-			} catch (JourIntrouvableException e) {
-				e.printStackTrace();
-			}
+			assertNotNull(this.jourService.findById(jourDto.getIdJour()));
+			assertNotNull(this.jourService.findByTitre(jourDto.getTitre()));
 			assertNotNull(this.jourService.findAll());
 		}
 	}
 
-//	@Order(6)
+//	@Order(7)
 //	@Test
-//	public void update() {
-//		try {
-//			JournalDto journalDto = this.journalService.findById(1);
-//			String titre = journalDto.getLabel();
-//			journalDto.setLabel("hugoJournal");
-//			this.journalService.update(journalDto);
-//			assertNotEquals(journalDto.getLabel(), titre);
-//		} catch (JournalIntrouvableException e) {
-//			e.printStackTrace();
-//		} catch (JournalExistantException e) {
-//			e.printStackTrace();
-//		}
+//	public void update() throws JourIntrouvableException, JournalIntrouvableException, JournalExistantException {
+//		String oldTitre = this.jourService.findByTitre("mon titre").getTitre();
+//		this.jourService.findByTitre("mon titre").setTitre("titre update");
+//		this.journalService.update(this.jourService.findByTitre("mon titre").getJournalDto());
+//		assertNotEquals(oldTitre, this.jourService.findByTitre("mon titre").getTitre());
 //	}
 
-	@Order(7)
+	@Order(8)
 	@Test
 	static void reset(@Autowired IJourRepository jourRepository, @Autowired IJournalRepository journalRepository,
 			@Autowired IUtilisateurRepository utilisateurRepository) {
