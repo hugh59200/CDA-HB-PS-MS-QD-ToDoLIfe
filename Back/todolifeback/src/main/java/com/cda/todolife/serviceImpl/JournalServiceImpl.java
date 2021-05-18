@@ -31,8 +31,8 @@ public class JournalServiceImpl implements IJournalService {
 
 	// test par savoir si un utilisateur possede un journal
 	@Override
-	public Boolean findIfJournalExist(String username) {
-		return this.journalRepository.findByUtilisateurUsername(username).isPresent() ? true : false;
+	public Boolean findIfJournalExist(int idUser) {
+		return this.journalRepository.findByUtilisateurIdUtilisateur(idUser).isPresent() ? true : false;
 	}
 
 //	ajouter
@@ -59,19 +59,15 @@ public class JournalServiceImpl implements IJournalService {
 // trouver par id
 	@Override
 	public JournalDto findById(int id) throws JournalIntrouvableException {
-		return this.modelMapper.map(this.journalRepository.findById(id).get(), JournalDto.class);
-
+		return this.modelMapper.map(this.journalRepository.findById(id).orElseThrow(JournalIntrouvableException::new),
+				JournalDto.class);
 	}
 
 	// mettre à jour
 	@Override
-	public void update(JournalDto list) throws JournalIntrouvableException, JournalExistantException {
-		try {
-			this.journalRepository.findById(list.getIdJournal()).orElseThrow(JournalIntrouvableException::new);
-			this.journalRepository.save(this.modelMapper.map(list, Journal.class));
-		} catch (JournalIntrouvableException e) {
-			e.printStackTrace();
-		}
+	public void update(JournalDto list) throws JournalIntrouvableException {
+		this.journalRepository.findById(list.getIdJournal()).orElseThrow(JournalIntrouvableException::new);
+		this.journalRepository.save(this.modelMapper.map(list, Journal.class));
 	}
 
 	// supprimer
