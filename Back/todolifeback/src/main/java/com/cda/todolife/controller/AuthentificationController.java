@@ -60,7 +60,6 @@ public class AuthentificationController {
 			responseBody.put("user", currentUserDto);
 			return ResponseEntity.ok().body(responseBody);
 		}
-//		return ResponseEntity.ok(loginAndPasswordDto);
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(HttpStatus.UNAUTHORIZED.getReasonPhrase());
 	}
 

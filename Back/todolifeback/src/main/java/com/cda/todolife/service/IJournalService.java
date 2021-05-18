@@ -17,11 +17,7 @@ public interface IJournalService {
 
 	void deleteById(int id) throws JournalIntrouvableException;
 
-	void add(String username) throws JournalExistantException, ResourceNotFoundException;
-
-	Boolean findIfJournalExist(String username);
-
-	JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException;
+	void add(int idUser) throws JournalExistantException, ResourceNotFoundException;
 
 
 }

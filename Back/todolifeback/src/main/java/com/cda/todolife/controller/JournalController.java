@@ -52,7 +52,7 @@ public class JournalController {
 	@PostMapping("/journaux/utilisateurs")
 	public void createById(@RequestParam(value = "username") String username)
 			throws JournalExistantException, ResourceNotFoundException {
-		this.journalService.add(username);
+		this.journalService.add(idUser);
 	}
 
 	// details by Id
@@ -63,14 +63,9 @@ public class JournalController {
 
 	// update
 	@PutMapping("/journaux")
-	public ResponseEntity<JournalDto> update(@RequestBody JournalDto journalDto) throws JournalIntrouvableException {
-		try {
-			journalService.update(journalDto);
-		} catch (JournalIntrouvableException e) {
-			e.printStackTrace();
-		} catch (JournalExistantException e) {
-			e.printStackTrace();
-		}
+	public ResponseEntity<JournalDto> update(@RequestBody JournalDto journalDto)
+			throws JournalIntrouvableException, JournalExistantException {
+		journalService.update(journalDto);
 		return ResponseEntity.ok(journalDto);
 	}
 

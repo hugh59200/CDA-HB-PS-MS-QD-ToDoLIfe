@@ -13,6 +13,7 @@ import com.cda.todolife.exception.JournalIntrouvableException;
 import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.model.Journal;
 import com.cda.todolife.repository.IJournalRepository;
+import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.service.IJournalService;
 import com.cda.todolife.service.IUtilisateurService;
 
@@ -23,7 +24,7 @@ public class JournalServiceImpl implements IJournalService {
 	private IJournalRepository journalRepository;
 
 	@Autowired
-	private IUtilisateurService utilisateurRepository;
+	private IUtilisateurRepository userRepository;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -36,13 +37,13 @@ public class JournalServiceImpl implements IJournalService {
 
 //	ajouter
 	@Override
-	public void add(String username) throws JournalExistantException, ResourceNotFoundException {
-		if (this.journalRepository.findByUtilisateurUsername(username).isPresent()) {
+	public void add(int idUser) throws JournalExistantException, ResourceNotFoundException {
+		if (this.journalRepository.findByUtilisateurIdUtilisateur(idUser).isPresent()) {
 			throw new JournalExistantException();
 		} else {
-			JournalDto journalDto = new JournalDto();
-			journalDto.setUtilisateurDto(this.utilisateurRepository.findByUsername(username));
-			this.journalRepository.save(this.modelMapper.map(journalDto, Journal.class));
+			Journal journal = new Journal();
+			journal.setUtilisateur(this.userRepository.findById(idUser).orElseThrow(ResourceNotFoundException::new));
+			this.journalRepository.save(this.modelMapper.map(journal, Journal.class));
 		}
 
 	}
