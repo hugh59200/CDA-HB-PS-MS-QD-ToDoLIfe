@@ -30,7 +30,6 @@ public class JourServiceImpl implements IJourService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	// test par savoir si un jour a été créér aujourd'hui
 	@Override
 	public boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
 		return this.jourRepository.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, dateJour).isPresent()
@@ -38,13 +37,15 @@ public class JourServiceImpl implements IJourService {
 				: false;
 	}
 
-//	ajouter
 	@Override
 	public void add(int idUser, JourDto jourDto) throws JournalIntrouvableException, JourExistantException {
-		
-		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser).orElseThrow(JournalIntrouvableException::new);
-				
-		if (this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journal).isPresent()) {
+
+		Journal journalEnt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
+				.orElseThrow(JournalIntrouvableException::new);
+
+		Optional<Jour> jourEntList = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journalEnt);
+
+		if (jourEntList.isPresent()) {
 			throw new JourExistantException();
 		}
 		
@@ -54,16 +55,15 @@ public class JourServiceImpl implements IJourService {
 		this.jourRepository.save(jourEnt);
 	}
 
-	// mettre à jour
 	@Override
 	public void update(JourDto jourDto, int idUser)
 			throws JourIntrouvableException, JournalIntrouvableException, ResourceNotFoundException {
 
-		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
-				.orElseThrow(JournalIntrouvableException::new);
-		Jour jourEnt = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journal)
+		Jour jourEnt = this.jourRepository
+				.findByDateJourAndJournal(jourDto.getDateJour(),
+						this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
+								.orElseThrow(JournalIntrouvableException::new))
 				.orElseThrow(JourIntrouvableException::new);
-		;
 
 		jourEnt.setTitre(jourDto.getTitre());
 		jourEnt.setHumeur(jourDto.getHumeur());
@@ -72,7 +72,6 @@ public class JourServiceImpl implements IJourService {
 		this.jourRepository.save(this.modelMapper.map(jourEnt, Jour.class));
 	}
 
-//	lister
 	@Override
 	public List<JourDto> findAll() {
 		List<JourDto> res = new ArrayList<>();
@@ -80,29 +79,24 @@ public class JourServiceImpl implements IJourService {
 		return res;
 	}
 
-// trouver par id
 	@Override
 	public JourDto findById(int id) throws JourIntrouvableException {
 		return this.modelMapper.map(this.jourRepository.findById(id).orElseThrow(JourIntrouvableException::new),
 				JourDto.class);
-
 	}
 
-//	trouver par titre
 	@Override
 	public JourDto findByTitre(String titre) throws JourIntrouvableException {
 		return this.modelMapper.map(this.jourRepository.findByTitre(titre).orElseThrow(JourIntrouvableException::new),
 				JourDto.class);
 	}
 
-	// supprimer
 	@Override
 	public void deleteById(int id) throws JourIntrouvableException {
 		this.jourRepository.findById(id).orElseThrow(JourIntrouvableException::new);
 		this.jourRepository.deleteById(id);
 	}
 
-//	lister jour par idUtilisateur
 	@Override
 	public List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur) {
 		List<JourDto> listJours = new ArrayList<>();

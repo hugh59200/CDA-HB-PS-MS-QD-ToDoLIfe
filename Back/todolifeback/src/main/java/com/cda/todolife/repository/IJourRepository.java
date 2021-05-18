@@ -13,7 +13,7 @@ public interface IJourRepository extends CrudRepository<Jour, Integer> {
 
 	List<Jour> findAll();
 
-	Optional<JourDto> findByTitre(String titre);
+	Optional<Jour> findByTitre(String titre);
 
 	List<Jour> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
 
