@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.model.Jour;
 import com.cda.todolife.model.Journal;
 
@@ -12,7 +13,7 @@ public interface IJourRepository extends CrudRepository<Jour, Integer> {
 
 	List<Jour> findAll();
 
-	Jour findByTitre(String titre);
+	Optional<JourDto> findByTitre(String titre);
 
 	List<Jour> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
 

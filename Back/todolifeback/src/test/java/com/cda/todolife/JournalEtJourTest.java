@@ -20,6 +20,7 @@ import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.exception.JourExistantException;
+import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
 import com.cda.todolife.exception.ResourceAlreadyExist;
@@ -129,13 +130,13 @@ public class JournalEtJourTest {
 		});
 		assertEquals(vSizeJournal, this.journalService.findAll().size());
 
-		// jour
-		int vSizeJour = this.jourService.findAll().size();
-		Assertions.assertThrows(JourExistantException.class, () -> {
-			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getIdUtilisateur(),
-					this.jourService.findByTitre("mon titre"));
-		});
-		assertEquals(vSizeJour, this.jourService.findAll().size());
+//		// jour
+//		int vSizeJour = this.jourService.findAll().size();
+//		Assertions.assertThrows(JourExistantException.class, () -> {
+//			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getIdUtilisateur(),
+//					this.jourService.findByTitre("mon titre"));
+//		});
+//		assertEquals(vSizeJour, this.jourService.findAll().size());
 	}
 	
 	@Order(4)
@@ -143,13 +144,19 @@ public class JournalEtJourTest {
 	public void introuvableExceptions() {
 		
 		// utilisateur
-	
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+			this.IUtilisateurService.findByUsername("paul59");
+		});
 		
+//		// journal
+//		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
+//			this.journalService.findByUtilisateurUsername("paul59");
+//		});
 		
-		// journal
-
 		// jour
-
+		Assertions.assertThrows(JourIntrouvableException.class, () -> {
+			this.jourService.findByTitre("mon titre inexistant");
+		});
 	}
 
 //	@Order(4)

@@ -70,7 +70,6 @@ public class JourServiceImpl implements IJourService {
 
 	// mettre à jour
 	@Override
-//	public void update(JourDto jourDto) throws JourIntrouvableException, JourExistantException {
 	public void update(JourDto jourDto, int idUser)
 			throws JourIntrouvableException, JournalIntrouvableException, ResourceNotFoundException {
 
@@ -112,8 +111,8 @@ public class JourServiceImpl implements IJourService {
 
 //	trouver par titre
 	@Override
-	public JourDto findByTitre(String titre) {
-		return this.modelMapper.map(this.jourRepository.findByTitre(titre), JourDto.class);
+	public JourDto findByTitre(String titre) throws JourIntrouvableException {
+		return this.modelMapper.map(this.jourRepository.findByTitre(titre).orElseThrow(JourIntrouvableException::new), JourDto.class);
 	}
 
 	// supprimer
