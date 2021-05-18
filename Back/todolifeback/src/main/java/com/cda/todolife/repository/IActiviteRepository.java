@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cda.todolife.model.Activite;
 
-public interface ActiviteRepository extends CrudRepository<Activite, Integer> {
+public interface IActiviteRepository extends CrudRepository<Activite, Integer> {
 //	List<Activite> findAll();
 
 	@Query(value = "select * from activite where id_utilisateur = ?1 ", nativeQuery = true)

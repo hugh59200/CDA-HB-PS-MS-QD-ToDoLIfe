@@ -5,8 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cda.todolife.model.Statistiques;
 
-public interface StatistiquesRepository extends CrudRepository<Statistiques, Integer> {
-
+public interface IStatistiquesRepository extends CrudRepository<Statistiques, Integer> {
 //	List<Statistiques> findAll();
 	
 	@Query(value = "select * from statistiques where id_utilisateur = ?1 ", nativeQuery = true)

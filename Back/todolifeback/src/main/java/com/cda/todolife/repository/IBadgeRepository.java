@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.cda.todolife.model.Badge;
 
-public interface BadgeRepository extends CrudRepository<Badge, Integer> {
+public interface IBadgeRepository extends CrudRepository<Badge, Integer> {
 //	List<Badge> findAll();
 
 	@Query(value = "select * from badge where id_sport = ?1 ", nativeQuery = true)
