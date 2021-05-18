@@ -12,7 +12,7 @@ public interface ISportService {
 
 	SportDto FindById(int id) throws SportIntrouvable, SportExistant;
 	
-	SportDto FindByLabel(String label) throws SportIntrouvable, SportExistant;
+//	SportDto FindByLabel(String label) throws SportIntrouvable, SportExistant;
 
 	void update(SportDto sport) throws SportIntrouvable, SportExistant;
 
