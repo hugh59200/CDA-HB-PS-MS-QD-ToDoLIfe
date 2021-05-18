@@ -130,7 +130,7 @@ public class JournalEtJourTest {
 		});
 		assertEquals(vSizeJournal, this.journalService.findAll().size());
 
-//		// jour
+		// jour
 //		int vSizeJour = this.jourService.findAll().size();
 //		Assertions.assertThrows(JourExistantException.class, () -> {
 //			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getIdUtilisateur(),
@@ -148,10 +148,14 @@ public class JournalEtJourTest {
 			this.IUtilisateurService.findByUsername("paul59");
 		});
 		
-//		// journal
-//		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
-//			this.journalService.findByUtilisateurUsername("paul59");
-//		});
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+			this.IUtilisateurService.findByidUtilisateur(this.IUtilisateurService.findByUsername("paul59").getIdUtilisateur());
+		});
+		
+		// journal
+		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
+			this.journalService.findByUtilisateurUsername("paul59");
+		});
 		
 		// jour
 		Assertions.assertThrows(JourIntrouvableException.class, () -> {

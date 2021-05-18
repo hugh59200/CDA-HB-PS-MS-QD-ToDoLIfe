@@ -2,7 +2,6 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +26,13 @@ public class JournalServiceImpl implements IJournalService {
 	// test par savoir si un utilisateur possede un journal
 	@Override
 	public Boolean findIfJournalExist(int idUser) {
-		Optional<Journal> journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
-		if (journal.isPresent()) {
-			return true;
-		}
-		return false;
+		return this.journalRepository.findByUtilisateurIdUtilisateur(idUser).isPresent() ? true : false;
 	}
 
 //	ajouter
 	@Override
 	public void add(JournalDto journalDto) throws JournalExistantException {
-		Optional<Journal> probEntOpt = this.journalRepository.findById(journalDto.getIdJournal());
-		
-		if (probEntOpt.isPresent()) {
+		if (this.journalRepository.findById(journalDto.getIdJournal()).isPresent()) {
 			throw new JournalExistantException();
 		} else {
 			this.journalRepository.save(this.modelMapper.map(journalDto, Journal.class));
@@ -81,7 +74,8 @@ public class JournalServiceImpl implements IJournalService {
 
 	@Override
 	public JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException {
-		return this.modelMapper.map(this.journalRepository.findByUtilisateurUsername(username).get(), JournalDto.class);
+		return this.modelMapper.map(this.journalRepository.findByUtilisateurUsername(username)
+				.orElseThrow(JournalIntrouvableException::new), JournalDto.class);
 	}
 
 }

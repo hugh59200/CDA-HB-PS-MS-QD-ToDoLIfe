@@ -2,7 +2,6 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,35 +33,20 @@ public class JourServiceImpl implements IJourService {
 	// test par savoir si un jour a été créér aujourd'hui
 	@Override
 	public boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
-		Optional<Jour> jour = this.jourRepository.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur,
-				dateJour);
-		if (!jour.isPresent()) {
-			return false;
-		} else {
-			return true;
-		}
+		return this.jourRepository.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, dateJour).isPresent()
+				? true
+				: false;
 	}
 
 //	ajouter
 	@Override
 	public void add(int idUser, JourDto jourDto) throws JournalIntrouvableException, JourExistantException {
-
-		Optional<Journal> journalEntOpt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
-
-		if (journalEntOpt.isEmpty()) {
-			throw new JournalIntrouvableException();
-		}
-
-		Journal journalEnt = journalEntOpt.get();
-
-		Optional<Jour> jourEntList = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journalEnt);
-
-		if (!jourEntList.isEmpty()) {
+		Journal journalEnt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
+				.orElseThrow(JournalIntrouvableException::new);
+		if (this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journalEnt).isPresent()) {
 			throw new JourExistantException();
 		}
-
 		Jour jourEnt = this.modelMapper.map(jourDto, Jour.class);
-
 		jourEnt.setJournal(journalEnt);
 		jourDto.setIdJour(jourEnt.getIdJour());
 		jourEnt = jourRepository.save(jourEnt);
@@ -73,19 +57,11 @@ public class JourServiceImpl implements IJourService {
 	public void update(JourDto jourDto, int idUser)
 			throws JourIntrouvableException, JournalIntrouvableException, ResourceNotFoundException {
 
-		Optional<Journal> journalEntOpt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
-		if (journalEntOpt.isEmpty()) {
-			throw new JournalIntrouvableException();
-		}
-		Journal journal = journalEntOpt.get();
-
-		Optional<Jour> jouropt = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journal);
-
-		if (jouropt.isEmpty()) {
-			throw new JourIntrouvableException();
-		}
-
-		Jour jourEnt = jouropt.get();
+		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
+				.orElseThrow(JournalIntrouvableException::new);
+		Jour jourEnt = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journal)
+				.orElseThrow(JourIntrouvableException::new);
+		;
 
 		jourEnt.setTitre(jourDto.getTitre());
 		jourEnt.setHumeur(jourDto.getHumeur());
@@ -105,14 +81,16 @@ public class JourServiceImpl implements IJourService {
 // trouver par id
 	@Override
 	public JourDto findById(int id) throws JourIntrouvableException {
-		return this.modelMapper.map(this.jourRepository.findById(id).get(), JourDto.class);
+		return this.modelMapper.map(this.jourRepository.findById(id).orElseThrow(JourIntrouvableException::new),
+				JourDto.class);
 
 	}
 
 //	trouver par titre
 	@Override
 	public JourDto findByTitre(String titre) throws JourIntrouvableException {
-		return this.modelMapper.map(this.jourRepository.findByTitre(titre).orElseThrow(JourIntrouvableException::new), JourDto.class);
+		return this.modelMapper.map(this.jourRepository.findByTitre(titre).orElseThrow(JourIntrouvableException::new),
+				JourDto.class);
 	}
 
 	// supprimer
