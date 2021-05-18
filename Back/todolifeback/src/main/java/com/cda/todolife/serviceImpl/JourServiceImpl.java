@@ -41,15 +41,17 @@ public class JourServiceImpl implements IJourService {
 //	ajouter
 	@Override
 	public void add(int idUser, JourDto jourDto) throws JournalIntrouvableException, JourExistantException {
-		Journal journalEnt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
-				.orElseThrow(JournalIntrouvableException::new);
-		if (this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journalEnt).isPresent()) {
+		
+		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser).orElseThrow(JournalIntrouvableException::new);
+				
+		if (this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journal).isPresent()) {
 			throw new JourExistantException();
 		}
+		
 		Jour jourEnt = this.modelMapper.map(jourDto, Jour.class);
-		jourEnt.setJournal(journalEnt);
+		jourEnt.setJournal(journal);
 		jourDto.setIdJour(jourEnt.getIdJour());
-		jourEnt = jourRepository.save(jourEnt);
+		this.jourRepository.save(jourEnt);
 	}
 
 	// mettre à jour

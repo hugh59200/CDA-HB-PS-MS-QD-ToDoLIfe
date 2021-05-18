@@ -23,12 +23,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.JournalDto;
-import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
 import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.service.IJournalService;
-import com.cda.todolife.service.IUtilisateurService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -38,42 +36,29 @@ public class JournalController {
 	@Autowired
 	private IJournalService journalService;
 
-	@Autowired
-	private IUtilisateurService utilisateurService;
-
 	// test par savoir si un utilisateur possede un journal
-	@GetMapping("/journaux/{id}/exist")
-	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) {
-		return ResponseEntity.ok(journalService.findIfJournalExist(idUtilisateur));
+	@GetMapping("/journaux/{username}/exist")
+	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "username") String username) {
+		return ResponseEntity.ok(journalService.findIfJournalExist(username));
 	}
 
 	// listing
 	@GetMapping("/journaux")
 	public List<JournalDto> getAll() {
-		System.out.println(journalService.findAll());
 		return this.journalService.findAll();
 	}
 
-
 	// create par userId
 	@PostMapping("/journaux/utilisateurs")
-	public void createById(@RequestParam(value = "idUser") int idUser)
+	public void createById(@RequestParam(value = "username") String username)
 			throws JournalExistantException, ResourceNotFoundException {
-		try {
-			UtilisateurDto userDto = this.utilisateurService.findByidUtilisateur(idUser);
-			JournalDto journalDto = new JournalDto();
-			journalDto.setUtilisateurDto(userDto);
-			this.journalService.add(journalDto);
-		} catch (JournalExistantException e) {
-			e.printStackTrace();
-		}
+		this.journalService.add(username);
 	}
 
 	// details by Id
 	@GetMapping("/journaux/{id}")
 	public ResponseEntity<JournalDto> getById(@PathVariable int id) throws JournalIntrouvableException {
-		JournalDto journalDto = journalService.findById(id);
-		return ResponseEntity.ok(journalDto);
+		return ResponseEntity.ok(journalService.findById(id));
 	}
 
 	// update
@@ -104,9 +89,7 @@ public class JournalController {
 		Map<String, String> errors = new HashMap<>();
 		ex.getConstraintViolations().forEach(constraintViolation -> {
 			String fieldName = constraintViolation.getPropertyPath().toString();
-			fieldName = fieldName.substring(fieldName.lastIndexOf('.') + 1);
-			String errorMessage = constraintViolation.getMessage();
-			errors.put(fieldName, errorMessage);
+			errors.put(fieldName.substring(fieldName.lastIndexOf('.') + 1), constraintViolation.getMessage());
 		});
 		return errors;
 	}

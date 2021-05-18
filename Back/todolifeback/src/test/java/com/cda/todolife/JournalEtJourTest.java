@@ -16,12 +16,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.cda.todolife.dto.JourDto;
-import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.dto.UtilisateurDto;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
-import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
 import com.cda.todolife.exception.ResourceAlreadyExist;
 import com.cda.todolife.exception.ResourceNotFoundException;
@@ -88,28 +85,28 @@ public class JournalEtJourTest {
 		}
 		assertEquals(nbUser + 1, this.IUtilisateurService.list().size());
 
-		// creation d'un journal
-
-		int vSizeJournal = this.journalService.findAll().size();
-		JournalDto journalDto = JournalDto.builder().utilisateurDto(utilisateurDto).build();
-		try {
-			this.journalService.add(journalDto);
-		} catch (JournalExistantException e) {
-			e.printStackTrace();
-		}
-		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
+//		// creation d'un journal
+//
+//		int vSizeJournal = this.journalService.findAll().size();
+//		JournalDto journalDto = JournalDto.builder().utilisateurDto(utilisateurDto).build();
+//		try {
+//			this.journalService.add(journalDto);
+//		} catch (JournalExistantException e) {
+//			e.printStackTrace();
+//		}
+//		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
 
 		// creation d'un jour
 
-		int vSizeJour = this.jourService.findAll().size();
-		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
-				.journalDto(journalDto).build();
-		try {
-			this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
-		} catch (JourExistantException | JournalIntrouvableException e) {
-			e.printStackTrace();
-		}
-		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
+//		int vSizeJour = this.jourService.findAll().size();
+//		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
+//				.journalDto(journalDto).build();
+//		try {
+//			this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
+//		} catch (JourExistantException | JournalIntrouvableException e) {
+//			e.printStackTrace();
+//		}
+//		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
 	}
 
 	@Order(3)
@@ -123,19 +120,19 @@ public class JournalEtJourTest {
 		});
 		assertEquals(nbUser, this.jourService.findAll().size());
 
-		// journal
-		int vSizeJournal = this.journalService.findAll().size();
-		Assertions.assertThrows(JournalExistantException.class, () -> {
-			this.journalService.add(this.journalService.findByUtilisateurUsername("hugh59"));
-		});
-		assertEquals(vSizeJournal, this.journalService.findAll().size());
+//		// journal
+//		int vSizeJournal = this.journalService.findAll().size();
+//		Assertions.assertThrows(JournalExistantException.class, () -> {
+//			this.journalService.add(this.journalService.findByUtilisateurUsername("hugh59"));
+//		});
+//		assertEquals(vSizeJournal, this.journalService.findAll().size());
 
 		// jour
 //		int vSizeJour = this.jourService.findAll().size();
-//		Assertions.assertThrows(JourExistantException.class, () -> {
-//			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getIdUtilisateur(),
-//					this.jourService.findByTitre("mon titre"));
-//		});
+		Assertions.assertThrows(JourExistantException.class, () -> {
+			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getIdUtilisateur(),
+					this.jourService.findByTitre("mon titre"));
+		});
 //		assertEquals(vSizeJour, this.jourService.findAll().size());
 	}
 	

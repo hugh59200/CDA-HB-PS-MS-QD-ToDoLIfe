@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.model.Journal;
 import com.cda.todolife.repository.IJournalRepository;
 import com.cda.todolife.service.IJournalService;
+import com.cda.todolife.service.IUtilisateurService;
 
 @Service
 public class JournalServiceImpl implements IJournalService {
@@ -21,22 +23,28 @@ public class JournalServiceImpl implements IJournalService {
 	private IJournalRepository journalRepository;
 
 	@Autowired
+	private IUtilisateurService utilisateurRepository;
+
+	@Autowired
 	private ModelMapper modelMapper;
 
 	// test par savoir si un utilisateur possede un journal
 	@Override
-	public Boolean findIfJournalExist(int idUser) {
-		return this.journalRepository.findByUtilisateurIdUtilisateur(idUser).isPresent() ? true : false;
+	public Boolean findIfJournalExist(String username) {
+		return this.journalRepository.findByUtilisateurUsername(username).isPresent() ? true : false;
 	}
 
 //	ajouter
 	@Override
-	public void add(JournalDto journalDto) throws JournalExistantException {
-		if (this.journalRepository.findById(journalDto.getIdJournal()).isPresent()) {
+	public void add(String username) throws JournalExistantException, ResourceNotFoundException {
+		if (this.journalRepository.findByUtilisateurUsername(username).isPresent()) {
 			throw new JournalExistantException();
 		} else {
+			JournalDto journalDto = new JournalDto();
+			journalDto.setUtilisateurDto(this.utilisateurRepository.findByUsername(username));
 			this.journalRepository.save(this.modelMapper.map(journalDto, Journal.class));
 		}
+
 	}
 
 //	lister

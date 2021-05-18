@@ -5,6 +5,7 @@ import java.util.List;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.exception.JournalExistantException;
 import com.cda.todolife.exception.JournalIntrouvableException;
+import com.cda.todolife.exception.ResourceNotFoundException;
 
 public interface IJournalService {
 
@@ -16,9 +17,9 @@ public interface IJournalService {
 
 	void deleteById(int id) throws JournalIntrouvableException;
 
-	void add(JournalDto journalDto) throws JournalExistantException;
+	void add(String username) throws JournalExistantException, ResourceNotFoundException;
 
-	Boolean findIfJournalExist(int idUser);
+	Boolean findIfJournalExist(String username);
 
 	JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException;
 

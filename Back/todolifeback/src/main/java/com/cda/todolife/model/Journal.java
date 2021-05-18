@@ -23,6 +23,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@OnDelete(action = OnDeleteAction.CASCADE)
 @ToString(of = { "idJournal", "utilisateur" })
 public class Journal {
 

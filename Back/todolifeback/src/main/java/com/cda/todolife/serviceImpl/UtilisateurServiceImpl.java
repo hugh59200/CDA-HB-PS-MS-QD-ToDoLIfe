@@ -54,13 +54,12 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		helper.setTo(userDto.getEmail());
 		helper.setSubject("Veuillez vérifier votre inscription");
 
-		String emailEncode = Base64.getEncoder().encodeToString(userDto.getEmail().getBytes());
-		String passwordEncode = Base64.getEncoder().encodeToString(userDto.getPassword().getBytes());
-
 		content = content.replace("[[name]]", userDto.getPrenom() + " " + userDto.getNom());
-		String verifyURL = siteURL + "/verify?dn=" + userDto.getDateNaissance() + "&em=" + emailEncode + "&n="
-				+ userDto.getNom() + "&pn=" + userDto.getPrenom() + "&psw=" + passwordEncode + "&un="
-				+ userDto.getUsername();
+		
+		String verifyURL = siteURL + "/verify?dn=" + userDto.getDateNaissance() + "&em="
+				+ Base64.getEncoder().encodeToString(userDto.getEmail().getBytes()) + "&n=" + userDto.getNom() + "&pn="
+				+ userDto.getPrenom() + "&psw=" + Base64.getEncoder().encodeToString(userDto.getPassword().getBytes())
+				+ "&un=" + userDto.getUsername();
 
 		helper.setText(content.replace("[[URL]]", verifyURL), true);
 		mailSender.send(message);

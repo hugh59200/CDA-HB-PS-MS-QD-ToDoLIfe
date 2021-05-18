@@ -2,6 +2,7 @@ import { API_JOUR } from '../../../../constant/API_BACK';
 import axios from 'axios';
 
 export function affichageBoutton(setjourExistant) {
+	// const username = localStorage.username;
 	axios({
 		method: 'get',
 		url: API_JOUR + '/' + localStorage.getItem('id') + '/utilisateurs',
