@@ -17,6 +17,7 @@ const ListeFilms = () => {
       .then(function (response) {
         if (response.status === 200) {
             setListeFilm(response.data);
+            // eslint-disable-next-line array-callback-return
             ListeFilm.map((Film, i) => {
             console.log(Film);
           });
@@ -27,6 +28,7 @@ const ListeFilms = () => {
       .catch(function (error) {
         console.log(error);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

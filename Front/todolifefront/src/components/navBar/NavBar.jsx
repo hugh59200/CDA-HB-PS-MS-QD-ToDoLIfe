@@ -9,7 +9,6 @@ import {
   URL_WATCHLIST,
 } from "../../constant/URL_CONST";
 
-import { NavbarBrand } from "react-bootstrap";
 import { deconnected } from "../../service/authentificationService";
 import "../../assets/css/navbar/NavBar.css"
 import logo from '../../assets/img/logotodolife.png'
