@@ -78,21 +78,21 @@ public class JournalEtJourTest {
 	public void creation() throws JournalExistantException, ResourceNotFoundException, JourExistantException,
 			JournalIntrouvableException, ResourceAlreadyExist {
 
+		int nbUserBefore = this.IUtilisateurService.list().size();
+		int nbJourBefore = this.jourService.findAll().size();
+		int nbJournalBefore = this.journalService.findAll().size();
+
 		// creation d'un utilisateur
-		int nbUser = this.jourService.findAll().size();
 		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
 				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
 				.build();
 		this.IUtilisateurService.create(utilisateurDto);
-		assertEquals(nbUser + 1, this.IUtilisateurService.list().size());
 
 		// creation d'un jour
-		int vSizeJour = this.jourService.findAll().size();
 		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
 				.build();
 
 		// creation d'un journal
-		int vSizeJournal = this.journalService.findAll().size();
 		JournalDto journalDto = JournalDto.builder().build();
 		utilisateurDto.setIdUtilisateur(this.IUtilisateurService.findByUsername("hugh59").getId());
 		journalDto.setUtilisateurDto(utilisateurDto);
@@ -100,42 +100,48 @@ public class JournalEtJourTest {
 		listJour.add(jourDto);
 		journalDto.setListJourDto(listJour);
 		this.journalService.add(journalDto.getUtilisateurDto().getIdUtilisateur());
-		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
 		this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
-		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
+
+		int nbUserAfter = this.IUtilisateurService.list().size();
+		int nbJournalAfter = this.journalService.findAll().size();
+		int nbJourAfter = this.jourService.findAll().size();
+
+		// tests
+		assertEquals(nbUserBefore + 1, nbUserAfter);
+		assertEquals(nbJourBefore + 1, nbJournalAfter);
+		assertEquals(nbJournalBefore + 1, nbJourAfter);
 	}
 
-//	@Order(2)
-//	@Test
-//	public void lire() throws JournalExistantException, ResourceNotFoundException, JourExistantException,
-//			JournalIntrouvableException, ResourceAlreadyExist {
-//
-//		// creation d'un utilisateur
-//		int nbUser = this.jourService.findAll().size();
-//		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
-//				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
-//				.build();
-//		this.IUtilisateurService.create(utilisateurDto);
-//		assertEquals(nbUser + 1, this.IUtilisateurService.list().size());
-//
-//		// creation d'un jour
-//		int vSizeJour = this.jourService.findAll().size();
-//		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
-//				.build();
-//
-//		// creation d'un journal
-//		int vSizeJournal = this.journalService.findAll().size();
-//		JournalDto journalDto = JournalDto.builder().build();
-//		utilisateurDto.setIdUtilisateur(this.IUtilisateurService.findByUsername("hugh59").getId());
-//		journalDto.setUtilisateurDto(utilisateurDto);
-//		List<JourDto> listJour = new ArrayList<JourDto>();
-//		listJour.add(jourDto);
-//		journalDto.setListJourDto(listJour);
-//		this.journalService.add(journalDto.getUtilisateurDto().getIdUtilisateur());
-//		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
-//		this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
-//		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
-//	}
+	@Order(2)
+	@Test
+	public void lire() throws JournalIntrouvableException, JourIntrouvableException, ResourceNotFoundException {
+
+		// utilisateur
+		List<UtilisateurDtoList> listUtilisateur = this.IUtilisateurService.list();
+		assertNotNull(listUtilisateur);
+		for (UtilisateurDtoList utilisateurDto : listUtilisateur) {
+			assertNotNull(this.IUtilisateurService.findByUsername(utilisateurDto.getUsername()));
+			assertNotNull(this.IUtilisateurService.findByidUtilisateur(utilisateurDto.getIdUtilisateur()));
+		}
+
+		// journal
+		List<JournalDto> listJournal = this.journalService.findAll();
+		assertNotNull(listJournal);
+		for (JournalDto journalDto : listJournal) {
+			assertNotNull(this.journalService.findById(journalDto.getIdJournal()));
+			assertNotNull(this.journalService.findIfJournalExist(journalDto.getIdJournal()));
+		}
+		assertNotNull(this.journalService.findAll());
+
+		// jour
+		List<JourDto> listJour = this.jourService.findAll();
+		assertNotNull(listJour);
+		for (JourDto jourDto : listJour) {
+			assertNotNull(this.jourService.findById(jourDto.getIdJour()));
+			assertNotNull(this.jourService.findByTitre(jourDto.getTitre()));
+			assertNotNull(this.jourService.findAll());
+		}
+	}
 
 //	@Order(3)
 //	@Test
@@ -174,73 +180,28 @@ public class JournalEtJourTest {
 //		assertEquals(nbUserAprés + 1, nbUserAvant);
 //	}
 
-	@Order(5)
-	@Test
-	public void find() throws JournalIntrouvableException, JourIntrouvableException, ResourceNotFoundException {
-
-		// utilisateur
-		List<UtilisateurDtoList> listUtilisateur = this.IUtilisateurService.list();
-		assertNotNull(listUtilisateur);
-		for (UtilisateurDtoList utilisateurDto : listUtilisateur) {
-			assertNotNull(this.IUtilisateurService.findByUsername(utilisateurDto.getUsername()));
-			assertNotNull(this.IUtilisateurService.findByidUtilisateur(utilisateurDto.getIdUtilisateur()));
-		}
-
-		// journal
-		List<JournalDto> listJournal = this.journalService.findAll();
-		assertNotNull(listJournal);
-		for (JournalDto journalDto : listJournal) {
-			assertNotNull(this.journalService.findById(journalDto.getIdJournal()));
-			assertNotNull(this.journalService.findIfJournalExist(journalDto.getIdJournal()));
-		}
-		assertNotNull(this.journalService.findAll());
-
-		// jour
-		List<JourDto> listJour = this.jourService.findAll();
-		assertNotNull(listJour);
-		for (JourDto jourDto : listJour) {
-			assertNotNull(this.jourService.findById(jourDto.getIdJour()));
-			assertNotNull(this.jourService.findByTitre(jourDto.getTitre()));
-			assertNotNull(this.jourService.findAll());
-		}
-	}
-
 	@Order(6)
 	@Test
 	public void doublonExecption() {
-		// utilisateur
-		int vSize = this.IUtilisateurService.list().size();
-		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
-				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
-				.build();
 
+		// utilisateur
 		Assertions.assertThrows(ResourceAlreadyExist.class, () -> {
-			this.IUtilisateurService.create(utilisateurDto);
+			this.IUtilisateurService.create(UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
+					.prenom("hugo").password("12345").username("hugh59")
+					.dateNaissance(new java.sql.Date(1988 - 10 - 10)).build());
+			this.IUtilisateurService.verify("1970-01-01", "h.bogrand@gmail.com", "bogrand", "hugo", "12345", "hugh59");
 		});
-		assertEquals(vSize, this.journalService.findAll().size());
 
 		// jour
-		int vSizeJour = this.jourService.findAll().size();
-
 		Assertions.assertThrows(JourExistantException.class, () -> {
 			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getId(),
 					this.jourService.findByTitre("mon titre"));
 		});
-		assertEquals(vSizeJour, this.journalService.findAll().size());
 
-		// journal
-		int vSizejournal = this.journalService.findAll().size();
-		int idUtilisateur;
-		try {
-			idUtilisateur = this.jourService.findByTitre("hugh59").getJournalDto().getUtilisateurDto()
-					.getIdUtilisateur();
-			Assertions.assertThrows(JournalExistantException.class, () -> {
-				this.journalService.add(idUtilisateur);
-			});
-		} catch (JourIntrouvableException e) {
-			e.printStackTrace();
-		}
-		assertEquals(vSizejournal, this.journalService.findAll().size());
+//		// journal
+//		Assertions.assertThrows(JourIntrouvableException.class, () -> {
+//			this.journalService.add(this.journalService.findAll().get(0).getIdJournal());
+//		});
 	}
 
 	@Order(6)
@@ -250,16 +211,29 @@ public class JournalEtJourTest {
 		// utilisateur
 		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.findByUsername("paul59");
+			this.IUtilisateurService.list().get(20);
+			this.IUtilisateurService.findByidUtilisateur(20);
+			this.IUtilisateurService.delete(20);
+			this.IUtilisateurService.show(20);
+			this.IUtilisateurService.update(this.IUtilisateurService.findByidUtilisateur(20));
 		});
 
 		// jour
 		Assertions.assertThrows(JourIntrouvableException.class, () -> {
-			this.jourService.findByTitre("mon titre inexistant");
+//			this.jourService.findByTitre("mon titre");
+			this.jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(20, "1970-01-01");
+			this.jourService.findById(20);
+			this.jourService.deleteById(20);
+			this.jourService.update(this.jourService.findById(20), 20);
+			this.journalService.add(this.jourService.findByTitre("mon faux titre").getJournalDto().getUtilisateurDto()
+					.getIdUtilisateur());
 		});
 
 		// journal
 		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
 			this.journalService.findById(1);
+			this.journalService.deleteById(20);
+			this.journalService.update(this.journalService.findById(1));
 		});
 	}
 
