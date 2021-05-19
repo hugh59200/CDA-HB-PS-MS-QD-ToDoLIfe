@@ -50,9 +50,15 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
-		helper.setFrom("todolifecda@gmail.com", "ToDoLife");
-		helper.setTo(userDto.getEmail());
-		helper.setSubject("Veuillez vérifier votre inscription");
+		helper.setFrom(fromAddress, senderName);
+		helper.setTo(toAddress);
+		helper.setSubject(subject);
+
+		String email = userDto.getEmail();
+		String emailEncode = Base64.getEncoder().encodeToString(email.getBytes());
+
+		String password = userDto.getPassword();
+		String passwordEncode = Base64.getEncoder().encodeToString(password.getBytes());
 
 		content = content.replace("[[name]]", userDto.getPrenom() + " " + userDto.getNom());
 		
