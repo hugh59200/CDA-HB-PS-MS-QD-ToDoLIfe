@@ -105,47 +105,47 @@ public class JournalEtJourTest {
 		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
 	}
 
-	@Order(2)
-	@Test
-	public void lire() throws JournalExistantException, ResourceNotFoundException, JourExistantException,
-			JournalIntrouvableException, ResourceAlreadyExist {
+//	@Order(2)
+//	@Test
+//	public void lire() throws JournalExistantException, ResourceNotFoundException, JourExistantException,
+//			JournalIntrouvableException, ResourceAlreadyExist {
+//
+//		// creation d'un utilisateur
+//		int nbUser = this.jourService.findAll().size();
+//		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
+//				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
+//				.build();
+//		this.IUtilisateurService.create(utilisateurDto);
+//		assertEquals(nbUser + 1, this.IUtilisateurService.list().size());
+//
+//		// creation d'un jour
+//		int vSizeJour = this.jourService.findAll().size();
+//		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
+//				.build();
+//
+//		// creation d'un journal
+//		int vSizeJournal = this.journalService.findAll().size();
+//		JournalDto journalDto = JournalDto.builder().build();
+//		utilisateurDto.setIdUtilisateur(this.IUtilisateurService.findByUsername("hugh59").getId());
+//		journalDto.setUtilisateurDto(utilisateurDto);
+//		List<JourDto> listJour = new ArrayList<JourDto>();
+//		listJour.add(jourDto);
+//		journalDto.setListJourDto(listJour);
+//		this.journalService.add(journalDto.getUtilisateurDto().getIdUtilisateur());
+//		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
+//		this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
+//		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
+//	}
 
-		// creation d'un utilisateur
-		int nbUser = this.jourService.findAll().size();
-		UtilisateurDto utilisateurDto = UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
-				.prenom("hugo").password("12345").username("hugh59").dateNaissance(new java.sql.Date(1988 - 10 - 10))
-				.build();
-		this.IUtilisateurService.create(utilisateurDto);
-		assertEquals(nbUser + 1, this.IUtilisateurService.list().size());
-
-		// creation d'un jour
-		int vSizeJour = this.jourService.findAll().size();
-		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
-				.build();
-
-		// creation d'un journal
-		int vSizeJournal = this.journalService.findAll().size();
-		JournalDto journalDto = JournalDto.builder().build();
-		utilisateurDto.setIdUtilisateur(this.IUtilisateurService.findByUsername("hugh59").getId());
-		journalDto.setUtilisateurDto(utilisateurDto);
-		List<JourDto> listJour = new ArrayList<JourDto>();
-		listJour.add(jourDto);
-		journalDto.setListJourDto(listJour);
-		this.journalService.add(journalDto.getUtilisateurDto().getIdUtilisateur());
-		assertEquals(vSizeJournal + 1, this.journalService.findAll().size());
-		this.jourService.add(utilisateurDto.getIdUtilisateur(), jourDto);
-		assertEquals(vSizeJour + 1, this.jourService.findAll().size());
-	}
-
-	@Order(3)
-	@Test
-	public void update() {
-		// utilisateur
-
-		// jour
-
-		// journal
-	}
+//	@Order(3)
+//	@Test
+//	public void update() {
+//		// utilisateur
+//
+//		// jour
+//
+//		// journal
+//	}
 
 //	@Order(4)
 //	@Test
@@ -241,6 +241,26 @@ public class JournalEtJourTest {
 			e.printStackTrace();
 		}
 		assertEquals(vSizejournal, this.journalService.findAll().size());
+	}
+
+	@Order(6)
+	@Test
+	public void introuvableExecption() {
+
+		// utilisateur
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+			this.IUtilisateurService.findByUsername("paul59");
+		});
+
+		// jour
+		Assertions.assertThrows(JourIntrouvableException.class, () -> {
+			this.jourService.findByTitre("mon titre inexistant");
+		});
+
+		// journal
+		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
+			this.journalService.findById(1);
+		});
 	}
 
 	@Order(7)
