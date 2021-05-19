@@ -1,6 +1,8 @@
 package com.cda.todolife.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cda.todolife.dto.ActiviteDto;
 import com.cda.todolife.exception.ActiviteExistante;
 import com.cda.todolife.exception.ActiviteIntrouvable;
+import com.cda.todolife.model.Activite;
 import com.cda.todolife.repository.IActiviteRepository;
 import com.cda.todolife.service.IActiviteService;
 
@@ -22,33 +25,39 @@ public class ActiviteServiceImpl implements IActiviteService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public List<ActiviteDto> FindActiviteByUserId(int id) throws ActiviteIntrouvable, ActiviteExistante {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ActiviteDto> FindActiviteByUserId(int id) throws ActiviteIntrouvable {
+		List<ActiviteDto> res = new ArrayList<>();
+		this.activiteDao.FindActiviteByUserId(id).forEach(pres -> res.add(this.modelMapper.map(pres, ActiviteDto.class)));
+		return res;
 	}
 
 	@Override
-	public List<ActiviteDto> FindActiviteBySportId(int id) throws ActiviteIntrouvable, ActiviteExistante {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ActiviteDto> FindActiviteBySportId(int id) throws ActiviteIntrouvable {
+		List<ActiviteDto> res = new ArrayList<>();
+		this.activiteDao.FindActiviteBySportId(id).forEach(pres -> res.add(this.modelMapper.map(pres, ActiviteDto.class)));
+		return res;
 	}
 
 	@Override
-	public void update(ActiviteDto activite) throws ActiviteIntrouvable, ActiviteExistante {
-		// TODO Auto-generated method stub
-
+	public void update(ActiviteDto activite) throws ActiviteIntrouvable {
+		this.activiteDao.findById(activite.getIdActivite()).orElseThrow(ActiviteIntrouvable::new);
+		this.activiteDao.save(this.modelMapper.map(activite, Activite.class));
 	}
 
 	@Override
 	public void deleteById(int id) throws ActiviteIntrouvable {
-		// TODO Auto-generated method stub
-
+		this.activiteDao.findById(id).orElseThrow(ActiviteIntrouvable::new);
+		this.activiteDao.deleteById(id);
 	}
 
 	@Override
 	public void add(ActiviteDto activite) throws ActiviteExistante {
-		// TODO Auto-generated method stub
-
+		Optional<Activite> activ = this.activiteDao.findById(activite.getIdActivite());
+		if (activ.isPresent()) {
+			throw new ActiviteExistante();
+		} else {
+			this.activiteDao.save(this.modelMapper.map(activ, Activite.class));
+		}
 	}
 
 }

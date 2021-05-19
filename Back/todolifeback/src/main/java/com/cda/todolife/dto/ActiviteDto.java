@@ -14,8 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ActiviteDto {
 
-private int idActivite;
-	
+	private int idActivite;
 	private int label;
 	private Date jour;
 	private Time Temps;

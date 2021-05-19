@@ -10,14 +10,13 @@ public interface ISportService {
 	
 	List<SportDto> findAll();
 
-	SportDto FindById(int id) throws SportIntrouvable, SportExistant;
+	SportDto FindById(int id) throws SportIntrouvable;
 	
 //	SportDto FindByLabel(String label) throws SportIntrouvable, SportExistant;
 
-	void update(SportDto sport) throws SportIntrouvable, SportExistant;
+	void update(SportDto sport) throws SportIntrouvable;
 
 	void deleteById(int id) throws SportIntrouvable;
 
 	void add(SportDto sport) throws SportExistant;
-
 }

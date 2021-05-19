@@ -17,5 +17,5 @@ public interface IDefiRepository extends CrudRepository<Defi, Integer> {
 	List<Defi> FindDefiBySportId(int id);
 
 	@Query(value = "select * from defi where pourcentage = 100 ", nativeQuery = true)
-	List<Defi> FindCompletedDefi(int pourcentage);
+	List<Defi> FindCompletedDefi();
 }

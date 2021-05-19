@@ -19,7 +19,7 @@ public class Trace {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idSport;
+	private int idTrace;
 	
 	private String label;
 }

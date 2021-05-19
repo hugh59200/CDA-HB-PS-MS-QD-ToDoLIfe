@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TraceDto {
 
-	private int idSport;
+	private int idTrace;
 	private String label;
 }
