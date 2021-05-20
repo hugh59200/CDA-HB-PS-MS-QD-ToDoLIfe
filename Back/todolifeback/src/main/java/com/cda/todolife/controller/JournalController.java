@@ -36,11 +36,11 @@ public class JournalController {
 	@Autowired
 	private IJournalService journalService;
 
-//	// test par savoir si un utilisateur possede un journal
-//	@GetMapping("/journaux/{username}/exist")
-//	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "username") String username) {
-//		journalService.findByUtilisateurUsername(username);
-//	}
+	// test par savoir si un utilisateur possede un journal
+	@GetMapping("/journaux/{id}/exist")
+	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) {
+		return ResponseEntity.ok(journalService.findIfJournalExist(idUtilisateur));
+	}
 
 	// listing
 	@GetMapping("/journaux")
