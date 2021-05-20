@@ -1,15 +1,17 @@
+import "../../assets/css/form/FormStyle.css";
+
 import React, { useEffect, useState } from "react";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
+import { API_LOGIN } from "../../constant/API_BACK.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { URL_HOME } from "../../constant/URL_CONST.js";
+import { authenticated } from "../../service/authentificationService.js";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { URL_HOME } from "../../constant/URL_CONST.js";
-import "../../assets/css/form/FormStyle.css";
-import axios from "axios";
-import { API_LOGIN } from "../../constant/API_BACK.js";
-import { toast } from "react-toastify";
-import { authenticated } from "../../service/authentificationService.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const yup = require("yup");
 require("yup-password")(yup);
@@ -80,7 +82,7 @@ function ConnexionForm() {
       let code = res.status;
 
       if (code === 200) {
-        let id = res.data.user.id;
+        let id = res.data.user.idUtilisateur;
         let username = res.data.user.username;
         let token = res.data.user.token;
         authenticated(id, username, token);
