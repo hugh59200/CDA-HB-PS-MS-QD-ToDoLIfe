@@ -1,6 +1,7 @@
 package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
@@ -143,44 +144,17 @@ public class JournalEtJourTest {
 		}
 	}
 
-//	@Order(3)
-//	@Test
-//	public void update() {
-//		// utilisateur
-//
-//		// jour
-//
-//		// journal
-//	}
+	@Order(3)
+	@Test
+	public void update() {
+		// utilisateur
 
-//	@Order(4)
-//	@Test
-//	public void suprrimer() throws JourIntrouvableException, JournalIntrouvableException, JournalExistantException,
-//	ResourceNotFoundException {
-//		// jour
-//		int nbJourAvant = this.jourService.findAll().size();
-//		int idJour = this.jourService.findByTitre("mon titre").getIdJour();
-//		this.jourService.deleteById(idJour);
-//		int nbJourApres = this.jourService.findAll().size();
-//		assertEquals(nbJourApres + 1, nbJourAvant);
-//		
-//		// journal
-//		int nbJournalAvant = this.journalService.findAll().size();
-//		int idJournal = this.journalService.findAll().get(0).getIdJournal();
-//		this.journalService.deleteById(idJournal);
-//		int nbJournalApres = this.jourService.findAll().size();
-//		assertEquals(nbJournalApres + 1, nbJournalAvant);
-//		
-//		// utilisateur
-//		int nbUserAvant = this.IUtilisateurService.list().size();
-//		int idUser = this.IUtilisateurService.findByUsername("hugh59").getId();
-//		this.IUtilisateurService.delete(idUser);
-//		System.out.println(idUser);
-//		int nbUserAprés = this.IUtilisateurService.list().size();
-//		assertEquals(nbUserAprés + 1, nbUserAvant);
-//	}
+		// jour
 
-	@Order(6)
+		// journal
+	}
+
+	@Order(5)
 	@Test
 	public void doublonExecption() {
 
@@ -189,7 +163,6 @@ public class JournalEtJourTest {
 			this.IUtilisateurService.create(UtilisateurDto.builder().email("h.bogrand@gmail.com").nom("bogrand")
 					.prenom("hugo").password("12345").username("hugh59")
 					.dateNaissance(new java.sql.Date(1988 - 10 - 10)).build());
-			this.IUtilisateurService.verify("1970-01-01", "h.bogrand@gmail.com", "bogrand", "hugo", "12345", "hugh59");
 		});
 
 		// jour
@@ -197,11 +170,6 @@ public class JournalEtJourTest {
 			this.jourService.add(this.IUtilisateurService.findByUsername("hugh59").getId(),
 					this.jourService.findByTitre("mon titre"));
 		});
-
-//		// journal
-//		Assertions.assertThrows(JourIntrouvableException.class, () -> {
-//			this.journalService.add(this.journalService.findAll().get(0).getIdJournal());
-//		});
 	}
 
 	@Order(6)
@@ -210,21 +178,38 @@ public class JournalEtJourTest {
 
 		// utilisateur
 		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+			this.journalService.add(this.journalService.findAll().get(0).getIdJournal());
+		});
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.findByUsername("paul59");
-			this.IUtilisateurService.list().get(20);
+		});
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.findByidUtilisateur(20);
+		});
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.delete(20);
+		});
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.show(20);
+		});
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.update(this.IUtilisateurService.findByidUtilisateur(20));
 		});
 
 		// jour
 		Assertions.assertThrows(JourIntrouvableException.class, () -> {
-//			this.jourService.findByTitre("mon titre");
-			this.jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(20, "1970-01-01");
+			this.jourService.findByTitre("mon faux titre");
+		});
+		Assertions.assertThrows(JourIntrouvableException.class, () -> {
 			this.jourService.findById(20);
+		});
+		Assertions.assertThrows(JourIntrouvableException.class, () -> {
 			this.jourService.deleteById(20);
+		});
+		Assertions.assertThrows(JourIntrouvableException.class, () -> {
 			this.jourService.update(this.jourService.findById(20), 20);
+		});
+		Assertions.assertThrows(JourIntrouvableException.class, () -> {
 			this.journalService.add(this.jourService.findByTitre("mon faux titre").getJournalDto().getUtilisateurDto()
 					.getIdUtilisateur());
 		});
@@ -232,12 +217,50 @@ public class JournalEtJourTest {
 		// journal
 		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
 			this.journalService.findById(1);
+		});
+		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
 			this.journalService.deleteById(20);
+		});
+		Assertions.assertThrows(JournalIntrouvableException.class, () -> {
 			this.journalService.update(this.journalService.findById(1));
 		});
 	}
 
 	@Order(7)
+	@Test
+	public void journalExisteBoolean() throws JournalIntrouvableException {
+		assertFalse(this.journalService.findIfJournalExist(20));
+//		assertTrue(this.journalService.findIfJournalExist(this.journalService.findAll().get(0).getIdJournal()));
+	}
+
+	@Order(8)
+	@Test
+	public void suprrimer() throws JourIntrouvableException, JournalIntrouvableException, JournalExistantException,
+			ResourceNotFoundException {
+		// jour
+		int nbJourAvant = this.jourService.findAll().size();
+		int idJour = this.jourService.findByTitre("mon titre").getIdJour();
+		this.jourService.deleteById(idJour);
+		int nbJourApres = this.jourService.findAll().size();
+		assertEquals(nbJourApres + 1, nbJourAvant);
+
+		// journal
+		int nbJournalAvant = this.journalService.findAll().size();
+		int idJournal = this.journalService.findAll().get(0).getIdJournal();
+		this.journalService.deleteById(idJournal);
+		int nbJournalApres = this.jourService.findAll().size();
+		assertEquals(nbJournalApres + 1, nbJournalAvant);
+
+		// utilisateur
+		int nbUserAvant = this.IUtilisateurService.list().size();
+		int idUser = this.IUtilisateurService.findByUsername("hugh59").getId();
+		this.IUtilisateurService.delete(idUser);
+		System.out.println(idUser);
+		int nbUserAprés = this.IUtilisateurService.list().size();
+		assertEquals(nbUserAprés + 1, nbUserAvant);
+	}
+
+	@Order(9)
 	@Test
 	static void reset(@Autowired IJourRepository jourRepository, @Autowired IJournalRepository journalRepository,
 			@Autowired IUtilisateurRepository utilisateurRepository) {

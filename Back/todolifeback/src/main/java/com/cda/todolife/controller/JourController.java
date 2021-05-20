@@ -62,7 +62,7 @@ public class JourController {
 
 	// test par savoir si un jour a été créér aujourd'hui
 	@GetMapping("/jour/{id}/utilisateurs")
-	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) {
+	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) throws JourIntrouvableException {
 		return ResponseEntity.ok(jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur,
 				new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
 	}

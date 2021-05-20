@@ -31,6 +31,7 @@ public class JournalServiceImpl implements IJournalService {
 
 	@Override
 	public Boolean findIfJournalExist(int idUser) {
+//		System.out.println(this.journalRepository.findByUtilisateurIdUtilisateur(this.journalRepository.findAll().get(0).getIdJournal()).isPresent());
 		return this.journalRepository.findByUtilisateurIdUtilisateur(idUser).isPresent() ? true : false;
 	}
 
