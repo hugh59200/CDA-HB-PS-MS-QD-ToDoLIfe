@@ -50,7 +50,7 @@ public class JournalController {
 
 	// create par userId
 	@PostMapping("/journaux/utilisateurs")
-	public void createById(@RequestParam(value = "username") int idUser)
+	public void createById(@RequestParam(value = "idUser") int idUser)
 			throws JournalExistantException, ResourceNotFoundException {
 		this.journalService.add(idUser);
 	}

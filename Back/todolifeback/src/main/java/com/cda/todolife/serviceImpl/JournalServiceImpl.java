@@ -29,17 +29,19 @@ public class JournalServiceImpl implements IJournalService {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	
 	// test par savoir si un utilisateur possede un journal
 	@Override
 	public Boolean findIfJournalExist(int idUser) {
+		Boolean result;
 		Optional<Journal> journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser);
 		if (journal.isPresent()) {
-			return true;
+			result = true;
+		} else {
+			result = false;
 		}
-		return false;
+		return result;
 	}
-	
+
 	@Override
 	public void add(int idUser) throws JournalExistantException, ResourceNotFoundException {
 		if (this.journalRepository.findByUtilisateurIdUtilisateur(idUser).isPresent()) {

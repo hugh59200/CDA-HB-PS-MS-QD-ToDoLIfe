@@ -2,6 +2,8 @@ package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,7 +130,6 @@ public class JournalEtJourTest {
 		assertNotNull(listJournal);
 		for (JournalDto journalDto : listJournal) {
 			assertNotNull(this.journalService.findById(journalDto.getIdJournal()));
-//			assertNotNull(this.journalService.findIfJournalExist(journalDto.getIdJournal()));
 		}
 		assertNotNull(this.journalService.findAll());
 
@@ -175,9 +176,6 @@ public class JournalEtJourTest {
 	public void introuvableExecption() {
 
 		// utilisateur
-		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
-			this.journalService.add(this.journalService.findAll().get(0).getIdJournal());
-		});
 		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
 			this.IUtilisateurService.findByUsername("paul59");
 		});
@@ -227,8 +225,8 @@ public class JournalEtJourTest {
 	@Order(7)
 	@Test
 	public void journalExisteBoolean() throws JournalIntrouvableException {
-//		assertFalse(this.journalService.findIfJournalExist(20));
-//		assertTrue(this.journalService.findIfJournalExist(this.journalService.findAll().get(0).getIdJournal()));
+		assertFalse(this.journalService.findIfJournalExist(20));
+		assertTrue(this.journalService.findIfJournalExist(this.journalService.findAll().get(0).getIdJournal()));
 	}
 
 	@Order(8)
@@ -253,7 +251,6 @@ public class JournalEtJourTest {
 		int nbUserAvant = this.IUtilisateurService.list().size();
 		int idUser = this.IUtilisateurService.findByUsername("hugh59").getIdUtilisateur();
 		this.IUtilisateurService.delete(idUser);
-		System.out.println(idUser);
 		int nbUserAprés = this.IUtilisateurService.list().size();
 		assertEquals(nbUserAprés + 1, nbUserAvant);
 	}
