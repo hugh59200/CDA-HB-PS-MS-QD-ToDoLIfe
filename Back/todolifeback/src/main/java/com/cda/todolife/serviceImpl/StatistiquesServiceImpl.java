@@ -46,7 +46,7 @@ public class StatistiquesServiceImpl implements IStatistiquesService {
 		if (stat.isPresent()) {
 			throw new StatistiquesExistantes();
 		} else {
-			this.statistiquesDao.save(this.modelMapper.map(stat, Statistiques.class));
+			this.statistiquesDao.save(this.modelMapper.map(statistiques, Statistiques.class));
 		}
 	}
 

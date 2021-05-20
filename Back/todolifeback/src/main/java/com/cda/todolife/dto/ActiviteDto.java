@@ -1,6 +1,5 @@
 package com.cda.todolife.dto;
 
-import java.sql.Time;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -15,11 +14,11 @@ import lombok.NoArgsConstructor;
 public class ActiviteDto {
 
 	private int idActivite;
-	private int label;
+	private String label;
 	private Date jour;
-	private Time Temps;
 	private int distance;
 	private int elevation;
+	private TempsDto temps;
 	private TraceDto trace;
 	private SportDto sport;
 	private UtilisateurDtoList utilisateur;

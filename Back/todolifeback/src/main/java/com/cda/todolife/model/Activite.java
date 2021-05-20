@@ -1,6 +1,5 @@
 package com.cda.todolife.model;
 
-import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -20,17 +19,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@Table(uniqueConstraints = { @UniqueConstraint(columnNames = "label") })
 public class Activite {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idActivite;
 	
-	private int label;
+	private String label;
 	private Date jour;
-	private Time Temps;
+	
 	private int distance;
 	private int elevation;
+	
+	@OneToOne
+	@JoinColumn(name = "id_temps", nullable = true)
+	private Temps temps;
 	
 	@OneToOne
 	@JoinColumn(name = "id_trace", nullable = true)

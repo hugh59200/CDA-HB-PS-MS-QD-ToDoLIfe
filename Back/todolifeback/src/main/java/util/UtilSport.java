@@ -183,7 +183,6 @@ public class UtilSport {
 		for (String str : list) {
 			res.add(" insert into sport (label) values ('" + str + "') on conflict do nothing;");
 //			res.add(" insert into sport (label) values ('" + str + "') on conflict do update;");
-
 		}
 		return res;
 	}

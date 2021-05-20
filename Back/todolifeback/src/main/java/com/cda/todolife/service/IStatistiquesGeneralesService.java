@@ -6,7 +6,7 @@ import com.cda.todolife.exception.StatistiquesGeneralesIntrouvables;
 
 public interface IStatistiquesGeneralesService {
 
-	StatistiquesGeneralesDto FindById(int id) throws StatistiquesGeneralesIntrouvables;
+	StatistiquesGeneralesDto FindByStatId (int id) throws StatistiquesGeneralesIntrouvables;
 
 	void update(StatistiquesGeneralesDto statistiques) throws StatistiquesGeneralesIntrouvables;
 

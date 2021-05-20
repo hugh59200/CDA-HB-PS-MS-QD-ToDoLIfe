@@ -9,10 +9,8 @@ import com.cda.todolife.exception.SportIntrouvable;
 public interface ISportService {
 	
 	List<SportDto> findAll();
-
-	SportDto FindById(int id) throws SportIntrouvable;
 	
-//	SportDto FindByLabel(String label) throws SportIntrouvable, SportExistant;
+	SportDto FindByLabel(String label) throws SportIntrouvable;
 
 	void update(SportDto sport) throws SportIntrouvable;
 

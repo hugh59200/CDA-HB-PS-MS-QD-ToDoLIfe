@@ -6,4 +6,6 @@ import com.cda.todolife.model.Trace;
 
 public interface ITraceRepository extends CrudRepository<Trace, Integer> {
 //	List<Trace> findAll();
+
+	Trace findByLabel(String label);
 }

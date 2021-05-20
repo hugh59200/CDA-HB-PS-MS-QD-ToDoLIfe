@@ -22,12 +22,12 @@ public class StatistiquesGeneralesServiceImpl implements IStatistiquesGeneralesS
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@Override
-	public StatistiquesGeneralesDto FindById(int id)
-			throws StatistiquesGeneralesIntrouvables {
-		return this.modelMapper.map(this.statistiquesGeneralesDao.findById(id).orElseThrow(StatistiquesGeneralesIntrouvables::new), StatistiquesGeneralesDto.class);
-
-	}
+//	@Override
+//	public StatistiquesGeneralesDto FindByStatId(int id)
+//			throws StatistiquesGeneralesIntrouvables {
+//		return this.modelMapper.map(this.statistiquesGeneralesDao.findById(id).orElseThrow(StatistiquesGeneralesIntrouvables::new), StatistiquesGeneralesDto.class);
+//
+//	}
 
 	@Override
 	public void update(StatistiquesGeneralesDto statistiques)
@@ -49,8 +49,13 @@ public class StatistiquesGeneralesServiceImpl implements IStatistiquesGeneralesS
 		if (stat.isPresent()) {
 			throw new StatistiquesGeneralesExistantes();
 		} else {
-			this.statistiquesGeneralesDao.save(this.modelMapper.map(stat, StatistiquesGenerales.class));
+			this.statistiquesGeneralesDao.save(this.modelMapper.map(statistiques, StatistiquesGenerales.class));
 		}
+	}
+
+	@Override
+	public StatistiquesGeneralesDto FindByStatId(int id) throws StatistiquesGeneralesIntrouvables {
+		return this.modelMapper.map(this.statistiquesGeneralesDao.FindStatistiquesByStatId(id), StatistiquesGeneralesDto.class);
 	}
 
 }

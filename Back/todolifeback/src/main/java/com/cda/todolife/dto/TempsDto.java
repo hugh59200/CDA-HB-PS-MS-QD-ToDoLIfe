@@ -1,7 +1,5 @@
 package com.cda.todolife.dto;
 
-import com.cda.todolife.model.Sport;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BadgeDto {
+public class TempsDto {
 
-	private int idBadge;
-	private String label;
-	private Sport sport;
-	private StatistiquesDto statistiques;
+	private int idTemps;
+
+	private int heures;
+	private int minutes;
+	private int secondes;
 }

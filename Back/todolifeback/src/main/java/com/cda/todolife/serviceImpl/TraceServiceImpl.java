@@ -45,8 +45,13 @@ public class TraceServiceImpl implements ITraceService {
 		if (tra.isPresent()) {
 			throw new TraceExistante();
 		} else {
-			this.traceDao.save(this.modelMapper.map(tra, Trace.class));
+			this.traceDao.save(this.modelMapper.map(trace, Trace.class));
 		}
+	}
+
+	@Override
+	public TraceDto FindByLabel(String label) throws TraceIntrouvable {
+		return this.modelMapper.map(this.traceDao.findByLabel(label), TraceDto.class);
 	}
 
 }

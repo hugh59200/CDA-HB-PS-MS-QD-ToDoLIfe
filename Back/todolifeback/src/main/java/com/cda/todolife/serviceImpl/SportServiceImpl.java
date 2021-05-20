@@ -32,15 +32,9 @@ public class SportServiceImpl implements ISportService {
 	}
 
 	@Override
-	public SportDto FindById(int id) throws SportIntrouvable {
-		return this.modelMapper.map(this.SportDao.findById(id).orElseThrow(SportIntrouvable::new), SportDto.class);
+	public SportDto FindByLabel(String label) throws SportIntrouvable {
+		return this.modelMapper.map(this.SportDao.findByLabel(label), SportDto.class);
 	}
-
-//	@Override
-//	public SportDto FindByLabel(String label) throws SportIntrouvable, SportExistant {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public void update(SportDto sport) throws SportIntrouvable {
@@ -60,7 +54,8 @@ public class SportServiceImpl implements ISportService {
 		if (spor.isPresent()) {
 			throw new SportExistant();
 		} else {
-			this.SportDao.save(this.modelMapper.map(spor, Sport.class));
+			System.out.println(spor);
+			this.SportDao.save(this.modelMapper.map(sport, Sport.class));
 		}
 	}
 

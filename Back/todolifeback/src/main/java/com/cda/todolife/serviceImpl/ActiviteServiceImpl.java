@@ -32,9 +32,9 @@ public class ActiviteServiceImpl implements IActiviteService {
 	}
 
 	@Override
-	public List<ActiviteDto> FindActiviteBySportId(int id) throws ActiviteIntrouvable {
+	public List<ActiviteDto> FindActiviteBySportId(int idUser, int idSport) throws ActiviteIntrouvable {
 		List<ActiviteDto> res = new ArrayList<>();
-		this.activiteDao.FindActiviteBySportId(id).forEach(pres -> res.add(this.modelMapper.map(pres, ActiviteDto.class)));
+		this.activiteDao.FindActiviteBySportId(idUser, idSport).forEach(pres -> res.add(this.modelMapper.map(pres, ActiviteDto.class)));
 		return res;
 	}
 
@@ -56,8 +56,18 @@ public class ActiviteServiceImpl implements IActiviteService {
 		if (activ.isPresent()) {
 			throw new ActiviteExistante();
 		} else {
-			this.activiteDao.save(this.modelMapper.map(activ, Activite.class));
+			this.activiteDao.save(this.modelMapper.map(activite, Activite.class));
 		}
+	}
+
+//	@Override
+//	public ActiviteDto FindById(int id) throws ActiviteIntrouvable {
+//		return this.modelMapper.map(this.activiteDao.findById(id).orElseThrow(ActiviteIntrouvable::new), ActiviteDto.class);
+//	}
+
+	@Override
+	public ActiviteDto findByLabel(int id, String label) throws ActiviteIntrouvable {
+		return this.modelMapper.map(this.activiteDao.findByLabel(id,label), ActiviteDto.class);
 	}
 
 }

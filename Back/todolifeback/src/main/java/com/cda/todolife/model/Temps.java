@@ -4,10 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,14 +17,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = "id_utilisateur") })
-public class Statistiques {
+public class Temps {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idStatistiques;
+	private int idTemps;
 	
-	@OneToOne
-	@JoinColumn(name = "id_utilisateur", nullable = false)
-	private Utilisateur utilisateur;
+	private int heures;
+	
+	@Min(0)
+	@Max(60)
+	private int minutes;
+	
+	@Min(0)
+	@Max(60)
+	private int secondes;
 }

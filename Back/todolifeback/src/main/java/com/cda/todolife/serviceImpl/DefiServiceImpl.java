@@ -32,16 +32,16 @@ public class DefiServiceImpl implements IDefiService {
 	}
 
 	@Override
-	public List<DefiDto> FindDefiBySportId(int id) throws DefiIntrouvable {
+	public List<DefiDto> FindDefiBySportId(int idSport, int idUser) throws DefiIntrouvable {
 		List<DefiDto> res = new ArrayList<>();
-		this.defiDao.FindDefiBySportId(id).forEach(pres -> res.add(this.modelMapper.map(pres, DefiDto.class)));
+		this.defiDao.FindDefiBySportId(idSport, idUser).forEach(pres -> res.add(this.modelMapper.map(pres, DefiDto.class)));
 		return res;
 	}
 
 	@Override
-	public List<DefiDto> FindCompletedDefi() throws DefiIntrouvable {
+	public List<DefiDto> FindCompletedDefi(int id) throws DefiIntrouvable {
 		List<DefiDto> res = new ArrayList<>();
-		this.defiDao.FindCompletedDefi().forEach(pres -> res.add(this.modelMapper.map(pres, DefiDto.class)));
+		this.defiDao.FindCompletedDefi(id).forEach(pres -> res.add(this.modelMapper.map(pres, DefiDto.class)));
 		return res;
 	}
 
@@ -63,8 +63,25 @@ public class DefiServiceImpl implements IDefiService {
 		if (def.isPresent()) {
 			throw new DefiExistant();
 		} else {
-			this.defiDao.save(this.modelMapper.map(def, Defi.class));
+			this.defiDao.save(this.modelMapper.map(defi, Defi.class));
 		}
+	}
+
+	@Override
+	public DefiDto FindById(int id) throws DefiIntrouvable {
+		return this.modelMapper.map(this.defiDao.findById(id).orElseThrow(DefiIntrouvable::new), DefiDto.class);
+	}
+
+	@Override
+	public List<DefiDto> FindUncomplete(int id) throws DefiIntrouvable {
+		List<DefiDto> res = new ArrayList<>();
+		this.defiDao.FindUncompletedDef(id).forEach(pres -> res.add(this.modelMapper.map(pres, DefiDto.class)));
+		return res;
+	}
+
+	@Override
+	public DefiDto FindByLabel(int id, String label) throws DefiIntrouvable {
+		return this.modelMapper.map(this.defiDao.findByLabel(id, label), DefiDto.class);
 	}
 
 }

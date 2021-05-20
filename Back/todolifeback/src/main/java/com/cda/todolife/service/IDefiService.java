@@ -10,9 +10,15 @@ public interface IDefiService {
 
 	List<DefiDto> FindDefiByUserId(int id) throws DefiIntrouvable;
 	
-	List<DefiDto> FindDefiBySportId(int id) throws DefiIntrouvable;
+	List<DefiDto> FindDefiBySportId(int idSport, int idUser) throws DefiIntrouvable;
 	
-	List<DefiDto> FindCompletedDefi () throws DefiIntrouvable;
+	List<DefiDto> FindCompletedDefi (int id) throws DefiIntrouvable;
+	
+	List<DefiDto> FindUncomplete (int id) throws DefiIntrouvable;
+	
+	DefiDto FindById (int id) throws DefiIntrouvable;
+	
+	DefiDto FindByLabel (int id, String label) throws DefiIntrouvable;
 
 	void update(DefiDto defi) throws DefiIntrouvable;
 

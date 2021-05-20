@@ -9,5 +9,5 @@ public interface IStatistiquesRepository extends CrudRepository<Statistiques, In
 //	List<Statistiques> findAll();
 	
 	@Query(value = "select * from statistiques where id_utilisateur = ?1 ", nativeQuery = true)
-	Statistiques FindStatistiquesByUserId(int id);
+	Statistiques FindStatistiquesByUserId(int id);	
 }

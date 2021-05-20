@@ -10,7 +10,11 @@ public interface IActiviteService {
 
 	List<ActiviteDto> FindActiviteByUserId(int id) throws ActiviteIntrouvable;
 	
-	List<ActiviteDto> FindActiviteBySportId(int id) throws ActiviteIntrouvable;
+	List<ActiviteDto> FindActiviteBySportId(int idUser, int idSport) throws ActiviteIntrouvable;
+	
+//	ActiviteDto FindById (int id) throws ActiviteIntrouvable;
+	
+	ActiviteDto findByLabel(int id, String label) throws ActiviteIntrouvable;
 	
 	void update(ActiviteDto activite) throws ActiviteIntrouvable;
 

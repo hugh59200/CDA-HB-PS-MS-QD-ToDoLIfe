@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Defi {
+	public class Defi {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
