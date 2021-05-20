@@ -21,4 +21,6 @@ public interface IJournalService {
 
 	JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException;
 
+	Boolean findIfJournalExist(int idUser);
+
 }

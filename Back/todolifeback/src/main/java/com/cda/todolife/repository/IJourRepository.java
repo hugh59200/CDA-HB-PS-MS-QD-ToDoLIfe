@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.model.Jour;
 import com.cda.todolife.model.Journal;
 
