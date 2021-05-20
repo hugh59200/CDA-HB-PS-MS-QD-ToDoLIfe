@@ -44,30 +44,28 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 	@Override
 	public void sendVerificationEmail(UtilisateurDto userDto, String siteURL)
 			throws MessagingException, UnsupportedEncodingException {
+		String toAddress = userDto.getEmail();
+		String fromAddress = "todolifecda@gmail.com";
+		String senderName = "ToDoLife";
+		String subject = "Veuillez vérifier votre inscription";
 		String content = "Bonjour [[name]],<br>" + "Cliquez sur le lien ci-dessous pour vérifier votre compte :<br>"
 				+ "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFIER</a></h3>" + "Merci,<br>" + "ToDoLife.";
-
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
-
 		helper.setFrom(fromAddress, senderName);
 		helper.setTo(toAddress);
 		helper.setSubject(subject);
-
 		String email = userDto.getEmail();
 		String emailEncode = Base64.getEncoder().encodeToString(email.getBytes());
-
 		String password = userDto.getPassword();
 		String passwordEncode = Base64.getEncoder().encodeToString(password.getBytes());
-
+//		System.out.println(userDto.getDateNaissanceStr());
 		content = content.replace("[[name]]", userDto.getPrenom() + " " + userDto.getNom());
-		
-		String verifyURL = siteURL + "/verify?dn=" + userDto.getDateNaissance() + "&em="
-				+ Base64.getEncoder().encodeToString(userDto.getEmail().getBytes()) + "&n=" + userDto.getNom() + "&pn="
-				+ userDto.getPrenom() + "&psw=" + Base64.getEncoder().encodeToString(userDto.getPassword().getBytes())
-				+ "&un=" + userDto.getUsername();
-
-		helper.setText(content.replace("[[URL]]", verifyURL), true);
+		String verifyURL = siteURL + "/verify?dn=" + userDto.getDateNaissance() + "&em=" + emailEncode + "&n="
+				+ userDto.getNom() + "&pn=" + userDto.getPrenom() + "&psw=" + passwordEncode + "&un="
+				+ userDto.getUsername();
+		content = content.replace("[[URL]]", verifyURL);
+		helper.setText(content, true);
 		mailSender.send(message);
 	}
 

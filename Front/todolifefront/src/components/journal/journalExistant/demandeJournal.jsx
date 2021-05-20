@@ -4,6 +4,7 @@ import { URL_HOME } from '../../../constant/URL_CONST';
 import axios from 'axios';
 
 export function demandeJournal(history, setjournalExiste) {
+	
 	return (
 		<div className="questionJournal">
 			<h2>
@@ -29,10 +30,11 @@ export function demandeJournal(history, setjournalExiste) {
 	);
 }
 export function JournalExistant(setjournalExiste) {
-	const username = localStorage.username;
+	const idUser = localStorage.getItem('id');
+
 	axios({
 		method: 'get',
-		url: API_JOURNAL + '/ ' + username + '/exist',
+		url: API_JOURNAL + '/ ' + idUser + '/exist',
 	}).then(response => {
 		if (response.data === true) {
 			setjournalExiste(true);
@@ -44,11 +46,11 @@ export function JournalExistant(setjournalExiste) {
 	});
 }
 function CreateJournalByIdUser(setjournalExiste) {
-	const username = localStorage.username;
+	const idUser = localStorage.getItem('id');
 	axios({
 		method: 'post',
 		url: API_JOURNAL + '/utilisateurs',
-		params: { username },
+		params: { idUser },
 	})
 		.then(response => {
 			const status = response.request.status;

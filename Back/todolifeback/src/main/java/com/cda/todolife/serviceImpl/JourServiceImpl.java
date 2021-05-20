@@ -2,6 +2,7 @@ package com.cda.todolife.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +41,10 @@ public class JourServiceImpl implements IJourService {
 	@Override
 	public void add(int idUser, JourDto jourDto) throws JournalIntrouvableException, JourExistantException {
 
-		Journal journalEnt = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
+		Journal journal = this.journalRepository.findByUtilisateurIdUtilisateur(idUser)
 				.orElseThrow(JournalIntrouvableException::new);
 
-		Optional<Jour> jourEntList = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journalEnt);
+		Optional<Jour> jourEntList = this.jourRepository.findByDateJourAndJournal(jourDto.getDateJour(), journal);
 
 		if (jourEntList.isPresent()) {
 			throw new JourExistantException();

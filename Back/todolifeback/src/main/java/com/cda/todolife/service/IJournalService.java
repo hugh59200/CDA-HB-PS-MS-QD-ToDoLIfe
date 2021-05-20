@@ -19,5 +19,6 @@ public interface IJournalService {
 
 	void add(int idUser) throws JournalExistantException, ResourceNotFoundException;
 
+	JournalDto findByUtilisateurUsername(String username) throws JournalIntrouvableException;
 
 }

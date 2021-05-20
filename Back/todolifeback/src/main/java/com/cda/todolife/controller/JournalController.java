@@ -36,11 +36,11 @@ public class JournalController {
 	@Autowired
 	private IJournalService journalService;
 
-	// test par savoir si un utilisateur possede un journal
-	@GetMapping("/journaux/{username}/exist")
-	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "username") String username) {
-		return ResponseEntity.ok(journalService.findIfJournalExist(username));
-	}
+//	// test par savoir si un utilisateur possede un journal
+//	@GetMapping("/journaux/{username}/exist")
+//	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "username") String username) {
+//		journalService.findByUtilisateurUsername(username);
+//	}
 
 	// listing
 	@GetMapping("/journaux")
@@ -50,7 +50,7 @@ public class JournalController {
 
 	// create par userId
 	@PostMapping("/journaux/utilisateurs")
-	public void createById(@RequestParam(value = "username") String username)
+	public void createById(@RequestParam(value = "username") int idUser)
 			throws JournalExistantException, ResourceNotFoundException {
 		this.journalService.add(idUser);
 	}
