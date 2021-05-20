@@ -1,61 +1,73 @@
 import React, { Component } from "react";
-import Switch from "react-bootstrap/esm/Switch";
-import { Route } from "react-router";
-
-import Home from "../views/home/Home";
-import ConnexionForm from "../components/form/ConnexionForm";
-import InscriptionForm from "../components/form/InscriptionForm";
-import AttenteValidation from "../components/pageArrive/AttenteValidation";
-
-
-
-import { createBrowserHistory } from "history";
-
+import { ToastContainer, Zoom } from "react-toastify";
 import {
   URL_ATTENTE,
   URL_CONNEXION,
+  URL_FILMS,
   URL_HOME,
   URL_INSCRIPTION,
-  URL_JOURNAL,
-  URL_TODO_LIST,
-  URL_WATCHLIST,
-  URL_NEW_TODO_LIST,
   URL_INSIDE_TODOLIST,
+  URL_JOURNAL,
+  URL_LIVRES,
+  URL_MODIF_FILM,
+  URL_MODIF_LIVRE,
+  URL_MODIF_SERIE,
   URL_NEW_TODO,
+  URL_NEW_TODO_LIST,
+  URL_SERIES,
+  URL_TABLEAU_DE_BORD,
+  URL_TODO_LIST,
   URL_UPDATE_TODO,
   URL_UPDATE_TODO_LIST,
-  URL_LIVRES,
-  URL_SERIES,
-  URL_FILMS,
-  URL_MODIF_LIVRE,
-  URL_MODIF_FILM,
-  URL_MODIF_SERIE,
+  URL_WATCHLIST,
 } from "../constant/URL_CONST";
+import { URL_NEW_FILM, URL_NEW_LIVRE, URL_NEW_SERIE } from './../constant/URL_CONST';
 
-import { PrivateRoute } from "./PrivateRoute";
-import { ToastContainer, Zoom } from "react-toastify";
-import MonJournal from "../components/journal/MonJournal";
+import AddList from "../components/todoList/liste/AddList";
+import AddTodo from "../components/todoList/todo/AddTodo";
+import AttenteValidation from "../components/pageArrive/AttenteValidation";
+import ConnexionForm from "../components/form/ConnexionForm";
+import Films from './../components/watchlist/film/Films';
+import Home from "../views/home/Home";
+import InscriptionForm from "../components/form/InscriptionForm";
+import Livres from "../components/watchlist/livres/Livres";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
-
+import ModifFilm from './../components/watchlist/film/ModifFilm';
+import ModifLivre from './../components/watchlist/livres/ModifLivre';
+import ModifSerie from './../components/watchlist/series/ModifSerie';
+import MonJournal from "../components/journal/MonJournal";
+import NewFilm from './../components/watchlist/film/NewFilm';
+import NewLivre from './../components/watchlist/livres/NewLivre';
+import NewSerie from './../components/watchlist/series/NewSerie';
+import { PrivateRoute } from "./PrivateRoute";
+import { Route } from "react-router";
+import Series from './../components/watchlist/series/Series';
+import Switch from "react-bootstrap/esm/Switch";
+import TableauDeBordJournal from "../components/journal/TableauDeBordJournal";
+import TodoListView from "../components/todoList/liste/TodoListView";
+import Todos from "../components/todoList/todo/Todos";
+import UpdateList from "../components/todoList/liste/UpdateList";
+import UpdateTodo from "../components/todoList/todo/UpdateTodo";
+import { createBrowserHistory } from "history";
 
 // import Error404 from "../views/Error404";
-import { URL_NEW_SERIE, URL_NEW_FILM,URL_NEW_LIVRE } from './../constant/URL_CONST';
-import NewFilm from './../components/watchlist/film/NewFilm';
-import Films from './../components/watchlist/film/Films';
-import NewSerie from './../components/watchlist/series/NewSerie';
-import Series from './../components/watchlist/series/Series';
-import ModifSerie from './../components/watchlist/series/ModifSerie';
 
-import NewLivre from './../components/watchlist/livres/NewLivre';
-import Livres from "../components/watchlist/livres/Livres";
-import TodoListView from "../components/todoList/liste/TodoListView";
-import AddList from "../components/todoList/liste/AddList";
-import UpdateList from "../components/todoList/liste/UpdateList";
-import Todos from "../components/todoList/todo/Todos";
-import AddTodo from "../components/todoList/todo/AddTodo";
-import UpdateTodo from "../components/todoList/todo/UpdateTodo";
-import ModifLivre from './../components/watchlist/livres/ModifLivre';
-import ModifFilm from './../components/watchlist/film/ModifFilm';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const CustomHistory = createBrowserHistory();
 
@@ -104,6 +116,7 @@ class Routes extends Component {
           <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
 
           {/* view journal*/}
+          <PrivateRoute path={URL_TABLEAU_DE_BORD} component={TableauDeBordJournal} />
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
 
           {/* view watchlist*/}

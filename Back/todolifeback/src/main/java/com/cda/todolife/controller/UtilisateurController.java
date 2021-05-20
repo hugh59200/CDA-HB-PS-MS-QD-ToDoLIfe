@@ -111,6 +111,7 @@ public class UtilisateurController {
 	// update
 	@PutMapping("/utilisateurs")
 	public ResponseEntity<HttpStatus> update(@RequestBody UtilisateurDto utilisateurDto) throws ResourceAlreadyExist {
+		System.out.println(utilisateurDto);
 		try {
 			utilisateurService.update(utilisateurDto);
 			return ResponseEntity.status(HttpStatus.OK).build();

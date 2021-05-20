@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import "../../assets/css/navbar/NavBar.css"
+
 import { NavLink, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
   URL_CONNEXION,
   URL_HOME,
   URL_INSCRIPTION,
+  URL_TABLEAU_DE_BORD,
   URL_TODO_LIST,
-  URL_JOURNAL,
   URL_WATCHLIST,
 } from "../../constant/URL_CONST";
 
 import { deconnected } from "../../service/authentificationService";
-import "../../assets/css/navbar/NavBar.css"
 import logo from '../../assets/img/logotodolife.png'
-
-
 
 const NavBar = () => {
 
@@ -62,8 +61,8 @@ const NavBar = () => {
 
           <li className="nav-item">
             <NavLink
-              to={URL_JOURNAL}
-              onClick={removeTodoList}
+              to={URL_TABLEAU_DE_BORD}
+              // onClick={removeTodoList}
               className="nav-link text-white"
               activeClassName="font-weight-bold"
             >

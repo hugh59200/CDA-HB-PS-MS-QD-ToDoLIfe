@@ -1,4 +1,29 @@
-.monJournal {
+.tableauDeBord {
+  background-color: #0090E8;
+  height: 300px;
+  width: 500px;
+  margin: 100px auto;
+  padding: 20px;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.tableauDeBord>button {
+  height: 100px;
+  width: 400px;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 2px;
+  color: white;
+  background-color: #14A7FF;
+  border: none;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.monJournal,.statistique {
   background-color: #0090E8;
   height: 700px;
   width: 700px;
