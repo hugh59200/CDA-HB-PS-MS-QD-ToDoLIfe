@@ -1,18 +1,12 @@
-/* * {
-    background-image: url(../Background.png)!important;
-    background-position: 'center';
-    background-size: 'cover';
-    background-repeat: 'no-repeat';
-    background-attachment: fixed;
-}  */
-
 .homeMgTopTxt {
     margin-top: 25%;
-
-
 }
 
-body{
-    background-image: url(../Background.png)!important;
+html,
+body {
+    background-image: url(../Background.png) !important;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
 }

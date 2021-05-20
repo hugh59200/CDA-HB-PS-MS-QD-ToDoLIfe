@@ -1,4 +1,4 @@
-.titre {
+/* .titre {
   font-size: 80px;
   font-weight: 1000;
   font-family: 'Text Me One';
@@ -9,28 +9,28 @@
   display: flex;
   color: white;
   letter-spacing: 8px;
-}
+} */
 
 @font-face {
-  font-family: "gottam" ;
+  font-family: "gottam";
   src: url("../../assets/font/GothamNarrow-Book.otf");
 }
 
-@font-face {
-  font-family: "gottamgras" ;
+/* @font-face {
+  font-family: "gottamgras";
   src: url("../../assets/font/GothamNarrow-Medium.otf");
-}
+} */
 
-.fonthome{
+.fonthome {
   font-family: gottam;
-float: left;
-text-align: left;
-font-size: 7vh;
+  float: left;
+  text-align: left;
+  font-size: 7vh;
 }
 
-@media (max-width: 576px) { 
+@media (max-width: 576px) {
 
-  .fonthome{
+  .fonthome {
     margin-left: 20px;
   }
 }
