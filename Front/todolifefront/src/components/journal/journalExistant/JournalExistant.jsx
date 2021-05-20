@@ -9,7 +9,7 @@ export function JournalExistant() {
 		if (response.data === true) {
 			console.log(response.data);
 			console.log('journal deja existant');
-		} else {
+		} if (response.data === false) {
 			console.log(response.data);
 			console.log('journal non existant');
 		}
