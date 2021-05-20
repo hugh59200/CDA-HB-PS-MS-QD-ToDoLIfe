@@ -30,6 +30,7 @@ import {
   URL_MODIF_LIVRE,
   URL_MODIF_FILM,
   URL_MODIF_SERIE,
+  URL_SPORT,
 } from "../constant/URL_CONST";
 
 import { PrivateRoute } from "./PrivateRoute";
@@ -56,6 +57,7 @@ import AddTodo from "../components/todoList/todo/AddTodo";
 import UpdateTodo from "../components/todoList/todo/UpdateTodo";
 import ModifLivre from './../components/watchlist/livres/ModifLivre';
 import ModifFilm from './../components/watchlist/film/ModifFilm';
+import Sport from "../components/sport/Sport";
 
 const CustomHistory = createBrowserHistory();
 
@@ -87,22 +89,16 @@ class Routes extends Component {
 
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
-
           {/* add todolist */}
           <PrivateRoute path={URL_NEW_TODO_LIST} component={AddList} />
-
           {/* update todolist */}
           <PrivateRoute path={URL_UPDATE_TODO_LIST} component={UpdateList} />
-
           {/* add todo on todolist */}
           <PrivateRoute path={URL_INSIDE_TODOLIST} component={Todos} />
-
           {/* add a todo */}
           <PrivateRoute path={URL_NEW_TODO} component={AddTodo} />
-
           {/* update a todo */}
           <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
-
           {/* view journal*/}
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
 
@@ -118,6 +114,10 @@ class Routes extends Component {
           <PrivateRoute path={URL_FILMS} component={Films} />
           <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />
+          
+          <PrivateRoute path={URL_SPORT} component={Sport} />
+
+          
           {/* <Route component={Error404} /> */}
 
           {/* composants toaster */}
