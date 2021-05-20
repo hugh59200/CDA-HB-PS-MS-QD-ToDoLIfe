@@ -1,0 +1,190 @@
+package util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UtilSport {
+
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<>();
+		list = doList();
+		ArrayList<String> insert = new ArrayList<>();
+		insert = doInsert(list);
+		for (String string : insert) {
+			System.out.println(string);
+		}
+	}
+
+	public static ArrayList<String> doList() {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Accrobranche");
+		list.add("Acrosport");
+		list.add("Aérobic");
+		list.add("Archerie");
+		list.add("Aïkido");
+		list.add("Airsoft");
+		list.add("Alpinisme");
+		list.add("Aquabiking");
+		list.add("Aquagym");
+		list.add("Athlétisme");
+		list.add("Automobile");
+		list.add("Aviation");
+		list.add("Aviron");
+		list.add("Arts Martiaux");
+		list.add("Baby-foot");
+		list.add("Badminton");
+		list.add("Base-jump");
+		list.add("Baseball");
+		list.add("Basket-ball");
+		list.add("Biathlon");
+		list.add("Billard");
+		list.add("Bike and Run");
+		list.add("BMX");
+		list.add("Boardercross");
+		list.add("Bobsleigh");
+		list.add("Boomerang");
+		list.add("Bowling");
+		list.add("Boxe");
+		list.add("Bras de fer");
+		list.add("Beach Volley");
+		list.add("Canoë");
+		list.add("Canoë-kayak");
+		list.add("Canyoning");
+		list.add("Capoeira");
+		list.add("Catch");
+		list.add("Cheerleading");
+		list.add("course automobile");
+		list.add("Course à pied");
+		list.add("Cricket");
+		list.add("Cross (équitation)");
+		list.add("Cross-country");
+		list.add("Cross triathlon");
+		list.add("CrossFit");
+		list.add("Culturisme");
+		list.add("Curling");
+		list.add("Cyclisme");
+		list.add("Cyclo-cross");
+		list.add("Danse sportive");
+		list.add("Décathlon");
+		list.add("Deltaplane");
+		list.add("Duathlon");
+		list.add("Dodgeball");
+		list.add("Double Dutch");
+		list.add("Équitation");
+		list.add("Escalade");
+		list.add("Escrime");
+		list.add("Football");
+		list.add("Football américain");
+		list.add("Footing");
+		list.add("Futsal");
+		list.add("Glisse");
+		list.add("Golf");
+		list.add("Gymnastique");
+		list.add("Gymnastique rythmique");
+		list.add("Haltérophilie");
+		list.add("Handball");
+		list.add("Hockey");
+		list.add("Hockey subaquatique");
+		list.add("Hockey sur gazon");
+		list.add("Hockey sur glace");
+		list.add("Horse-ball");
+		list.add("hip Hop");
+		list.add("Judo");
+		list.add("Jet ski");
+		list.add("Karaté");
+		list.add("Karting");
+		list.add("Kayak");
+		list.add("Kick-boxing");
+		list.add("Kitesurfing");
+		list.add("Kung fu");
+		list.add("Lancer de disque");
+		list.add("Lancer de javelot");
+		list.add("Lancer de marteau");
+		list.add("Lancer de poids");
+		list.add("Luge de course");
+		list.add("Lutte");
+		list.add("Marche");
+		list.add("Marche nordique");
+		list.add("Motomarine");
+		list.add("Motoneige");
+		list.add("Musculation");
+		list.add("Marathon");
+		list.add("MMA");
+		list.add("Natation");
+		list.add("Natation synchronisée");
+		list.add("Nautisme");
+		list.add("Orientation");
+		list.add("Paddle");
+		list.add("Padel");
+		list.add("Paintball");
+		list.add("Parachutisme");
+		list.add("Parapente");
+		list.add("Parkour");
+		list.add("Patinage");
+		list.add("Patinage artistique");
+		list.add("Patinage de vitesse");
+		list.add("Patinage synchronisé");
+		list.add("Pêche sportive");
+		list.add("Pentathlon");
+		list.add("Pétanque");
+		list.add("Planche à voile");
+		list.add("Planeur");
+		list.add("Plongée");
+		list.add("Plongeon");
+		list.add("Quad");
+		list.add("Rafting");
+		list.add("Rallye automobile");
+		list.add("Raquette à neige");
+		list.add("Roller");
+		list.add("Rugby");
+		list.add("Saut à la perche");
+		list.add("Saut à ski");
+		list.add("Saut en hauteur");
+		list.add("Saut en longueur");
+		list.add("Skateboard");
+		list.add("Skater hockey");
+		list.add("Skeleton");
+		list.add("Ski");
+		list.add("Snowboard");
+		list.add("Snowskate");
+		list.add("Spéléologie");
+		list.add("Squash");
+		list.add("Step");
+		list.add("Sumo");
+		list.add("Surf");
+		list.add("Samba");
+		list.add("Taekwondo");
+		list.add("Tango");
+		list.add("Tennis");
+		list.add("Tennis de table");
+		list.add("Tir sportif");
+		list.add("Trampoline");
+		list.add("Triathlon");
+		list.add("Tricking");
+		list.add("Triple saut");
+		list.add("Trottinette freestyle");
+		list.add("Twirling");
+		list.add("Ultimate");
+		list.add("Vélocross");
+		list.add("Voile");
+		list.add("Volley-ball");
+		list.add("Voltige aérienne");
+		list.add("Voltige");
+		list.add("Wakeboard");
+		list.add("Water-polo");
+		list.add("Waveboard");
+		list.add("Yoga");
+		list.add("Zumba");
+		return list;
+	}
+
+	public static ArrayList<String> doInsert(List<String> list) {
+		ArrayList<String> res = new ArrayList<>();
+		for (String str : list) {
+			res.add(" insert into sport (label) values ('" + str + "') on conflict do nothing;");
+//			res.add(" insert into sport (label) values ('" + str + "') on conflict do update;");
+
+		}
+		return res;
+	}
+}
