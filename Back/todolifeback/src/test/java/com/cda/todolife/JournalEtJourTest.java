@@ -1,7 +1,6 @@
 package com.cda.todolife;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.cda.todolife.dto.JourDto;
 import com.cda.todolife.dto.JournalDto;
 import com.cda.todolife.dto.UtilisateurDto;
-import com.cda.todolife.dto.UtilisateurDtoList;
 import com.cda.todolife.exception.JourExistantException;
 import com.cda.todolife.exception.JourIntrouvableException;
 import com.cda.todolife.exception.JournalExistantException;
