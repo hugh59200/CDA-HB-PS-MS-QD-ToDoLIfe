@@ -16,17 +16,31 @@ const state = {
 	],
 };
 
+function handleClick(nbJours) {
+	
+	// history.push(lien);
+}
+
 export const GraphiqueHumeurDuMois = () => {
 	return (
 		<div className="statistique">
+			<div className="titre">Statistiques</div>
 			<div className="choixEchelle">
 				<div>
-					<div className="echelleGraph">ces 7 derniers jours</div>
-					<div className="echelleGraph">ce mois-ci</div>
+					<div className="echelleGraph" onClick={() => {
+            handleClick(7);
+          }}>ces 7 derniers jours</div>
+					<div className="echelleGraph" onClick={() => {
+            handleClick(30);
+          }}>ce mois-ci</div>
 				</div>
 				<div>
-					<div className="echelleGraph">ces 3 derniers mois</div>
-					<div className="echelleGraph">cette année</div>
+					<div className="echelleGraph" onClick={() => {
+            handleClick(90);
+          }}>ces 3 derniers mois</div>
+					<div className="echelleGraph" onClick={() => {
+            handleClick(365);
+          }}>cette année</div>
 				</div>
 			</div>
 			<div className="graphique">
@@ -41,6 +55,7 @@ export const GraphiqueHumeurDuMois = () => {
 						legend: {
 							display: true,
 							position: 'right',
+							color:"white"
 						},
 					}}
 				/>

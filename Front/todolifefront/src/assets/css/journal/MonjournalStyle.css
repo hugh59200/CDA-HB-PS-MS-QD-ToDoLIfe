@@ -40,35 +40,45 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 40%;
+  height: 30%;
+}
+.statistique>.titre {
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 30px;
 }
 
 .statistique>.graphique {
   display: flex;
   flex-direction: column;
   background-color: #14A7FF;
-  height: 65%;
-  padding-top: 50px;
+  height: 55%;
+  padding-top: 40px;
+  padding: 20px;
 }
 
 .statistique>.choixEchelle>div {
   display: flex;
   justify-content: space-around;
-  height: 40%;
+  height: 30%;
 }
 
 .echelleGraph {
-  background-color: #f79c9c;
+  background-color: #14A7FF;
   width: 45%;
+  height: 70px;
   border-radius: 10px;
-  padding: 30px;
+  padding: 20px;
   font-weight: bolder;
   font-size: 20px;
   text-align: center;
+  color: white;
 }
 
 .echelleGraph:hover {
-  background-color: #ff7a7a;
+  background-color: #50bcff;
+  cursor: pointer;
 }
 
 .monJournal {
