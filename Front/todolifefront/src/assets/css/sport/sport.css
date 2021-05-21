@@ -1,14 +1,43 @@
 .img-stats {
     background-image: url('../../img/sport/icons8-bar-chart-96.png') !important;
+    margin-bottom: 2% !important;
 }
 
 .img-activs {
     background-image: url('../../img/sport/man-with-open-arms-pngrepo-com.png') !important;
+    margin-bottom: 10% !important;
 }
 
 .img-defis {
-    background-image: url('../../img/sport/dartboard-and-dart.png') !important;
+    background-image: url('../../img/sport/lightning-electric-energy.png') !important;
+    margin-bottom: 13% !important;
 }
+
+.img-stats,
+.img-activs,
+.img-defis {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    border: none;
+}
+
+.img-activs {
+    height: 110px !important;
+    width: 110px !important;
+}
+
+.img-defis {
+    height: 99px !important;
+    width: 99px !important;
+}
+
+.img-stats {
+    height: 130px !important;
+    width: 130px !important;
+}
+
+
 
 @media (max-width: 576px) {
     .sport-app {
@@ -26,18 +55,6 @@
     border: 7px outset #1C6EA4 !important;
     border-radius: 19px !important;
     background-color: #0749fd78 !important;
-}
-
-.img-stats,
-.img-activs,
-.img-defis {
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-size: contain;
-    height: 80px !important;
-    width: 80px !important;
-    border: none;
-    margin-bottom: 5% !important;
 }
 
 
@@ -108,6 +125,14 @@
 }
 
 .sport-app-div:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background-color: #09287c77 !important;
+}
+
+.text-sport{
+    color: white
+}
+
+.text-sport:hover {
+    color: black;
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-import "../../assets/css/sport/menu.css";
-import { URL_SPORT_ACTVITES, URL_SPORT_DEFI, URL_SPORT_STATS } from "../../constant/URL_CONST";
+import "../../../assets/css/sport/menu/menu.css";
+import { URL_SPORT_ACTVITES, URL_SPORT_DEFI, URL_SPORT_STATS } from "../../../constant/URL_CONST";
 
-const Menu = () => {
+const MenuSport = () => {
     
     const [path, setPath] = useState("")
     
@@ -36,21 +36,21 @@ const Menu = () => {
         <div 
         className="d-flex flex-column align-items-center justify-content-center menu-app-div"
         onClick={moveToStats}>
-          <h1 className="text-white">Statistiques</h1>
+          <h1 className="">Statistiques</h1>
         </div>
         <div 
         className="d-flex flex-column align-items-center justify-content-center menu-app-div"
         onClick={movetoActivs}>
-          <h1 className="text-white">Activités</h1>
+          <h1 className="">Activités</h1>
         </div>
         <div 
         className="d-flex flex-column align-items-center justify-content-center menu-app-div"
         onClick={movetoDefis}>
-          <h1 className="text-white">Defis</h1>
+          <h1 className="">Defis</h1>
         </div>
       </div>
     </>
   );
 };
 
-export default Menu;
+export default MenuSport;

@@ -35,6 +35,14 @@ import {
   URL_SPORT_STATS,
   URL_SPORT_ACTVITES,
   URL_SPORT_DEFI,
+  URL_SPORT_STATS_GENERALES,
+  URL_SPORT_STATS_SPORTIVES,
+  URL_SPORT_STATS_BADGES,
+  URL_SPORT_ACTVITES_ME,
+  URL_SPORT_ACTVITES_NEW,
+  URL_SPORT_DEFI_ME,
+  URL_SPORT_DEFI_NEW,
+  URL_SPORT_DEFI_NEW_PROP
 } from "../constant/URL_CONST";
 import { URL_NEW_FILM, URL_NEW_LIVRE, URL_NEW_SERIE } from './../constant/URL_CONST';
 
@@ -61,9 +69,17 @@ import TodoListView from "../components/todoList/liste/TodoListView";
 import Todos from "../components/todoList/todo/Todos";
 import UpdateList from "../components/todoList/liste/UpdateList";
 import UpdateTodo from "../components/todoList/todo/UpdateTodo";
-import Stats from "../components/sport/statistiques/Stats";
 import Activite from "../components/sport/activites/Activite";
-import Defi from "../components/sport/defi/Defi";
+import Defi from "../components/sport/defis/Defis";
+import StatsGen from "../components/sport/statistiques/generales/StatsGen";
+import StatsSpor from "../components/sport/statistiques/sportives/StatsSpor";
+import StatsBad from "../components/sport/statistiques/badges/StatsBad";
+import MesActivites from "../components/sport/activites/mesActivite/MesActivites";
+import NewActivite from "../components/sport/activites/newActivite/NewActivite";
+import MesDefis from "../components/sport/defis/mesDefis/MesDefis";
+import Stat from "../components/sport/statistiques/Stat";
+import NewDefis from "../components/sport/defis/newDefis/NewDefis";
+import PropositionDefis from "../components/sport/defis/propostionDefis/PropositionDefis";
 
 const CustomHistory = createBrowserHistory();
 
@@ -118,10 +134,19 @@ class Routes extends Component {
           <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />
           
+          {/*  sport  */}
           <PrivateRoute path={URL_SPORT} component={Sport} />
-          <PrivateRoute path={URL_SPORT_STATS} component={Stats} />
+          <PrivateRoute path={URL_SPORT_STATS} component={Stat} />
+          <PrivateRoute path={URL_SPORT_STATS_GENERALES} component={StatsGen} />
+          <PrivateRoute path={URL_SPORT_STATS_SPORTIVES} component={StatsSpor} />
+          <PrivateRoute path={URL_SPORT_STATS_BADGES} component={StatsBad} />
           <PrivateRoute path={URL_SPORT_ACTVITES} component={Activite} />
+          <PrivateRoute path={URL_SPORT_ACTVITES_ME} component={MesActivites} />
+          <PrivateRoute path={URL_SPORT_ACTVITES_NEW} component={NewActivite} />
           <PrivateRoute path={URL_SPORT_DEFI} component={Defi} />
+          <PrivateRoute path={URL_SPORT_DEFI_ME} component={MesDefis} />
+          <PrivateRoute path={URL_SPORT_DEFI_NEW} component={NewDefis} />
+          <PrivateRoute path={URL_SPORT_DEFI_NEW_PROP} component={PropositionDefis} />
 
           <ToastContainer
             draggable={false}

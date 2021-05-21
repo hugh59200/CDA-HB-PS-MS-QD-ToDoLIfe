@@ -64,8 +64,13 @@ export const URL_ATTENTE = '/attentes'
 /* sport */
 export const URL_SPORT = '/sports'
 export const URL_SPORT_STATS = '/sports-statistiques'
+export const URL_SPORT_STATS_GENERALES = '/sport-statistiques-generales'
+export const URL_SPORT_STATS_SPORTIVES = '/sports-statistiques-sportives'
+export const URL_SPORT_STATS_BADGES = '/sports-statistiques-badges'
 export const URL_SPORT_ACTVITES = '/sports-activites'
-export const URL_SPORT_DEFI = '/sports-defi'
-
-
-
+export const URL_SPORT_ACTVITES_ME = '/sports-activites-me'
+export const URL_SPORT_ACTVITES_NEW = '/sports-activites-new'
+export const URL_SPORT_DEFI = '/sports-defis'
+export const URL_SPORT_DEFI_ME = '/sports-defis-me'
+export const URL_SPORT_DEFI_NEW = '/sports-defis-new'
+export const URL_SPORT_DEFI_NEW_PROP = '/sports-defis-proposal'

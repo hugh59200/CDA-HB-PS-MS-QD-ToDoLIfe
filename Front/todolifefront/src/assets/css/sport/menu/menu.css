@@ -1,5 +1,5 @@
-.nenu-app {
-    padding-top: 1% !important;
+.menu-app {
+    padding-top: 3% !important;
 }
 
 .menu-app-div {
@@ -8,13 +8,15 @@
     border: 2px outset #1C6EA4 !important;
     border-radius: 4px !important;
     background-color: #0749fd78 !important;
+    color: white;
 }
 
-.menu-app-div {
+/* .menu-app-div {
     transition: 0.5s;
-}
+} */
 
 .menu-app-div:hover {
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
     background-color: #09287c77 !important;
+    color: black;
 }
