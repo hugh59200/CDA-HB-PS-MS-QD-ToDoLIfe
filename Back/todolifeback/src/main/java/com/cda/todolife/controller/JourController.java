@@ -79,7 +79,8 @@ public class JourController {
 	// lister jour by userId selon date
 	@GetMapping("/utilisateurs/{id}/graphique")
 	public ResponseEntity<List<JourDto>> listerParPeriode(@PathVariable(value = "id") int idUtilisateur,
-			@RequestParam(value = "jours") int nbJours) {
+			@RequestParam(value = "duration") int nbJours) {
+		System.out.println(nbJours);
 		return ResponseEntity.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndNbJours(idUtilisateur, nbJours));
 	}
 
