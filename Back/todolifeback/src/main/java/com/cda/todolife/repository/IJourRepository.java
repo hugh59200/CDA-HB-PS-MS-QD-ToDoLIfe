@@ -21,11 +21,11 @@ public interface IJourRepository extends CrudRepository<Jour, Integer> {
 	Optional<Jour> findByDateJourAndJournal(Date date, Journal journalEnt);
 
 	Optional<Jour> findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
-
-	@Query(value = "from Jour j where id_journal=(select id_journal from Journal where id_utilisateur=:idUtilisateur and j.dateJour =(select dateJour where extract(month from j.dateJour)=:mois) and extract(year from j.dateJour)=:annee)")
+	
+	@Query(value = "from Jour "
+			+ "where idJournal=(select idJournal from Journal where idUtilisateur=:idUtilisateur)"
+			+ " and extract(month from dateJour)=:mois "
+			+ "and extract(year from dateJour)=:annee")
 	List<Jour> findAllByJournalUtilisateurIdUtilisateurAndDate(int idUtilisateur, int mois, int annee);
-
-//	@Query(value = "from Jour j where id_journal=(select id_journal from Journal where id_utilisateur=:idUtilisateur and j.date_jour =(select date_jour where extract(month from j.date_jour)=:mois) and extract(year from j.date_jour)=:annee)")
-//	List<Jour> findAllByJournalUtilisateurIdUtilisateurAndDate(int idUtilisateur, int mois, int annee);
 
 }
