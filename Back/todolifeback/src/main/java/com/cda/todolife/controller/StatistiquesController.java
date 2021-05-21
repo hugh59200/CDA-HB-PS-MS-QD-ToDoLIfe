@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.ConstraintViolationException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.StatistiquesDto;
+import com.cda.todolife.dto.UtilisateurDtoList;
+import com.cda.todolife.exception.ResourceNotFoundException;
 import com.cda.todolife.exception.StatistiquesExistantes;
 import com.cda.todolife.exception.StatistiquesIntrouvables;
 import com.cda.todolife.service.IStatistiquesService;
+import com.cda.todolife.service.IUtilisateurService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -31,6 +35,12 @@ public class StatistiquesController {
 
 	@Autowired
 	IStatistiquesService statistiquesService;
+
+	@Autowired
+	IUtilisateurService utilisateurService;
+
+	@Autowired
+	private ModelMapper modelMapper;
 
 	// create
 	@PostMapping("/statistiques")
@@ -52,6 +62,7 @@ public class StatistiquesController {
 		} catch (StatistiquesIntrouvables e) {
 			e.printStackTrace();
 		}
+
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
@@ -70,13 +81,32 @@ public class StatistiquesController {
 
 	// findByUserId
 	@GetMapping("/statistiques/utilisateur/{id}")
-	public ResponseEntity<StatistiquesDto> showListByUserId(@PathVariable int id) throws StatistiquesIntrouvables {
+	public ResponseEntity<StatistiquesDto> showStatsByUserId(@PathVariable int id) throws StatistiquesIntrouvables {
 		StatistiquesDto stats = null;
 
 		try {
 			stats = this.statistiquesService.FindStatistiquesByUserId(id);
 		} catch (StatistiquesIntrouvables e) {
 			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			try {
+				
+				UtilisateurDtoList test = this.modelMapper.map(this.utilisateurService.findByidUtilisateur(id),
+						UtilisateurDtoList.class);
+//				System.out.println("test =>"+test);
+				StatistiquesDto stat = this.modelMapper.map(test, StatistiquesDto.class);
+//				System.out.println("stat =>"+stat);
+				
+				try {
+					create(stat);
+				} catch (StatistiquesExistantes e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			} catch (ResourceNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		return ResponseEntity.ok(stats);
 	}

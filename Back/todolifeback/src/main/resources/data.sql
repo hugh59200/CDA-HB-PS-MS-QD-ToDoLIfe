@@ -156,3 +156,8 @@
  insert into sport (label) values ('Waveboard') on conflict do nothing;
  insert into sport (label) values ('Yoga') on conflict do nothing;
  insert into sport (label) values ('Zumba') on conflict do nothing;
+ 
+INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'quentindamman59@gmail.com', 'DAMMAN', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Quentin', 'QUENTINOS') on conflict do nothing;
+INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'psackebandt@outlook.fr', 'SACKEBANDT', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Paul', 'PAULO') on conflict do nothing;
+INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'mtosaba@gmail.com', 'SABA', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Matéo', 'MATEO') on conflict do nothing;
+INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'h.bogrand@gmail.com', 'BOGRAND', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Hugo', 'HUGO EL MILITADOR') on conflict do nothing;

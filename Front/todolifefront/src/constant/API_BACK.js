@@ -11,6 +11,8 @@ export const API_LIVRES = ENV_DEV + 'livres';
 export const API_FILMS = ENV_DEV + 'films';
 export const API_SERIES = ENV_DEV + 'series';
 
+export const API_STATISTIQUES = ENV_DEV + 'statistiques';
+
 // export const ENV_PROD = 'http://192.168.43.30:8080/api/';
 // export const API_TODO_LIST = ENV_PROD + 'todolists';
 // export const API_JOURNAL = ENV_PROD + 'journaux';

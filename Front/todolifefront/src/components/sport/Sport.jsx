@@ -2,27 +2,58 @@ import React from "react";
 import { useHistory } from "react-router";
 
 import "../../assets/css/sport/sport.css";
-import { URL_SPORT_ACTVITES, URL_SPORT_DEFI, URL_SPORT_STATS } from "../../constant/URL_CONST";
+import {
+  URL_SPORT_ACTVITES,
+  URL_SPORT_DEFI,
+  URL_SPORT_STATS,
+  // URL_SPORT_STATS,
+} from "../../constant/URL_CONST";
+import SportService from "../../service/SportService";
 
 const Sport = () => {
   
   const history = useHistory();
-  
+
+  const id = localStorage.getItem("id");
+
   const moveToStats = () => {
-    history.push(URL_SPORT_STATS);
-  }
+    
+    SportService.checkIfUserGetStat(id)
+      .then((res) => {
+        // console.log(res)
+      })
+      .catch((err) => {
+        // console.log(err)
+      });
+      checkSecondTimeStat()
+  };
   
-  const movetoActivs = () => {
-      history.push(URL_SPORT_ACTVITES);
-  }
-  
-  const movetoDefis = () => {
-      history.push(URL_SPORT_DEFI);
+  const checkSecondTimeStat = () => {
+    SportService.checkIfUserGetStat(id)
+      .then((res) => {
+        
+        console.log(res.data)
+        
+        let code = res.status;
+        if (code === 200){
+          history.push(URL_SPORT_STATS);
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      });
   }
 
+  const movetoActivs = () => {
+    history.push(URL_SPORT_ACTVITES);
+  };
+
+  const movetoDefis = () => {
+    history.push(URL_SPORT_DEFI);
+  };
+  
   return (
     <>
-
       <div className="d-flex justify-content-around align-items-center justify-content-center sport-app">
         <div
           className="d-flex flex-column align-items-center justify-content-center sport-app-div"
