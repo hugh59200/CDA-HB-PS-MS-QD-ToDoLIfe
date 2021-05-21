@@ -1,20 +1,25 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 import "../../assets/css/sport/sport.css";
+import { URL_SPORT_ACTVITES, URL_SPORT_DEFI, URL_SPORT_STATS } from "../../constant/URL_CONST";
 // import TypedLoader from "../typed/TypedLoader";
 
 const Sport = () => {
-  const movetoStats = () => {
-    console.log("click stats");
-  };
-
+  
+  const history = useHistory();
+  
+  const moveToStats = () => {
+    history.push(URL_SPORT_STATS);
+  }
+  
   const movetoActivs = () => {
-    console.log("click activs");
-  };
-
+      history.push(URL_SPORT_ACTVITES);
+  }
+  
   const movetoDefis = () => {
-    console.log("click defis");
-  };
+      history.push(URL_SPORT_DEFI);
+  }
 
   return (
     <>
@@ -29,7 +34,7 @@ const Sport = () => {
       <div className="d-flex justify-content-around align-items-center justify-content-center sport-app">
         <div
           className="d-flex flex-column align-items-center justify-content-center sport-app-div"
-          onClick={movetoStats}
+          onClick={moveToStats}
         >
           <div className="img-stats"></div>
           <h1 className=" text-white">Statistiques</h1>

@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 import { ToastContainer, Zoom } from "react-toastify";
+import Switch from "react-bootstrap/esm/Switch";
+import { Route } from "react-router";
+
+import Home from "../views/home/Home";
+import ConnexionForm from "../components/form/ConnexionForm";
+import InscriptionForm from "../components/form/InscriptionForm";
+import AttenteValidation from "../components/pageArrive/AttenteValidation";
+
+import { createBrowserHistory } from "history";
+
 import {
   URL_ATTENTE,
   URL_CONNEXION,
@@ -22,37 +32,38 @@ import {
   URL_UPDATE_TODO,
   URL_UPDATE_TODO_LIST,
   URL_WATCHLIST,
+  URL_SPORT_STATS,
+  URL_SPORT_ACTVITES,
+  URL_SPORT_DEFI,
 } from "../constant/URL_CONST";
 import { URL_NEW_FILM, URL_NEW_LIVRE, URL_NEW_SERIE } from './../constant/URL_CONST';
 
 import AddList from "../components/todoList/liste/AddList";
 import AddTodo from "../components/todoList/todo/AddTodo";
-import AttenteValidation from "../components/pageArrive/AttenteValidation";
-import ConnexionForm from "../components/form/ConnexionForm";
 import Films from './../components/watchlist/film/Films';
 import { GraphiqueHumeurDuMois } from './../components/journal/graphique/GraphiqueHumeurDuMois';
-import Home from "../views/home/Home";
-import InscriptionForm from "../components/form/InscriptionForm";
 import Livres from "../components/watchlist/livres/Livres";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
 import ModifFilm from './../components/watchlist/film/ModifFilm';
 import ModifLivre from './../components/watchlist/livres/ModifLivre';
 import ModifSerie from './../components/watchlist/series/ModifSerie';
 import MonJournal from "../components/journal/MonJournal";
+
+// import Error404 from "../views/Error404";
 import NewFilm from './../components/watchlist/film/NewFilm';
 import NewLivre from './../components/watchlist/livres/NewLivre';
 import NewSerie from './../components/watchlist/series/NewSerie';
 import { PrivateRoute } from "./PrivateRoute";
-import { Route } from "react-router";
 import Series from './../components/watchlist/series/Series';
 import Sport from "../components/sport/Sport";
-import Switch from "react-bootstrap/esm/Switch";
 import TableauDeBordJournal from "../components/journal/TableauDeBordJournal";
 import TodoListView from "../components/todoList/liste/TodoListView";
 import Todos from "../components/todoList/todo/Todos";
 import UpdateList from "../components/todoList/liste/UpdateList";
 import UpdateTodo from "../components/todoList/todo/UpdateTodo";
-import { createBrowserHistory } from 'history';
+import Stats from "../components/sport/statistiques/Stats";
+import Activite from "../components/sport/activites/Activite";
+import Defi from "../components/sport/defi/Defi";
 
 const CustomHistory = createBrowserHistory();
 
@@ -108,6 +119,9 @@ class Routes extends Component {
           <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />
           
           <PrivateRoute path={URL_SPORT} component={Sport} />
+          <PrivateRoute path={URL_SPORT_STATS} component={Stats} />
+          <PrivateRoute path={URL_SPORT_ACTVITES} component={Activite} />
+          <PrivateRoute path={URL_SPORT_DEFI} component={Defi} />
 
           <ToastContainer
             draggable={false}

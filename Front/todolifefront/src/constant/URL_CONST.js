@@ -61,8 +61,11 @@ export const URL_MODIF_LIVRE = '/modiflivre'
 /* attentes */
 export const URL_ATTENTE = '/attentes'
 
-/* attentes */
+/* sport */
 export const URL_SPORT = '/sports'
+export const URL_SPORT_STATS = '/sports-statistiques'
+export const URL_SPORT_ACTVITES = '/sports-activites'
+export const URL_SPORT_DEFI = '/sports-defi'
 
 
 
