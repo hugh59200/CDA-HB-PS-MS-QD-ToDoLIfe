@@ -28,4 +28,6 @@ public interface IJourService {
 
 	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDate(int idUtilisateur, int mois, int annee)  throws JourIntrouvableException;
 
+	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndNbJours(int idUtilisateur, int nbJours);
+
 }

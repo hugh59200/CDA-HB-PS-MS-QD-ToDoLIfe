@@ -1,6 +1,8 @@
 package com.cda.todolife.serviceImpl;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +51,7 @@ public class JourServiceImpl implements IJourService {
 		if (jourEntList.isPresent()) {
 			throw new JourExistantException();
 		}
-		
+
 		Jour jourEnt = this.modelMapper.map(jourDto, Jour.class);
 		jourEnt.setJournal(journal);
 		jourDto.setIdJour(jourEnt.getIdJour());
@@ -114,4 +116,13 @@ public class JourServiceImpl implements IJourService {
 		return listJours;
 	}
 
+	@Override
+	public List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndNbJours(int idUtilisateur, int nbJours) {
+		List<JourDto> listJours = new ArrayList<>();
+		Date startDate = Date.from(ZonedDateTime.now().minusDays(nbJours).toInstant());
+		Date now = Date.from(ZonedDateTime.now().toInstant());
+		this.jourRepository.listerParIdUserEtnbJours(idUtilisateur, startDate, now)
+				.forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
+		return listJours;
+	}
 }

@@ -70,19 +70,18 @@ public class JourController {
 	// lister jour by userId selon date
 	@GetMapping("/utilisateurs/{id}/journaux")
 	public ResponseEntity<List<JourDto>> listerParUtilisateurEtDate(@PathVariable(value = "id") int idUtilisateur,
-			@RequestParam(value = "mois") int mois, @RequestParam(value = "annee") int annee) throws JourIntrouvableException {
+			@RequestParam(value = "mois") int mois, @RequestParam(value = "annee") int annee)
+			throws JourIntrouvableException {
 		return ResponseEntity
 				.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndDate(idUtilisateur, mois, annee));
 	}
 
-//	// lister jour by userId selon date
-//	@GetMapping("/utilisateurs/{id}/graphique")
-//	public ResponseEntity<List<JourDto>> listerParPeriode(
-//			@PathVariable(value = "id") int idUtilisateur, @RequestParam(value = "jours") int nbJours) {
-//		
-//		
-//		return ResponseEntity.ok(null);
-//	}
+	// lister jour by userId selon date
+	@GetMapping("/utilisateurs/{id}/graphique")
+	public ResponseEntity<List<JourDto>> listerParPeriode(@PathVariable(value = "id") int idUtilisateur,
+			@RequestParam(value = "jours") int nbJours) {
+		return ResponseEntity.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndNbJours(idUtilisateur, nbJours));
+	}
 
 	// update
 	@PutMapping("/jour")
