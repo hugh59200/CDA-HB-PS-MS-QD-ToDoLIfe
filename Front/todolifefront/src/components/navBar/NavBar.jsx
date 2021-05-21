@@ -6,7 +6,7 @@ import {
   URL_CONNEXION,
   URL_HOME,
   URL_INSCRIPTION,
-  URL_TABLEAU_DE_BORD,
+  URL_TABLEAU_CHOIX,
   URL_TODO_LIST,
   URL_WATCHLIST,
 } from "../../constant/URL_CONST";
@@ -61,8 +61,7 @@ const NavBar = () => {
 
           <li className="nav-item">
             <NavLink
-              to={URL_TABLEAU_DE_BORD}
-              // onClick={removeTodoList}
+              to={URL_TABLEAU_CHOIX}
               className="nav-link text-white"
               activeClassName="font-weight-bold"
             >

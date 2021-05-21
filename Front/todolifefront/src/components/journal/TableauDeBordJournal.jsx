@@ -1,4 +1,4 @@
-import { URL_JOURNAL, URL_TABLEAU_DE_BORD } from '../../constant/URL_CONST';
+import { URL_JOURNAL, URL_STATISTIQUE } from '../../constant/URL_CONST';
 
 import { useHistory } from 'react-router-dom';
 
@@ -10,11 +10,11 @@ export default function TableauDeBordJournal() {
 	}
 
 	return (
-		<div className="tableauDeBord">
+		<div className="choix">
         <button
           className="btn-form"
           onClick={() => {
-            handleClick(URL_TABLEAU_DE_BORD);
+            handleClick(URL_STATISTIQUE);
           }}
         >
           Statistique

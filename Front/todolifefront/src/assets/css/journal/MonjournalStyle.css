@@ -1,4 +1,4 @@
-.tableauDeBord {
+.choix {
   background-color: #0090E8;
   height: 300px;
   width: 500px;
@@ -10,7 +10,8 @@
   justify-content: space-evenly;
 }
 
-.tableauDeBord>button {
+
+.choix>button {
   height: 100px;
   width: 400px;
   font-size: 20px;
@@ -23,7 +24,54 @@
   margin: 0 auto;
 }
 
-.monJournal,.statistique {
+.statistique {
+  background-color: #0090E8;
+  height: 700px;
+  width: 700px;
+  margin: 100px auto;
+  padding: 30px;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.statistique>.choixEchelle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 40%;
+}
+
+.statistique>.graphique {
+  display: flex;
+  flex-direction: column;
+  background-color: #14A7FF;
+  height: 65%;
+  padding-top: 50px;
+}
+
+.statistique>.choixEchelle>div {
+  display: flex;
+  justify-content: space-around;
+  height: 40%;
+}
+
+.echelleGraph {
+  background-color: #f79c9c;
+  width: 45%;
+  border-radius: 10px;
+  padding: 30px;
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+}
+
+.echelleGraph:hover {
+  background-color: #ff7a7a;
+}
+
+.monJournal {
   background-color: #0090E8;
   height: 700px;
   width: 700px;
@@ -263,7 +311,8 @@
   justify-content: space-around;
   height: 45px;
 }
-.bouttonsPartieUpdate> button {
+
+.bouttonsPartieUpdate>button {
   padding: 0px;
   width: 200px;
 }
@@ -316,7 +365,7 @@ img.mood {
   padding: 15px;
 }
 
-.titreJour> span {
+.titreJour>span {
   color: red;
   font-style: italic;
   font-size: 25px;

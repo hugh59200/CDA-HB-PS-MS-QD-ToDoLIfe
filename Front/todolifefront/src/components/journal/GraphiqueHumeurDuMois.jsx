@@ -18,19 +18,33 @@ const state = {
 
 export const GraphiqueHumeurDuMois = () => {
 	return (
-		<Line
-			data={state}
-			options={{
-				title: {
-					display: true,
-					text: 'Average Rainfall per month',
-					fontSize: 20,
-				},
-				legend: {
-					display: true,
-					position: 'right',
-				},
-			}}
-		/>
+		<div className="statistique">
+			<div className="choixEchelle">
+				<div>
+					<div className="echelleGraph">ces 7 derniers jours</div>
+					<div className="echelleGraph">ce mois-ci</div>
+				</div>
+				<div>
+					<div className="echelleGraph">ces 3 derniers mois</div>
+					<div className="echelleGraph">cette année</div>
+				</div>
+			</div>
+			<div className="graphique">
+				<Line
+					data={state}
+					options={{
+						title: {
+							display: true,
+							text: 'Average Rainfall per month',
+							fontSize: 20,
+						},
+						legend: {
+							display: true,
+							position: 'right',
+						},
+					}}
+				/>
+			</div>
+		</div>
 	);
 };

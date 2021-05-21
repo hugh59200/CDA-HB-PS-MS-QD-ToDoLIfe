@@ -15,7 +15,8 @@ import {
   URL_NEW_TODO,
   URL_NEW_TODO_LIST,
   URL_SERIES,
-  URL_TABLEAU_DE_BORD,
+  URL_STATISTIQUE,
+  URL_TABLEAU_CHOIX,
   URL_TODO_LIST,
   URL_UPDATE_TODO,
   URL_UPDATE_TODO_LIST,
@@ -28,6 +29,7 @@ import AddTodo from "../components/todoList/todo/AddTodo";
 import AttenteValidation from "../components/pageArrive/AttenteValidation";
 import ConnexionForm from "../components/form/ConnexionForm";
 import Films from './../components/watchlist/film/Films';
+import { GraphiqueHumeurDuMois } from './../components/journal/GraphiqueHumeurDuMois';
 import Home from "../views/home/Home";
 import InscriptionForm from "../components/form/InscriptionForm";
 import Livres from "../components/watchlist/livres/Livres";
@@ -49,25 +51,6 @@ import Todos from "../components/todoList/todo/Todos";
 import UpdateList from "../components/todoList/liste/UpdateList";
 import UpdateTodo from "../components/todoList/todo/UpdateTodo";
 import { createBrowserHistory } from "history";
-
-// import Error404 from "../views/Error404";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const CustomHistory = createBrowserHistory();
 
@@ -92,11 +75,6 @@ class Routes extends Component {
           {/* Form Connection */}
           <Route path={URL_CONNEXION} component={ConnexionForm} />
 
-          {/* page connection */}
-          {/* <Route path={PAGE_CONNEXION} component={Auth} /> */}
-          {/* page connection */}
-          {/* <Route path={PAGE_DECONNEXION} component={Auth} /> */}
-
           {/* view todolist */}
           <PrivateRoute path={URL_TODO_LIST} component={TodoListView} />
 
@@ -116,7 +94,8 @@ class Routes extends Component {
           <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
 
           {/* view journal*/}
-          <PrivateRoute path={URL_TABLEAU_DE_BORD} component={TableauDeBordJournal} />
+          <PrivateRoute path={URL_TABLEAU_CHOIX} component={TableauDeBordJournal} />
+          <PrivateRoute path={URL_STATISTIQUE} component={GraphiqueHumeurDuMois} />
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
 
           {/* view watchlist*/}

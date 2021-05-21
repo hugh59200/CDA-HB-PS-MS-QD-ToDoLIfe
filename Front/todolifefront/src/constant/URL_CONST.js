@@ -6,7 +6,8 @@ export const URL_INSCRIPTION = '/inscription'
 
 /* TodoList */
 export const URL_JOURNAL = '/journaux'
-export const URL_TABLEAU_DE_BORD = '/tableauDeBordJournalJournaux'
+export const URL_TABLEAU_CHOIX = '/journauxChoix'
+export const URL_STATISTIQUE = '/journauxStatistiques'
 
 /* Connexion-form */
 export const URL_CONNEXION = '/connexion'
