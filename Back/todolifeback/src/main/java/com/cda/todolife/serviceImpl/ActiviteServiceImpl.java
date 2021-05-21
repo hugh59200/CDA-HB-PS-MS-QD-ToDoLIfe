@@ -69,5 +69,4 @@ public class ActiviteServiceImpl implements IActiviteService {
 	public ActiviteDto findByLabel(int id, String label) throws ActiviteIntrouvable {
 		return this.modelMapper.map(this.activiteDao.findByLabel(id,label), ActiviteDto.class);
 	}
-
 }

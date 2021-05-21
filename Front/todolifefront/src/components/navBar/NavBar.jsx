@@ -28,7 +28,7 @@ const NavBar = () => {
           <li className="nav-item">
             <NavLink
               to={URL_CONNEXION}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               login
@@ -37,7 +37,7 @@ const NavBar = () => {
           <li className="nav-item">
             <NavLink
               to={URL_INSCRIPTION}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               register
@@ -53,7 +53,7 @@ const NavBar = () => {
           <li className="nav-item">
             <NavLink
               to={URL_TODO_LIST}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               TodoList
@@ -63,6 +63,7 @@ const NavBar = () => {
           <li className="nav-item">
             <NavLink
               to={URL_TABLEAU_CHOIX}
+              onClick={removeTodoList}
               className="nav-link text-white"
               activeClassName="font-weight-bold"
             >
@@ -74,7 +75,7 @@ const NavBar = () => {
             <NavLink
               to={URL_WATCHLIST}
               onClick={removeTodoList}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               WatchList
@@ -85,7 +86,7 @@ const NavBar = () => {
             <NavLink
               to={URL_SPORT}
               onClick={removeTodoList}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               Sport
@@ -96,7 +97,7 @@ const NavBar = () => {
             <NavLink
               to={URL_HOME}
               onClick={logout}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               logout
@@ -126,21 +127,22 @@ const NavBar = () => {
   return (
     <>
       <header className="navbar navbar-expand-lg">
-        <img src={logo} className="logotodolife" alt="" />
+      <NavLink
+                to={URL_HOME}
+                onClick={removeTodoList}
+                className="nav-link text-white"
+                activeClassName="font-weight-bold"
+              >
+                <img src={logo} className="logotodolife" alt="" />
+              </NavLink>
+        
         <button className="navbar-toggler">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <NavLink
-                to={URL_HOME}
-                onClick={removeTodoList}
-                className="nav-link text-white"
-                activeClassName="font-weight-bold"
-              >
-                Home
-              </NavLink>
+              
             </li>
             {btnLog}
           </ul>

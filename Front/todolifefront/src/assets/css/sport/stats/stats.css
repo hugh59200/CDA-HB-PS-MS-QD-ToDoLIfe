@@ -1,0 +1,52 @@
+.img-stats-G {
+    background-image: url('../../../img/sport/heart_86505.png') !important;
+}
+
+.img-stats-S {
+    background-image: url('../../../img/sport/presse-papiers.png') !important;
+}
+
+.img-stats-B {
+    background-image: url('../../../img/sport/pngkey.com-police-icon-png-4484502.png') !important;
+}
+
+.img-stats-G,
+.img-stats-S,
+.img-stats-B {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    height: 80px !important;
+    width: 80px !important;
+    border: none;
+    margin-bottom: 13% !important;
+}
+
+.stats-app {
+    padding-top: 10% !important;
+}
+
+.stats-app-div {
+    height: 300px !important;
+    width: 390px !important;
+    border: 7px outset #1C6EA4 !important;
+    border-radius: 19px !important;
+    background-color: #0749fd78 !important;
+}
+
+.stats-app-div {
+    transition: 0.5s;
+}
+
+.stats-app-div:hover {
+    transform: scale(1.1);
+    background-color: #09287c77 !important;
+}
+
+.text-stats{
+    color: white
+}
+
+.text-stats:hover {
+    color: black;
+}

@@ -1,0 +1,46 @@
+.img-act-cons{
+    background-image: url('../../../img/sport/loupe.png') !important;
+}
+
+.img-act-ajout{
+    background-image: url('../../../img/sport/add.png') !important;
+}
+
+.img-act-cons, .img-act-ajout{
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    height: 60px !important;
+    width: 60px !important;
+    border: none;
+    margin-bottom: 14% !important;
+}
+
+.acts-app{
+    padding-top: 10% !important;
+}
+
+.acts-app-div {
+    height: 300px !important;
+    width: 390px !important;
+    border: 7px outset #1C6EA4 !important;
+    border-radius: 19px !important;
+    background-color: #0749fd78 !important;
+}
+
+.acts-app-div{
+    transition: 0.5s;
+}
+
+.acts-app-div:hover {
+    transform: scale(1.1);
+    background-color: #09287c77 !important;
+}
+
+.text-acts{
+    color: white
+}
+
+.text-acts:hover {
+    color: black;
+}

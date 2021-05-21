@@ -1,7 +1,5 @@
 package com.cda.todolife.dto;
 
-import com.cda.todolife.model.Sport;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +13,6 @@ public class BadgeDto {
 
 	private int idBadge;
 	private String label;
-	private Sport sport;
+	private SportDto sport;
 	private StatistiquesDto statistiques;
 }

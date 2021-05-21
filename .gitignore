@@ -259,3 +259,5 @@ up.bat
 /Ressources/MCD/LoopingImage.jpg
 
 Front/todolifefront/build/
+
+Back/todolifeback/src/main/resources/user.sql

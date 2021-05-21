@@ -1,0 +1,79 @@
+.img-defis-M {
+    background-image: url('../../../img/sport/dartboard-and-dart.png') !important;
+    margin-bottom: 11% !important;
+}
+
+.img-defis-A {
+    background-image: url('../../../img/sport/add.png') !important;
+    margin-bottom: 14% !important;
+}
+
+.img-defis-P {
+    background-image: url('../../../img/sport/icons8-medal-64.png') !important;
+    margin-bottom: 10% !important;
+}
+
+.img-defis-M,
+.img-defis-A,
+.img-defis-P {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    border: none;
+}
+
+.img-defis-M {
+    height: 90px !important;
+    width: 90px !important;
+}
+
+.img-defis-A {
+    height: 60px !important;
+    width: 60px !important;
+}
+
+
+.img-defis-P {
+    height: 90px !important;
+    width: 90px !important;
+}
+
+
+.defis-app {
+    padding-top: 10% !important;
+}
+
+.defis-app-div {
+    height: 300px !important;
+    width: 390px !important;
+    border: 7px outset #1C6EA4 !important;
+    border-radius: 19px !important;
+    background-color: #0749fd78 !important;
+}
+
+.defis-app-div {
+    transition: 0.5s;
+}
+
+.defis-app-div:hover {
+    transform: scale(1.1);
+    background-color: #09287c77 !important;
+}
+
+.text-defis {
+    color: white
+}
+
+.text-defis:hover {
+    color: black;
+}
+
+.decalage1{
+    position: relative;
+    top: 12px;
+}
+
+.decalage2{
+    position: relative;
+    top: 6px;
+}

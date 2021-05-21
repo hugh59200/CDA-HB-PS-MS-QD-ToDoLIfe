@@ -30,7 +30,7 @@ margin-left: 30px;
 }
 
 .logotodolife{
-  width: 14%!important;
+  width: 49% !important;
 }
 
 @media (max-width: 576px) { 
@@ -38,4 +38,14 @@ margin-left: 30px;
   .logotodolife{
     width: 40%!important;
   }
+}
+
+.color-black-navBar{
+  color: white;
+}
+
+
+.color-black-navBar:hover{
+  color: black;
+  font-weight: bold;
 }
