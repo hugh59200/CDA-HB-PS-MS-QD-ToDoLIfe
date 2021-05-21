@@ -1,5 +1,7 @@
 package com.cda.todolife.dto;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +16,7 @@ import lombok.ToString;
 public class JourDto {
 
 	private int idJour;
-	private String dateJour;
+	private Date dateJour;
 	private int humeur;
 	private String titre;
 	private String texte;

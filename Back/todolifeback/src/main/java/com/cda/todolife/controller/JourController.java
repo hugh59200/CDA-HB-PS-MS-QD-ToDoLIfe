@@ -1,7 +1,6 @@
 package com.cda.todolife.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -62,32 +61,28 @@ public class JourController {
 
 	// test par savoir si un jour a été créér aujourd'hui
 	@GetMapping("/jour/{id}/utilisateurs")
-	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur) throws JourIntrouvableException {
+	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur)
+			throws JourIntrouvableException {
 		return ResponseEntity.ok(jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur,
 				new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
 	}
 
 	// lister jour by userId selon date
 	@GetMapping("/utilisateurs/{id}/journaux")
-	public ResponseEntity<List<JourDto>> findAllByJournalUtilisateurIdUtilisateur(
-			@PathVariable(value = "id") int idUtilisateur, @RequestParam(value = "mois") int mois,
-			@RequestParam(value = "annee") int annee) {
-
-		String dateNoDay = annee + "-" + mois;
-		if (mois < 10) {
-			dateNoDay = annee + "-0" + mois;
-		}
-
-		List<JourDto> listAll = jourService.findAllByJournalUtilisateurIdUtilisateur(idUtilisateur);
-		List<JourDto> listMounth = new ArrayList<>();
-
-		for (int i = 0; i < listAll.size(); i++) {
-			if (listAll.get(i).getDateJour().contains(dateNoDay)) {
-				listMounth.add(listAll.get(i));
-			}
-		}
-		return ResponseEntity.ok(listMounth);
+	public ResponseEntity<List<JourDto>> listerParUtilisateurEtDate(@PathVariable(value = "id") int idUtilisateur,
+			@RequestParam(value = "mois") int mois, @RequestParam(value = "annee") int annee) throws JourIntrouvableException {
+		return ResponseEntity
+				.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndDate(idUtilisateur, mois, annee));
 	}
+
+//	// lister jour by userId selon date
+//	@GetMapping("/utilisateurs/{id}/graphique")
+//	public ResponseEntity<List<JourDto>> listerParPeriode(
+//			@PathVariable(value = "id") int idUtilisateur, @RequestParam(value = "jours") int nbJours) {
+//		
+//		
+//		return ResponseEntity.ok(null);
+//	}
 
 	// update
 	@PutMapping("/jour")

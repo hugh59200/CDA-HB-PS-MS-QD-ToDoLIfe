@@ -106,4 +106,12 @@ public class JourServiceImpl implements IJourService {
 		return listJours;
 	}
 
+	@Override
+	public List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDate(int idUtilisateur, int mois, int annee) {
+		List<JourDto> listJours = new ArrayList<>();
+		this.jourRepository.findAllByJournalUtilisateurIdUtilisateurAndDate(idUtilisateur, mois, annee)
+				.forEach(pres -> listJours.add(this.modelMapper.map(pres, JourDto.class)));
+		return listJours;
+	}
+
 }

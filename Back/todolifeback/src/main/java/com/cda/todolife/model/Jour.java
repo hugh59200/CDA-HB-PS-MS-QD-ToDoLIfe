@@ -1,5 +1,7 @@
 package com.cda.todolife.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +29,7 @@ public class Jour {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idJour;
-	private String dateJour;
+	private Date dateJour;
 	private int humeur;
 	private String titre;
 	private String texte;

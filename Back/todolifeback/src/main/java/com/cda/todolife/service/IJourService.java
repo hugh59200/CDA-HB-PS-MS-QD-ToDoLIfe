@@ -26,4 +26,6 @@ public interface IJourService {
 
 	boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
 
+	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDate(int idUtilisateur, int mois, int annee)  throws JourIntrouvableException;
+
 }
