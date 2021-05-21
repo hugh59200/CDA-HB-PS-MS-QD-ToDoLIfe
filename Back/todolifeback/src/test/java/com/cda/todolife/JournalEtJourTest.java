@@ -90,8 +90,8 @@ public class JournalEtJourTest {
 		this.IUtilisateurService.create(utilisateurDto);
 
 		// creation d'un jour
-		JourDto jourDto = JourDto.builder().dateJour("2021-05-17").titre("mon titre").humeur(4).texte("blablabla")
-				.build();
+		JourDto jourDto = JourDto.builder().dateJour(new java.sql.Date(1989 - 10 - 10)).titre("mon titre").humeur(4)
+				.texte("blablabla").build();
 
 		// creation d'un journal
 		JournalDto journalDto = JournalDto.builder().build();
