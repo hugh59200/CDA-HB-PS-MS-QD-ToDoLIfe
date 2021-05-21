@@ -1,2 +1,98 @@
+.img-stats {
+    background-image: url('../../img/sport/icons8-bar-chart-96.png') !important;
+}
 
- 
+.img-activs {
+    background-image: url('../../img/sport/man-with-open-arms-pngrepo-com.png') !important;
+}
+
+.img-defis {
+    background-image: url('../../img/sport/dartboard-and-dart.png') !important;
+}
+
+@media (max-width: 576px){
+    .sport-app {
+        flex-direction: column !important;
+    }
+}
+
+.sport-app {
+    padding-top: 10% !important;
+}
+
+.sport-app-div {
+    height: 300px !important;
+    width: 390px !important;
+    border: 7px outset #1C6EA4 !important;
+    border-radius: 19px !important;
+    background-color: #0090E8 !important;
+}
+
+.img-stats,
+.img-activs,
+.img-defis {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    height: 96px !important;
+    width: 96px !important;
+    border: none;
+    margin-bottom: 5% !important;
+}
+
+
+
+
+/* @media (max-width: 576px) {
+    .sport-app {
+        display: flex !important;
+        padding-top: 40% !important;
+
+    }
+
+    .sport-app-div {
+        height: 300px !important;
+        width: 390px !important;
+        border: 7px outset #1C6EA4 !important;
+        border-radius: 19px !important;
+        background-color: #0090E8 !important;
+    }
+
+    .img-stats,
+    .img-activs,
+    .img-defis {
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: contain;
+        height: 96px !important;
+        width: 96px !important;
+        border: none;
+        margin-bottom: 5% !important;
+    }
+} */
+/* 
+@media only screen and (min-width : 1224px) {
+    .sport-app {
+        padding-top: 10% !important;
+    }
+
+    .sport-app-div {
+        height: 300px !important;
+        width: 390px !important;
+        border: 7px outset #1C6EA4 !important;
+        border-radius: 19px !important;
+        background-color: #0090E8 !important;
+    }
+
+    .img-stats,
+    .img-activs,
+    .img-defis {
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: contain;
+        height: 96px !important;
+        width: 96px !important;
+        border: none;
+        margin-bottom: 5% !important;
+    }
+} */
