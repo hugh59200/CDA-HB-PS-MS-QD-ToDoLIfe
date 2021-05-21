@@ -29,7 +29,7 @@ import AddTodo from "../components/todoList/todo/AddTodo";
 import AttenteValidation from "../components/pageArrive/AttenteValidation";
 import ConnexionForm from "../components/form/ConnexionForm";
 import Films from './../components/watchlist/film/Films';
-import { GraphiqueHumeurDuMois } from './../components/journal/GraphiqueHumeurDuMois';
+import { GraphiqueHumeurDuMois } from './../components/journal/graphique/GraphiqueHumeurDuMois';
 import Home from "../views/home/Home";
 import InscriptionForm from "../components/form/InscriptionForm";
 import Livres from "../components/watchlist/livres/Livres";
@@ -110,9 +110,7 @@ class Routes extends Component {
           <PrivateRoute path={URL_FILMS} component={Films} />
           <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />
-          {/* <Route component={Error404} /> */}
 
-          {/* composants toaster */}
           <ToastContainer
             draggable={false}
             transition={Zoom}
