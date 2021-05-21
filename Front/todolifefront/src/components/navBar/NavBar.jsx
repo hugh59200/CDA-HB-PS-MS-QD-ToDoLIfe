@@ -64,7 +64,7 @@ const NavBar = () => {
             <NavLink
               to={URL_TABLEAU_CHOIX}
               onClick={removeTodoList}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               Journal

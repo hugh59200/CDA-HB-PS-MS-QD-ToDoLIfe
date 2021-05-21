@@ -43,7 +43,7 @@ const Sport = () => {
           onClick={movetoDefis}
         >
           <div className="img-defis"></div>
-          <h1 className="text-sport">Defis</h1>
+          <h1 className="text-sport">Défis</h1>
         </div>
       </div>
     </>

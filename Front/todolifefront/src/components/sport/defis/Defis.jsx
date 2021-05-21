@@ -44,7 +44,7 @@ const Defis = () => {
         >
           <div className="img-defis-A"></div>
           <h1 className="text-defis text-center decalage1">
-          nouveau 
+          Nouveau 
           <br />
           defi
           </h1>
@@ -54,7 +54,7 @@ const Defis = () => {
           onClick={moveToDefisPropDef}
         >
           <div className="img-defis-P"></div>
-          <h1 className="text-defis text-center">
+          <h1 className="text-defis text-center decalage2">
             Propostion
             <br />
             de défi

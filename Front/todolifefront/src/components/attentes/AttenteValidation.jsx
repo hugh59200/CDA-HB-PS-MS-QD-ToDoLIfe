@@ -34,9 +34,9 @@ const AttenteValidation = () => {
         <Redirect to={URL_CONNEXION} />
       ) : (
         <>
-        <div className="d-flex flex-collum">
-          <div className="container">
-            <div className="box">
+        <div className="d-flex justify-content-around align-items-center justify-content-center">
+          <div className="d-flex">
+            <div className="box d-flex">
               <span></span>
               <span></span>
               <span></span>
@@ -52,10 +52,10 @@ const AttenteValidation = () => {
                 </p>
               </div>
             </div>
+          <div onClick={click} className="btn-done">
+            <p class="text-btn-done">I'm done</p>
           </div>
-          <button onClick={click} className="btn-done">
-            I'm done
-          </button>
+          </div>
         </div>
         </>
       )}
