@@ -12,7 +12,16 @@ import {
   URL_MODIF_FILM,
   URL_MODIF_LIVRE,
   URL_MODIF_SERIE,
+  URL_NEW_TODO,
+  URL_NEW_TODO_LIST,
+  URL_SERIES,
   URL_SPORT,
+  URL_STATISTIQUE,
+  URL_TABLEAU_CHOIX,
+  URL_TODO_LIST,
+  URL_UPDATE_TODO,
+  URL_UPDATE_TODO_LIST,
+  URL_WATCHLIST,
 } from "../constant/URL_CONST";
 import { URL_NEW_FILM, URL_NEW_LIVRE, URL_NEW_SERIE } from './../constant/URL_CONST';
 
@@ -36,15 +45,14 @@ import NewSerie from './../components/watchlist/series/NewSerie';
 import { PrivateRoute } from "./PrivateRoute";
 import { Route } from "react-router";
 import Series from './../components/watchlist/series/Series';
+import Sport from "../components/sport/Sport";
 import Switch from "react-bootstrap/esm/Switch";
 import TableauDeBordJournal from "../components/journal/TableauDeBordJournal";
 import TodoListView from "../components/todoList/liste/TodoListView";
 import Todos from "../components/todoList/todo/Todos";
 import UpdateList from "../components/todoList/liste/UpdateList";
 import UpdateTodo from "../components/todoList/todo/UpdateTodo";
-import ModifLivre from './../components/watchlist/livres/ModifLivre';
-import ModifFilm from './../components/watchlist/film/ModifFilm';
-import Sport from "../components/sport/Sport";
+import { createBrowserHistory } from 'history';
 
 const CustomHistory = createBrowserHistory();
 
