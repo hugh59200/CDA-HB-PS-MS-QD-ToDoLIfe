@@ -12,7 +12,7 @@
 	<groupId>com.cda</groupId>
 	<artifactId>todolifeback</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>todolifeback</name>
 	<description>todolifeapp</description>
 	<properties>
@@ -93,17 +93,10 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-
 	</dependencies>
 
 	<build>
+	<finalName>todolife</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

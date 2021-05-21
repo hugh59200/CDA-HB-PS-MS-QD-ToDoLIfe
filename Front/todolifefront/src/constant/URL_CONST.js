@@ -18,6 +18,9 @@ export const PAGE_CONNEXION = '/page-con'
 /* Connexion-form */
 export const PAGE_DECONNEXION = '/page-dec'
 
+
+
+// 
 /* TodoList */
 export const URL_TODO_LIST = '/todo-list'
 
@@ -35,6 +38,7 @@ export const URL_NEW_TODO = '/new-todo'
 
 /* update todo */
 export const URL_UPDATE_TODO = '/update-todo'
+//
 
 /* Watchlist */
 export const URL_WATCHLIST = '/watchlist'
@@ -56,3 +60,9 @@ export const URL_MODIF_LIVRE = '/modiflivre'
 
 /* attentes */
 export const URL_ATTENTE = '/attentes'
+
+/* attentes */
+export const URL_SPORT = '/sports'
+
+
+

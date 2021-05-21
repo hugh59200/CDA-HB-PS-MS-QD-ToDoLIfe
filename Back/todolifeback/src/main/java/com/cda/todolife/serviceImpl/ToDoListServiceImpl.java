@@ -33,7 +33,6 @@ public class ToDoListServiceImpl implements IToDoListService {
 		if (listOpt.isPresent()) {
 			throw new ToDoListExistanteException();
 		} else {
-			
 			this.todolistDao.save(this.modelMapper.map(list, ToDoList.class));
 		}
 	}
@@ -76,7 +75,7 @@ public class ToDoListServiceImpl implements IToDoListService {
 	@Override
 	public void update(ToDoListDto list) throws ToDoListIntrouvableException, ToDoListExistanteException {
 		
-		System.out.println(list.getUtilisateur());
+//		System.out.println(list.getUtilisateur());
 		try {
 			this.todolistDao.findById(list.getIdTodoList()).orElseThrow(ToDoListIntrouvableException::new);
 			todolistDao.save(this.modelMapper.map(list, ToDoList.class));

@@ -9,6 +9,7 @@ import {
   URL_TABLEAU_CHOIX,
   URL_TODO_LIST,
   URL_WATCHLIST,
+  URL_SPORT,
 } from "../../constant/URL_CONST";
 
 import { deconnected } from "../../service/authentificationService";
@@ -77,6 +78,17 @@ const NavBar = () => {
               activeClassName="font-weight-bold"
             >
               WatchList
+            </NavLink>
+          </li>
+          
+          <li className="nav-item">
+            <NavLink
+              to={URL_SPORT}
+              onClick={removeTodoList}
+              className="nav-link text-white"
+              activeClassName="font-weight-bold"
+            >
+              Sport
             </NavLink>
           </li>
 
