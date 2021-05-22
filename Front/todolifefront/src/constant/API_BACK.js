@@ -12,7 +12,7 @@ export const API_FILMS = ENV_DEV + 'films';
 export const API_SERIES = ENV_DEV + 'series';
 
 export const API_STATISTIQUES = ENV_DEV + 'statistiques';
-export const API_STATISTIQUES_GENRALES = ENV_DEV + 'statistiquesGen';
+export const API_STATISTIQUES_GENERALES = ENV_DEV + 'statistiquesGen';
 
 
 

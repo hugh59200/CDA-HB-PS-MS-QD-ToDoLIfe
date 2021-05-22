@@ -33,16 +33,13 @@ public class StatistiquesGeneralesController {
 	@Autowired
 	IStatistiquesGeneralesService statistiquesGeneralesService;
 
-//	@Autowired
-//	IStatistiquesService statistiquesService;
-//
-//	@Autowired
-//	private ModelMapper modelMapper;
-
 	// create
 	@PostMapping("/statistiquesGen")
 	public ResponseEntity<StatistiquesGeneralesDto> create(@RequestBody StatistiquesGeneralesDto stats)
 			throws StatistiquesGeneralesExistantes {
+		
+		System.out.println(stats);
+		
 		try {
 			this.statistiquesGeneralesService.add(stats);
 		} catch (StatistiquesGeneralesExistantes e) {
@@ -90,24 +87,8 @@ public class StatistiquesGeneralesController {
 		} catch (StatistiquesGeneralesIntrouvables e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-
-//			try {
-//				StatistiquesDto test = this.statistiquesService.FindById(id);
-//				
-//				System.out.println("test =>"+test);
-//				
-//				StatistiquesGeneralesDto stat = this.modelMapper.map(test, StatistiquesGeneralesDto.class);
-//				
-//				System.out.println("stat =>"+stat);
-//
-//				
-//			} catch (StatistiquesIntrouvables e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
 		}
 		return ResponseEntity.ok(stats);
-
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -122,5 +103,4 @@ public class StatistiquesGeneralesController {
 		});
 		return errors;
 	}
-
 }

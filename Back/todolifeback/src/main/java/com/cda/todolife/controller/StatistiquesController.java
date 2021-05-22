@@ -32,12 +32,6 @@ public class StatistiquesController {
 	@Autowired
 	IStatistiquesService statistiquesService;
 
-//	@Autowired
-//	IUtilisateurService utilisateurService;
-
-//	@Autowired
-//	private ModelMapper modelMapper;
-
 	// create
 	@PostMapping("/statistiques")
 	public ResponseEntity<StatistiquesDto> create(@RequestBody StatistiquesDto stats) throws StatistiquesExistantes {
@@ -97,24 +91,6 @@ public class StatistiquesController {
 		} catch (StatistiquesIntrouvables e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-//			try {
-//				
-//				UtilisateurDtoList test = this.modelMapper.map(this.utilisateurService.findByidUtilisateur(id),
-//						UtilisateurDtoList.class);
-////				System.out.println("test =>"+test);
-//				StatistiquesDto stat = this.modelMapper.map(test, StatistiquesDto.class);
-////				System.out.println("stat =>"+stat);
-//				
-//				try {
-//					create(stat);
-//				} catch (StatistiquesExistantes e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//			} catch (ResourceNotFoundException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
 		}
 		return ResponseEntity.ok(stats);
 	}

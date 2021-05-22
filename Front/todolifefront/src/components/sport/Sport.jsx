@@ -15,16 +15,27 @@ const Sport = () => {
   const id = localStorage.getItem("id");
 
   const moveToStats = () => {
-    // console.log("user", localStorage.getItem("user"));
-    // console.log("stat", localStorage.getItem("stat"));
-    if (
-      localStorage.getItem("user") !== null &&
-      localStorage.getItem("stat") !== null
-    ) {
-      history.push(URL_SPORT_STATS);
-    } else {
-      CheckOrCreateStats();
-    }
+    
+    
+    SportService.checkIfUserGetStat(id)
+    .then((res) => {
+      // console.log("stat",res.data)
+
+      // 3 check if user stat is empty
+      if (res.data === "") {
+        // console.log("user stat is empty");
+        create();
+      } else {
+        let stat = res.data;
+        // console.log("stat", stat);
+        var data = JSON.stringify(stat);
+        localStorage.setItem("stat", data);
+        // console.log("user stat is not empty");
+        history.push(URL_SPORT_STATS);
+      }
+    })
+    .catch((err) => {});
+
   };
 
   const movetoActivs = () => {
@@ -35,46 +46,26 @@ const Sport = () => {
     history.push(URL_SPORT_DEFI);
   };
 
-  const CheckOrCreateStats = () => {
-    SportService.checkIfUserGetStat(id)
-      .then((res) => {
-        if (
-          localStorage.getItem("user") !== null &&
-          localStorage.getItem("stat") === null
-        ) {
-          let stat = res.data;
-          console.log("stat", stat);
-          var data = JSON.stringify(stat);
-          localStorage.setItem("stat", data);
+  const create = () => {
+    console.log("create");
 
-          if (
-            localStorage.getItem("user") !== null &&
-            localStorage.getItem("stat") !== null
-          ) {
-            history.push(URL_SPORT_STATS);
-          } else {
-            createStatForUser();
-          }
-        }
-      })
-      .catch((err) => {});
-  };
-
-  const createStatForUser = () => {
     let data = JSON.parse(localStorage.getItem("user"));
 
-    let test = {
+    let stat = {
       utilisateur: data,
     };
 
-    SportService.createStatForUser(test).then((res) => {
+    SportService.createStatForUser(stat).then((res) => {
+      console.log(res);
+      console.log(res.data);
+
       let stat = res.data;
       console.log("stat", stat);
       var data = JSON.stringify(stat);
       localStorage.setItem("stat", data);
-
-      moveToStats();
     });
+
+    moveToStats();
   };
 
   return (
