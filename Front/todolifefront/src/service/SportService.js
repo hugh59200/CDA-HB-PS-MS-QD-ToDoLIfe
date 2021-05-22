@@ -26,6 +26,10 @@ class SportService {
         // console.log("stat_G", data)
         return axios.post(API_STATISTIQUES_GENERALES, data);
     }
+    
+    updateStatGen(data){
+        return axios.put(API_STATISTIQUES_GENERALES, data);
+    }
 }
 
 export default new SportService();

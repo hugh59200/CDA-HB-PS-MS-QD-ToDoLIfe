@@ -66,6 +66,10 @@ public class StatistiquesGeneralesController {
 	@PutMapping("/statistiquesGen")
 	public ResponseEntity<StatistiquesGeneralesDto> update(@RequestBody StatistiquesGeneralesDto stats)
 			throws StatistiquesGeneralesIntrouvables {
+		
+		System.out.println(stats);
+		
+		
 		try {
 			statistiquesGeneralesService.update(stats);
 		} catch (StatistiquesGeneralesIntrouvables e) {
