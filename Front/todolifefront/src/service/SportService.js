@@ -17,14 +17,13 @@ class SportService {
     }
 
     // Stats_Générales
-
     checkIfUserGetStatGen(id) {
         // console.log("id",id)
         return axios.get(API_STATISTIQUES_GENERALES + '/stat/' + id);
     }
 
     createStatGenForUser(data) {
-        console.log("stat_G", data)
+        // console.log("stat_G", data)
         return axios.post(API_STATISTIQUES_GENERALES, data);
     }
 }

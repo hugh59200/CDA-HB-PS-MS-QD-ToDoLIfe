@@ -15,27 +15,18 @@ const Sport = () => {
   const id = localStorage.getItem("id");
 
   const moveToStats = () => {
-    
-    
     SportService.checkIfUserGetStat(id)
-    .then((res) => {
-      // console.log("stat",res.data)
-
-      // 3 check if user stat is empty
-      if (res.data === "") {
-        // console.log("user stat is empty");
-        create();
-      } else {
-        let stat = res.data;
-        // console.log("stat", stat);
-        var data = JSON.stringify(stat);
-        localStorage.setItem("stat", data);
-        // console.log("user stat is not empty");
-        history.push(URL_SPORT_STATS);
-      }
-    })
-    .catch((err) => {});
-
+      .then((res) => {
+        if (res.data === "") {
+          create();
+        } else {
+          let stat = res.data;
+          var data = JSON.stringify(stat);
+          localStorage.setItem("stat", data);
+          history.push(URL_SPORT_STATS);
+        }
+      })
+      .catch((err) => {});
   };
 
   const movetoActivs = () => {
@@ -47,8 +38,6 @@ const Sport = () => {
   };
 
   const create = () => {
-    console.log("create");
-
     let data = JSON.parse(localStorage.getItem("user"));
 
     let stat = {
@@ -56,15 +45,10 @@ const Sport = () => {
     };
 
     SportService.createStatForUser(stat).then((res) => {
-      console.log(res);
-      console.log(res.data);
-
       let stat = res.data;
-      console.log("stat", stat);
       var data = JSON.stringify(stat);
       localStorage.setItem("stat", data);
     });
-
     moveToStats();
   };
 
