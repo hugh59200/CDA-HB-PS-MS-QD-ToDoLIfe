@@ -25,7 +25,7 @@ const MenuSport = () => {
     useEffect(() => {
         // console.log(history.location.pathname)
         setPath(history.location.pathname)
-        console.log("path",path)
+        // console.log("path",path)
     }, [history.location.pathname, path])
     
   return (

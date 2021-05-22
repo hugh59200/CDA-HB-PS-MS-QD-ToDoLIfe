@@ -85,10 +85,16 @@ function ConnexionForm() {
         let id = res.data.user.idUtilisateur;
         let username = res.data.user.username;
         let token = res.data.user.token;
+        let user = res.data.user;
+        
         authenticated(id, username, token);
+        
         localStorage.setItem("id", id);
         localStorage.setItem("username", username);
         localStorage.setItem("token", token);
+
+        var data = JSON.stringify(user);
+        localStorage.setItem('user',data);
         history.push(URL_HOME);
         history.go(0);
         toast.success("login successful");

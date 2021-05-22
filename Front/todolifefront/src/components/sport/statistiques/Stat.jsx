@@ -14,7 +14,13 @@ const Stat = () => {
   const history = useHistory();
 
   const moveToStatsGen = () => {
-    history.push(URL_SPORT_STATS_GENERALES);
+    if (
+      localStorage.getItem("user") !== null &&
+      localStorage.getItem("stat") !== null &&
+      localStorage.getItem("stat-gen") !== null
+    ) {
+      history.push(URL_SPORT_STATS_GENERALES);
+    }
   };
 
   const moveToStatsSpo = () => {

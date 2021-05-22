@@ -117,6 +117,7 @@ const NavBar = () => {
   const removeTodoList = () =>{
     localStorage.removeItem('id_todolist')
     localStorage.removeItem('label_todolist')
+    localStorage.removeItem('stat')
   }
 
   useEffect(() => {

@@ -50,4 +50,8 @@ public class StatistiquesServiceImpl implements IStatistiquesService {
 		}
 	}
 
+	@Override
+	public StatistiquesDto FindById(int id) throws StatistiquesIntrouvables {
+		return this.modelMapper.map(this.statistiquesDao.findById(id), StatistiquesDto.class);
+	}
 }

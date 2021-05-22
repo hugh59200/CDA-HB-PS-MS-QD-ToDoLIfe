@@ -29,9 +29,15 @@ import com.cda.todolife.service.IStatistiquesGeneralesService;
 @RestController
 @RequestMapping("/api")
 public class StatistiquesGeneralesController {
-
+	
 	@Autowired
 	IStatistiquesGeneralesService statistiquesGeneralesService;
+
+//	@Autowired
+//	IStatistiquesService statistiquesService;
+//
+//	@Autowired
+//	private ModelMapper modelMapper;
 
 	// create
 	@PostMapping("/statistiquesGen")
@@ -76,12 +82,32 @@ public class StatistiquesGeneralesController {
 	public ResponseEntity<StatistiquesGeneralesDto> findByStatId(@PathVariable int id)
 			throws StatistiquesGeneralesIntrouvables {
 		StatistiquesGeneralesDto stats = null;
+		
+		System.out.println("id =>"+id);
+
 		try {
 			stats = statistiquesGeneralesService.FindByStatId(id);
 		} catch (StatistiquesGeneralesIntrouvables e) {
 			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+
+//			try {
+//				StatistiquesDto test = this.statistiquesService.FindById(id);
+//				
+//				System.out.println("test =>"+test);
+//				
+//				StatistiquesGeneralesDto stat = this.modelMapper.map(test, StatistiquesGeneralesDto.class);
+//				
+//				System.out.println("stat =>"+stat);
+//
+//				
+//			} catch (StatistiquesIntrouvables e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
 		}
 		return ResponseEntity.ok(stats);
+
 	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
