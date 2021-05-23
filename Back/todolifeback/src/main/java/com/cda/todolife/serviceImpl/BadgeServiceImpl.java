@@ -53,10 +53,10 @@ public class BadgeServiceImpl implements IBadgeService {
 		}
 	}
 
-//	@Override
-//	public BadgeDto findById(int id) throws BadgeIntrouvable {
-//		return this.modelMapper.map(this.badgeDao.findById(id).orElseThrow(BadgeIntrouvable::new), BadgeDto.class);
-//	}
+	@Override
+	public BadgeDto findById(int id) throws BadgeIntrouvable {
+		return this.modelMapper.map(this.badgeDao.findById(id).orElseThrow(BadgeIntrouvable::new), BadgeDto.class);
+	}
 
 	@Override
 	public List<BadgeDto> FindByStatId(int id) throws BadgeIntrouvable {

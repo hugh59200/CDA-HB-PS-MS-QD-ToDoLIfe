@@ -7,11 +7,14 @@ export function authenticated(id, username, token) {
 
 export function deconnected() {
     isLogged = false;
+    localStorage.removeItem('user')
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('token')
     localStorage.removeItem('id_todolist')
     localStorage.removeItem('label_todolist')
+    localStorage.removeItem('stat')
+    localStorage.removeItem('stat_gen')
 }
 
 export function isAuthenticated() {

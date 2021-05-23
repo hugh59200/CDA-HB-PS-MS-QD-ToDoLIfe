@@ -12,4 +12,5 @@ public interface IStatistiquesSportivesRepository extends CrudRepository<Statist
 	
 	@Query(value = "select * from statistiques_sportives where id_statistique = ?1 ", nativeQuery = true)
 	List<StatistiquesSportives> FindStatistiquesByStatId(int id);	
+	
 }

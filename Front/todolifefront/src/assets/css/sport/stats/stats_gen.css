@@ -1,0 +1,78 @@
+.infos-stats-gen {
+    /* border-right: 4px solid #1C6EA4; */
+    
+    border-radius: 9px;
+
+    margin-top: 5%;
+    padding-top: 2% !important;
+    height: 360px;
+    width: 900px;
+    /* width: 133% !important; */
+    border: 2px solid #1C6EA4;
+    /* background-color: #1c6ea4; */
+}
+
+.stats-gen-app{
+    padding-top: 3% !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trait-stats-gen{
+    height: 310px;
+    width: 1px;
+    border-right: 2px solid #1C6EA4;
+    border-left: 2px solid #1C6EA4;
+    position: relative;
+    /* left: 20px; */
+}
+
+.input-stats-gen{
+    /* padding-right: 50px; */
+    border-radius: 9px;
+    border: 2px solid #1C6EA4;
+    width: 100px;
+    transition: 0.5s;
+}
+
+.input-stats-gen:hover {
+    transform: scale(1.2);
+    background-color: #bab6c377 !important;
+    color: white;
+}
+
+.part-gauche-stats-gen{
+    border-radius: 9px;
+    /* border: 2px solid #1C6EA4; */
+    height: 300px;
+    width: 320px;
+    position: relative;
+}
+
+.part-droite-stats-gen{
+    border-radius: 9px;
+    /* border: 2px solid #1C6EA4; */
+    height: 300px;
+    width: 320px;
+    position: relative;
+    /* left: 40px;   */
+}
+
+.calcul-imc-btn{
+    margin-top: 10%;
+    height: 130px;
+    width: auto;
+    border-radius: 9px;
+}
+
+.calcul-imc-btn:hover {
+    /* transform: scale(1.2); */
+    background-color: #09287c77 !important;
+    color: black;
+}
+
+.imc-text{
+    font-size: 4.5em;
+}

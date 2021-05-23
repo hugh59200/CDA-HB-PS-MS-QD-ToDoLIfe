@@ -42,27 +42,32 @@ import {
   URL_SPORT_ACTVITES_NEW,
   URL_SPORT_DEFI_ME,
   URL_SPORT_DEFI_NEW,
-  URL_SPORT_DEFI_NEW_PROP
+  URL_SPORT_DEFI_NEW_PROP,
+  URL_SPORT_STATS_SPORTIVES_NEW,
 } from "../constant/URL_CONST";
-import { URL_NEW_FILM, URL_NEW_LIVRE, URL_NEW_SERIE } from './../constant/URL_CONST';
+import {
+  URL_NEW_FILM,
+  URL_NEW_LIVRE,
+  URL_NEW_SERIE,
+} from "./../constant/URL_CONST";
 
 import AddList from "../components/todoList/liste/AddList";
 import AddTodo from "../components/todoList/todo/AddTodo";
-import Films from './../components/watchlist/film/Films';
-import { GraphiqueHumeurDuMois } from './../components/journal/graphique/GraphiqueHumeurDuMois';
+import Films from "./../components/watchlist/film/Films";
+import { GraphiqueHumeurDuMois } from "./../components/journal/graphique/GraphiqueHumeurDuMois";
 import Livres from "../components/watchlist/livres/Livres";
 import MaWatchlist from "../components/watchlist/MaWatchlist";
-import ModifFilm from './../components/watchlist/film/ModifFilm';
-import ModifLivre from './../components/watchlist/livres/ModifLivre';
-import ModifSerie from './../components/watchlist/series/ModifSerie';
+import ModifFilm from "./../components/watchlist/film/ModifFilm";
+import ModifLivre from "./../components/watchlist/livres/ModifLivre";
+import ModifSerie from "./../components/watchlist/series/ModifSerie";
 import MonJournal from "../components/journal/MonJournal";
 
 // import Error404 from "../views/Error404";
-import NewFilm from './../components/watchlist/film/NewFilm';
-import NewLivre from './../components/watchlist/livres/NewLivre';
-import NewSerie from './../components/watchlist/series/NewSerie';
+import NewFilm from "./../components/watchlist/film/NewFilm";
+import NewLivre from "./../components/watchlist/livres/NewLivre";
+import NewSerie from "./../components/watchlist/series/NewSerie";
 import { PrivateRoute } from "./PrivateRoute";
-import Series from './../components/watchlist/series/Series';
+import Series from "./../components/watchlist/series/Series";
 import Sport from "../components/sport/Sport";
 import TableauDeBordJournal from "../components/journal/TableauDeBordJournal";
 import TodoListView from "../components/todoList/liste/TodoListView";
@@ -80,6 +85,7 @@ import MesDefis from "../components/sport/defis/mesDefis/MesDefis";
 import Stat from "../components/sport/statistiques/Stat";
 import NewDefis from "../components/sport/defis/newDefis/NewDefis";
 import PropositionDefis from "../components/sport/defis/propostionDefis/PropositionDefis";
+import CreationStatsSport from "../components/sport/statistiques/sportives/ajout/CreationStatsSport";
 
 const CustomHistory = createBrowserHistory();
 
@@ -117,8 +123,14 @@ class Routes extends Component {
           {/* update a todo */}
           <PrivateRoute path={URL_UPDATE_TODO} component={UpdateTodo} />
           {/* view journal*/}
-          <PrivateRoute path={URL_TABLEAU_CHOIX} component={TableauDeBordJournal} />
-          <PrivateRoute path={URL_STATISTIQUE} component={GraphiqueHumeurDuMois} />
+          <PrivateRoute
+            path={URL_TABLEAU_CHOIX}
+            component={TableauDeBordJournal}
+          />
+          <PrivateRoute
+            path={URL_STATISTIQUE}
+            component={GraphiqueHumeurDuMois}
+          />
           <PrivateRoute path={URL_JOURNAL} component={MonJournal} />
 
           {/* view watchlist*/}
@@ -133,12 +145,21 @@ class Routes extends Component {
           <PrivateRoute path={URL_FILMS} component={Films} />
           <PrivateRoute path={URL_NEW_FILM} component={NewFilm} />
           <PrivateRoute path={URL_MODIF_FILM} component={ModifFilm} />
-          
+
           {/*  sport  */}
           <PrivateRoute path={URL_SPORT} component={Sport} />
           <PrivateRoute path={URL_SPORT_STATS} component={Stat} />
           <PrivateRoute path={URL_SPORT_STATS_GENERALES} component={StatsGen} />
-          <PrivateRoute path={URL_SPORT_STATS_SPORTIVES} component={StatsSpor} />
+          <PrivateRoute
+            path={URL_SPORT_STATS_SPORTIVES}
+            component={StatsSpor}
+          />
+          <PrivateRoute
+            path={URL_SPORT_STATS_SPORTIVES_NEW}
+            component={CreationStatsSport}
+          />
+          {/* <PrivateRoute path={URL_SPORT_STATS_SPORTIVES_NEW_FORM} component={FormSport} /> */}
+
           <PrivateRoute path={URL_SPORT_STATS_BADGES} component={StatsBad} />
           <PrivateRoute path={URL_SPORT_ACTVITES} component={Activite} />
           <PrivateRoute path={URL_SPORT_ACTVITES_ME} component={MesActivites} />
@@ -146,7 +167,10 @@ class Routes extends Component {
           <PrivateRoute path={URL_SPORT_DEFI} component={Defi} />
           <PrivateRoute path={URL_SPORT_DEFI_ME} component={MesDefis} />
           <PrivateRoute path={URL_SPORT_DEFI_NEW} component={NewDefis} />
-          <PrivateRoute path={URL_SPORT_DEFI_NEW_PROP} component={PropositionDefis} />
+          <PrivateRoute
+            path={URL_SPORT_DEFI_NEW_PROP}
+            component={PropositionDefis}
+          />
 
           <ToastContainer
             draggable={false}

@@ -66,18 +66,18 @@ public class BadgeController {
 		return ResponseEntity.ok(badge);
 	}
 
-//	// findById
-//	@GetMapping("badges/id/{id}")
-//	public ResponseEntity<BadgeDto> findById(@PathVariable int id) throws BadgeIntrouvable {
-//		BadgeDto badge = null;
-//
-//		try {
-//			badge = badgeService.findById(id);
-//		} catch (BadgeIntrouvable e) {
-//			e.printStackTrace();
-//		}
-//		return ResponseEntity.ok(badge);
-//	}
+	// findById
+	@GetMapping("badges/id/{id}")
+	public ResponseEntity<BadgeDto> findById(@PathVariable int id) throws BadgeIntrouvable {
+		BadgeDto badge = null;
+
+		try {
+			badge = badgeService.findById(id);
+		} catch (BadgeIntrouvable e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.ok(badge);
+	}
 
 //	// ListdBySportId
 //	@GetMapping("badges/sport/{id}")

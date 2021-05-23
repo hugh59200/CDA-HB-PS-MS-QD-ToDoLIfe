@@ -29,7 +29,7 @@ import com.cda.todolife.service.IStatistiquesGeneralesService;
 @RestController
 @RequestMapping("/api")
 public class StatistiquesGeneralesController {
-
+	
 	@Autowired
 	IStatistiquesGeneralesService statistiquesGeneralesService;
 
@@ -37,12 +37,15 @@ public class StatistiquesGeneralesController {
 	@PostMapping("/statistiquesGen")
 	public ResponseEntity<StatistiquesGeneralesDto> create(@RequestBody StatistiquesGeneralesDto stats)
 			throws StatistiquesGeneralesExistantes {
+		
+		System.out.println(stats);
+		
 		try {
 			this.statistiquesGeneralesService.add(stats);
 		} catch (StatistiquesGeneralesExistantes e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		return ResponseEntity.ok(stats);
 	}
 
@@ -63,6 +66,10 @@ public class StatistiquesGeneralesController {
 	@PutMapping("/statistiquesGen")
 	public ResponseEntity<StatistiquesGeneralesDto> update(@RequestBody StatistiquesGeneralesDto stats)
 			throws StatistiquesGeneralesIntrouvables {
+		
+		System.out.println(stats);
+		
+		
 		try {
 			statistiquesGeneralesService.update(stats);
 		} catch (StatistiquesGeneralesIntrouvables e) {
@@ -76,10 +83,14 @@ public class StatistiquesGeneralesController {
 	public ResponseEntity<StatistiquesGeneralesDto> findByStatId(@PathVariable int id)
 			throws StatistiquesGeneralesIntrouvables {
 		StatistiquesGeneralesDto stats = null;
+		
+		System.out.println("id =>"+id);
+
 		try {
 			stats = statistiquesGeneralesService.FindByStatId(id);
 		} catch (StatistiquesGeneralesIntrouvables e) {
 			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
 		}
 		return ResponseEntity.ok(stats);
 	}
@@ -96,5 +107,4 @@ public class StatistiquesGeneralesController {
 		});
 		return errors;
 	}
-
 }

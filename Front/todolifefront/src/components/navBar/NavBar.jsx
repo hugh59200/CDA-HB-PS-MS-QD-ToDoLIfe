@@ -64,7 +64,7 @@ const NavBar = () => {
             <NavLink
               to={URL_TABLEAU_CHOIX}
               onClick={removeTodoList}
-              className="nav-link text-white"
+              className="nav-link color-black-navBar"
               activeClassName="font-weight-bold"
             >
               Journal
@@ -117,6 +117,9 @@ const NavBar = () => {
   const removeTodoList = () =>{
     localStorage.removeItem('id_todolist')
     localStorage.removeItem('label_todolist')
+    localStorage.removeItem('stat')
+    localStorage.removeItem('stat_gen')
+    localStorage.removeItem('sport')
   }
 
   useEffect(() => {

@@ -8,7 +8,7 @@ import com.cda.todolife.exception.BadgeIntrouvable;
 
 public interface IBadgeService {
 	
-//	BadgeDto findById (int id) throws BadgeIntrouvable;
+	BadgeDto findById (int id) throws BadgeIntrouvable;
 
 //	List<BadgeDto> FindBadgeBySportId(int id) throws BadgeIntrouvable;
 	

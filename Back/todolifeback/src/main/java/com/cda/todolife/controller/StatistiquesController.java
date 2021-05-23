@@ -24,7 +24,7 @@ import com.cda.todolife.exception.StatistiquesExistantes;
 import com.cda.todolife.exception.StatistiquesIntrouvables;
 import com.cda.todolife.service.IStatistiquesService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class StatistiquesController {
@@ -40,9 +40,23 @@ public class StatistiquesController {
 		} catch (StatistiquesExistantes e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return ResponseEntity.ok(stats);
 	}
+
+//	// findById
+//		@GetMapping("/statistiques/{id}")
+//		public ResponseEntity<StatistiquesDto> findById(@PathVariable int id) throws StatistiquesIntrouvables {
+//			StatistiquesDto stats = null;
+//			try {
+//				stats = statistiquesService.FindById(id);
+//			} catch (StatistiquesIntrouvables e) {
+//				e.printStackTrace();
+//			}
+//			return ResponseEntity.ok(stats);
+//		}
 
 	// delete
 	@DeleteMapping("/statistiques/{id}")
@@ -52,6 +66,7 @@ public class StatistiquesController {
 		} catch (StatistiquesIntrouvables e) {
 			e.printStackTrace();
 		}
+
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
@@ -70,13 +85,14 @@ public class StatistiquesController {
 
 	// findByUserId
 	@GetMapping("/statistiques/utilisateur/{id}")
-	public ResponseEntity<StatistiquesDto> showListByUserId(@PathVariable int id) throws StatistiquesIntrouvables {
+	public ResponseEntity<StatistiquesDto> showStatsByUserId(@PathVariable int id) throws StatistiquesIntrouvables {
 		StatistiquesDto stats = null;
 
 		try {
 			stats = this.statistiquesService.FindStatistiquesByUserId(id);
 		} catch (StatistiquesIntrouvables e) {
 			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
 		}
 		return ResponseEntity.ok(stats);
 	}

@@ -9,12 +9,26 @@ import {
   URL_SPORT_STATS_GENERALES,
   URL_SPORT_STATS_SPORTIVES,
 } from "../../../constant/URL_CONST";
+import SportService from "../../../service/SportService";
 
 const Stat = () => {
   const history = useHistory();
 
   const moveToStatsGen = () => {
-    history.push(URL_SPORT_STATS_GENERALES);
+    let id = JSON.parse(localStorage.getItem("stat")).idStatistiques;
+
+    SportService.checkIfUserGetStatGen(id)
+      .then((res) => {
+        if (res.data === "") {
+          create();
+        } else {
+          let stat = res.data;
+          var data = JSON.stringify(stat);
+          localStorage.setItem("stat_gen", data);
+          history.push(URL_SPORT_STATS_GENERALES);
+        }
+      })
+      .catch((err) => {});
   };
 
   const moveToStatsSpo = () => {
@@ -23,6 +37,24 @@ const Stat = () => {
 
   const moveToStatsBad = () => {
     history.push(URL_SPORT_STATS_BADGES);
+  };
+
+  const create = () => {
+    // console.log("create");
+    let data = JSON.parse(localStorage.getItem("stat"));
+    let stat = {
+      statistiques: data,
+    };
+
+    SportService.createStatGenForUser(stat).then((res) => {
+      // console.log(res);
+      // console.log(res.data);
+      // let stat = res.data;
+      // console.log("stat", stat);
+      var data = JSON.stringify(stat);
+      localStorage.setItem("stat_gen", data);
+    });
+    moveToStatsGen();
   };
 
   return (

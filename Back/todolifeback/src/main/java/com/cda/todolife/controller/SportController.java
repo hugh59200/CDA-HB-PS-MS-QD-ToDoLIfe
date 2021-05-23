@@ -40,6 +40,18 @@ public class SportController {
 		return this.sportService.findAll();
 	}
 
+//	// liste
+//	@GetMapping("/sports/label")
+//	public List<SportDto> getAllByLabel() {
+//		return this.sportService.findAllByLabel();
+//	}
+
+	// liste
+	@GetMapping("/sports/{car}")
+	public List<SportDto> startWith(@PathVariable String car) {
+		return this.sportService.startWith(car);
+	}
+
 	// create
 	@PostMapping("/sports")
 	public ResponseEntity<SportDto> create(@RequestBody SportDto sport) throws SportExistant {

@@ -260,4 +260,4 @@ up.bat
 
 Front/todolifefront/build/
 
-Back/todolifeback/src/main/resources/user.sql
+Back/todolifeback/src/main/resources/data.sql

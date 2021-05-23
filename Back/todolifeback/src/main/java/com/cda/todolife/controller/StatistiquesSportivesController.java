@@ -72,6 +72,20 @@ public class StatistiquesSportivesController {
 		return ResponseEntity.ok(stats);
 	}
 
+	// findById
+	@GetMapping("/statistiquesSport/id/{id}")
+	public ResponseEntity<StatistiquesSportivesDto> findById(@PathVariable int id)
+			throws StatistiquesSportivesIntrouvables {
+		
+		StatistiquesSportivesDto stats = null;
+		try {
+			stats = this.statistiquesSportivesService.findById(id);
+		} catch (StatistiquesSportivesIntrouvables e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.ok(stats);
+	}
+
 	// findByStatId
 	@GetMapping("statistiquesSport/stat/{id}")
 	public ResponseEntity<List<StatistiquesSportivesDto>> findByStatId(@PathVariable int id)
