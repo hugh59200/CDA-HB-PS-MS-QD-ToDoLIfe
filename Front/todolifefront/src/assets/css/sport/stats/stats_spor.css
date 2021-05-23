@@ -1,0 +1,50 @@
+.stat-spor-app {
+    padding-top: 3% !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.infos-stats-spor {
+    /* border-right: 4px solid #1C6EA4; */
+    border-radius: 9px;
+    margin-top: 5%;
+    padding-top: 2% !important;
+    /* height: 360px; */
+    width: 80%;
+    /* width: 133% !important; */
+    border: 2px solid #1C6EA4;
+    /* background-color: #1c6ea4; */
+}
+
+.stats-sport-list {
+    height: 500px;
+}
+
+.input-stat-sport {
+    border-radius: 9px;
+    border: 2px solid #1C6EA4;
+    width: 100px;
+    transition: 0.5s;
+}
+
+.input-stat-sport:hover {
+    transform: scale(1.2);
+    background-color: #bab6c377 !important;
+    color: white;
+}
+
+.btn-form-sport-send {
+    margin-top: 10%;
+    height: 80px;
+    width: 160px;
+    border-radius: 9px;
+}
+
+.btn-form-sport-send:hover {
+    /* transform: scale(1.2); */
+    background-color: #09287c77 !important;
+    color: black;
+}

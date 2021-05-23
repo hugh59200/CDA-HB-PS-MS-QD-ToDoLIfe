@@ -10,6 +10,10 @@ public interface ISportService {
 	
 	List<SportDto> findAll();
 	
+	List<SportDto> findAllByLabel();
+	
+	List<SportDto> startWith (String car);
+	
 	SportDto FindByLabel(String label) throws SportIntrouvable;
 
 	void update(SportDto sport) throws SportIntrouvable;

@@ -59,4 +59,18 @@ public class SportServiceImpl implements ISportService {
 		}
 	}
 
+	@Override
+	public List<SportDto> findAllByLabel() {
+		List<SportDto> res = new ArrayList<>();
+		this.SportDao.label().forEach(pres -> res.add(this.modelMapper.map(pres, SportDto.class)));
+		return res;
+	}
+
+	@Override
+	public List<SportDto> startWith(String car) {
+		List<SportDto> res = new ArrayList<>();
+		this.SportDao.startWith(car).forEach(pres -> res.add(this.modelMapper.map(pres, SportDto.class)));
+		return res;
+	}
+
 }

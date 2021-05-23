@@ -1,0 +1,66 @@
+.show-search-bar-sport {
+    display: block;
+}
+
+.not-show-search-bar-sport {
+    display: none;
+}
+
+/* .select-sport{
+    padding-bottom: 10px;
+} */
+
+.select-sport-item {
+    padding-bottom: 1px;
+    transition: 0.5s;
+    width: 240px;
+    border: 2px solid #1C6EA4;
+    border-radius: 9px;
+}
+
+.select-sport-item:hover {
+    transform: scale(1.1);
+    background-color: #09287c77 !important;
+    color: black;
+}
+
+.input-search-sport {
+    border-radius: 9px;
+    border: 2px solid #1C6EA4;
+    width: 100px;
+    transition: 0.5s;
+}
+
+.input-search-sport:hover {
+    transform: scale(1.2);
+    background-color: #bab6c377 !important;
+    color: black;
+}
+
+.btn-form-sport{
+    margin-top: 6%;
+    height: 110px;
+    width: 200px;
+    border-radius: 9px;
+}
+
+.btn-form-sport:hover {
+    /* transform: scale(1.2); */
+    background-color: #09287c77 !important;
+    color: black;
+}
+
+.form-moyenne-semaine{
+    /* border-right: 4px solid #1C6EA4; */
+    
+    border-radius: 9px;
+
+    margin-top: 5%;
+    padding-top: 2% !important;
+    height: 360px;
+    width: 550px;
+    /* width: 133% !important; */
+    border: 2px solid #1C6EA4;
+    /* background-color: #1c6ea4; */
+}
+

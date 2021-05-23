@@ -40,16 +40,16 @@ const Stat = () => {
   };
 
   const create = () => {
-    console.log("create");
+    // console.log("create");
     let data = JSON.parse(localStorage.getItem("stat"));
     let stat = {
       statistiques: data,
     };
 
     SportService.createStatGenForUser(stat).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      let stat = res.data;
+      // console.log(res);
+      // console.log(res.data);
+      // let stat = res.data;
       console.log("stat", stat);
       var data = JSON.stringify(stat);
       localStorage.setItem("stat_gen", data);

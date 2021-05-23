@@ -30,7 +30,9 @@ const Sport = () => {
   };
 
   const movetoActivs = () => {
-    history.push(URL_SPORT_ACTVITES);
+    if (localStorage.setItem("stat") !== null ){  
+      history.push(URL_SPORT_ACTVITES);
+    }
   };
 
   const movetoDefis = () => {

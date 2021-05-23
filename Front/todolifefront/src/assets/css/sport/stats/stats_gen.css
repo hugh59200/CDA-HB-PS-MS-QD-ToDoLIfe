@@ -18,7 +18,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .trait-stats-gen{
@@ -35,9 +34,6 @@
     border-radius: 9px;
     border: 2px solid #1C6EA4;
     width: 100px;
-}
-
-.input-stats-gen {
     transition: 0.5s;
 }
 
