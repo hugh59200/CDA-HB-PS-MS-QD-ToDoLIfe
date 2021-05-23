@@ -53,7 +53,7 @@ const MenuSport = () => {
           className="d-flex flex-column align-items-center justify-content-center menu-app-div"
           onClick={movetoDefis}
         >
-          <h1 className="">Defis</h1>
+          <h1 className="">Défis</h1>
         </div>
       </div>
     </>

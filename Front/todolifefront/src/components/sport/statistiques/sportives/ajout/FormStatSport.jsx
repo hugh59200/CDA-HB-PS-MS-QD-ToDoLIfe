@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import * as yup from "yup";
 
 import "../../../../../assets/css/sport/searchBar/search_bar.css";
-import { URL_SPORT_STATS_SPORTIVES } from "../../../../../constant/URL_CONST";
+import { URL_SPORT_STATS } from "../../../../../constant/URL_CONST";
 import SportService from "../../../../../service/SportService";
 
 const validationSchema = yup.object().shape({
@@ -23,7 +23,6 @@ const FormStatSport = (props) => {
   const submit = (values) => {
     
     let sport_label = localStorage.getItem("sport");
-
 
     SportService.findBylabel(sport_label)
       .then((res) => {
@@ -58,7 +57,7 @@ const FormStatSport = (props) => {
       
       localStorage.removeItem("sport")
       
-      history.push(URL_SPORT_STATS_SPORTIVES)
+      history.push(URL_SPORT_STATS)
   };
 
   return (

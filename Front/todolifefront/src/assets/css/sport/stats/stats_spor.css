@@ -8,19 +8,22 @@
 }
 
 .infos-stats-spor {
-    /* border-right: 4px solid #1C6EA4; */
-    border-radius: 9px;
-    margin-top: 5%;
-    padding-top: 2% !important;
-    /* height: 360px; */
-    width: 80%;
-    /* width: 133% !important; */
     border: 2px solid #1C6EA4;
+    border-radius: 9px;
+    margin-top: 1%;
+    padding: 1.5%;
+    /* padding-top: 5% !important; */
+    /* height: 360px; */
+    /* width: 80%; */
+    /* width: 133% !important; */
+    /* border: 2px solid #1C6EA4; */
     /* background-color: #1c6ea4; */
 }
 
 .stats-sport-list {
-    height: 500px;
+    height: auto;
+    max-height: 530px;
+    width: 600px;
 }
 
 .input-stat-sport {
@@ -47,4 +50,32 @@
     /* transform: scale(1.2); */
     background-color: #09287c77 !important;
     color: black;
+}
+
+/* .decalage-list-stats-sport{
+    
+} */
+
+
+.add-stat-sport-btn{
+    margin-top: 10%;
+    height: 60px;
+    width: 110px;
+    border-radius: 9px;
+}
+
+.add-stat-sport-btn:hover {
+    /* transform: scale(1.2); */
+    background-color: #09287c77 !important;
+    color: black;
+}
+
+.test{
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.td-decallage{
+    
 }

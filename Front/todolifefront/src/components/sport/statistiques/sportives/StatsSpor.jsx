@@ -11,7 +11,7 @@ const StatsSpor = () => {
 
       <div className="stat-spor-app">
         <h1 className="text-white text-center">Mes Statistiques Sportives</h1>
-        <div className="infos-stats-spor d-flex flex-row justify-content-center align-items-center">
+        <div className="infos-stats-spor d-flex flex-column justify-content-center align-items-center">
           <ListStatsSportives />
         </div>
       </div>

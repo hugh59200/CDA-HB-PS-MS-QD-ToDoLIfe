@@ -13,15 +13,29 @@ const ListStatsSportives = () => {
 
     // console.log("id", id);
 
-    SportService.checkIfUserGetStatSpor(id).then((res) => {
+    SportService.findByStatId(id).then((res) => {
       // console.log(res);
 
-      let dataRecup = res.data.map((elem, i) => (
-        <div key={i}>
-          <div>{elem.moyenne_semaine}</div>
-        </div>
+      let dataRecup = res.data;
+
+      console.log(dataRecup);
+
+      let test = dataRecup.map((elem, i) => (
+        <tr
+          className="text-center text-white d-flex flex-row justify-content-around"
+          key={i}
+        >
+          <td className="td-decallage">{elem.sport.label}</td>
+          {/* <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div> */}
+          <td className="td-decallage">{elem.moyenneSemaine}</td>
+          <td className="button-group test">
+            <div className="btn btn-success">modifier</div>
+            <div className="btn btn-danger">supprimer</div>
+          </td>
+        </tr>
       ));
-      setList(dataRecup);
+
+      setList(test);
     });
   };
 
@@ -30,7 +44,7 @@ const ListStatsSportives = () => {
   };
 
   useEffect(() => {
-    showMyStats();
+    setInterval(showMyStats(), 500);
   }, []);
 
   return (
@@ -41,18 +55,28 @@ const ListStatsSportives = () => {
         listes de mes Statistique Sportives
       </h1> */}
 
-          <div>
-            {list}
-
-          </div>
+          <table className="text-center text-white tab-stat-sport">
+            <thead className="text-center d-flex flex-row justify-content-center">
+              <th>
+                <h3>Sport :</h3>
+              </th>
+              <div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+              <th>
+                <h3 className="decalage-list-stats-sport">Heure :</h3>
+              </th>
+              <th></th>
+            </thead>
+            <tbody>{list}</tbody>
+          </table>
         </div>
       </div>
-            <div
-              className="btn btn-success d-flex flex-column justify-content-around align-items-center"
-              onClick={ajouter}
-            >
-              ajouter
-            </div>
+      <br />
+      <div
+        className="d-flex flex-column justify-content-around align-items-center add-stat-sport-btn btn btn-primary"
+        onClick={ajouter}
+      >
+        ajouter
+      </div>
     </>
   );
 };

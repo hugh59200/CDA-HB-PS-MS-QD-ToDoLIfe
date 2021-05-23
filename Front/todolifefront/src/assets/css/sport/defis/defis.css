@@ -46,7 +46,7 @@
 .defis-app-div {
     height: 300px !important;
     width: 390px !important;
-    border: 7px outset #1C6EA4 !important;
+    border: 4px solid #1C6EA4;
     border-radius: 19px !important;
     background-color: #0749fd78 !important;
 }

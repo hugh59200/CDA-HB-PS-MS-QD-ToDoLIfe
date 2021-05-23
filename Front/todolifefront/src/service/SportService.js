@@ -34,7 +34,7 @@ class SportService {
     }
     
     // Stats_Sportives
-    checkIfUserGetStatSpor(id) {
+    findByStatId(id) {
         // console.log("id",id)
         return axios.get(API_STATISTIQUES_SPORTIVES + '/stat/' + id);
     }
