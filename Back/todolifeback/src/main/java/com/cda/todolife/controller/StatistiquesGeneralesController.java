@@ -45,7 +45,7 @@ public class StatistiquesGeneralesController {
 		} catch (StatistiquesGeneralesExistantes e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		return ResponseEntity.ok(stats);
 	}
 

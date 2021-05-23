@@ -9,6 +9,8 @@ import com.cda.todolife.exception.StatistiquesSportivesIntrouvables;
 public interface IStatistiquesSportivesService {
 
 	List<StatistiquesSportivesDto> findByStatId(int id) throws StatistiquesSportivesIntrouvables;
+	
+	StatistiquesSportivesDto findById (int id) throws StatistiquesSportivesIntrouvables;;
 
 	void update(StatistiquesSportivesDto statistiques) throws StatistiquesSportivesIntrouvables;
 

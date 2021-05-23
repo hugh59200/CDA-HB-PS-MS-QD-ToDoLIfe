@@ -24,7 +24,7 @@ import com.cda.todolife.exception.StatistiquesExistantes;
 import com.cda.todolife.exception.StatistiquesIntrouvables;
 import com.cda.todolife.service.IStatistiquesService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class StatistiquesController {
@@ -40,6 +40,8 @@ public class StatistiquesController {
 		} catch (StatistiquesExistantes e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return ResponseEntity.ok(stats);
 	}

@@ -14,7 +14,7 @@
     padding: 1.5%;
     /* padding-top: 5% !important; */
     /* height: 360px; */
-    /* width: 80%; */
+    width: 65%;
     /* width: 133% !important; */
     /* border: 2px solid #1C6EA4; */
     /* background-color: #1c6ea4; */
@@ -76,6 +76,30 @@
     align-items: center;
 }
 
-/* .td-decallage{
-    
+/* .td-decalage-heure{
+    margin-right: -30%;
+}
+
+.td-decallage-label{
+    margin-left: -40%
+}
+
+
+.td-decalage-action{
+    margin-right: -30%;
+} */
+
+/* .th-decallage-sport{
+    position: relative;
+    margin-left: -70%
+}
+
+.th-decallage-heure{
+    position: relative;
+    margin-left: 50%
+}
+
+.th-decalage-action{
+    position: relative;
+    margin-left: 40%;
 } */

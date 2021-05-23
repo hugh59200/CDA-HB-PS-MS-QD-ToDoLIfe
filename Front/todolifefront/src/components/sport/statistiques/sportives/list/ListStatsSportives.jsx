@@ -25,11 +25,13 @@ const ListStatsSportives = () => {
           className="text-center text-white d-flex flex-row justify-content-around"
           key={i}
         >
-          <td className="td-decallage">{elem.sport.label}</td>
+          <td className="td-decallage-label text-center">{elem.sport.label}</td>
           {/* <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div> */}
-          <td className="td-decallage">{elem.moyenneSemaine}</td>
-          <td className="button-group test">
-            <div className="btn btn-success">modifier</div>
+          <td className="td-decalage-heure text-center">
+            {elem.moyenneSemaine} h
+          </td>
+          <td className="button-group test td-decalage-action">
+            <div onClick={() => modifier(elem.idStatistiquesSportives)} className="btn btn-success">modifier</div>
             <div
               onClick={() => supprimer(elem.idStatistiquesSportives)}
               className="btn btn-danger"
@@ -49,10 +51,20 @@ const ListStatsSportives = () => {
 
     SportService.deleteStatsSportive(id)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        history.go(0);
       })
       .catch((err) => {});
   };
+  
+  const modifier = (id) => {
+    console.log("modifier l'id ",id)
+    
+    SportService.findstatSportwithId(id)
+    .then((res) => {
+      console.log(res.data)
+    })
+  }
 
   const ajouter = () => {
     history.push(URL_SPORT_STATS_SPORTIVES_NEW);
@@ -73,16 +85,19 @@ const ListStatsSportives = () => {
 
           <table className="text-center text-white tab-stat-sport">
             <thead className="text-center d-flex flex-row justify-content-center">
-              <th>
+              {/* <div className="d-flex flex-row justify-content-around">
+              <th className="th-decallage-sport">
                 <h3>Sport :</h3>
               </th>
-              <div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-              <th>
-                <h3 className="decalage-list-stats-sport">Heure :</h3>
+              <th className="th-decallage-heure">
+                <h3>Heure :</h3>
               </th>
-              <th></th>
+              <th className="th-decalage-action">
+                <h3>Action :</h3>
+              </th>
+              </div> */}
             </thead>
-            <tbody>{list}</tbody>
+            <tbody className="d-flex flex-column justify-content-between">{list}</tbody>
           </table>
         </div>
       </div>

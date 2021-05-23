@@ -50,7 +50,7 @@ const Stat = () => {
       // console.log(res);
       // console.log(res.data);
       // let stat = res.data;
-      console.log("stat", stat);
+      // console.log("stat", stat);
       var data = JSON.stringify(stat);
       localStorage.setItem("stat_gen", data);
     });

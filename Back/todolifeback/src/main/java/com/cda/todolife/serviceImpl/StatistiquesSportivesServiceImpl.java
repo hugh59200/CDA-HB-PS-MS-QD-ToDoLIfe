@@ -62,6 +62,11 @@ public class StatistiquesSportivesServiceImpl implements IStatistiquesSportivesS
 		this.statistiquesSportivesDao.FindStatistiquesByStatId(id).forEach(pres -> res.add(this.modelMapper.map(pres, StatistiquesSportivesDto.class)));
 		return res;
 	}
+
+	@Override
+	public StatistiquesSportivesDto findById(int id) throws StatistiquesSportivesIntrouvables {
+		return this.modelMapper.map(this.statistiquesSportivesDao.findById(id), StatistiquesSportivesDto.class);
+	}
 	
 //	List<DefiDto> res = new ArrayList<>();
 //	this.defiDao.FindDefiBySportId(id).forEach(pres -> res.add(this.modelMapper.map(pres, DefiDto.class)));

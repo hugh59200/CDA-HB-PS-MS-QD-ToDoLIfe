@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+    API_BADGE,
     API_SPORT,
     API_STATISTIQUES,
     API_STATISTIQUES_GENERALES,
@@ -33,7 +34,10 @@ class SportService {
         return axios.put(API_STATISTIQUES_GENERALES, data);
     }
     
+    
+    
     // Stats_Sportives
+    
     findByStatId(id) {
         // console.log("id",id)
         return axios.get(API_STATISTIQUES_SPORTIVES + '/stat/' + id);
@@ -46,6 +50,11 @@ class SportService {
     
     deleteStatsSportive(id){
         return axios.delete(API_STATISTIQUES_SPORTIVES + '/' + id);
+    }
+    
+    findstatSportwithId(id){
+        return axios.get(API_STATISTIQUES_SPORTIVES + '/id/' + id);
+
     }
     
     
@@ -62,6 +71,17 @@ class SportService {
     
     findBylabel(label){
         return axios.get(API_SPORT + '/label/' + label)
+    }
+    
+    
+    // badge
+    
+    createBadge(data){
+        return axios.post(API_BADGE, data)
+    }
+    
+    FindBadgeByStatIdAndByLabel(id,label){
+        return axios.get(API_BADGE + '/stat/' + id + '/label/' +label)
     }
 
 }

@@ -46,6 +46,34 @@ const Imc = () => {
         age: age,
         imc: imc,
       };
+      
+      
+      localStorage.setItem("imc",false)
+      let id = JSON.parse(localStorage.getItem("stat")).idStatistiques
+      
+      SportService.FindBadgeByStatIdAndByLabel(id, "IMC")
+      .then((res) => {
+        console.log(res)
+      })
+      
+      
+      if (imc > 0){
+        
+        
+        
+        
+        
+        
+        let test = {
+
+          "label": "IMC",
+          "statistiques": JSON.parse(localStorage.getItem("stat"))
+        }
+        
+        console.log(test)
+        
+        SportService.createBadge(test)
+      }
 
       updateStatsGen(data);
     }

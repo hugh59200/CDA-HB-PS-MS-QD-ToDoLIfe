@@ -15,6 +15,7 @@ export const API_STATISTIQUES = ENV_DEV + 'statistiques';
 export const API_STATISTIQUES_GENERALES = ENV_DEV + 'statistiquesGen';
 export const API_STATISTIQUES_SPORTIVES = ENV_DEV + 'statistiquesSport';
 export const API_SPORT = ENV_DEV + 'sports';
+export const API_BADGE = ENV_DEV + 'badges';
 
 
 
