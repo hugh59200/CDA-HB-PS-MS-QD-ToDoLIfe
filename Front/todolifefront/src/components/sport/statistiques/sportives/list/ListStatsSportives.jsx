@@ -30,7 +30,12 @@ const ListStatsSportives = () => {
           <td className="td-decallage">{elem.moyenneSemaine}</td>
           <td className="button-group test">
             <div className="btn btn-success">modifier</div>
-            <div className="btn btn-danger">supprimer</div>
+            <div
+              onClick={() => supprimer(elem.idStatistiquesSportives)}
+              className="btn btn-danger"
+            >
+              supprimer
+            </div>
           </td>
         </tr>
       ));
@@ -39,12 +44,23 @@ const ListStatsSportives = () => {
     });
   };
 
+  const supprimer = (id) => {
+    // console.log("supprimer l'id ",id)
+
+    SportService.deleteStatsSportive(id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {});
+  };
+
   const ajouter = () => {
     history.push(URL_SPORT_STATS_SPORTIVES_NEW);
   };
 
   useEffect(() => {
     setInterval(showMyStats(), 500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

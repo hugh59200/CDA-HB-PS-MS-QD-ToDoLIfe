@@ -44,6 +44,10 @@ class SportService {
         return axios.post(API_STATISTIQUES_SPORTIVES,data);
     }
     
+    deleteStatsSportive(id){
+        return axios.delete(API_STATISTIQUES_SPORTIVES + '/' + id);
+    }
+    
     
     
     // Sports
