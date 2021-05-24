@@ -1,8 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import * as yup from "yup";
-import { URL_SPORT_STATS } from "../../../../../constant/URL_CONST";
+// import { URL_SPORT_STATS } from "../../../../../constant/URL_CONST";
 import SportService from "../../../../../service/SportService";
 
 const validationSchema = yup.object().shape({
@@ -13,88 +12,91 @@ const validationSchema = yup.object().shape({
 });
 
 const Imc = () => {
-  const history = useHistory();
+  // const history = useHistory();
+  
+  
+  
 
   const initialValues = {
-    taille: 0,
-    poid: 0,
-    age: 0,
+    taille: JSON.parse(localStorage.getItem("stat_gen")).taille,
+    poid: JSON.parse(localStorage.getItem("stat_gen")).poids,
+    age: JSON.parse(localStorage.getItem("stat_gen")).age,
     //   imc: "",
   };
 
-  const [imc, setImc] = useState(JSON.parse(localStorage.getItem("stat_gen")).imc);
-  const [taille, setTaille] = useState(JSON.parse(localStorage.getItem("stat_gen")).taille);
-  const [poid, setPoid] = useState(JSON.parse(localStorage.getItem("stat_gen")).poids);
-  const [age, setAge] = useState(JSON.parse(localStorage.getItem("stat_gen")).age);
+  const [imc, setImc] = useState(
+    JSON.parse(localStorage.getItem("stat_gen")).imc
+  );
+  const [taille, setTaille] = useState(
+    JSON.parse(localStorage.getItem("stat_gen")).taille
+  );
+  const [poid, setPoid] = useState(
+    JSON.parse(localStorage.getItem("stat_gen")).poids
+  );
+  const [age, setAge] = useState(
+    JSON.parse(localStorage.getItem("stat_gen")).age
+  );
 
   const calculIMC = () => {
-    if (poid !== 0 && taille !== 0) {
+    if (taille === 0 && poid === 0) {
+    } else {
       let poid_kg = poid;
       let taille_metre = taille * 0.01;
       let imc_kg = poid_kg / (taille_metre * taille_metre);
       var rounded_imc = Math.round(imc_kg * 10) / 10;
       setImc(rounded_imc);
 
-      // id_statistiques_generale
-      // localStorage.setItem("imc", false);
-
-      // SportService.FindBadgeByStatIdAndByLabel(id, "IMC").then((res) => {
-      //   console.log(res);
-      // });
-
-      let id = JSON.parse(localStorage.getItem("stat")).idStatistiques;
-
-      SportService.checkIfUserGetStatGen(id).then((res) => {
-        let data_imc = {
-          idStatistiquesGenerales: res.data.idStatistiquesGenerales,
-          taille: taille,
-          poid: poid,
-          age: age,
-          imc: imc,
-          statistiques: res.data.statistiques,
-        };
+      let data = {
+        taille: taille,
+        poid: poid,
+        age: age,
+        imc: imc,
+      };
+      
+      
+      localStorage.setItem("imc",false)
+      let id = JSON.parse(localStorage.getItem("stat")).idStatistiques
+      
+      SportService.FindBadgeByStatIdAndByLabel(id, "IMC")
+      .then((res) => {
+        console.log(res)
+      })
+      
+      
+      if (imc > 0){
         
         
+        
+        
+        
+        
+        let test = {
 
-        // id_statistiques_generale
-        // console.log(res.data)
-
-        console.log("res data", res.data);
-
-        if (
-          res.data.imc === null &&
-          JSON.parse(localStorage.getItem("stat_gen")).imc === null
-        ) {
-          console.log("coucou");
-          // let test = {
-          //   label: "IMC",
-          //   statistiques: JSON.parse(localStorage.getItem("stat")),
-          // };
-
-          // SportService.createBadge(test);
-
-          updateStatsGen(data_imc);
-        } else {
-          console.log("coucou");
-          updateStatsGen(data_imc);
+          "label": "IMC",
+          "statistiques": JSON.parse(localStorage.getItem("stat"))
         }
-      });
+        
+        console.log(test)
+        
+        SportService.createBadge(test)
+      }
+
+      updateStatsGen(data);
     }
   };
 
   const updateStatsGen = (data) => {
-    let statsG = {
-      idStatistiquesGenerales: data.idStatistiquesGenerales,
-      taille: data.taille,
-      poids: data.poid,
-      age: data.age,
-      imc: data.imc,
-      statistiques: data.statistiques,
+    let statsG = JSON.parse(localStorage.getItem("stat_gen"));
+
+    statsG = {
+      idStatistiquesGenerales: JSON.parse(localStorage.getItem("stat_gen"))
+        .idStatistiquesGenerales,
+      taille: taille,
+      poids: poid,
+      age: age,
+      imc: imc,
+      statistiques: JSON.parse(localStorage.getItem("stat_gen")).statistiques,
     };
-
-    localStorage.setItem("stat_gen", JSON.stringify(statsG));
-
-    console.log("statsG", statsG);
 
     SportService.updateStatGen(statsG)
       .then((res) => {
@@ -105,7 +107,6 @@ const Imc = () => {
   };
 
   const changeImcColor = () => {
-    calculIMC();
     var valeur = parseInt(document.querySelector("#Mon_IMC").innerText, 10);
 
     if (valeur < 18.5) {
@@ -121,8 +122,6 @@ const Imc = () => {
       document.querySelector("#Mon_IMC").className =
         "text-danger text-center imc-text";
     }
-
-    // history.push(URL_SPORT_STATS)
   };
 
   const submit = (values) => {
@@ -135,25 +134,14 @@ const Imc = () => {
 
   const refeshIMC = () => {
     calculIMC();
-    avoidNanText();
     changeImcColor();
-  };
-
-  const avoidNanText = () => {
-    if (document.querySelector("#Mon_IMC").innerText === "NaN") {
-      // console.log("NOK");
-      document.querySelector("#Mon_IMC").innerText = "0";
-    }
   };
 
   useEffect(() => {
     if (document.querySelector("#Mon_IMC").innerText === "NaN") {
       // console.log("NOK");
-      document.querySelector("#Mon_IMC").innerText = "0";
+      document.querySelector("#Mon_IMC").innerText = "";
     }
-
-    avoidNanText();
-    // changeImcColor();
     setInterval(refeshIMC(), 2000);
   });
 
@@ -164,7 +152,7 @@ const Imc = () => {
         onSubmit={submit}
         validationSchema={validationSchema}
       >
-        {() => (
+        {(isSubmitting) => (
           <Form>
             <div className="infos-stats-gen d-flex flex-row align-self-stretch justify-content-around">
               <div className="part-gauche-stats-gen text-center d-flex flex-column align-self-stretch justify-content-center">

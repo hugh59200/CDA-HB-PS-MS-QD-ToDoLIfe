@@ -32,14 +32,12 @@ public class BadgeController {
 	// create
 	@PostMapping("/badges")
 	public ResponseEntity<BadgeDto> create(@RequestBody BadgeDto badge) throws BadgeExistant {
-		
-		System.out.println(badge);
 		try {
 			this.badgeService.add(badge);
 		} catch (BadgeExistant e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		return ResponseEntity.ok(badge);
 	}
 

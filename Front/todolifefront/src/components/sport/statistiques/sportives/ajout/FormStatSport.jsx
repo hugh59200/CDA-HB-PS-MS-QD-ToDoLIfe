@@ -6,7 +6,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import React from "react";
 import "../../../../../assets/css/sport/searchBar/search_bar.css";
-import { URL_SPORT_STATS_SPORTIVES } from "../../../../../constant/URL_CONST";
+import { URL_SPORT_STATS } from "../../../../../constant/URL_CONST";
 import SportService from "../../../../../service/SportService";
 import { useHistory } from "react-router";
 
@@ -49,18 +49,18 @@ const FormStatSport = (props) => {
           }
         }
 
-        // console.log("data", data);
+        console.log("data", data);
 
         SportService.createStatSport(data).then((res) => {
-          // console.log("res", res);
+          console.log("res", res);
         });
       })
       .catch((err) => {}
              );
       
       localStorage.removeItem("sport")
-      history.push(URL_SPORT_STATS_SPORTIVES)
-      history.go(0)
+      history.push(URL_SPORT_STATS)
+      // history.go(0)
   };
 
   return (

@@ -26,7 +26,7 @@ public class Badge {
 	private String label;
 
 	@OneToOne
-	@JoinColumn(name = "id_sport", nullable = true)
+	@JoinColumn(name = "id_sport", nullable = false)
 	private Sport sport;
 	
 	@OneToOne
