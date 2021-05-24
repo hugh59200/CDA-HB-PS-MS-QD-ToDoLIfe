@@ -65,7 +65,7 @@ public class StatistiquesSportivesServiceImpl implements IStatistiquesSportivesS
 
 	@Override
 	public StatistiquesSportivesDto findById(int id) throws StatistiquesSportivesIntrouvables {
-		return this.modelMapper.map(this.statistiquesSportivesDao.findById(id), StatistiquesSportivesDto.class);
+		return this.modelMapper.map(this.statistiquesSportivesDao.findById(id).get(), StatistiquesSportivesDto.class);
 	}
 	
 //	List<DefiDto> res = new ArrayList<>();

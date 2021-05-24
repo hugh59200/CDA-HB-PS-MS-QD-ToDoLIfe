@@ -44,6 +44,7 @@ import {
   URL_SPORT_DEFI_NEW,
   URL_SPORT_DEFI_NEW_PROP,
   URL_SPORT_STATS_SPORTIVES_NEW,
+  URL_SPORT_STATS_SPORTIVES_UPDATE,
 } from "../constant/URL_CONST";
 import {
   URL_NEW_FILM,
@@ -86,6 +87,7 @@ import Stat from "../components/sport/statistiques/Stat";
 import NewDefis from "../components/sport/defis/newDefis/NewDefis";
 import PropositionDefis from "../components/sport/defis/propostionDefis/PropositionDefis";
 import CreationStatsSport from "../components/sport/statistiques/sportives/ajout/CreationStatsSport";
+import ModifierStatsSport from "../components/sport/statistiques/sportives/modifier/ModifierStatsSport";
 
 const CustomHistory = createBrowserHistory();
 
@@ -158,7 +160,7 @@ class Routes extends Component {
             path={URL_SPORT_STATS_SPORTIVES_NEW}
             component={CreationStatsSport}
           />
-          {/* <PrivateRoute path={URL_SPORT_STATS_SPORTIVES_NEW_FORM} component={FormSport} /> */}
+          <PrivateRoute path={URL_SPORT_STATS_SPORTIVES_UPDATE} component={ModifierStatsSport} />
 
           <PrivateRoute path={URL_SPORT_STATS_BADGES} component={StatsBad} />
           <PrivateRoute path={URL_SPORT_ACTVITES} component={Activite} />

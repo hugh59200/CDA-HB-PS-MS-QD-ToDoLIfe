@@ -54,7 +54,10 @@ class SportService {
     
     findstatSportwithId(id){
         return axios.get(API_STATISTIQUES_SPORTIVES + '/id/' + id);
-
+    }
+    
+    updateStatSport(data){
+        return axios.put(API_STATISTIQUES_SPORTIVES, data)
     }
     
     
