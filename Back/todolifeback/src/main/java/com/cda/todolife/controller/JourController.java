@@ -80,7 +80,6 @@ public class JourController {
 	@GetMapping("/utilisateurs/{id}/graphique")
 	public ResponseEntity<List<JourDto>> listerParPeriode(@PathVariable(value = "id") int idUtilisateur,
 			@RequestParam(value = "duration") int nbJours) {
-		System.out.println(nbJours);
 		return ResponseEntity.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndNbJours(idUtilisateur, nbJours));
 	}
 

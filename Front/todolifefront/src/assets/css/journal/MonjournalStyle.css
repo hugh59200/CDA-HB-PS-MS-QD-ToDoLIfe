@@ -1,20 +1,28 @@
 .choix {
-  background-color: #0090E8;
   height: 300px;
-  width: 500px;
-  margin: 100px auto;
+  width: 1200px;
+  margin: 20px auto;
   padding: 20px;
   letter-spacing: 2px;
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
 }
 
+.choix>div{
+  background-color: #0090E8;
+  width: 500px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  border-radius: 10px;
+}
 
-.choix>button {
-  height: 100px;
-  width: 400px;
-  font-size: 20px;
+.choix>div>button {
+  height: 70px;
+  width: 300px;
+  font-size: 40px;
   text-align: center;
   letter-spacing: 2px;
   color: white;
