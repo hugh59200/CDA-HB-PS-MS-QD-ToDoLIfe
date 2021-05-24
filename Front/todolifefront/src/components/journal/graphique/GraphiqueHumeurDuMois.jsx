@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Empty from './../fonctions/autres/Empty';
+import EmptyStat from '../fonctions/autres/EmptyStat';
 import { Graphique } from './Graphique';
 import { Line } from 'react-chartjs-2';
 
@@ -56,7 +58,11 @@ export const GraphiqueHumeurDuMois = () => {
 				</div>
 			</div>
 			<div className="graphique">
+			{!chartData ? (
+				<EmptyStat />
+			) : (
 				<Line data={chartData}/>
+			)}
 			</div>
 		</div>
 	);

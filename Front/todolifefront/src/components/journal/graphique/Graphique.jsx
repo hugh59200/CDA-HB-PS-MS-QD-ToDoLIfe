@@ -19,23 +19,29 @@ export function Graphique(duration, setChartData) {
 			params: { duration },
 		})
 			.then(res => {
-				for (const dataObj of res.data) {
-					mood.push(dataObj.humeur);
-					dateJour.push(FormatDate(dataObj.dateJour));
-				}
+				console.log(res.data);
 
-				setChartData({
-					labels: dateJour,
-					datasets: [
-						{
-							label: 'level of mood',
-							data: mood,
-							backgroundColor: '#fff',
-							borderColor: '#fff',
-							borderWidth: 3,
-						},
-					]
-				});
+				if (res.data.length === 0) {
+					setChartData(false);
+				} else {
+					for (const dataObj of res.data) {
+						mood.push(dataObj.humeur);
+						dateJour.push(FormatDate(dataObj.dateJour));
+					}
+
+					setChartData({
+						labels: dateJour,
+						datasets: [
+							{
+								label: 'level of mood',
+								data: mood,
+								backgroundColor: '#fff',
+								borderColor: '#fff',
+								borderWidth: 3,
+							},
+						],
+					});
+				}
 			})
 			.catch(err => {
 				console.log(err);
