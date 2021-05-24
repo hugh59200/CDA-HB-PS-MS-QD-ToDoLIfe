@@ -14,26 +14,16 @@ export default function TableauDeBordJournal() {
 	return (
 		<div className="choix">
 			<div>
-				<img src={statistiques} alt="" srcset="" />
-				<button
-					className="btn-form"
-					onClick={() => {
+				<p>Statistique</p>
+				<img src={statistiques} alt="" srcset="" onClick={() => {
 						handleClick(URL_STATISTIQUE);
-					}}
-				>
-					Statistique
-				</button>
+					}}/>
 			</div>
 			<div>
-				<img src={journal} alt="" srcset="" />
-				<button
-					className="btn-form"
-					onClick={() => {
+				<p>Journal</p>
+				<img src={journal} alt="" srcset="" onClick={() => {
 						handleClick(URL_JOURNAL);
-					}}
-				>
-					Journal
-				</button>
+					}}/>
 			</div>
 		</div>
 	);

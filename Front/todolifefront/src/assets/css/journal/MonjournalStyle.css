@@ -1,7 +1,7 @@
 .choix {
   height: 300px;
   width: 1200px;
-  margin: 20px auto;
+  margin: 100px auto;
   padding: 20px;
   letter-spacing: 2px;
   display: flex;
@@ -10,13 +10,20 @@
 
 .choix>div{
   background-color: #0090E8;
-  width: 500px;
-  height: 550px;
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 50px;
   border-radius: 10px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: .3s ease-in-out;
+}
+
+.choix>div:hover{
+  transform: scale(1.1);
 }
 
 .choix>div>button {
@@ -58,6 +65,12 @@
   height: 30%;
 }
 .statistique>.titre {
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 40px;
+}
+.choix>div>p {
   color: white;
   text-align: center;
   font-weight: bolder;
