@@ -19,14 +19,20 @@ const Stat = () => {
 
     SportService.checkIfUserGetStatGen(id)
       .then((res) => {
-        if (res.data === "") {
-          create();
-        } else {
-          let stat = res.data;
-          var data = JSON.stringify(stat);
-          localStorage.setItem("stat_gen", data);
-          history.push(URL_SPORT_STATS_GENERALES);
-        }
+        
+        create();
+        
+        // console.log("res",res)
+        // history.push(URL_SPORT_STATS_GENERALES);
+        // if (res.data === "") {
+        //   // let stat = res.data;
+        //   // 
+          
+        //   // var data = JSON.stringify(stat);
+        //   // localStorage.setItem("stat_gen", JSON.stringify(res.data));
+        // } else {
+        //   // history.push(URL_SPORT_STATS_GENERALES);
+        // }
       })
       .catch((err) => {});
   };
@@ -54,7 +60,7 @@ const Stat = () => {
       var data = JSON.stringify(stat);
       localStorage.setItem("stat_gen", data);
     });
-    moveToStatsGen();
+    history.push(URL_SPORT_STATS_GENERALES);
   };
 
   return (

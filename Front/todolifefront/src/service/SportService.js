@@ -80,9 +80,9 @@ class SportService {
         return axios.post(API_BADGE, data)
     }
     
-    FindBadgeByStatIdAndByLabel(id,label){
-        return axios.get(API_BADGE + '/stat/' + id + '/label/' +label)
-    }
+    // FindBadgeByStatIdAndByLabel(id,label){
+    //     return axios.get(API_BADGE + '/stat/' + id + '/label/' +label)
+    // }
 
 }
 

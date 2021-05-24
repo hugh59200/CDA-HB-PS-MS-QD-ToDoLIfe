@@ -38,14 +38,14 @@ public class StatistiquesGeneralesController {
 	public ResponseEntity<StatistiquesGeneralesDto> create(@RequestBody StatistiquesGeneralesDto stats)
 			throws StatistiquesGeneralesExistantes {
 		
-		System.out.println(stats);
+//		System.out.println(stats);
 		
 		try {
 			this.statistiquesGeneralesService.add(stats);
 		} catch (StatistiquesGeneralesExistantes e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		return ResponseEntity.ok(stats);
 	}
 

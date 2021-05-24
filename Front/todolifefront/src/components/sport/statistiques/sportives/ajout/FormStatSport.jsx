@@ -5,8 +5,9 @@ import * as yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import React from "react";
-import SportService from "../../../../../service/SportService";
+import "../../../../../assets/css/sport/searchBar/search_bar.css";
 import { URL_SPORT_STATS_SPORTIVES } from "../../../../../constant/URL_CONST";
+import SportService from "../../../../../service/SportService";
 import { useHistory } from "react-router";
 
 const validationSchema = yup.object().shape({
