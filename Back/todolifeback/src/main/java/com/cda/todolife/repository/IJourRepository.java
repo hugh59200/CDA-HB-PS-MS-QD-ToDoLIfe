@@ -20,7 +20,7 @@ public interface IJourRepository extends CrudRepository<Jour, Integer> {
 
 	Optional<Jour> findByDateJourAndJournal(Date date, Journal journalEnt);
 
-	Optional<Jour> findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
+	Optional<Jour> findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, java.util.Date dateJour);
 
 	@Query(value = "from Jour "
 			+ "where journal.idJournal=(select idJournal from Journal where utilisateur.idUtilisateur=:idUtilisateur)"

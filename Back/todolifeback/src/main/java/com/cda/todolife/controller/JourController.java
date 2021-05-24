@@ -1,7 +1,6 @@
 package com.cda.todolife.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,8 +62,10 @@ public class JourController {
 	@GetMapping("/jour/{id}/utilisateurs")
 	public ResponseEntity<Boolean> testJourPresence(@PathVariable(value = "id") int idUtilisateur)
 			throws JourIntrouvableException {
-		return ResponseEntity.ok(jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur,
-				new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
+		long datelong = Calendar.getInstance().getTime().getTime();
+		java.sql.Date date = new java.sql.Date(datelong);
+		System.out.println(date);
+		return ResponseEntity.ok(jourService.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, date));
 	}
 
 	// lister jour by userId selon date
@@ -80,7 +81,8 @@ public class JourController {
 	@GetMapping("/utilisateurs/{id}/graphique")
 	public ResponseEntity<List<JourDto>> listerParPeriode(@PathVariable(value = "id") int idUtilisateur,
 			@RequestParam(value = "duration") int nbJours) {
-		return ResponseEntity.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndNbJours(idUtilisateur, nbJours));
+		return ResponseEntity
+				.ok(jourService.findAllByJournalUtilisateurIdUtilisateurAndNbJours(idUtilisateur, nbJours));
 	}
 
 	// update

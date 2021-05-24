@@ -1,5 +1,6 @@
 package com.cda.todolife.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.cda.todolife.dto.JourDto;
@@ -24,7 +25,7 @@ public interface IJourService {
 
 	List<JourDto> findAllByJournalUtilisateurIdUtilisateur(int idUtilisateur);
 
-	boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour);
+	boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, Date dateJour);
 
 	List<JourDto> findAllByJournalUtilisateurIdUtilisateurAndDate(int idUtilisateur, int mois, int annee)  throws JourIntrouvableException;
 

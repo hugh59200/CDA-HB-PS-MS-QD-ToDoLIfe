@@ -34,7 +34,7 @@ public class JourServiceImpl implements IJourService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, String dateJour) {
+	public boolean findByJournalUtilisateurIdUtilisateurAndDateJour(int idUtilisateur, Date dateJour) {
 		return this.jourRepository.findByJournalUtilisateurIdUtilisateurAndDateJour(idUtilisateur, dateJour).isPresent()
 				? true
 				: false;
