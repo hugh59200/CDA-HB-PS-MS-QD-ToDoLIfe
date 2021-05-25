@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cda.todolife.model.WatchList;
+import com.cda.todolife.model.watchlist.WatchList;
 
 public interface IWatchListRepository extends CrudRepository<WatchList, Integer> {
 

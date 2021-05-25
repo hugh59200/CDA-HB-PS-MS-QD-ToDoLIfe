@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.LivreDto;
+import com.cda.todolife.dto.watchlist.LivreDto;
 import com.cda.todolife.exception.LivreExistantException;
 import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;

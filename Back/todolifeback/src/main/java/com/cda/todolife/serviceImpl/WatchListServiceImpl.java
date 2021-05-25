@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cda.todolife.dto.UtilisateurDto;
-import com.cda.todolife.dto.WatchListDto;
+import com.cda.todolife.dto.watchlist.WatchListDto;
 import com.cda.todolife.exception.WatchListExistanteException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.model.Utilisateur;
-import com.cda.todolife.model.WatchList;
+import com.cda.todolife.model.watchlist.WatchList;
 import com.cda.todolife.repository.IUtilisateurRepository;
 import com.cda.todolife.repository.IWatchListRepository;
 import com.cda.todolife.service.IWatchListService;

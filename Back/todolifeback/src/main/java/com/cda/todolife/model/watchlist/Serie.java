@@ -1,4 +1,4 @@
-package com.cda.todolife.model;
+package com.cda.todolife.model.watchlist;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +17,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Livre {
+public class Serie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idLivre;
-	private String title;
-	private int pageActuel;
+	private int idSerie;
+	private String name;
+	private int saison;
+	private int episode;
 	private String avis;
 
 	@ManyToOne
