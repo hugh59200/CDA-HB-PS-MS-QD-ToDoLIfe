@@ -13,13 +13,13 @@ spring:
   datasource:
   
   
-    username: todolifeuser
-#    username: myuser
+#   username: todolifeuser
+    username: myuser
 
-    password: pwd
+    password: 123
     
-    url: jdbc:postgresql://localhost:5432/todolife
-#    url: jdbc:postgresql://192.168.43.51:5432/mydb
+#    url: jdbc:postgresql://localhost:5432/todolife
+    url: jdbc:postgresql://192.168.1.84:5432/mydb
 
     initialization-mode: always
   jpa.hibernate.ddl-auto : update
