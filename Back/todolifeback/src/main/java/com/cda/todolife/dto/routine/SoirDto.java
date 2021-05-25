@@ -1,10 +1,5 @@
 package com.cda.todolife.dto.routine;
 
-import javax.persistence.Entity;
-
-import com.cda.todolife.model.Utilisateur;
-import com.cda.todolife.model.routine.Matin;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class SoirDto {
-
 	private int idElemSoir;
 	private int heure;
 	private String texte;
-
 }
