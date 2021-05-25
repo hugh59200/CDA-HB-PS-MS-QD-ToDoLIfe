@@ -160,4 +160,22 @@
 INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'quentindamman59@gmail.com', 'DAMMAN', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Quentin', 'QUENTINOS') on conflict do nothing;
 INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'psackebandt@outlook.fr', 'SACKEBANDT', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Paul', 'PAULO') on conflict do nothing;
 INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'mtosaba@gmail.com', 'SABA', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Matéo', 'MATEO') on conflict do nothing;
-INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'h.bogrand@gmail.com', 'BOGRAND', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Hugo', 'HUGO') on conflict do nothing;
+INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'h.bogrand@gmail.com', 'BOGRAND', '$2a$10$S3CANLJ6NBlsVw5mJqo.cOz2QQOjksENbB42nK6peFz7cpWEgiwCa', 'Hugo', 'hugh59') on conflict do nothing;
+
+insert into journal (id_utilisateur) values (4);
+
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-15', 3, 'flop journée', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-16', 3, 'flop journée', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-17', 2, 'flop journée', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-18', 1, 'vivement demain', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2020-12-19', 4, 'on a bien ris', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-01-20', 2, 'ça ira mieux', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-02-11', 3, 'quel enfer', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-03-12', 4, 'quel enfer', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-09', 1, 'deepWork', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-24', 4, 'objectif accompli', 'blablabla', 1);
+
+
+
+
+

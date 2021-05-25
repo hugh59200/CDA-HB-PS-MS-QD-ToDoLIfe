@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import Empty from './../fonctions/autres/Empty';
 import EmptyStat from '../fonctions/autres/EmptyStat';
 import { Graphique } from './Graphique';
 import { Line } from 'react-chartjs-2';
