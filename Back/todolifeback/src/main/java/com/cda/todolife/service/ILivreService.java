@@ -2,7 +2,7 @@ package com.cda.todolife.service;
 
 import java.util.List;
 
-import com.cda.todolife.dto.LivreDto;
+import com.cda.todolife.dto.watchlist.LivreDto;
 import com.cda.todolife.exception.LivreExistantException;
 import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;

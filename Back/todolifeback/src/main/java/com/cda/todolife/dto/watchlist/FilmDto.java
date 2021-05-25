@@ -1,4 +1,4 @@
-package com.cda.todolife.dto;
+package com.cda.todolife.dto.watchlist;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

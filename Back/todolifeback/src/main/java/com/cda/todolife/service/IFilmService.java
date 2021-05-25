@@ -2,7 +2,7 @@ package com.cda.todolife.service;
 
 import java.util.List;
 
-import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.watchlist.FilmDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
