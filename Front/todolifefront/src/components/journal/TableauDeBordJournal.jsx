@@ -5,35 +5,39 @@ import statistiques from '../../assets/img/statistics.png';
 import { useHistory } from 'react-router-dom';
 
 export default function TableauDeBordJournal() {
-	let history = useHistory();
+	const history = useHistory();
+	let username = localStorage.getItem('username');
 
 	function handleClick(lien) {
 		history.push(lien);
 	}
 
 	return (
-		<div className="choix">
-			<div className="monjournal">
-				<p>mon journal</p>
-				<img
-					src={journal}
-					alt=""
-					srcSet=""
-					onClick={() => {
-						handleClick(URL_JOURNAL);
-					}}
-				/>
-			</div>
-			<div  className="statistiques">
-				<p>statistiques</p>
-				<img
-					src={statistiques}
-					alt=""
-					srcSet=""
-					onClick={() => {
-						handleClick(URL_STATISTIQUE);
-					}}
-				/>
+		<div className='journalbienvenue'>
+			<p>Vous êtes sur le journal de {username}</p>
+			<div className="choix">
+				<div className="monjournal">
+					<p>mon journal</p>
+					<img
+						src={journal}
+						alt=""
+						srcSet=""
+						onClick={() => {
+							handleClick(URL_JOURNAL);
+						}}
+					/>
+				</div>
+				<div className="statistiques">
+					<p>statistiques</p>
+					<img
+						src={statistiques}
+						alt=""
+						srcSet=""
+						onClick={() => {
+							handleClick(URL_STATISTIQUE);
+						}}
+					/>
+				</div>
 			</div>
 		</div>
 	);

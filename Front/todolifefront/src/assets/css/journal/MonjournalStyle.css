@@ -1,55 +1,80 @@
 .choix {
-  background-color: #0090E8;
+  background-color: #67c3fc;
   height: 370px;
-  width: 600px;
-  margin: 100px auto;
+  width: 700px;
+  margin: 0 auto;
   padding: 20px;
   letter-spacing: 2px;
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  border: 3px solid rgb(255, 255, 255);
+  border: 7px double #1C6EA4;
 }
 
-.choix>div{
-  width: 300px;
+.journalbienvenue {
+  height: 600px;
+  width: 800px;
+  padding: 50px;
+  margin: 50px auto;
+  border-top: 7px double #1C6EA4;
+  background-color: #0090E8;
+}
+
+.journalbienvenue>p {
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: #FFF;
+  font-family: Georgia, serif;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: small-caps;
+  text-transform: none;
+}
+
+.choix>div {
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
 }
 
-.choix>.monjournal{
-  border-right: 1px solid rgb(255, 255, 255);
+.choix>.monjournal {
+  /* border-right: 1px solid rgb(255, 255, 255); */
 }
 
-.choix>.statistiques{
-  border-left: 1px solid rgb(255, 255, 255);
+.choix>.statistiques {
+  /* border-left: 1px solid rgb(255, 255, 255); */
 }
 
-.choix>div>img{
+.choix>div>img {
   cursor: pointer;
   transform: scale(1);
   transition: .3s ease-in-out;
 }
 
-.choix>.monjournal>img{
+.choix>div>img:hover {
+  transform: scale(1.1);
+}
+
+.choix>.monjournal>img {
   width: 330px;
   height: auto;
   margin-top: -30px;
-  margin-left: -20px;
+  margin-left: -5px;
 }
 
-.choix>.statistiques>img{
+.choix>.statistiques>img {
   width: 250px;
   height: auto;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
-.choix>div>img:hover{
-  transform: scale(1.1);
-}
 
 .choix>div>button {
   height: 70px;
@@ -64,27 +89,27 @@
   margin: 0 auto;
 }
 
-.graphique>.emptyStat{
+.graphique>.emptyStat {
   color: rgb(230, 52, 52);
   text-align: center;
   font-size: 40px;
   padding: 100px;
 }
 
-.red{
-  color:red !important;
+.red {
+  color: red !important;
 }
 
-.orange{
-  color:orange !important;
+.orange {
+  color: orange !important;
 }
 
-.yellow{
-  color:rgb(255, 255, 98) !important;
+.yellow {
+  color: rgb(255, 255, 98) !important;
 }
 
-.green{
-  color:rgb(60, 255, 60) !important;
+.green {
+  color: rgb(60, 255, 60) !important;
 }
 
 .statistique {
@@ -97,7 +122,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border: 3px solid rgb(255, 223, 223);
+  border: 7px double #1C6EA4;
   border-radius: 10px;
 }
 
@@ -107,12 +132,14 @@
   justify-content: space-evenly;
   height: 30%;
 }
+
 .statistique>.titre {
   color: white;
   text-align: center;
   font-weight: bolder;
   font-size: 40px;
 }
+
 .choix>div>p {
   color: white;
   text-align: center;
@@ -160,7 +187,7 @@
   padding: 20px;
   border-top-left-radius: 80px 80px;
   letter-spacing: 2px;
-  border: 3px solid rgb(191, 211, 255);
+  border: 7px double #1C6EA4;
 }
 
 .jourData>.fleche {
