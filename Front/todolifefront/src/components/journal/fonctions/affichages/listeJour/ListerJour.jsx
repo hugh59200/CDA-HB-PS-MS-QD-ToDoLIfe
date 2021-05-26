@@ -11,13 +11,13 @@ export function ListerJour(props) {
 
 	const changeColor = (titre, humeur) => {
 		
-		if (humeur === 4) {
+		if (humeur === 1) {
 			return <p className="red">{titre}</p>;
 		}
-		else if (humeur === 3) {
+		else if (humeur === 2) {
 			return <p className="orange">{titre}</p>;
 		}
-		else if (humeur === 2) {
+		else if (humeur === 3) {
 			return <p className="yellow">{titre}</p>;
 		}
 		else {

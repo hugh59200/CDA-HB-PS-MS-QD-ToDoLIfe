@@ -164,16 +164,26 @@ INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, usernam
 
 insert into journal (id_utilisateur) values (4);
 
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-15', 3, 'flop journée', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-16', 3, 'flop journée', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-17', 2, 'flop journée', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-18', 1, 'vivement demain', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2020-12-19', 4, 'on a bien ris', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-01-20', 2, 'ça ira mieux', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-02-11', 3, 'quel enfer', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-03-12', 4, 'quel enfer', 'blablabla', 1);
-insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-09', 1, 'deepWork', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2020-12-19', 4, 'On a bien ris', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2020-12-20', 4, 'Toujours aussi drôle', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-01-05', 2, 'ça ira mieux', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-01-07', 2, 'peux mieux faire', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-02-10', 3, 'soulagé !', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-02-11', 3, 'quel amusement', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-03-07', 4, 'super temps', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-03-13', 4, 'Je suis chanceux', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-04', 1, 'deepWork compliqué', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-09', 1, 'objectif raté !', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-15', 3, 'En sourire !', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-16', 3, 'belle journée', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-17', 2, 'du nimporte quoi !!', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-18', 1, 'tout est vainc', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-18', 1, 'flop journée !', 'blablabla', 1);
 insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-24', 4, 'objectif accompli', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-04-24', 4, 'Je suis redevable', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-15', 3, 'En sourire !', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-16', 3, 'surprenante journée', 'blablabla', 1);
+insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2021-05-17', 2, 'pourquoi maintenant ?!', 'blablabla', 1);
 
 
 
