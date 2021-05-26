@@ -38,12 +38,13 @@ import {
   URL_SPORT_STATS_GENERALES,
   URL_SPORT_STATS_SPORTIVES,
   URL_SPORT_STATS_BADGES,
-  URL_SPORT_ACTVITES_ME,
   URL_SPORT_ACTVITES_NEW,
   URL_SPORT_DEFI_ME,
   URL_SPORT_DEFI_NEW,
   URL_SPORT_DEFI_NEW_PROP,
   URL_SPORT_STATS_SPORTIVES_NEW,
+  URL_SPORT_STATS_SPORTIVES_UPDATE,
+  URL_SPORT_ACTVITES_ME,
 } from "../constant/URL_CONST";
 import {
   URL_NEW_FILM,
@@ -79,13 +80,14 @@ import Defi from "../components/sport/defis/Defis";
 import StatsGen from "../components/sport/statistiques/generales/StatsGen";
 import StatsSpor from "../components/sport/statistiques/sportives/StatsSpor";
 import StatsBad from "../components/sport/statistiques/badges/StatsBad";
-import MesActivites from "../components/sport/activites/mesActivite/MesActivites";
 import NewActivite from "../components/sport/activites/newActivite/NewActivite";
 import MesDefis from "../components/sport/defis/mesDefis/MesDefis";
 import Stat from "../components/sport/statistiques/Stat";
 import NewDefis from "../components/sport/defis/newDefis/NewDefis";
 import PropositionDefis from "../components/sport/defis/propostionDefis/PropositionDefis";
 import CreationStatsSport from "../components/sport/statistiques/sportives/ajout/CreationStatsSport";
+import ModifierStatsSport from "../components/sport/statistiques/sportives/modifier/ModifierStatsSport";
+import MesActivites from "../components/sport/activites/mesActivite/MesActivites";
 
 const CustomHistory = createBrowserHistory();
 
@@ -158,7 +160,7 @@ class Routes extends Component {
             path={URL_SPORT_STATS_SPORTIVES_NEW}
             component={CreationStatsSport}
           />
-          {/* <PrivateRoute path={URL_SPORT_STATS_SPORTIVES_NEW_FORM} component={FormSport} /> */}
+          <PrivateRoute path={URL_SPORT_STATS_SPORTIVES_UPDATE} component={ModifierStatsSport} />
 
           <PrivateRoute path={URL_SPORT_STATS_BADGES} component={StatsBad} />
           <PrivateRoute path={URL_SPORT_ACTVITES} component={Activite} />
