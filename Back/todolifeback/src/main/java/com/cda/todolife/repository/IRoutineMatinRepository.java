@@ -4,11 +4,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cda.todolife.dto.routine.MatinDto;
 import com.cda.todolife.model.routine.Matin;
 
-public interface IRoutineMatinRepository extends CrudRepository<Matin, Integer>{
+public interface IRoutineMatinRepository extends CrudRepository<Matin, Integer> {
 
-	List<MatinDto> findByUtilisateurIdUtilisateur(int id);
+	List<Matin> findAllByutilisateurIdUtilisateur(int idUtilisateur);
 
 }
