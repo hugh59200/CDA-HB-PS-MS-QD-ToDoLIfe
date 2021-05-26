@@ -26,10 +26,10 @@ public class Temps {
 	private int heures;
 	
 	@Min(0)
-	@Max(60)
+	@Max(59)
 	private int minutes;
 	
 	@Min(0)
-	@Max(60)
+	@Max(59)
 	private int secondes;
 }

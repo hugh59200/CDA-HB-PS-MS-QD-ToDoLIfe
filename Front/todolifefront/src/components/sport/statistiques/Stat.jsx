@@ -9,27 +9,35 @@ import {
   URL_SPORT_STATS_GENERALES,
   URL_SPORT_STATS_SPORTIVES,
 } from "../../../constant/URL_CONST";
-import SportService from "../../../service/SportService";
+// import SportService from "../../../service/SportService";
 
 const Stat = () => {
   const history = useHistory();
 
   const moveToStatsGen = () => {
-    let id = JSON.parse(localStorage.getItem("stat")).idStatistiques;
+    // let id = JSON.parse(localStorage.getItem("stat")).idStatistiques;
 
-    SportService.checkIfUserGetStatGen(id)
-      .then((res) => {
-        if (res.data === "") {
-          create();
-        } else {
-          let stat = res.data;
-          var data = JSON.stringify(stat);
-          localStorage.setItem("stat_gen", data);
-          history.push(URL_SPORT_STATS_GENERALES);
-        }
-      })
-      .catch((err) => {});
-  };
+    // SportService.checkIfUserGetStatGen(id)
+    //   .then((res) => {
+        
+    //     console.log(res.data)
+    //     if (res.data === "") {
+    //       console.log("create")
+    //       create();
+    //     } else {
+    //       console.log("update")
+    //       let stat = res.data;
+    //       var data = JSON.stringify(stat);
+    //       localStorage.setItem("stat_gen", data);
+    //     }
+    //   })
+    //   .catch((err) => {});
+    
+    
+      
+      
+      history.push(URL_SPORT_STATS_GENERALES);
+    };
 
   const moveToStatsSpo = () => {
     history.push(URL_SPORT_STATS_SPORTIVES);
@@ -39,22 +47,24 @@ const Stat = () => {
     history.push(URL_SPORT_STATS_BADGES);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const create = () => {
     // console.log("create");
-    let data = JSON.parse(localStorage.getItem("stat"));
-    let stat = {
-      statistiques: data,
-    };
 
-    SportService.createStatGenForUser(stat).then((res) => {
-      // console.log(res);
-      // console.log(res.data);
-      // let stat = res.data;
-      // console.log("stat", stat);
-      var data = JSON.stringify(stat);
-      localStorage.setItem("stat_gen", data);
-    });
-    moveToStatsGen();
+    // let stat = {
+    //   statistiques: JSON.parse(localStorage.getItem("stat")),
+    // };
+
+    // SportService.createStatGenForUser(stat).then((res) => {
+    //   // console.log(res);
+    //   // console.log(res.data);
+    //   // let stat = res.data;
+    //   // console.log("stat", stat);
+    //   console.log(res.data)
+      
+    //   localStorage.setItem("stat_gen", JSON.stringify(res.data));
+    // });
+    // moveToStatsGen();
   };
 
   return (

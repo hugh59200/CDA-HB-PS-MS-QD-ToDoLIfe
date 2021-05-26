@@ -22,6 +22,7 @@ spring:
     
     url: jdbc:postgresql://localhost:5432/todolife
  #  url: jdbc:postgresql://192.168.1.84:5432/mydb
+#    url: jdbc:postgresql://192.168.1.233:5432/mydb
 
     initialization-mode: always
   jpa.hibernate.ddl-auto : update

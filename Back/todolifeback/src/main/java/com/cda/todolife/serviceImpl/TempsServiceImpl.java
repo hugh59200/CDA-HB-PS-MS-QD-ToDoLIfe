@@ -40,4 +40,9 @@ public class TempsServiceImpl implements ITempsService {
 	public void add(TempsDto temps) {
 		this.tempsDao.save(this.modelMapper.map(temps, Temps.class));
 	}
+
+	@Override
+	public TempsDto findTemps(int h, int m, int s) throws TempsIntrouvable {
+		return this.modelMapper.map(this.tempsDao.findTemps(h, m, s), TempsDto.class);
+	}
 }

@@ -38,8 +38,8 @@ const Imc = () => {
   );
 
   const calculIMC = () => {
-    if (taille === 0 && poid === 0) {
-    } else {
+    // if (taille === 0 && poid === 0) {
+    // } else {
       let poid_kg = poid;
       let taille_metre = taille * 0.01;
       let imc_kg = poid_kg / (taille_metre * taille_metre);
@@ -54,35 +54,35 @@ const Imc = () => {
       };
       
       
-      localStorage.setItem("imc",false)
-      let id = JSON.parse(localStorage.getItem("stat")).idStatistiques
+      // localStorage.setItem("imc",false)
+      // let id = JSON.parse(localStorage.getItem("stat")).idStatistiques
       
-      SportService.FindBadgeByStatIdAndByLabel(id, "IMC")
-      .then((res) => {
-        console.log(res)
-      })
+      // SportService.FindBadgeByStatIdAndByLabel(id, "IMC")
+      // .then((res) => {
+      //   console.log(res)
+      // })
       
       
-      if (imc > 0){
+      // if (imc > 0){
         
         
         
         
         
         
-        let test = {
+      //   let test = {
 
-          "label": "IMC",
-          "statistiques": JSON.parse(localStorage.getItem("stat"))
-        }
+      //     "label": "IMC",
+      //     "statistiques": JSON.parse(localStorage.getItem("stat"))
+      //   }
         
-        console.log(test)
+      //   // console.log(test)
         
-        SportService.createBadge(test)
-      }
+      //   // SportService.createBadge(test)
+      // }
 
       updateStatsGen(data);
-    }
+    // }
   };
 
   const updateStatsGen = (data) => {
@@ -140,7 +140,7 @@ const Imc = () => {
   useEffect(() => {
     if (document.querySelector("#Mon_IMC").innerText === "NaN") {
       // console.log("NOK");
-      document.querySelector("#Mon_IMC").innerText = "";
+      document.querySelector("#Mon_IMC").innerText = "0";
     }
     setInterval(refeshIMC(), 2000);
   });

@@ -12,4 +12,6 @@ public interface ITempsService {
 	void deleteById(int id) throws TempsIntrouvable;
 
 	void add(TempsDto temps);
+	
+	TempsDto findTemps (int h, int m, int s) throws TempsIntrouvable;
 }

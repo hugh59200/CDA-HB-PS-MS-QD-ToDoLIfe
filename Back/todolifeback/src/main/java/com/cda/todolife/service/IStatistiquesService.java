@@ -6,7 +6,7 @@ import com.cda.todolife.exception.StatistiquesIntrouvables;
 
 public interface IStatistiquesService {
 
-	StatistiquesDto FindStatistiquesByUserId(int id) throws StatistiquesIntrouvables;
+	StatistiquesDto findByUserId (int id) throws StatistiquesIntrouvables;
 	
 	StatistiquesDto FindById(int id) throws StatistiquesIntrouvables;
 

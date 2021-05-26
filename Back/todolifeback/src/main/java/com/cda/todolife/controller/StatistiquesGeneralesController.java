@@ -45,7 +45,10 @@ public class StatistiquesGeneralesController {
 		} catch (StatistiquesGeneralesExistantes e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		return ResponseEntity.ok(stats);
 	}
 
@@ -67,7 +70,7 @@ public class StatistiquesGeneralesController {
 	public ResponseEntity<StatistiquesGeneralesDto> update(@RequestBody StatistiquesGeneralesDto stats)
 			throws StatistiquesGeneralesIntrouvables {
 		
-		System.out.println(stats);
+//		System.out.println(stats);
 		
 		
 		try {

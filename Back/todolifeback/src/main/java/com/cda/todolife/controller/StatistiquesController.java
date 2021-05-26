@@ -85,11 +85,14 @@ public class StatistiquesController {
 
 	// findByUserId
 	@GetMapping("/statistiques/utilisateur/{id}")
-	public ResponseEntity<StatistiquesDto> showStatsByUserId(@PathVariable int id) throws StatistiquesIntrouvables {
+	public ResponseEntity<StatistiquesDto> findByUserId(@PathVariable int id) throws StatistiquesIntrouvables {
 		StatistiquesDto stats = null;
+		
+		System.out.println("findByUserId");
 
 		try {
-			stats = this.statistiquesService.FindStatistiquesByUserId(id);
+			stats = this.statistiquesService.findByUserId(id);
+			System.out.println(stats);
 		} catch (StatistiquesIntrouvables e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.TempsDto;
 import com.cda.todolife.exception.TempsIntrouvable;
-import com.cda.todolife.exception.TraceIntrouvable;
 import com.cda.todolife.service.ITempsService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -62,7 +61,7 @@ public class TempsController {
 
 	// findById
 	@GetMapping("temps/{id}")
-	public ResponseEntity<TempsDto> findById(@PathVariable int id) throws TraceIntrouvable {
+	public ResponseEntity<TempsDto> findById(@PathVariable int id) throws TempsIntrouvable {
 		TempsDto temps = null;
 
 		try {
@@ -73,5 +72,18 @@ public class TempsController {
 		}
 		return ResponseEntity.ok(temps);
 	}
+	
 
+		@GetMapping("temps/heure/{h}/minute/{m}/seconde/{s}")
+		public ResponseEntity<TempsDto> findTemps(@PathVariable int h, @PathVariable int m, @PathVariable int s) throws TempsIntrouvable {
+			TempsDto temps = null;
+
+			try {
+				temps = tempsServicce.findTemps(h, m, s);
+			} catch (TempsIntrouvable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return ResponseEntity.ok(temps);
+		}
 }

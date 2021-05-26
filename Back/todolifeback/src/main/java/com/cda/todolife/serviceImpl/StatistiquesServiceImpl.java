@@ -23,9 +23,10 @@ public class StatistiquesServiceImpl implements IStatistiquesService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public StatistiquesDto FindStatistiquesByUserId(int id) throws StatistiquesIntrouvables {
-		Statistiques res = this.statistiquesDao.FindStatistiquesByUserId(id);
-		return this.modelMapper.map(res, StatistiquesDto.class);
+	public StatistiquesDto findByUserId(int id) throws StatistiquesIntrouvables {
+		
+		Statistiques stat = this.statistiquesDao.findByUserId(id);
+		return this.modelMapper.map(stat, StatistiquesDto.class);
 	}
 
 	@Override
