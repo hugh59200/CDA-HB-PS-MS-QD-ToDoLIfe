@@ -15,7 +15,7 @@
   height: 600px;
   width: 800px;
   padding: 50px;
-  margin: 50px auto;
+  margin: 100px auto;
   border-top: 7px double #1C6EA4;
   background-color: #0090E8;
   border-bottom-left-radius: 20px;
@@ -137,10 +137,11 @@
 }
 
 .statistique>.titre {
-  color: white;
+  color: #DCE775;
   text-align: center;
   font-weight: bolder;
   font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .choix>div>p {
@@ -157,20 +158,22 @@
   height: 60%;
   padding-top: 40px;
   padding: 20px;
+  margin-top: 30px;
+  border: 4px solid #DCE775;
 }
 
 .statistique>.choixEchelle>div {
   display: flex;
   justify-content: space-around;
-  height: 30%;
+  height: 40%;
 }
 
 .echelleGraph {
   background-color: #14A7FF;
-  width: 45%;
-  height: 70px;
+  width: 40%;
+  height: 50px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   font-weight: bolder;
   font-size: 20px;
   text-align: center;
@@ -242,6 +245,7 @@
 
 .monJournal>.titreJournal>h2 {
   font-size: 40px;
+  color: #FFB700 !important;
 }
 
 .monJournal>.selectDate {
