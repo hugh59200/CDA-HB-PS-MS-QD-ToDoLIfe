@@ -13,9 +13,8 @@ const validationSchema = yup.object().shape({
 
 const Imc = () => {
   // const history = useHistory();
-  
-  
-  
+
+  // let id = JSON.parse(localStorage.getItem("stat")).idStatistiques;
 
   const initialValues = {
     taille: JSON.parse(localStorage.getItem("stat_gen")).taille,
@@ -40,48 +39,43 @@ const Imc = () => {
   const calculIMC = () => {
     // if (taille === 0 && poid === 0) {
     // } else {
-      let poid_kg = poid;
-      let taille_metre = taille * 0.01;
-      let imc_kg = poid_kg / (taille_metre * taille_metre);
-      var rounded_imc = Math.round(imc_kg * 10) / 10;
-      setImc(rounded_imc);
+    let poid_kg = poid;
+    let taille_metre = taille * 0.01;
+    let imc_kg = poid_kg / (taille_metre * taille_metre);
+    var rounded_imc = Math.round(imc_kg * 10) / 10;
+    setImc(rounded_imc);
 
-      let data = {
-        taille: taille,
-        poid: poid,
-        age: age,
-        imc: imc,
-      };
-      
-      
-      // localStorage.setItem("imc",false)
-      // let id = JSON.parse(localStorage.getItem("stat")).idStatistiques
-      
-      // SportService.FindBadgeByStatIdAndByLabel(id, "IMC")
-      // .then((res) => {
-      //   console.log(res)
-      // })
-      
-      
-      // if (imc > 0){
-        
-        
-        
-        
-        
-        
-      //   let test = {
+    let data = {
+      taille: taille,
+      poid: poid,
+      age: age,
+      imc: imc,
+    };
 
-      //     "label": "IMC",
-      //     "statistiques": JSON.parse(localStorage.getItem("stat"))
-      //   }
-        
-      //   // console.log(test)
-        
-      //   // SportService.createBadge(test)
-      // }
+    console.log("data", data);
 
-      updateStatsGen(data);
+    updateStatsGen()
+
+
+    // SportService.FindBadgeByStatIdAndByLabel(id, "IMC")
+    // .then((res) => {
+    //   console.log(res)
+    // })
+
+    // if (imc > 0){
+
+    //   let test = {
+
+    //     "label": "IMC",
+    //     "statistiques": JSON.parse(localStorage.getItem("stat"))
+    //   }
+
+    //   // console.log(test)
+
+    //   // SportService.createBadge(test)
+    // }
+
+    // updateStatsGen(data);
     // }
   };
 
@@ -100,7 +94,10 @@ const Imc = () => {
 
     SportService.updateStatGen(statsG)
       .then((res) => {
-        // console.log(res);
+        console.log("res",res.data)
+        localStorage.setItem("stat_gen",JSON.stringify(res.data))
+        
+        changeImcColor()
       })
       .catch((err) => {})
       .finally(() => {});
@@ -129,7 +126,7 @@ const Imc = () => {
     setPoid(values.poid);
     setAge(values.age);
     calculIMC();
-    changeImcColor();
+    // changeImcColor();
   };
 
   const refeshIMC = () => {

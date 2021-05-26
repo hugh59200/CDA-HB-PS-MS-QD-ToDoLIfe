@@ -19,37 +19,7 @@ const Sport = () => {
   // let stats_user;
 
   const moveToStats = () => {
-    console.log("coucou");
-    // create();
-
-    // SportService.checkIfUserGetStat(id)
-    // .then((res) => {
-    //   if (localStorage.getItem("create_stat") === false || localStorage.getItem("create_stat") === undefined) {
-    //     console.log("false")
     createStat();
-    // } else {
-    //   console.log("true")
-
-    //   console.log("res.data",res.data)
-
-    //   localStorage.setItem("stat", JSON.stringify(res.data));
-
-    // }
-    // else {
-    //   // let stat = res.data;
-    //   // var data = JSON.stringify(stat);
-    //   localStorage.setItem("stat", JSON.stringify(res.data));
-    //   history.push(URL_SPORT_STATS);
-
-    //   SportService.checkIfUserGetStatGen(id)
-    //   .then((res) => {
-    //     localStorage.setItem("stat_gen", JSON.stringify(res.data));
-    //   })
-
-    // }
-
-    // )
-    // .catch((err) => {});
   };
 
   const movetoActivs = () => {
@@ -62,7 +32,7 @@ const Sport = () => {
 
   const createStat = () => {
     UtilisateurService.getById(id).then((res) => {
-      console.log("res", res.data);
+      // console.log("res", res.data);
 
       localStorage.setItem("user", JSON.stringify(res.data));
 
@@ -75,10 +45,10 @@ const Sport = () => {
 
         SportService.checkIfUserGetStat(id).then((response) => {
           // console.log(res);
-          console.log("res", response.data);
+          // console.log("res", response.data);
           localStorage.setItem("stat", JSON.stringify(response.data));
-          
-          createStatGen()
+
+          createStatGen();
         });
       });
     });
@@ -91,22 +61,16 @@ const Sport = () => {
 
     SportService.createStatGenForUser(data_stat).then((res) => {
       console.log("res", res.data);
-      
+
       SportService.checkIfUserGetStatGen(
         JSON.parse(localStorage.getItem("stat")).idStatistiques
       ).then((response) => {
         console.log("res", response.data);
         localStorage.setItem("stat_gen", JSON.stringify(response.data));
-        
-        history.push(URL_SPORT_STATS_GENERALES)
+
+        history.push(URL_SPORT_STATS_GENERALES);
       });
     });
-
-    
-
-
-
-
   };
 
   return (
