@@ -13,17 +13,27 @@ export default function TableauDeBordJournal() {
 
 	return (
 		<div className="choix">
-			<div>
-				<p>Statistique</p>
-				<img src={statistiques} alt="" srcSet="" onClick={() => {
-						handleClick(URL_STATISTIQUE);
-					}}/>
-			</div>
-			<div>
-				<p>Journal</p>
-				<img src={journal} alt="" srcSet="" onClick={() => {
+			<div className="monjournal">
+				<p>mon journal</p>
+				<img
+					src={journal}
+					alt=""
+					srcSet=""
+					onClick={() => {
 						handleClick(URL_JOURNAL);
-					}}/>
+					}}
+				/>
+			</div>
+			<div  className="statistiques">
+				<p>statistiques</p>
+				<img
+					src={statistiques}
+					alt=""
+					srcSet=""
+					onClick={() => {
+						handleClick(URL_STATISTIQUE);
+					}}
+				/>
 			</div>
 		</div>
 	);
