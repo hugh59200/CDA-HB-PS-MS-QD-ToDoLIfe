@@ -1,11 +1,13 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
-import { useHistory } from "react-router";
+import "../../../../../assets/css/sport/searchBar/search_bar.css";
+
 import * as yup from "yup";
 
-import "../../../../../assets/css/sport/searchBar/search_bar.css";
-import { URL_SPORT_STATS, URL_SPORT_STATS_SPORTIVES } from "../../../../../constant/URL_CONST";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+
+import React from "react";
 import SportService from "../../../../../service/SportService";
+import { URL_SPORT_STATS_SPORTIVES } from "../../../../../constant/URL_CONST";
+import { useHistory } from "react-router";
 
 const validationSchema = yup.object().shape({
   moyenne: yup.string().required("Required"),

@@ -8,7 +8,23 @@ export function ListerJour(props) {
 	listJour.sort(function (a, b) {
 		return new Date(b.dateJour) - new Date(a.dateJour);
 	});
-	
+
+	const changeColor = (titre, humeur) => {
+		
+		if (humeur === 4) {
+			return <p className="red">{titre}</p>;
+		}
+		else if (humeur === 3) {
+			return <p className="orange">{titre}</p>;
+		}
+		else if (humeur === 2) {
+			return <p className="yellow">{titre}</p>;
+		}
+		else {
+			return <p className="green">{titre}</p>;
+		}
+	};
+
 	return (
 		<>
 			{listJour.map(data => {
@@ -24,13 +40,13 @@ export function ListerJour(props) {
 					>
 						<div className="date">{FormatDate(data.dateJour)}</div>
 						<div className="evenement">
-							<p>{data.titre}</p>
+							{changeColor(data.titre, data.humeur)}
 							<FontAwesomeIcon
 								icon={faEdit}
 								className="updateIcon"
 								onClick={() => {
 									props.setupdateJour(true);
-									props.setdateUpdatevalue(data.dateJour)
+									props.setdateUpdatevalue(data.dateJour);
 								}}
 							/>
 						</div>

@@ -38,10 +38,10 @@ export function JournalExistant(setjournalExiste) {
 	}).then(response => {
 		if (response.data === true) {
 			setjournalExiste(true);
-			console.log('journal deja existant');
+			// console.log('journal deja existant');
 		} else {
 			setjournalExiste(false);
-			console.log('journal non existant');
+			// console.log('journal non existant');
 		}
 	});
 }
@@ -56,14 +56,14 @@ function CreateJournalByIdUser(setjournalExiste) {
 			const status = response.request.status;
 
 			if (status === 200) {
-				console.log('Journal ajouté avec succés !');
+				// console.log('Journal ajouté avec succés !');
 				setjournalExiste(true);
 			}
 			if (status !== 200) {
-				console.log('Une erreur est survenue !');
+				// console.log('Une erreur est survenue !');
 			}
 		})
 		.catch(error => {
-			console.log('Une erreur est survenue' + error);
+			// console.log('Une erreur est survenue' + error);
 		});
 }
