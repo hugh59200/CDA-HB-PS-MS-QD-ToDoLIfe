@@ -6,18 +6,24 @@ logging.level:
         SQL: trace
       springframework:
         web: info
+        
 jwt.key : cda-cle-secrete 
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+#    username: sa
+#    password:
+#    driverClassName: org.h2.Driver
+#  jpa.database-platform: org.hibernate.dialect.H2Dialect
+
 spring:
   datasource:
     username: todolifeuser
-#    username: myuser
-#    password: 123
     password: pwd
     url: jdbc:postgresql://localhost:5432/todolife
-#    url: jdbc:postgresql://192.168.43.65:5432/mydb
-#    url: jdbc:postgresql://192.168.1.233:5432/mydb
     initialization-mode: always
   jpa.hibernate.ddl-auto : update
+  
   mail:
     default-encoding: UTF-8
     host: smtp.gmail.com
@@ -32,3 +38,5 @@ spring:
             enable: true
     protocol: smtp
     test-connection: false
+#    url: jdbc:postgresql://192.168.43.65:5432/mydb
+#    url: jdbc:postgresql://192.168.1.233:5432/mydb
