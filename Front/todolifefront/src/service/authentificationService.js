@@ -15,6 +15,7 @@ export function deconnected() {
     localStorage.removeItem('label_todolist')
     localStorage.removeItem('stat')
     localStorage.removeItem('stat_gen')
+    localStorage.removeItem('create')
 }
 
 export function isAuthenticated() {

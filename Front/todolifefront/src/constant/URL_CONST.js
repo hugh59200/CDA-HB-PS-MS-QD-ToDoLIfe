@@ -68,6 +68,7 @@ export const URL_SPORT_STATS_GENERALES = '/sport-statistiques-generales'
 export const URL_SPORT_STATS_SPORTIVES = '/sports-statistiques-sportives'
 export const URL_SPORT_STATS_SPORTIVES_NEW = '/sports-statistiques-sportives-new'
 export const URL_SPORT_STATS_SPORTIVES_NEW_FORM = '/sports-statistiques-sportives-new-form'
+export const URL_SPORT_STATS_SPORTIVES_UPDATE = '/sports-statistiques-sportives-update'
 
 export const URL_SPORT_STATS_SPORTIVES_ME = '/sports-statistiques-sportives-me'
 export const URL_SPORT_STATS_BADGES = '/sports-statistiques-badges'

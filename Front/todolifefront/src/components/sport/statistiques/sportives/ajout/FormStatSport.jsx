@@ -1,20 +1,22 @@
 import "../../../../../assets/css/sport/searchBar/search_bar.css";
 
 import * as yup from "yup";
-
 import { ErrorMessage, Field, Form, Formik } from "formik";
-
 import React from "react";
-import SportService from "../../../../../service/SportService";
-import { URL_SPORT_STATS_SPORTIVES } from "../../../../../constant/URL_CONST";
 import { useHistory } from "react-router";
+
+
+import "../../../../../assets/css/sport/searchBar/search_bar.css";
+import { URL_SPORT_STATS } from "../../../../../constant/URL_CONST";
+import SportService from "../../../../../service/SportService";
+
 
 const validationSchema = yup.object().shape({
   moyenne: yup.string().required("Required"),
 
 });
 
-const FormStatSport = (props) => {
+const FormStatSport = () => {
   
   const history = useHistory();
   
@@ -36,30 +38,21 @@ const FormStatSport = (props) => {
             "idSport": res.data.idSport,
             "label": res.data.label
           },
-          "statistiques": {
-            "idStatistiques": JSON.parse(localStorage.getItem("stat")).idStatistiques,
-            "utilisateur": {
-              "dateNaissance": JSON.parse(localStorage.getItem("stat")).utilisateur.dateNaissance,
-              "idUtilisateur": JSON.parse(localStorage.getItem("stat")).utilisateur.idUtilisateur,
-              "nom": JSON.parse(localStorage.getItem("stat")).utilisateur.nom,
-              "prenom": JSON.parse(localStorage.getItem("stat")).utilisateur.prenom,
-              "username": JSON.parse(localStorage.getItem("stat")).utilisateur.username
-            }
-          }
+          "statistiques":  JSON.parse(localStorage.getItem("stat"))
         }
 
-        // console.log("data", data);
+        console.log("data", data);
 
         SportService.createStatSport(data).then((res) => {
-          // console.log("res", res);
+          console.log("res", res);
         });
       })
       .catch((err) => {}
              );
       
       localStorage.removeItem("sport")
-      history.push(URL_SPORT_STATS_SPORTIVES)
-      history.go(0)
+      history.push(URL_SPORT_STATS)
+      // history.go(0)
   };
 
   return (

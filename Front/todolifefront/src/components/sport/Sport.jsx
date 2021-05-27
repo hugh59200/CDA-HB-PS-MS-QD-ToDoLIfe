@@ -5,53 +5,72 @@ import "../../assets/css/sport/sport.css";
 import {
   URL_SPORT_ACTVITES,
   URL_SPORT_DEFI,
-  URL_SPORT_STATS,
+  URL_SPORT_STATS_GENERALES,
+  // URL_SPORT_STATS,
 } from "../../constant/URL_CONST";
 import SportService from "../../service/SportService";
+import UtilisateurService from "../../service/UtilisateurService";
 
 const Sport = () => {
   const history = useHistory();
 
   const id = localStorage.getItem("id");
 
+  // let stats_user;
+
   const moveToStats = () => {
-    SportService.checkIfUserGetStat(id)
-      .then((res) => {
-        if (res.data === "") {
-          create();
-        } else {
-          let stat = res.data;
-          var data = JSON.stringify(stat);
-          localStorage.setItem("stat", data);
-          history.push(URL_SPORT_STATS);
-        }
-      })
-      .catch((err) => {});
+    createStat();
   };
 
   const movetoActivs = () => {
-    if (localStorage.setItem("stat") !== null ){  
-      history.push(URL_SPORT_ACTVITES);
-    }
+    history.push(URL_SPORT_ACTVITES);
   };
 
   const movetoDefis = () => {
     history.push(URL_SPORT_DEFI);
   };
 
-  const create = () => {
-    let data = JSON.parse(localStorage.getItem("user"));
+  const createStat = () => {
+    UtilisateurService.getById(id).then((res) => {
+      // console.log("res", res.data);
 
-    let stat = {
-      utilisateur: data,
+      localStorage.setItem("user", JSON.stringify(res.data));
+
+      let data_user = {
+        utilisateur: JSON.parse(localStorage.getItem("user")),
+      };
+
+      SportService.createStatForUser(data_user).then((res) => {
+        // localStorage.setItem("stat", JSON.stringify(res.data));
+
+        SportService.checkIfUserGetStat(id).then((response) => {
+          // console.log(res);
+          // console.log("res", response.data);
+          localStorage.setItem("stat", JSON.stringify(response.data));
+
+          createStatGen();
+        });
+      });
+    });
+  };
+
+  const createStatGen = () => {
+    let data_stat = {
+      statistiques: JSON.parse(localStorage.getItem("stat")),
     };
 
-    SportService.createStatForUser(stat).then((res) => {
-      let stat = res.data;
-      var data = JSON.stringify(stat);
-      localStorage.setItem("stat", data);
+    SportService.createStatGenForUser(data_stat).then((res) => {
+      console.log("res", res.data);
+
+      SportService.checkIfUserGetStatGen(
+        JSON.parse(localStorage.getItem("stat")).idStatistiques
+      ).then((response) => {
+        console.log("res", response.data);
+        localStorage.setItem("stat_gen", JSON.stringify(response.data));
+
+        history.push(URL_SPORT_STATS_GENERALES);
+      });
     });
-    moveToStats();
   };
 
   return (

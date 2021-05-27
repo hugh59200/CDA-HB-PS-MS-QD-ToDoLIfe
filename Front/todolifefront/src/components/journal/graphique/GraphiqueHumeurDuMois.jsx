@@ -5,10 +5,26 @@ import { Graphique } from './Graphique';
 import { Line } from 'react-chartjs-2';
 
 export const GraphiqueHumeurDuMois = () => {
-	const [chartData, setChartData] = useState({});
+	const [chartData, setChartData] = useState(false);
 	const [duration, setduration] = useState();
 
-	
+	const options = {
+		animations: {
+			radius: {
+				duration: 400,
+				easing: 'linear',
+				loop: context => context.active,
+			},
+		},
+		hoverRadius: 12,
+		hoverBackgroundColor: 'yellow',
+		interaction: {
+			mode: 'nearest',
+			intersect: false,
+			axis: 'x',
+		},
+	};
+
 	const chart = Graphique(duration, setChartData);
 
 	return (
@@ -57,11 +73,11 @@ export const GraphiqueHumeurDuMois = () => {
 				</div>
 			</div>
 			<div className="graphique">
-			{!chartData ? (
-				<EmptyStat />
-			) : (
-				<Line data={chartData}/>
-			)}
+				{!chartData ? (
+					<EmptyStat />
+				) : (
+					<Line data={chartData} options={options} />
+				)}
 			</div>
 		</div>
 	);

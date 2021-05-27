@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { URL_SPORT_STATS_SPORTIVES_NEW } from "../../../../../constant/URL_CONST";
+import {
+  URL_SPORT_STATS_SPORTIVES_NEW,
+  URL_SPORT_STATS_SPORTIVES_UPDATE,
+} from "../../../../../constant/URL_CONST";
 import SportService from "../../../../../service/SportService";
 
 const ListStatsSportives = () => {
@@ -31,7 +34,12 @@ const ListStatsSportives = () => {
             {elem.moyenneSemaine} h
           </td>
           <td className="button-group test td-decalage-action">
-            <div onClick={() => modifier(elem.idStatistiquesSportives)} className="btn btn-success">modifier</div>
+            <div
+              onClick={() => modifier(elem.idStatistiquesSportives)}
+              className="btn btn-success"
+            >
+              modifier
+            </div>
             <div
               onClick={() => supprimer(elem.idStatistiquesSportives)}
               className="btn btn-danger"
@@ -56,15 +64,19 @@ const ListStatsSportives = () => {
       })
       .catch((err) => {});
   };
-  
+
   const modifier = (id) => {
-    console.log("modifier l'id ",id)
-    
-    SportService.findstatSportwithId(id)
-    .then((res) => {
-      console.log(res.data)
-    })
-  }
+    console.log("modifier l'id ", id);
+
+    SportService.findstatSportwithId(id).then((res) => {
+      console.log(res.data);
+
+      history.push({
+        pathname: URL_SPORT_STATS_SPORTIVES_UPDATE,
+        customData: res.data,
+      });
+    });
+  };
 
   const ajouter = () => {
     history.push(URL_SPORT_STATS_SPORTIVES_NEW);
@@ -97,7 +109,9 @@ const ListStatsSportives = () => {
               </th>
               </div> */}
             </thead>
-            <tbody className="d-flex flex-column justify-content-between">{list}</tbody>
+            <tbody className="d-flex flex-column justify-content-between">
+              {list}
+            </tbody>
           </table>
         </div>
       </div>

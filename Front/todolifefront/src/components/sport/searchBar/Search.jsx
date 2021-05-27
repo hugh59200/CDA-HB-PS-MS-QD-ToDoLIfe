@@ -50,6 +50,9 @@ const Search = () => {
 
     document.querySelector("#form-stat-sport").className =
       "show-search-bar-sport";
+      
+      console.log("label",label)
+      
   };
 
   const showOrDisableForm = () => {

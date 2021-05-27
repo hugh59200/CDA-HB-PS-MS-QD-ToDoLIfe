@@ -1,23 +1,29 @@
 import axios from "axios";
 import {
+    API_ACTIVITE,
     API_BADGE,
     API_SPORT,
     API_STATISTIQUES,
     API_STATISTIQUES_GENERALES,
-    API_STATISTIQUES_SPORTIVES
+    API_STATISTIQUES_SPORTIVES,
+    API_TEMPS
 } from "../constant/API_BACK";
 
 class SportService {
 
     // Stats
     checkIfUserGetStat(id) {
-        return axios.get(API_STATISTIQUES + '/utilisateur/' + id);
+        console.log("sport sevice search by User id")
+        return axios.get(API_STATISTIQUES + '/utilisateur/'+ id);
     }
 
     createStatForUser(data) {
-        // console.log("stat",data)
+        // console.log("data",data)
         return axios.post(API_STATISTIQUES, data);
     }
+
+
+
 
     // Stats_Générales
     checkIfUserGetStatGen(id) {
@@ -54,7 +60,10 @@ class SportService {
     
     findstatSportwithId(id){
         return axios.get(API_STATISTIQUES_SPORTIVES + '/id/' + id);
-
+    }
+    
+    updateStatSport(data){
+        return axios.put(API_STATISTIQUES_SPORTIVES, data)
     }
     
     
@@ -82,6 +91,23 @@ class SportService {
     
     FindBadgeByStatIdAndByLabel(id,label){
         return axios.get(API_BADGE + '/stat/' + id + '/label/' +label)
+    }
+    
+    // temps
+    
+    createTemps(data){
+        return axios.post(API_TEMPS, data)
+    }
+    
+    findTemps(h,m,s){
+        return axios.get(API_TEMPS + '/heure/'+ h + '/minute/' + m + '/seconde/' + s)
+    }
+    
+    
+    //activité 
+    
+    createActivite(data){
+        return axios.post(API_ACTIVITE, data)
     }
 
 }

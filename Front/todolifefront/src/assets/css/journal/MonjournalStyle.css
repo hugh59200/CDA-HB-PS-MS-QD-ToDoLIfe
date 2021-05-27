@@ -93,10 +93,14 @@
 }
 
 .graphique>.emptyStat {
-  color: rgb(230, 52, 52);
+  font-style: italic;
+  /* background-color: #0090E8; */
+  color: #FF6384;
   text-align: center;
   font-size: 40px;
-  padding: 100px;
+  font-weight: 600;
+  padding: 50px;
+  margin-top: 40px;
 }
 
 .red {

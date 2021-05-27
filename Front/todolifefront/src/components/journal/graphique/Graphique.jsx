@@ -9,7 +9,7 @@ export function Graphique(duration, setChartData) {
 		let url = API_JOURNAL_BY_USERID + localStorage.getItem('id') + '/graphique';
 
 		function FormatDate(date) {
-			var options = { weekday: 'long', month: 'long', day: 'numeric' };
+			var options = { month: 'long', day: 'numeric' };
 			return new Date(date).toLocaleDateString('fr-FR', options);
 		}
 
@@ -30,14 +30,17 @@ export function Graphique(duration, setChartData) {
 					}
 
 					setChartData({
+						type: 'line',
 						labels: dateJour,
 						datasets: [
 							{
-								label: 'level of mood',
+								label: "mon niveau d'humeur",
 								data: mood,
-								backgroundColor: '#fff',
+								backgroundColor: '#FF6384',
 								borderColor: '#fff',
 								borderWidth: 3,
+								fill: true,
+								radius: 3,
 							},
 						],
 					});

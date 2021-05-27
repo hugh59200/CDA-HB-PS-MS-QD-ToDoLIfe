@@ -16,6 +16,8 @@ export const API_STATISTIQUES_GENERALES = ENV_DEV + 'statistiquesGen';
 export const API_STATISTIQUES_SPORTIVES = ENV_DEV + 'statistiquesSport';
 export const API_SPORT = ENV_DEV + 'sports';
 export const API_BADGE = ENV_DEV + 'badges';
+export const API_TEMPS = ENV_DEV + 'temps';
+export const API_ACTIVITE = ENV_DEV + 'activites';
 
 
 
@@ -44,3 +46,5 @@ export const API_BADGE = ENV_DEV + 'badges';
 // export const API_STATISTIQUES_SPORTIVES = ENV_PROD + 'statistiquesSport';
 // export const API_SPORT = ENV_PROD + 'sports';
 // export const API_BADGE = ENV_PROD + 'badges';
+// export const API_TEMPS = ENV_PROD + 'temps';
+// export const API_ACTIVITE = ENV_PROD + 'activites';
