@@ -26,7 +26,7 @@ export const API_BADGE = ENV_DEV + 'badges';
 
 
 // export const ENV_PROD = 'http://192.168.43.30:8080/api/';
-// export const ENV_PROD = 'http://192.168.1.60:8080/api/';
+// export const ENV_PROD = 'http://192.168.43.191:8080/api/';
 // export const API_TODO_LIST = ENV_PROD + 'todolists';
 // export const API_JOURNAL = ENV_PROD + 'journaux';
 // export const API_JOUR = ENV_PROD + 'jour';
