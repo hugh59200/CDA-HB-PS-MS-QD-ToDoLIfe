@@ -1,7 +1,6 @@
 package com.cda.todolife.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.cda.todolife.dto.routine.MatinDto;
 import com.cda.todolife.dto.routine.SoirDto;
@@ -16,5 +15,9 @@ public interface IRoutineService {
 	void addMatin(MatinDto matinDto, int id) throws UtilisateurInconnuException;
 
 	void addSoir(SoirDto soirDto, int id) throws UtilisateurInconnuException;
+
+	public void modifMatin(MatinDto matinDto, int id) throws UtilisateurInconnuException;
+
+	public void modifSoir(SoirDto soirDto, int id) throws UtilisateurInconnuException;
 
 }

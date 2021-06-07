@@ -1,7 +1,6 @@
 package com.cda.todolife.controller.routine;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,17 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cda.todolife.dto.routine.MatinDto;
 import com.cda.todolife.dto.routine.SoirDto;
-import com.cda.todolife.dto.watchlist.FilmDto;
-import com.cda.todolife.exception.FilmExistantException;
-import com.cda.todolife.exception.FilmIntrouvableException;
 import com.cda.todolife.exception.UtilisateurInconnuException;
-import com.cda.todolife.exception.WatchListIntrouvableException;
 import com.cda.todolife.service.IRoutineService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -79,4 +75,29 @@ public class RoutineController {
 
 	}
 
+	@PutMapping("matin/utilisateurs/{id}")
+	public ResponseEntity<MatinDto> modifMatin(@RequestBody MatinDto matinDto, @PathVariable int id) {
+
+		try {
+			this.routineService.modifMatin(matinDto, id);
+			return ResponseEntity.ok(matinDto);
+
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+
+	}
+
+	@PutMapping("soir/utilisateurs/{id}")
+	public ResponseEntity<SoirDto> modifSoir(@RequestBody SoirDto soirDto, @PathVariable int id) {
+
+		try {
+			this.routineService.modifSoir(soirDto, id);
+			return ResponseEntity.ok(soirDto);
+
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+
+	}
 }
