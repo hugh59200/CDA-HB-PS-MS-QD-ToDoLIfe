@@ -1,4 +1,4 @@
-package com.cda.todolife.controller;
+package com.cda.todolife.controller.watchlist;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.FilmDto;
+import com.cda.todolife.dto.watchlist.FilmDto;
 import com.cda.todolife.exception.FilmExistantException;
 import com.cda.todolife.exception.FilmIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;

@@ -1,4 +1,4 @@
-package com.cda.todolife.dto;
+package com.cda.todolife.dto.watchlist;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SerieDto {
 
-	private int idSerie;
-	private String name;
-	private int saison;
-	private int episode;
-	private String avis; 
+public class LivreDto {
+
+	private int idLivre;
+	private String title;
+	private int pageActuel;
+	private String avis;
+
 	private WatchListDto watchListDto;
 }

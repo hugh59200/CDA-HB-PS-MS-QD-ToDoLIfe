@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cda.todolife.dto.LivreDto;
-import com.cda.todolife.model.Livre;
+import com.cda.todolife.dto.watchlist.LivreDto;
+import com.cda.todolife.model.watchlist.Livre;
 
 public interface IlivreRepository extends CrudRepository<Livre, Integer> {
 

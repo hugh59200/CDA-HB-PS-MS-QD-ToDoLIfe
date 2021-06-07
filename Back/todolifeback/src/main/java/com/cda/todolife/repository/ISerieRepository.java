@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cda.todolife.model.Serie;
+import com.cda.todolife.model.watchlist.Serie;
 
 public interface ISerieRepository extends CrudRepository<Serie, Integer> {
 

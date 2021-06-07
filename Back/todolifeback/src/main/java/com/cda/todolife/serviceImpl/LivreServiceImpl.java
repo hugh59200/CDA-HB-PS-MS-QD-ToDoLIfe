@@ -8,13 +8,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cda.todolife.dto.LivreDto;
-import com.cda.todolife.dto.WatchListDto;
+import com.cda.todolife.dto.watchlist.LivreDto;
+import com.cda.todolife.dto.watchlist.WatchListDto;
 import com.cda.todolife.exception.LivreExistantException;
 import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
-import com.cda.todolife.model.Livre;
-import com.cda.todolife.model.WatchList;
+import com.cda.todolife.model.watchlist.Livre;
+import com.cda.todolife.model.watchlist.WatchList;
 import com.cda.todolife.repository.IWatchListRepository;
 import com.cda.todolife.repository.IlivreRepository;
 import com.cda.todolife.service.ILivreService;

@@ -1,4 +1,4 @@
-package com.cda.todolife.controller;
+package com.cda.todolife.controller.journal;
 
 import java.util.Calendar;
 import java.util.HashMap;

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cda.todolife.dto.FilmDto;
-import com.cda.todolife.model.Film;
+import com.cda.todolife.dto.watchlist.FilmDto;
+import com.cda.todolife.model.watchlist.Film;
 
 public interface IFilmRepository extends CrudRepository<Film, Integer> {
 
