@@ -1,4 +1,4 @@
-package com.cda.todolife.controller;
+package com.cda.todolife.controller.watchlist;
 
 import java.util.HashMap;
 import java.util.List;

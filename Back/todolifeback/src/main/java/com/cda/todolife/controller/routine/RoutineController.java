@@ -1,4 +1,4 @@
-package com.cda.todolife.controller;
+package com.cda.todolife.controller.routine;
 
 import java.util.List;
 import java.util.Optional;

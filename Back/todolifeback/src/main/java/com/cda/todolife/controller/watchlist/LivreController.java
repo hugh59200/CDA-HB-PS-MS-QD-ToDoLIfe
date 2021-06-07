@@ -1,4 +1,4 @@
-package com.cda.todolife.controller;
+package com.cda.todolife.controller.watchlist;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,79 +16,79 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cda.todolife.dto.watchlist.FilmDto;
-import com.cda.todolife.exception.FilmExistantException;
-import com.cda.todolife.exception.FilmIntrouvableException;
+import com.cda.todolife.dto.watchlist.LivreDto;
+import com.cda.todolife.exception.LivreExistantException;
+import com.cda.todolife.exception.LivreIntrouvableException;
 import com.cda.todolife.exception.WatchListIntrouvableException;
-import com.cda.todolife.service.IFilmService;
+import com.cda.todolife.service.ILivreService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
-public class FilmController {
+public class LivreController {
 
 	@Autowired
-	private IFilmService filmService;
+	private ILivreService livreService;
 
 	// listing
-	@GetMapping("/films")
-	public List<FilmDto> getAll() {
-		return this.filmService.findAll();
+	@GetMapping("/livres")
+	public List<LivreDto> getAll() {
+		return this.livreService.findAll();
 	}
 
 	// create
-	@PostMapping("/films/utilisateurs/{id}")
-	public ResponseEntity<FilmDto> create(@RequestBody FilmDto filmDto, @PathVariable int id)
-			throws FilmIntrouvableException {
+	@PostMapping("/livres/utilisateurs/{id}")
+	public ResponseEntity<LivreDto> create(@RequestBody LivreDto livreDto, @PathVariable int id)
+			throws LivreIntrouvableException {
 		try {
-			this.filmService.add(filmDto, id);
 
+			this.livreService.add(livreDto, id);
 		} catch (WatchListIntrouvableException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
-		} catch (FilmExistantException e) {
+
+		} catch (LivreExistantException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(filmDto);
+		return ResponseEntity.ok(livreDto);
 	}
 
 	// details by Id
-	@GetMapping("/films/utilisateurs/{id}")
-	public ResponseEntity<List<FilmDto>> getAllByIdUtilisateur(@PathVariable int id) throws FilmIntrouvableException {
-		List<FilmDto> filmDto = filmService.findAllByIdUtilisateur(id);
-		return ResponseEntity.ok(filmDto);
+	@GetMapping("/livres/utilisateurs/{id}")
+	public ResponseEntity<List<LivreDto>> getAllByIdUtilisateur(@PathVariable int id) throws LivreIntrouvableException {
+		List<LivreDto> livreDto = livreService.findAllByIdUtilisateur(id);
+		return ResponseEntity.ok(livreDto);
 	}
 
-	// details by Name
-	// @GetMapping("/films/name/{name}")
-	// public ResponseEntity<FilmDto> getByName(@PathVariable String name) throws
-	// FilmIntrouvableException {
-	// FilmDto filmDto = filmService.findByName(name);
-	// return ResponseEntity.ok(filmDto);
-	// }
+//	// details by title
+//	@GetMapping("/livres/title/{title}")
+//	public ResponseEntity<LivreDto> getByTitle(@PathVariable String title) throws LivreIntrouvableException {
+//		LivreDto livreDto = livreService.findByTitle(title);
+//		return ResponseEntity.ok(livreDto);
+//	}
 
 	// update
-	@PutMapping("/films/{idFilm}")
-	public ResponseEntity<FilmDto> update(@RequestBody FilmDto filmDto, @PathVariable("idFilm") int idFilm)
-			throws FilmIntrouvableException {
+	@PutMapping("/livres/{idLivre}")
+	public ResponseEntity<LivreDto> update(@RequestBody LivreDto livreDto, @PathVariable("idLivre") int idLivre)
+			throws LivreIntrouvableException {
 
 		try {
-			filmService.update(filmDto, idFilm);
-		} catch (FilmIntrouvableException e) {
+			livreService.update(livreDto,idLivre);
+		} catch (LivreIntrouvableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (FilmExistantException e) {
+		} catch (LivreExistantException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(filmDto);
+		return ResponseEntity.ok(livreDto);
 	}
 
 	// delete
-	@DeleteMapping("/films/{id}")
-	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws FilmIntrouvableException {
-		filmService.deleteById(id);
+	@DeleteMapping("/livres/{id}")
+	public ResponseEntity<Map<String, Boolean>> delete(@PathVariable int id) throws LivreIntrouvableException {
+		livreService.deleteById(id);
 		System.out.println("ok");
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
