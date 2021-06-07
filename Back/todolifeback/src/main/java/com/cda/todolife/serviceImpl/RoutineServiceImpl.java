@@ -14,6 +14,7 @@ import com.cda.todolife.dto.routine.SoirDto;
 import com.cda.todolife.exception.UtilisateurInconnuException;
 import com.cda.todolife.model.Utilisateur;
 import com.cda.todolife.model.routine.Matin;
+import com.cda.todolife.model.routine.Soir;
 import com.cda.todolife.repository.IRoutineMatinRepository;
 import com.cda.todolife.repository.IRoutineSoirRepository;
 import com.cda.todolife.repository.IUtilisateurRepository;
@@ -88,11 +89,35 @@ public class RoutineServiceImpl implements IRoutineService {
 
 		if (userOpt.isPresent()) {
 			soirDto.setUtilisateurDtoList(this.modelMapper.map(userOpt.get(), UtilisateurDtoList.class));
-			this.routineMatinService.save(this.modelMapper.map(soirDto, Matin.class));
+			this.routineSoirService.save(this.modelMapper.map(soirDto, Soir.class));
 		} else {
 			throw new UtilisateurInconnuException();
 		}
 
+	}
+
+	@Override
+	public void modifMatin(MatinDto matinDto, int id) throws UtilisateurInconnuException {
+
+		Optional<Utilisateur> userOpt = this.utilisateurService.findById(id);
+		if (userOpt.isPresent()) {
+			matinDto.setUtilisateurDtoList(this.modelMapper.map(userOpt.get(), UtilisateurDtoList.class));
+			this.routineMatinService.save(this.modelMapper.map(matinDto, Matin.class));
+		} else {
+			throw new UtilisateurInconnuException();
+		}
+
+	}
+
+	@Override
+	public void modifSoir(SoirDto soirDto, int id) throws UtilisateurInconnuException {
+		Optional<Utilisateur> userOpt = this.utilisateurService.findById(id);
+		if (userOpt.isPresent()) {
+			soirDto.setUtilisateurDtoList(this.modelMapper.map(userOpt.get(), UtilisateurDtoList.class));
+			this.routineSoirService.save(this.modelMapper.map(soirDto, Soir.class));
+		} else {
+			throw new UtilisateurInconnuException();
+		}
 	}
 
 }

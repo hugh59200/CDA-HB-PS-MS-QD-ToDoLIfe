@@ -162,7 +162,7 @@ INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, usernam
 INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'mtosaba@gmail.com', 'SABA', '$2a$10$kBOX9eshjvXiGQnLhzWeReCuru7m3PdoK9B4cnuxJ.DxzI2p9Z/R6', 'Matéo', 'MATEO') on conflict do nothing;
 INSERT INTO utilisateur (date_naissance, email, nom, "password", prenom, username) VALUES('1998-02-20', 'h.bogrand@gmail.com', 'BOGRAND', '$2a$10$S3CANLJ6NBlsVw5mJqo.cOz2QQOjksENbB42nK6peFz7cpWEgiwCa', 'Hugo', 'hugh59') on conflict do nothing;
 
-insert into journal (id_utilisateur) values (4);
+insert into journal (id_utilisateur) values (4)  on conflict do nothing;
 
 insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2020-12-19', 4, 'On a bien ris', 'blablabla', 1);
 insert into Jour (date_jour, humeur, titre, texte, id_journal) values ('2020-12-20', 4, 'Toujours aussi drôle', 'blablabla', 1);
